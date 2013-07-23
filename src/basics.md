@@ -1,3 +1,7 @@
+<a href='index.html'>
+  <img id="logo" src="img/pixi.png" />
+</a>
+
 # The Basics
 
 :::BEGIN Example
@@ -10,7 +14,7 @@ In this example we'll cover the basics of using a `Stage`, `Renderer`,
 ## Setup Stage and Renderer
 
 First create a stage which is a logical rectangular area to place
-content. A renderer is responsible drawing the stage onto the
+content. A renderer is responsible for drawing the stage onto the
 page using either Canvas or WebGL depending on the features of the browser.
 
 ```js

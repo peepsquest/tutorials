@@ -1,3 +1,9 @@
-# Pixi.js Tutorials
+# PeepsQuest Dev
 
-A set of tutorials for the awesome 2D game renderer [pixi.js]()
+We're ambitiously building an innovative social platform for the creative gamer
+in all of us.
+
+## Tutorials
+
+We are converting [pixi.js](https://github.com/GoodBoyDigital/pixi.js) examples into tutorials and then we'll add
+some around isometric tile maps, collision ...

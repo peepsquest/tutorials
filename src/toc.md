@@ -1,4 +1,4 @@
-## [Examples](index.html)
+## [Tutorials](index.html)
 
 - [Basics](basics.html)
 
