@@ -88,7 +88,7 @@ exports.project = (pm) ->
         if $.test('-d', GH_PAGES)
           cb()
         else
-          $ .git "clone git@github.com:Peepsquest/tutorials #{GH_PAGES}", (err) ->
+          $ .git "clone git@github.com:peepsquest/tutorials #{GH_PAGES}", (err) ->
             return cb(err) if err
             $.inside GH_PAGES, (popcb) ->
               $.git "checkout -t origin/gh-pages", popcb(cb)
