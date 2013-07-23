@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>PeepsQuest Dev</title>
+    <!-- Stylesheets -->
+    <link rel='stylesheet' type='text/css' href='css/style.css' />
+
+    <!-- Scripts -->
+    <!--[if lt IE 9]><script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body>
+  <div id="page-wrapper">
+    <div class="row">
+
+      <!-- Sidebar -->
+      <section id="sidebar" class="col sidebar">
+        <h2><a href="index.html#">PeepsQuest Dev</a></h2>
+        <ul>
+          <li><a href="https://github.com/peepsquest/tutorials">Github</a></li>
+        </ul>
+        
+        <h2 id='h-tutorialsindexhtml'><a href="index.html">Tutorials</a></h2>
+<ul>
+<li><a href="pixiBasics.html">Pixi.js Basics</a></li>
+</ul>
+
+      </section>
+
+      <!-- Main Body -->
+      <article id="content" class="col content">
+        <p><a href='index.html'>
+  <img id="logo" src="img/pixi.png" />
+</a></p>
+<h1 id='h-pixijs-basics'>Pixi.js Basics</h1>
+<p><div class='section-example'><p>In this example (example1 from pixi.js project) we&#39;ll cover the basics of using a <code>Stage</code>, <code>Renderer</code>,
+<code>Sprite</code> and <code>Texture</code>.</p>
+<div id="pixibasics0_tabs" class="tabs">
+  <ul>
+    <li class="active">
+  <a href="#pixibasics0result-tab" rel="pixibasics0result-tab">
+    result
+  </a>
+</li><li>
+  <a href="#pixibasics0scriptjs-tab" rel="pixibasics0scriptjs-tab">
+    script.js
+  </a>
+</li><li>
+  <a href="#pixibasics0markuphtml-tab" rel="pixibasics0markuphtml-tab">
+    markup.html
+  </a>
+</li><li>
+  <a href="#pixibasics0stylecss-tab" rel="pixibasics0stylecss-tab">
+    style.css
+  </a>
+</li>
+  </ul>
+</div>
+<div id="pixibasics0_tabs_content" class="tabs_content">
+  <div id="pixibasics0result-tab" class="tab_content">
+  <iframe id="pixibasics0" src="examples/pixiBasics0.html" class="result"  style='height: 310px;'></iframe>
+</div><div id="pixibasics0scriptjs-tab" class="tab_content">
+  <pre><code class="language-js"><span class="keyword">var</span> WIDTH = <span class="number">400</span>;
+<span class="keyword">var</span> HEIGHT = <span class="number">300</span>;
+<span class="keyword">var</span> stage = <span class="keyword">new</span> PIXI.Stage(<span class="number">0x66FF99</span>);
+
+<span class="comment">// let pixi choose WebGL or canvas</span>
+<span class="keyword">var</span> renderer = PIXI.autoDetectRenderer(WIDTH, HEIGHT);
+
+<span class="comment">// attach render to page</span>
+document.body.appendChild(renderer.view);
+
+<span class="keyword">var</span> texture = PIXI.Texture.fromImage(<span class="string">'img/bunny.png'</span>);
+<span class="keyword">var</span> bunny = <span class="keyword">new</span> PIXI.Sprite(texture);
+
+<span class="comment">// rotate around center</span>
+bunny.anchor.x = <span class="number">0.5</span>;
+bunny.anchor.y = <span class="number">0.5</span>;
+
+<span class="comment">// center in stage</span>
+bunny.position.x = WIDTH / <span class="number">2</span>;
+bunny.position.y = HEIGHT / <span class="number">2</span>;
+
+stage.addChild(bunny);
+
+<span class="function"><span class="keyword">function</span> <span class="title">animate</span><span class="params">()</span> {</span>
+  bunny.rotation += <span class="number">0.1</span>;
+  renderer.render(stage);
+  requestAnimFrame(animate);
+}
+
+requestAnimFrame(animate);</code></pre>
+</div><div id="pixibasics0markuphtml-tab" class="tab_content">
+  <pre><code class="language-html"><span class="doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;<span class="title">html</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">head</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">'stylesheet'</span> <span class="attribute">type</span>=<span class="value">'text/css'</span> <span class="attribute">href</span>=<span class="value">'../css/reset.css'</span> /&gt;</span>
+    <span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">'stylesheet'</span> <span class="attribute">type</span>=<span class="value">'text/css'</span> <span class="attribute">href</span>=<span class="value">'pixibasics0-style.css'</span> /&gt;</span>
+  <span class="tag">&lt;/<span class="title">head</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">body</span>&gt;</span>
+    <span class="comment">&lt;!--
+&lt;script src="http://code.jquery.com/jquery-1.9.1.min.js"&gt;&lt;/script&gt;
+&lt;script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"&gt;&lt;/script&gt;
+&lt;script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"&gt;&lt;/script&gt;
+--&gt;</span>
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"js/vendor/pixi.dev.js"</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">'text/javascript'</span> <span class="attribute">src</span>=<span class="value">'pixibasics0-script.js'</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">body</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">html</span>&gt;</span>
+</code></pre>
+</div><div id="pixibasics0stylecss-tab" class="tab_content">
+  <pre><code class="language-css"><span class="tag">body</span> <span class="rules">{
+  <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">0</span></span></span>;
+  <span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">0</span></span></span>;
+<span class="rule">}</span></span></code></pre>
+</div>
+</div><h2 id='h-setup-stage-and-renderer'>Setup Stage and Renderer</h2>
+<p>First create a stage which is a logical rectangular area to place
+content. A renderer is responsible for drawing the stage onto the
+page using either Canvas or WebGL depending on the features of the browser.</p>
+<pre><code class="js"><span class="keyword">var</span> WIDTH = <span class="number">400</span>;
+<span class="keyword">var</span> HEIGHT = <span class="number">300</span>;
+<span class="keyword">var</span> stage = <span class="keyword">new</span> PIXI.Stage(<span class="number">0x66FF99</span>);
+
+<span class="comment">// let pixi choose WebGL or canvas</span>
+<span class="keyword">var</span> renderer = PIXI.autoDetectRenderer(WIDTH, HEIGHT);
+
+<span class="comment">// attach render to page</span>
+document.body.appendChild(renderer.view);</code></pre>
+<h2 id='h-adding-a-sprite'>Adding a Sprite</h2>
+<p>Let&#39;s create a sprite which is a basic drawing unit. A texture
+is assigned to a sprite to give it its visual appearance. The sprite
+must be added to a stage for rendering.</p>
+<pre><code class="js"><span class="keyword">var</span> texture = PIXI.Texture.fromImage(<span class="string">'img/bunny.png'</span>);
+<span class="keyword">var</span> bunny = <span class="keyword">new</span> PIXI.Sprite(texture);
+
+<span class="comment">// rotate around center</span>
+bunny.anchor.x = <span class="number">0.5</span>;
+bunny.anchor.y = <span class="number">0.5</span>;
+
+<span class="comment">// center in stage</span>
+bunny.position.x = WIDTH / <span class="number">2</span>;
+bunny.position.y = HEIGHT / <span class="number">2</span>;
+
+stage.addChild(bunny);</code></pre>
+<h2 id='h-animation'>Animation</h2>
+<p>To animate it, we&#39;ll request an animation frame repeatedly using the
+same function, each time rotating the bunny sprite 1/10th of a radian.</p>
+<pre><code class="js"><span class="function"><span class="keyword">function</span> <span class="title">animate</span><span class="params">()</span> {</span>
+  bunny.rotation += <span class="number">0.1</span>;
+  renderer.render(stage);
+  requestAnimFrame(animate);
+}
+
+requestAnimFrame(animate);</code></pre>
+</div></p>
+
+      </article>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <script src="examples/tutdown.js"></script>
+  <script>
+  $(function() {
+    $('.more-details').click(function() {
+      $this = $(this);
+      if ($this.hasClass('collapsed')) {
+        $this.removeClass('collapsed');
+        $this.addClass('uncollapsed');
+      } else {
+        $this.removeClass('uncollapsed');
+        $this.addClass('collapsed');
+      }
+    });
+  });
+  </script>
+  <!--
+  <script type="text/javascript">
+    (function() {
+      var b = document.createElement("script"); b.type = "text/javascript"; b.async = true;
+      b.src = "https://barc.com/js/libs/barc/barc.js";
+      var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(b, s);
+    })();
+  </script>
+  -->
+  <script type="text/javascript">
+    $('#sidebar a').each(function() {
+      var
+        $a = $(this),
+        href = window.location.href;
+      if (href.indexOf && href.indexOf($a.attr('href')) > -1 && href.indexOf('#') === -1) // hacky to grab only example links
+        $a.closest('li').addClass('active');
+    });
+  </script>
+</body>
+</html>
+
