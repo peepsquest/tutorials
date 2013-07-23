@@ -2,11 +2,11 @@
   <img id="logo" src="img/pixi.png" />
 </a>
 
-# The Basics
+# Pixi.js Basics
 
 :::BEGIN Example
 
-In this example we'll cover the basics of using a `Stage`, `Renderer`,
+In this example (example1 from pixi.js project) we'll cover the basics of using a `Stage`, `Renderer`,
 `Sprite` and `Texture`.
 
 {{{EXAMPLE style='height: 310px;'}}}

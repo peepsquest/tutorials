@@ -1,4 +1,4 @@
 ## [Tutorials](index.html)
 
-- [Basics](basics.html)
+- [Pixi.js Basics](pixiBasics.html)
 
