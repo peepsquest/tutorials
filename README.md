@@ -9,8 +9,8 @@
 ## Adding another tutorial
 
 *   Add markdown file  to `src`
-*   Update `src/toc`
-*   Run projmate
+*   Update `src/toc.md`
+*   Rebuild
 
         pm run all
 

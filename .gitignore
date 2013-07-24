@@ -3,3 +3,4 @@ node_modules
 !.gitignore
 _gh-pages
 libpeerconnection.log
+pixi.js/

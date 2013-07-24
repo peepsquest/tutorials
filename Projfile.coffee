@@ -74,7 +74,7 @@ exports.project = (pm) ->
     desc: 'Fetches Pixi edge scripts'
     dev: (done) ->
       files =
-        'https://raw.github.com/GoodBoyDigital/pixi.js/master/bin/pixi.dev.js': 'src/js/examples/vendor/pixi.dev.js'
+        'https://raw.github.com/GoodBoyDigital/pixi.js/dev/bin/pixi.dev.js': 'src/examples/js/vendor/pixi.dev.js'
       $.wget(files).then done
 
 
