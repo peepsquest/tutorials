@@ -6,8 +6,8 @@
 
 :::BEGIN Example
 
-In this example (example1 from pixi.js project) we'll cover the basics of using a `Stage`, `Renderer`,
-`Sprite` and `Texture`.
+In this example we'll cover the basics of using a `Stage`, `Renderer`,
+`Sprite` and `Texture`. We'll draw a simple leaf and rotate it.
 
 {{{EXAMPLE style='height: 310px;'}}}
 
@@ -20,7 +20,7 @@ page using either Canvas or WebGL depending on the features of the browser.
 ```js
 var WIDTH = 400;
 var HEIGHT = 300;
-var stage = new PIXI.Stage(0x66FF99);
+var stage = new PIXI.Stage(0xEEFFFF);
 
 // let pixi choose WebGL or canvas
 var renderer = PIXI.autoDetectRenderer(WIDTH, HEIGHT);
@@ -29,35 +29,37 @@ var renderer = PIXI.autoDetectRenderer(WIDTH, HEIGHT);
 document.body.appendChild(renderer.view);
 ```
 
-## Adding a Sprite
+## Adding the Leaf
 
-Let's create a sprite which is a basic drawing unit. A texture
-is assigned to a sprite to give it its visual appearance. The sprite
-must be added to a stage for rendering.
+Let's create a sprite which is a basic visual entity in games. The visual
+appearance of a sprite is the texture assigned to it.
 
 ```js
-var texture = PIXI.Texture.fromImage('img/bunny.png');
-var bunny = new PIXI.Sprite(texture);
+var texture = PIXI.Texture.fromImage('img/leaf.png');
+var leaf = new PIXI.Sprite(texture);
 
 // rotate around center
-bunny.anchor.x = 0.5;
-bunny.anchor.y = 0.5;
+leaf.anchor.x = 0.5;
+leaf.anchor.y = 0.5;
 
 // center in stage
-bunny.position.x = WIDTH / 2;
-bunny.position.y = HEIGHT / 2;
+leaf.position.x = WIDTH / 2;
+leaf.position.y = HEIGHT / 2;
 
-stage.addChild(bunny);
+// place it on the stage for rendering
+stage.addChild(leaf);
 ```
 
 ## Animation
 
 To animate it, we'll request an animation frame repeatedly using the
-same function, each time rotating the bunny sprite 1/10th of a radian.
+same function, each time rotating the leaf by a fraction of a radiant.
+In this example, we use a negative value which animates in a counter-clockwise
+direction.
 
 ```js
 function animate() {
-  bunny.rotation += 0.1;
+  leaf.rotation -= 0.02;
   renderer.render(stage);
   requestAnimFrame(animate);
 }
