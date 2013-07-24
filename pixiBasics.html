@@ -33,8 +33,8 @@
   <img id="logo" src="img/pixi.png" />
 </a></p>
 <h1 id='h-pixijs-basics'>Pixi.js Basics</h1>
-<p><div class='section-example'><p>In this example (example1 from pixi.js project) we&#39;ll cover the basics of using a <code>Stage</code>, <code>Renderer</code>,
-<code>Sprite</code> and <code>Texture</code>.</p>
+<p><div class='section-example'><p>In this example we&#39;ll cover the basics of using a <code>Stage</code>, <code>Renderer</code>,
+<code>Sprite</code> and <code>Texture</code>. We&#39;ll draw a simple leaf and rotate it.</p>
 <div id="pixibasics0_tabs" class="tabs">
   <ul>
     <li class="active">
@@ -62,7 +62,7 @@
 </div><div id="pixibasics0scriptjs-tab" class="tab_content">
   <pre><code class="language-js"><span class="keyword">var</span> WIDTH = <span class="number">400</span>;
 <span class="keyword">var</span> HEIGHT = <span class="number">300</span>;
-<span class="keyword">var</span> stage = <span class="keyword">new</span> PIXI.Stage(<span class="number">0x66FF99</span>);
+<span class="keyword">var</span> stage = <span class="keyword">new</span> PIXI.Stage(<span class="number">0xEEFFFF</span>);
 
 <span class="comment">// let pixi choose WebGL or canvas</span>
 <span class="keyword">var</span> renderer = PIXI.autoDetectRenderer(WIDTH, HEIGHT);
@@ -70,21 +70,22 @@
 <span class="comment">// attach render to page</span>
 document.body.appendChild(renderer.view);
 
-<span class="keyword">var</span> texture = PIXI.Texture.fromImage(<span class="string">'img/bunny.png'</span>);
-<span class="keyword">var</span> bunny = <span class="keyword">new</span> PIXI.Sprite(texture);
+<span class="keyword">var</span> texture = PIXI.Texture.fromImage(<span class="string">'img/leaf.png'</span>);
+<span class="keyword">var</span> leaf = <span class="keyword">new</span> PIXI.Sprite(texture);
 
 <span class="comment">// rotate around center</span>
-bunny.anchor.x = <span class="number">0.5</span>;
-bunny.anchor.y = <span class="number">0.5</span>;
+leaf.anchor.x = <span class="number">0.5</span>;
+leaf.anchor.y = <span class="number">0.5</span>;
 
 <span class="comment">// center in stage</span>
-bunny.position.x = WIDTH / <span class="number">2</span>;
-bunny.position.y = HEIGHT / <span class="number">2</span>;
+leaf.position.x = WIDTH / <span class="number">2</span>;
+leaf.position.y = HEIGHT / <span class="number">2</span>;
 
-stage.addChild(bunny);
+<span class="comment">// place it on the stage for rendering</span>
+stage.addChild(leaf);
 
 <span class="function"><span class="keyword">function</span> <span class="title">animate</span><span class="params">()</span> {</span>
-  bunny.rotation += <span class="number">0.1</span>;
+  leaf.rotation -= <span class="number">0.02</span>;
   renderer.render(stage);
   requestAnimFrame(animate);
 }
@@ -120,34 +121,36 @@ content. A renderer is responsible for drawing the stage onto the
 page using either Canvas or WebGL depending on the features of the browser.</p>
 <pre><code class="js"><span class="keyword">var</span> WIDTH = <span class="number">400</span>;
 <span class="keyword">var</span> HEIGHT = <span class="number">300</span>;
-<span class="keyword">var</span> stage = <span class="keyword">new</span> PIXI.Stage(<span class="number">0x66FF99</span>);
+<span class="keyword">var</span> stage = <span class="keyword">new</span> PIXI.Stage(<span class="number">0xEEFFFF</span>);
 
 <span class="comment">// let pixi choose WebGL or canvas</span>
 <span class="keyword">var</span> renderer = PIXI.autoDetectRenderer(WIDTH, HEIGHT);
 
 <span class="comment">// attach render to page</span>
 document.body.appendChild(renderer.view);</code></pre>
-<h2 id='h-adding-a-sprite'>Adding a Sprite</h2>
-<p>Let&#39;s create a sprite which is a basic drawing unit. A texture
-is assigned to a sprite to give it its visual appearance. The sprite
-must be added to a stage for rendering.</p>
-<pre><code class="js"><span class="keyword">var</span> texture = PIXI.Texture.fromImage(<span class="string">'img/bunny.png'</span>);
-<span class="keyword">var</span> bunny = <span class="keyword">new</span> PIXI.Sprite(texture);
+<h2 id='h-adding-the-leaf'>Adding the Leaf</h2>
+<p>Let&#39;s create a sprite which is a basic visual entity in games. The visual
+appearance of a sprite is the texture assigned to it.</p>
+<pre><code class="js"><span class="keyword">var</span> texture = PIXI.Texture.fromImage(<span class="string">'img/leaf.png'</span>);
+<span class="keyword">var</span> leaf = <span class="keyword">new</span> PIXI.Sprite(texture);
 
 <span class="comment">// rotate around center</span>
-bunny.anchor.x = <span class="number">0.5</span>;
-bunny.anchor.y = <span class="number">0.5</span>;
+leaf.anchor.x = <span class="number">0.5</span>;
+leaf.anchor.y = <span class="number">0.5</span>;
 
 <span class="comment">// center in stage</span>
-bunny.position.x = WIDTH / <span class="number">2</span>;
-bunny.position.y = HEIGHT / <span class="number">2</span>;
+leaf.position.x = WIDTH / <span class="number">2</span>;
+leaf.position.y = HEIGHT / <span class="number">2</span>;
 
-stage.addChild(bunny);</code></pre>
+<span class="comment">// place it on the stage for rendering</span>
+stage.addChild(leaf);</code></pre>
 <h2 id='h-animation'>Animation</h2>
 <p>To animate it, we&#39;ll request an animation frame repeatedly using the
-same function, each time rotating the bunny sprite 1/10th of a radian.</p>
+same function, each time rotating the leaf by a fraction of a radiant.
+In this example, we use a negative value which animates in a counter-clockwise
+direction.</p>
 <pre><code class="js"><span class="function"><span class="keyword">function</span> <span class="title">animate</span><span class="params">()</span> {</span>
-  bunny.rotation += <span class="number">0.1</span>;
+  leaf.rotation -= <span class="number">0.02</span>;
   renderer.render(stage);
   requestAnimFrame(animate);
 }
