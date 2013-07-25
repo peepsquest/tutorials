@@ -44,8 +44,7 @@ Then inside your project install the sprite sheet filter
 
 ### Creating Task
 
-Here is the example folder layout for the pixi.js example from where the
-images above were found
+Here is the folder layout for pixi.js' second example
 
     ▾ tp/
         eggHead.png
@@ -53,9 +52,15 @@ images above were found
         helmlok.png
         skully.png
 
-To create a sprite sheet, create a `Projfile.js` at the root of your
-project then add this content. The processing pipeline for `spritesheet`
-task is the spritesheet filter.
+To create a sprite sheet task, first create a file `Projfile.js` at the root of your
+project. The pipeline for `spritesheet` task only requires
+the `spritesheet` filter. When run or watched, the `spritesheet` task generates
+`SpriteSheet.png`
+
+<div class='note'>
+Projmate has many more filters: CoffeeScript (Iced), CommonJS, PreProcessor,
+Template, Handlebars, Uglify, Less, YUI Docs, Tap ... to name a few
+</div>
 
 :::@ --no-capture
 
@@ -75,18 +80,15 @@ exports.project = function(pm) {
 };
 ```
 
-To build the spritesheet from a terminal
+To run the `spritesheet` task from the terminal
 
     pm run spritesheet
-
 
 <div class='note'>
 The generated sprite sheet and JSON meta file is supported by pixi.js. We'll
 cover this in a future example.
 </div>
 
-
 Look at this project's `Projfile.coffee` which has the `spritesheet` task for this tutorial.
-
 
 :::END

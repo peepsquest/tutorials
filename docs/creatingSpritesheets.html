@@ -62,16 +62,21 @@ used by pixi.js in its <code>Example 2</code>.</p>
 <p>Then inside your project install the sprite sheet filter</p>
 <pre><code>npm install pm-spritesheet</code></pre>
 <h3 id='h-creating-task'>Creating Task</h3>
-<p>Here is the example folder layout for the pixi.js example from where the
-images above were found</p>
+<p>Here is the folder layout for pixi.js&#39; second example</p>
 <pre><code>▾ tp/
     eggHead.png
     flowerTop.png
     helmlok.png
     skully.png</code></pre>
-<p>To create a sprite sheet, create a <code>Projfile.js</code> at the root of your
-project then add this content. The processing pipeline for <code>spritesheet</code>
-task is the spritesheet filter.</p>
+<p>To create a sprite sheet task, first create a file <code>Projfile.js</code> at the root of your
+project. The pipeline for <code>spritesheet</code> task only requires
+the <code>spritesheet</code> filter. When run or watched, the <code>spritesheet</code> task generates
+<code>SpriteSheet.png</code></p>
+<div class='note'>
+Projmate has many more filters: CoffeeScript (Iced), CommonJS, PreProcessor,
+Template, Handlebars, Uglify, Less, YUI Docs, Tap ... to name a few
+</div>
+
 <pre><code class="js">exports.project = <span class="function"><span class="keyword">function</span><span class="params">(pm)</span> {</span>
   <span class="keyword">var</span> f = pm.filters(require(<span class="string">'pm-spritesheet'</span>));
 
@@ -85,13 +90,12 @@ task is the spritesheet filter.</p>
   };
 
 };</code></pre>
-<p>To build the spritesheet from a terminal</p>
+<p>To run the <code>spritesheet</code> task from the terminal</p>
 <pre><code>pm run spritesheet</code></pre>
 <div class='note'>
 The generated sprite sheet and JSON meta file is supported by pixi.js. We&#39;ll
 cover this in a future example.
 </div>
-
 
 <p>Look at this project&#39;s <code>Projfile.coffee</code> which has the <code>spritesheet</code> task for this tutorial.</p>
 </div><div id="creatingspritesheets0_tabs" class="tabs">
