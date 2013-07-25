@@ -40,40 +40,46 @@ img  {
 <div id="text-logo">PeepsQuest</div>
 
 <h1 id='h-creating-sprite-sheets'>Creating Sprite Sheets</h1>
-<p>We were somewhat dismayed that Pixi.js uses a proprietary commercial app to build sprite sheets,
-so we built a free solution for our node.js build tool---<a href="http://projmate.github.io">Projmate</a>.
-The <code>pm-spritesheet</code> filter generates sprite sheets compatible with Texture Packer (as used by pixi.js).</p>
-<p>In this tutorial, we&#39;ll start with four images</p>
+<p>We were somewhat dismayed that Pixi.js uses a proprietary commercial app to build sprite sheets.
+We rely solely on open source tools, so we built an open source filter for our node.js build tool---<a href="http://projmate.github.io">Projmate</a>.
+The <code>pm-spritesheet</code> filter generates sprite sheets and a JSON meta file compatible with Texture Packer (as used by pixi.js).</p>
+<p>In this tutorial four images</p>
 <p><img src="examples/img/tp/eggHead.png" alt="">
 <img src="examples/img/tp/flowerTop.png" alt="">
 <img src="examples/img/tp/helmlok.png" alt="">
 <img src="examples/img/tp/skully.png" alt=""></p>
-<p>then generate a single sprite sheet containing those images. These are the same images
-used by pixi.js in its <code>Example 2</code>.</p>
+<p>are combined into a single sprite sheet. These images are from pixi.js&#39; <code>Example 2</code>.</p>
 <p><img src="examples/img/tp/spritesheet.png" alt=""></p>
-<p><div class='section-example'><h3 id='h-installing-projmate'>Installing Projmate</h3>
+<h3 id='h-installing-projmate'>Installing Projmate</h3>
+<p>Projmate is command-line build tool we use internally for almost half a year now. Projmate, more
+speficifically tasks are composable using pipes and filters. The CoffeeScript filter for example only
+deals with CoffeeScript transpilation, not minification, not adding a banner, not compression.</p>
 <p>First install these pre-requisites on your box</p>
 <ul>
 <li>imagemagick</li>
 <li>node.js + npm</li>
 </ul>
-<p>With those intalled, proceed to installing Projmate globally</p>
+<p>Install Projmate globally</p>
 <pre><code>npm install -g projmate-cli@0.1.0-dev</code></pre>
-<p>Then inside your project install the sprite sheet filter</p>
+<p>Inside a project install the sprite sheet filter</p>
 <pre><code>npm install pm-spritesheet</code></pre>
-<h3 id='h-creating-task'>Creating Task</h3>
+<h3 id='h-generate-sprite-sheet-task'>Generate Sprite Sheet Task</h3>
+<p>Projmate, like most build tools, breaks down a project into smaller units of work called tasks that can
+depend on each other. What is different about Projmate is that a task is defined by one or more pipelines which
+define behaviour for <code>development</code>, <code>test</code> and <code>production</code> mode.  For example, in <code>production</code> mode a task can
+minify, compress, add a banner, optimize, etc. All those steps should be skipped while developing.</p>
 <p>Here is the folder layout for pixi.js&#39; second example</p>
 <pre><code>▾ tp/
     eggHead.png
     flowerTop.png
     helmlok.png
     skully.png</code></pre>
-<p>To create a sprite sheet task, first create a file <code>Projfile.js</code> at the root of your
-project. The pipeline for <code>spritesheet</code> task only requires
-the <code>spritesheet</code> filter. When run or watched, the <code>spritesheet</code> task generates
-<code>SpriteSheet.png</code></p>
+<p>To create a sprite sheet task for this, first create a build file <code>Projfile.js</code> at the root of your
+project. The pipeline for <code>spritesheet</code> task requires only
+the <code>spritesheet</code> filter. The <code>spritesheet</code> task generates
+<code>SpriteSheet.png</code> when run or triggered by a watch.</p>
 <div class='note'>
-Projmate has many more filters: CoffeeScript (Iced), CommonJS, PreProcessor,
+Projmate has many more filters---CoffeeScript, CommonJS, PreProcessor,
 Template, Handlebars, Uglify, Less, YUI Docs, Tap ... to name a few
 </div>
 
@@ -92,26 +98,10 @@ Template, Handlebars, Uglify, Less, YUI Docs, Tap ... to name a few
 };</code></pre>
 <p>To run the <code>spritesheet</code> task from the terminal</p>
 <pre><code>pm run spritesheet</code></pre>
-<div class='note'>
-The generated sprite sheet and JSON meta file is supported by pixi.js. We&#39;ll
-cover this in a future example.
-</div>
-
-<p>Look at this project&#39;s <code>Projfile.coffee</code> which has the <code>spritesheet</code> task for this tutorial.</p>
-</div><div id="creatingspritesheets0_tabs" class="tabs">
-  <ul>
-    <li class="active">
-  <a href="#creatingspritesheets0result-tab" rel="creatingspritesheets0result-tab">
-    result
-  </a>
-</li>
-  </ul>
-</div>
-<div id="creatingspritesheets0_tabs_content" class="tabs_content">
-  <div id="creatingspritesheets0result-tab" class="tab_content">
-  <iframe id="creatingspritesheets0" src="examples/creatingSpritesheets0.html" class="result" ></iframe>
-</div>
-</div></p>
+<p>The generated sprite sheet and JSON meta file is supported by pixi.js. We&#39;ll
+cover this in a future example.</p>
+<p>The only caveat is <code>Projmate</code> isn&#39;t well documented as a small team can only do so much. Look at this
+project&#39;s <code>Projfile.coffee</code> which has the <code>spritesheet</code> task for this tutorial.</p>
 
       </article>
     </div>

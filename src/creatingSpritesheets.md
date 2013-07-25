@@ -8,41 +8,48 @@ img  {
 
 # Creating Sprite Sheets
 
-We were somewhat dismayed that Pixi.js uses a proprietary commercial app to build sprite sheets,
-so we built a free solution for our node.js build tool---[Projmate](http://projmate.github.io).
-The `pm-spritesheet` filter generates sprite sheets compatible with Texture Packer (as used by pixi.js).
+We were somewhat dismayed that Pixi.js uses a proprietary commercial app to build sprite sheets.
+We rely solely on open source tools, so we built an open source filter for our node.js build tool---[Projmate](http://projmate.github.io).
+The `pm-spritesheet` filter generates sprite sheets and a JSON meta file compatible with Texture Packer (as used by pixi.js).
 
-In this tutorial, we'll start with four images
+In this tutorial four images
 
 ![](examples/img/tp/eggHead.png)
 ![](examples/img/tp/flowerTop.png)
 ![](examples/img/tp/helmlok.png)
 ![](examples/img/tp/skully.png)
 
-then generate a single sprite sheet containing those images. These are the same images
-used by pixi.js in its `Example 2`.
+are combined into a single sprite sheet. These images are from pixi.js' `Example 2`.
 
 ![](examples/img/tp/spritesheet.png)
 
-:::BEGIN Example
 
 ### Installing Projmate
+
+Projmate is command-line build tool we use internally for almost half a year now. Projmate, more
+speficifically tasks are composable using pipes and filters. The CoffeeScript filter for example only
+deals with CoffeeScript transpilation, not minification, not adding a banner, not compression.
 
 First install these pre-requisites on your box
 
 *   imagemagick
 *   node.js + npm
 
-With those intalled, proceed to installing Projmate globally
+Install Projmate globally
 
     npm install -g projmate-cli@0.1.0-dev
 
-Then inside your project install the sprite sheet filter
+Inside a project install the sprite sheet filter
 
     npm install pm-spritesheet
 
 
-### Creating Task
+### Generate Sprite Sheet Task
+
+Projmate, like most build tools, breaks down a project into smaller units of work called tasks that can
+depend on each other. What is different about Projmate is that a task is defined by one or more pipelines which
+define behaviour for `development`, `test` and `production` mode.  For example, in `production` mode a task can
+minify, compress, add a banner, optimize, etc. All those steps should be skipped while developing.
 
 Here is the folder layout for pixi.js' second example
 
@@ -52,17 +59,15 @@ Here is the folder layout for pixi.js' second example
         helmlok.png
         skully.png
 
-To create a sprite sheet task, first create a file `Projfile.js` at the root of your
-project. The pipeline for `spritesheet` task only requires
-the `spritesheet` filter. When run or watched, the `spritesheet` task generates
-`SpriteSheet.png`
+To create a sprite sheet task for this, first create a build file `Projfile.js` at the root of your
+project. The pipeline for `spritesheet` task requires only
+the `spritesheet` filter. The `spritesheet` task generates
+`SpriteSheet.png` when run or triggered by a watch.
 
 <div class='note'>
-Projmate has many more filters: CoffeeScript (Iced), CommonJS, PreProcessor,
+Projmate has many more filters---CoffeeScript, CommonJS, PreProcessor,
 Template, Handlebars, Uglify, Less, YUI Docs, Tap ... to name a few
 </div>
-
-:::@ --no-capture
 
 ```js
 exports.project = function(pm) {
@@ -84,11 +89,9 @@ To run the `spritesheet` task from the terminal
 
     pm run spritesheet
 
-<div class='note'>
 The generated sprite sheet and JSON meta file is supported by pixi.js. We'll
 cover this in a future example.
-</div>
 
-Look at this project's `Projfile.coffee` which has the `spritesheet` task for this tutorial.
+The only caveat is `Projmate` isn't well documented as a small team can only do so much. Look at this
+project's `Projfile.coffee` which has the `spritesheet` task for this tutorial.
 
-:::END
