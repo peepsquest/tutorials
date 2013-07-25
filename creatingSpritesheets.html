@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>PeepsQuest Dev</title>
+    <!-- Stylesheets -->
+    <link rel='stylesheet' type='text/css' href='css/style.css' />
+
+    <!-- Scripts -->
+    <!--[if lt IE 9]><script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body>
+  <div id="page-wrapper">
+    <div class="row">
+
+      <!-- Sidebar -->
+      <section id="sidebar" class="col sidebar">
+        <h2><a href="index.html#">PeepsQuest Dev</a></h2>
+        <ul>
+          <li><a href="https://github.com/peepsquest/tutorials">Github</a></li>
+        </ul>
+        
+        <h2 id='h-tutorialsindexhtml'><a href="index.html">Tutorials</a></h2>
+<ul>
+<li><a href="creatingSpritesheets.html">Creating Sprite Sheets</a></li>
+<li><a href="pixiBasics.html">Pixi.js Basics</a></li>
+<li><a href="pixiIsometric1.html">Pixi.js Isometric Tiles 1</a></li>
+</ul>
+
+      </section>
+
+      <!-- Main Body -->
+      <article id="content" class="col content">
+        <style>
+img  {
+  border: solid 3px #ccc;
+}
+</style>
+
+<div id="text-logo">PeepsQuest</div>
+
+<h1 id='h-creating-sprite-sheets'>Creating Sprite Sheets</h1>
+<p>We were somewhat dismayed that Pixi.js uses a proprietary commercial app to build sprite sheets,
+so we built a free solution for our node.js build tool---<a href="http://projmate.github.io">Projmate</a>.
+The <code>pm-spritesheet</code> filter generates sprite sheets compatible with Texture Packer (as used by pixi.js).</p>
+<p>In this tutorial, we&#39;ll start with four images</p>
+<p><img src="examples/img/tp/eggHead.png" alt="">
+<img src="examples/img/tp/flowerTop.png" alt="">
+<img src="examples/img/tp/helmlok.png" alt="">
+<img src="examples/img/tp/skully.png" alt=""></p>
+<p>then generate a single sprite sheet containing those images. These are the same images
+used by pixi.js in its <code>Example 2</code>.</p>
+<p><img src="examples/img/tp/spritesheet.png" alt=""></p>
+<p><div class='section-example'><h3 id='h-installing-projmate'>Installing Projmate</h3>
+<p>First install these pre-requisites on your box</p>
+<ul>
+<li>imagemagick</li>
+<li>node.js + npm</li>
+</ul>
+<p>With those intalled, proceed to installing Projmate globally</p>
+<pre><code>npm install -g projmate-cli@0.1.0-dev</code></pre>
+<p>Then inside your project install the sprite sheet filter</p>
+<pre><code>npm install pm-spritesheet</code></pre>
+<h3 id='h-creating-task'>Creating Task</h3>
+<p>Here is the example folder layout for the pixi.js example from where the
+images above were found</p>
+<pre><code>▾ tp/
+    eggHead.png
+    flowerTop.png
+    helmlok.png
+    skully.png</code></pre>
+<p>To create a sprite sheet, create a <code>Projfile.js</code> at the root of your
+project then add this content. The processing pipeline for <code>spritesheet</code>
+task is the spritesheet filter.</p>
+<pre><code class="js">exports.project = <span class="function"><span class="keyword">function</span><span class="params">(pm)</span> {</span>
+  <span class="keyword">var</span> f = pm.filters(require(<span class="string">'pm-spritesheet'</span>));
+
+  <span class="keyword">return</span> {
+    spritesheet: {
+      files: <span class="string">'tp/*.png'</span>,
+      dev: [
+        f.spritesheet({filename: <span class="string">'SpriteSheet.png'</span>, root: <span class="string">'tp/'</span>, jsonStyle:<span class="string">'texturePacker'</span>})
+      ]
+    }
+  };
+
+};</code></pre>
+<p>To build the spritesheet from a terminal</p>
+<pre><code>pm run spritesheet</code></pre>
+<div class='note'>
+The generated sprite sheet and JSON meta file is supported by pixi.js. We&#39;ll
+cover this in a future example.
+</div>
+
+
+<p>Look at this project&#39;s <code>Projfile.coffee</code> which has the <code>spritesheet</code> task for this tutorial.</p>
+</div><div id="creatingspritesheets0_tabs" class="tabs">
+  <ul>
+    <li class="active">
+  <a href="#creatingspritesheets0result-tab" rel="creatingspritesheets0result-tab">
+    result
+  </a>
+</li>
+  </ul>
+</div>
+<div id="creatingspritesheets0_tabs_content" class="tabs_content">
+  <div id="creatingspritesheets0result-tab" class="tab_content">
+  <iframe id="creatingspritesheets0" src="examples/creatingSpritesheets0.html" class="result" ></iframe>
+</div>
+</div></p>
+
+      </article>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <script src="examples/tutdown.js"></script>
+  <script>
+  $(function() {
+    $('.more-details').click(function() {
+      $this = $(this);
+      if ($this.hasClass('collapsed')) {
+        $this.removeClass('collapsed');
+        $this.addClass('uncollapsed');
+      } else {
+        $this.removeClass('uncollapsed');
+        $this.addClass('collapsed');
+      }
+    });
+  });
+  </script>
+  <!--
+  <script type="text/javascript">
+    (function() {
+      var b = document.createElement("script"); b.type = "text/javascript"; b.async = true;
+      b.src = "https://barc.com/js/libs/barc/barc.js";
+      var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(b, s);
+    })();
+  </script>
+  -->
+  <script type="text/javascript">
+    $('#sidebar a').each(function() {
+      var
+        $a = $(this),
+        href = window.location.href;
+      if (href.indexOf && href.indexOf($a.attr('href')) > -1 && href.indexOf('#') === -1) // hacky to grab only example links
+        $a.closest('li').addClass('active');
+    });
+  </script>
+</body>
+</html>
+
