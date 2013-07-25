@@ -26,14 +26,12 @@ are combined into a single sprite sheet. These images are from pixi.js' `Example
 
 ### Installing Projmate
 
-Projmate is command-line build tool we use internally for almost half a year now. Projmate, more
-speficifically tasks are composable using pipes and filters. The CoffeeScript filter for example only
-deals with CoffeeScript transpilation, not minification, not adding a banner, not compression.
+Projmate is command-line build tool we use internally for almost half a year now
+that works well in Linux, Mac and Windows.  In order to use it, first install
+these pre-requisites
 
-First install these pre-requisites on your box
-
-*   imagemagick
-*   node.js + npm
+*   [imagemagick](http://www.imagemagick.org/script/index.php)
+*   [node.js + npm](http://nodejs.org/)
 
 Install Projmate globally
 
@@ -49,9 +47,10 @@ Inside a project install the sprite sheet filter
 Projmate, like most build tools, breaks down a project into smaller units of work called tasks that can
 depend on each other. What is different about Projmate is that a task is defined by one or more pipelines which
 define behaviour for `development`, `test` and `production` mode.  For example, in `production` mode a task can
-minify, compress, add a banner, optimize, etc. All those steps should be skipped while developing.
+minify, compress, add a banner, optimize, etc.
 
-Here is the folder layout for pixi.js' second example
+In this example, we want to generate a sprite sheet from all the `tp/*.png` files pixi.js' second example
+folder
 
     ▾ tp/
         eggHead.png
@@ -59,14 +58,15 @@ Here is the folder layout for pixi.js' second example
         helmlok.png
         skully.png
 
-To create a sprite sheet task for this, first create a build file `Projfile.js` at the root of your
+First create a build file `Projfile.js` at the root of your
 project. The pipeline for `spritesheet` task requires only
-the `spritesheet` filter. The `spritesheet` task generates
-`SpriteSheet.png` when run or triggered by a watch.
+the `spritesheet` filter which is passed all files matching `files`.
+`spritesheet` filter then retrieves dimensions for each image and
+determines an eficient layout then generates the image and meta file.
 
 <div class='note'>
-Projmate has many more filters---CoffeeScript, CommonJS, PreProcessor,
-Template, Handlebars, Uglify, Less, YUI Docs, Tap ... to name a few
+Projmate has many filters: CoffeeScript, CommonJS, PreProcessor,
+Template, Handlebars, Uglify, Less, YUI Docs, ... to name a few
 </div>
 
 ```js
@@ -92,6 +92,6 @@ To run the `spritesheet` task from the terminal
 The generated sprite sheet and JSON meta file is supported by pixi.js. We'll
 cover this in a future example.
 
-The only caveat is `Projmate` isn't well documented as a small team can only do so much. Look at this
+The only caveat is `Projmate` is not well documented as a small team can only do so much. Look at this
 project's `Projfile.coffee` which has the `spritesheet` task for this tutorial.
 

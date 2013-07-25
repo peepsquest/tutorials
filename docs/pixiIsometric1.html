@@ -35,7 +35,7 @@
   <img id="logo" src="img/pixi.png" />
 </a></p>
 <h1 id='h-pixijs-isometric-map-part-1'>Pixi.js Isometric Map Part 1</h1>
-<p><div class='section-example'><p>This example draws an isometric map using a tile created from Pixi.js primitives. Inpired by <a href="http://gamedev.tutsplus.com/tutorials/implementation/creating-isometric-worlds-a-primer-for-game-developers/">Juwal Bose&#39;s Isometric Worlds</a>.</p>
+<p><div class='section-example'><p>This example draws an isometric map using a tile created from Pixi.js primitives. Inspired by <a href="http://gamedev.tutsplus.com/tutorials/implementation/creating-isometric-worlds-a-primer-for-game-developers/">Juwal Bose&#39;s Isometric Worlds</a>.</p>
 <div id="pixiisometric10_tabs" class="tabs">
   <ul>
     <li class="active">
@@ -91,11 +91,12 @@ stage.addChild(graphics);
 <span class="keyword">var</span> cols = <span class="number">4</span>;
 <span class="keyword">var</span> G = <span class="number">0</span>,
   D = <span class="number">1</span>,
-  W = <span class="number">2</span>;
-<span class="keyword">var</span> tiles = [
+  W = <span class="number">2</span>,
+  X = <span class="number">3</span>;
+<span class="keyword">var</span> terrain = [
   G, G, G, G,
-  D, D, D, D,
-  D, G, W, W,
+  D, D, X, D,
+  D, G, X, W,
   D, G, W, W,
   G, G, W, W
 ];
@@ -109,21 +110,16 @@ stage.addChild(graphics);
 <span class="keyword">var</span> grass = colorRhombus(<span class="number">0x80CF5A</span>, <span class="number">0x339900</span>, tileWidth, tileHeight);
 <span class="keyword">var</span> dirt = colorRhombus(<span class="number">0x96712F</span>, <span class="number">0x403014</span>, tileWidth, tileHeight);
 <span class="keyword">var</span> water = colorRhombus(<span class="number">0x85b9bb</span>, <span class="number">0x476263</span>, tileWidth, tileHeight);
+<span class="keyword">var</span> empty = <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>};
+<span class="keyword">var</span> tileMethods = [grass, dirt, water, empty];
 
-<span class="comment">// sort depth &amp; draw to canvas</span>
-
-<span class="function"><span class="keyword">function</span> <span class="title">drawMap</span><span class="params">(rows, cols)</span> {</span>
-  <span class="keyword">var</span> tileType;
-  <span class="keyword">var</span> x, y;
-  <span class="keyword">var</span> idx;
-  <span class="keyword">var</span> xOffset = WIDTH / <span class="number">2</span>;
+<span class="function"><span class="keyword">function</span> <span class="title">drawMap</span><span class="params">(xOffset, rows, cols)</span> {</span>
+  <span class="keyword">var</span> tileType, x, y, idx;
 
   <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; rows; i++) {
     <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; cols; j++) {
       idx = i * cols + j;
-
-      tileType = tiles[idx];
-      console.log(idx, tileType);
+      tileType = terrain[idx];
 
       <span class="comment">// 2D coordinate</span>
       x = j * twoDWidth;
@@ -133,16 +129,13 @@ stage.addChild(graphics);
       x = (x - y) / <span class="number">2</span>;
       y = (x + y) / <span class="number">2</span>;
 
-      <span class="keyword">if</span> (tileType === G) drawTile = grass;
-      <span class="keyword">else</span> <span class="keyword">if</span> (tileType === D) drawTile = dirt;
-      <span class="keyword">else</span> <span class="keyword">if</span> (tileType === W) drawTile = water;
-
+      drawTile = tileMethods[tileType];
       drawTile(xOffset + x, y);
     }
   }
 }
 
-drawMap(rows, cols);
+drawMap(WIDTH / <span class="number">2</span>, rows, cols);
 
 <span class="function"><span class="keyword">function</span> <span class="title">animate</span><span class="params">()</span> {</span>
   renderer.render(stage);
@@ -182,8 +175,8 @@ requestAnimFrame(animate);</code></pre>
 
 document.body.appendChild(renderer.view);</code></pre>
 <h2 id='h-rendering-a-tile'>Rendering a Tile</h2>
-<p>Let&#39;s use Pixi.js primitives to draw an isometric tile. The function draws a rhombus
-within a rectangle representing an image provided a designer. Normally a sprite from an
+<p>Let&#39;s use Pixi.js primitives to draw isometric tiles. The function draws a rhombus
+within a rectangle representing an image asset provided by a designer. Normally a sprite from an
 image would be used, but let&#39;s leave that for the next tutorial.</p>
 <pre><code class="js"><span class="keyword">var</span> graphics = <span class="keyword">new</span> PIXI.Graphics();
 stage.addChild(graphics);
@@ -202,17 +195,17 @@ stage.addChild(graphics);
     }
 }</code></pre>
 <h2 id='h-map-and-tile-metadata'>Map and Tile Metadata</h2>
-<p>To better visualize how the tiles are drawn let&#39;s define constants.
+<p>To better visualize how the tiles are drawn let&#39;s define some constants.
 Note, game logic should remain in 2D coordinates and that is empasized below
 with different variables.</p>
 <pre><code class="js"><span class="comment">// map</span>
 <span class="keyword">var</span> rows = <span class="number">5</span>;
 <span class="keyword">var</span> cols = <span class="number">4</span>;
-<span class="keyword">var</span> G = <span class="number">0</span>, D = <span class="number">1</span>, W = <span class="number">2</span>;
-<span class="keyword">var</span> tiles = [
+<span class="keyword">var</span> G = <span class="number">0</span>, D = <span class="number">1</span>, W = <span class="number">2</span>, X  = <span class="number">3</span>;
+<span class="keyword">var</span> terrain = [
     G, G, G, G,
-    D, D, D, D,
-    D, G, W, W,
+    D, D, X, D,
+    D, G, X, W,
     D, G, W, W,
     G, G, W, W
 ];
@@ -225,23 +218,19 @@ with different variables.</p>
 <span class="comment">// tiles</span>
 <span class="keyword">var</span> grass = colorRhombus(<span class="number">0x80CF5A</span>, <span class="number">0x339900</span>, tileWidth, tileHeight);
 <span class="keyword">var</span> dirt = colorRhombus(<span class="number">0x96712F</span>, <span class="number">0x403014</span>, tileWidth, tileHeight);
-<span class="keyword">var</span> water = colorRhombus(<span class="number">0x85b9bb</span>, <span class="number">0x476263</span>, tileWidth, tileHeight);</code></pre>
+<span class="keyword">var</span> water = colorRhombus(<span class="number">0x85b9bb</span>, <span class="number">0x476263</span>, tileWidth, tileHeight);
+<span class="keyword">var</span> empty = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>};
+<span class="keyword">var</span> tileMethods = [grass, dirt, water, empty];</code></pre>
 <h2 id='h-rendering-the-isometric-map'>Rendering the Isometric Map</h2>
 <p>This algorithm draws the map with the x-axis increasing
 in southeast direction and the y-axis increasing in a southwest direction.</p>
-<pre><code class="js"><span class="comment">// sort depth &amp; draw to canvas</span>
-<span class="function"><span class="keyword">function</span> <span class="title">drawMap</span><span class="params">(rows, cols)</span> {</span>
-    <span class="keyword">var</span> tileType;
-    <span class="keyword">var</span> x, y;
-    <span class="keyword">var</span> idx;
-    <span class="keyword">var</span> xOffset = WIDTH / <span class="number">2</span>;
+<pre><code class="js"><span class="function"><span class="keyword">function</span> <span class="title">drawMap</span><span class="params">(xOffset, rows, cols)</span> {</span>
+    <span class="keyword">var</span> tileType, x, y, idx;
 
     <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; rows; i++) {
         <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; cols; j++) {
             idx = i * cols + j;
-
-            tileType = tiles[idx];
-            console.log(idx, tileType);
+            tileType = terrain[idx];
 
             <span class="comment">// 2D coordinate</span>
             x = j * twoDWidth;
@@ -249,18 +238,15 @@ in southeast direction and the y-axis increasing in a southwest direction.</p>
 
             <span class="comment">// image placement coordinates</span>
             x = (x - y) / <span class="number">2</span>;
-            y =  (x + y) / <span class="number">2</span>;
+            y = (x + y) / <span class="number">2</span>;
 
-            <span class="keyword">if</span> (tileType === G) drawTile = grass;
-            <span class="keyword">else</span> <span class="keyword">if</span> (tileType === D) drawTile = dirt;
-            <span class="keyword">else</span> <span class="keyword">if</span> (tileType === W) drawTile = water;
-
+            drawTile = tileMethods[tileType];
             drawTile(xOffset + x, y);
         }
     }
 }
 
-drawMap(rows, cols);</code></pre>
+drawMap(WIDTH / <span class="number">2</span>, rows, cols);</code></pre>
 <p>Since there is no interactivity, render the map once.</p>
 <pre><code class="js"><span class="function"><span class="keyword">function</span> <span class="title">animate</span><span class="params">()</span> {</span>
   renderer.render(stage);

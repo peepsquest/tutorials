@@ -25,11 +25,11 @@ function colorRhombus(backgroundColor, borderColor, w, h) {
 // map
 var rows = 5;
 var cols = 4;
-var G = 0, D = 1, W = 2;
-var tiles = [
+var G = 0, D = 1, W = 2, X  = 3;
+var terrain = [
     G, G, G, G,
-    D, D, D, D,
-    D, G, W, W,
+    D, D, X, D,
+    D, G, X, W,
     D, G, W, W,
     G, G, W, W
 ];
@@ -43,20 +43,16 @@ var tileHeight = twoDHeight / 2;
 var grass = colorRhombus(0x80CF5A, 0x339900, tileWidth, tileHeight);
 var dirt = colorRhombus(0x96712F, 0x403014, tileWidth, tileHeight);
 var water = colorRhombus(0x85b9bb, 0x476263, tileWidth, tileHeight);
+var empty = function(){};
+var tileMethods = [grass, dirt, water, empty];
 
-// sort depth & draw to canvas
-function drawMap(rows, cols) {
-    var tileType;
-    var x, y;
-    var idx;
-    var xOffset = WIDTH / 2;
+function drawMap(xOffset, rows, cols) {
+    var tileType, x, y, idx;
 
     for (var i = 0; i < rows; i++) {
         for (var j = 0; j < cols; j++) {
             idx = i * cols + j;
-
-            tileType = tiles[idx];
-            console.log(idx, tileType);
+            tileType = terrain[idx];
 
             // 2D coordinate
             x = j * twoDWidth;
@@ -64,18 +60,15 @@ function drawMap(rows, cols) {
 
             // image placement coordinates
             x = (x - y) / 2;
-            y =  (x + y) / 2;
+            y = (x + y) / 2;
 
-            if (tileType === G) drawTile = grass;
-            else if (tileType === D) drawTile = dirt;
-            else if (tileType === W) drawTile = water;
-
+            drawTile = tileMethods[tileType];
             drawTile(xOffset + x, y);
         }
     }
 }
 
-drawMap(rows, cols);
+drawMap(WIDTH / 2, rows, cols);
 
 function animate() {
   renderer.render(stage);
