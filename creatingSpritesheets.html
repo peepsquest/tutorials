@@ -51,13 +51,12 @@ The <code>pm-spritesheet</code> filter generates sprite sheets and a JSON meta f
 <p>are combined into a single sprite sheet. These images are from pixi.js&#39; <code>Example 2</code>.</p>
 <p><img src="examples/img/tp/spritesheet.png" alt=""></p>
 <h3 id='h-installing-projmate'>Installing Projmate</h3>
-<p>Projmate is command-line build tool we use internally for almost half a year now. Projmate, more
-speficifically tasks are composable using pipes and filters. The CoffeeScript filter for example only
-deals with CoffeeScript transpilation, not minification, not adding a banner, not compression.</p>
-<p>First install these pre-requisites on your box</p>
+<p>Projmate is command-line build tool we use internally for almost half a year now
+that works well in Linux, Mac and Windows.  In order to use it, first install
+these pre-requisites</p>
 <ul>
-<li>imagemagick</li>
-<li>node.js + npm</li>
+<li><a href="http://www.imagemagick.org/script/index.php">imagemagick</a></li>
+<li><a href="http://nodejs.org/">node.js + npm</a></li>
 </ul>
 <p>Install Projmate globally</p>
 <pre><code>npm install -g projmate-cli@0.1.0-dev</code></pre>
@@ -67,20 +66,22 @@ deals with CoffeeScript transpilation, not minification, not adding a banner, no
 <p>Projmate, like most build tools, breaks down a project into smaller units of work called tasks that can
 depend on each other. What is different about Projmate is that a task is defined by one or more pipelines which
 define behaviour for <code>development</code>, <code>test</code> and <code>production</code> mode.  For example, in <code>production</code> mode a task can
-minify, compress, add a banner, optimize, etc. All those steps should be skipped while developing.</p>
-<p>Here is the folder layout for pixi.js&#39; second example</p>
+minify, compress, add a banner, optimize, etc.</p>
+<p>In this example, we want to generate a sprite sheet from all the <code>tp/*.png</code> files pixi.js&#39; second example
+folder</p>
 <pre><code>▾ tp/
     eggHead.png
     flowerTop.png
     helmlok.png
     skully.png</code></pre>
-<p>To create a sprite sheet task for this, first create a build file <code>Projfile.js</code> at the root of your
+<p>First create a build file <code>Projfile.js</code> at the root of your
 project. The pipeline for <code>spritesheet</code> task requires only
-the <code>spritesheet</code> filter. The <code>spritesheet</code> task generates
-<code>SpriteSheet.png</code> when run or triggered by a watch.</p>
+the <code>spritesheet</code> filter which is passed all files matching <code>files</code>.
+<code>spritesheet</code> filter then retrieves dimensions for each image and
+determines an eficient layout then generates the image and meta file.</p>
 <div class='note'>
-Projmate has many more filters---CoffeeScript, CommonJS, PreProcessor,
-Template, Handlebars, Uglify, Less, YUI Docs, Tap ... to name a few
+Projmate has many filters: CoffeeScript, CommonJS, PreProcessor,
+Template, Handlebars, Uglify, Less, YUI Docs, ... to name a few
 </div>
 
 <pre><code class="js">exports.project = <span class="function"><span class="keyword">function</span><span class="params">(pm)</span> {</span>
@@ -100,7 +101,7 @@ Template, Handlebars, Uglify, Less, YUI Docs, Tap ... to name a few
 <pre><code>pm run spritesheet</code></pre>
 <p>The generated sprite sheet and JSON meta file is supported by pixi.js. We&#39;ll
 cover this in a future example.</p>
-<p>The only caveat is <code>Projmate</code> isn&#39;t well documented as a small team can only do so much. Look at this
+<p>The only caveat is <code>Projmate</code> is not well documented as a small team can only do so much. Look at this
 project&#39;s <code>Projfile.coffee</code> which has the <code>spritesheet</code> task for this tutorial.</p>
 
       </article>
