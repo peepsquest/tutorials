@@ -25,24 +25,26 @@ document.body.appendChild(renderer.view);
 
 ## Rendering a Tile
 
-Let's use Pixi.js primitives to draw isometric tiles. The function draws a rhombus
-within a rectangle representing an image asset provided by a designer. Normally a sprite from an
-image would be used, but let's leave that for the next tutorial.
+Let's use Pixi.js primitives to draw isometric tiles. An isometric tile
+is twice as wide as it is tall. So, a 60x60 square tile becomes a 120x60
+isometric tile.
 
 ```js
 var graphics = new PIXI.Graphics();
 stage.addChild(graphics);
 
-// create a closure to simplify code
-function colorRhombus(backgroundColor, borderColor, w, h) {
+// an iso tile is twice as wide as it is tall (h is original dimension)
+function isoTile(backgroundColor, borderColor, w, h) {
+    var h_2 = h/2;
+
     return function(x, y) {
         graphics.beginFill(backgroundColor);
         graphics.lineStyle(1, borderColor, 1);
-        graphics.moveTo(x + w/2, y);
-        graphics.lineTo(x + w, y + h/2);
-        graphics.lineTo(x + w/2, y + h);
-        graphics.lineTo(x, y + h/2);
-        graphics.lineTo(x + w/2, y);
+        graphics.moveTo(x, y);
+        graphics.lineTo(x + w, y + h_2);
+        graphics.lineTo(x, y + h);
+        graphics.lineTo(x - w, y + h_2);
+        graphics.lineTo(x , y);
         graphics.endFill();
     }
 }
@@ -51,8 +53,8 @@ function colorRhombus(backgroundColor, borderColor, w, h) {
 ## Map and Tile Metadata
 
 To better visualize how the tiles are drawn let's define some constants.
-Note, game logic should remain in 2D coordinates and that is empasized below
-with different variables.
+Note, game logic should remain in 2D coordinates. Transformation to iso
+coordinates occurs when placing or hit testing on the stage.
 
 ```js
 // map
@@ -67,15 +69,13 @@ var terrain = [
     G, G, W, W
 ];
 
-var twoDHeight =  120;
-var twoDWidth =  120;
-var tileWidth = twoDWidth;
-var tileHeight = twoDHeight / 2;
+var tileHeight =  60;
+var tileWidth = 60;
 
 // tiles
-var grass = colorRhombus(0x80CF5A, 0x339900, tileWidth, tileHeight);
-var dirt = colorRhombus(0x96712F, 0x403014, tileWidth, tileHeight);
-var water = colorRhombus(0x85b9bb, 0x476263, tileWidth, tileHeight);
+var grass = isoTile(0x80CF5A, 0x339900, tileWidth, tileHeight);
+var dirt = isoTile(0x96712F, 0x403014, tileWidth, tileHeight);
+var water = isoTile(0x85b9bb, 0x476263, tileWidth, tileHeight);
 var empty = function(){};
 var tileMethods = [grass, dirt, water, empty];
 ```
@@ -86,24 +86,25 @@ This algorithm draws the map with the x-axis increasing
 in southeast direction and the y-axis increasing in a southwest direction.
 
 ```js
+
 function drawMap(xOffset, rows, cols) {
-    var tileType, x, y, idx;
+    var tileType, x, y, isoX, isoY, idx, iso={};
 
     for (var i = 0; i < rows; i++) {
         for (var j = 0; j < cols; j++) {
             idx = i * cols + j;
             tileType = terrain[idx];
 
-            // 2D coordinate
-            x = j * twoDWidth;
-            y = i * twoDHeight;
+            // cartesian 2D coordinate
+            x = j * tileWidth;
+            y = i * tileHeight;
 
-            // image placement coordinates
-            x = (x - y) / 2;
-            y = (x + y) / 2;
+            // iso coordinate
+            isoX = x - y;
+            isoY = (x + y) / 2;
 
             drawTile = tileMethods[tileType];
-            drawTile(xOffset + x, y);
+            drawTile(xOffset + isoX, isoY);
         }
     }
 }

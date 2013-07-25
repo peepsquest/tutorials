@@ -71,17 +71,19 @@ document.body.appendChild(renderer.view);
 <span class="keyword">var</span> graphics = <span class="keyword">new</span> PIXI.Graphics();
 stage.addChild(graphics);
 
-<span class="comment">// create a closure to simplify code</span>
+<span class="comment">// an iso tile is twice as wide as it is tall (h is original dimension)</span>
 
-<span class="function"><span class="keyword">function</span> <span class="title">colorRhombus</span><span class="params">(backgroundColor, borderColor, w, h)</span> {</span>
+<span class="function"><span class="keyword">function</span> <span class="title">isoTile</span><span class="params">(backgroundColor, borderColor, w, h)</span> {</span>
+  <span class="keyword">var</span> h_2 = h / <span class="number">2</span>;
+
   <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">(x, y)</span> {</span>
     graphics.beginFill(backgroundColor);
     graphics.lineStyle(<span class="number">1</span>, borderColor, <span class="number">1</span>);
-    graphics.moveTo(x + w / <span class="number">2</span>, y);
-    graphics.lineTo(x + w, y + h / <span class="number">2</span>);
-    graphics.lineTo(x + w / <span class="number">2</span>, y + h);
-    graphics.lineTo(x, y + h / <span class="number">2</span>);
-    graphics.lineTo(x + w / <span class="number">2</span>, y);
+    graphics.moveTo(x, y);
+    graphics.lineTo(x + w, y + h_2);
+    graphics.lineTo(x, y + h);
+    graphics.lineTo(x - w, y + h_2);
+    graphics.lineTo(x, y);
     graphics.endFill();
   }
 }
@@ -101,36 +103,35 @@ stage.addChild(graphics);
   G, G, W, W
 ];
 
-<span class="keyword">var</span> twoDHeight = <span class="number">120</span>;
-<span class="keyword">var</span> twoDWidth = <span class="number">120</span>;
-<span class="keyword">var</span> tileWidth = twoDWidth;
-<span class="keyword">var</span> tileHeight = twoDHeight / <span class="number">2</span>;
+<span class="keyword">var</span> tileHeight = <span class="number">60</span>;
+<span class="keyword">var</span> tileWidth = <span class="number">60</span>;
 
 <span class="comment">// tiles</span>
-<span class="keyword">var</span> grass = colorRhombus(<span class="number">0x80CF5A</span>, <span class="number">0x339900</span>, tileWidth, tileHeight);
-<span class="keyword">var</span> dirt = colorRhombus(<span class="number">0x96712F</span>, <span class="number">0x403014</span>, tileWidth, tileHeight);
-<span class="keyword">var</span> water = colorRhombus(<span class="number">0x85b9bb</span>, <span class="number">0x476263</span>, tileWidth, tileHeight);
+<span class="keyword">var</span> grass = isoTile(<span class="number">0x80CF5A</span>, <span class="number">0x339900</span>, tileWidth, tileHeight);
+<span class="keyword">var</span> dirt = isoTile(<span class="number">0x96712F</span>, <span class="number">0x403014</span>, tileWidth, tileHeight);
+<span class="keyword">var</span> water = isoTile(<span class="number">0x85b9bb</span>, <span class="number">0x476263</span>, tileWidth, tileHeight);
 <span class="keyword">var</span> empty = <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>};
 <span class="keyword">var</span> tileMethods = [grass, dirt, water, empty];
 
+
 <span class="function"><span class="keyword">function</span> <span class="title">drawMap</span><span class="params">(xOffset, rows, cols)</span> {</span>
-  <span class="keyword">var</span> tileType, x, y, idx;
+  <span class="keyword">var</span> tileType, x, y, isoX, isoY, idx, iso = {};
 
   <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; rows; i++) {
     <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; cols; j++) {
       idx = i * cols + j;
       tileType = terrain[idx];
 
-      <span class="comment">// 2D coordinate</span>
-      x = j * twoDWidth;
-      y = i * twoDHeight;
+      <span class="comment">// cartesian 2D coordinate</span>
+      x = j * tileWidth;
+      y = i * tileHeight;
 
-      <span class="comment">// image placement coordinates</span>
-      x = (x - y) / <span class="number">2</span>;
-      y = (x + y) / <span class="number">2</span>;
+      <span class="comment">// iso coordinate</span>
+      isoX = x - y;
+      isoY = (x + y) / <span class="number">2</span>;
 
       drawTile = tileMethods[tileType];
-      drawTile(xOffset + x, y);
+      drawTile(xOffset + isoX, isoY);
     }
   }
 }
@@ -175,29 +176,31 @@ requestAnimFrame(animate);</code></pre>
 
 document.body.appendChild(renderer.view);</code></pre>
 <h2 id='h-rendering-a-tile'>Rendering a Tile</h2>
-<p>Let&#39;s use Pixi.js primitives to draw isometric tiles. The function draws a rhombus
-within a rectangle representing an image asset provided by a designer. Normally a sprite from an
-image would be used, but let&#39;s leave that for the next tutorial.</p>
+<p>Let&#39;s use Pixi.js primitives to draw isometric tiles. An isometric tile
+is twice as wide as it is tall. So, a 60x60 square tile becomes a 120x60
+isometric tile.</p>
 <pre><code class="js"><span class="keyword">var</span> graphics = <span class="keyword">new</span> PIXI.Graphics();
 stage.addChild(graphics);
 
-<span class="comment">// create a closure to simplify code</span>
-<span class="function"><span class="keyword">function</span> <span class="title">colorRhombus</span><span class="params">(backgroundColor, borderColor, w, h)</span> {</span>
+<span class="comment">// an iso tile is twice as wide as it is tall (h is original dimension)</span>
+<span class="function"><span class="keyword">function</span> <span class="title">isoTile</span><span class="params">(backgroundColor, borderColor, w, h)</span> {</span>
+    <span class="keyword">var</span> h_2 = h/<span class="number">2</span>;
+
     <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">(x, y)</span> {</span>
         graphics.beginFill(backgroundColor);
         graphics.lineStyle(<span class="number">1</span>, borderColor, <span class="number">1</span>);
-        graphics.moveTo(x + w/<span class="number">2</span>, y);
-        graphics.lineTo(x + w, y + h/<span class="number">2</span>);
-        graphics.lineTo(x + w/<span class="number">2</span>, y + h);
-        graphics.lineTo(x, y + h/<span class="number">2</span>);
-        graphics.lineTo(x + w/<span class="number">2</span>, y);
+        graphics.moveTo(x, y);
+        graphics.lineTo(x + w, y + h_2);
+        graphics.lineTo(x, y + h);
+        graphics.lineTo(x - w, y + h_2);
+        graphics.lineTo(x , y);
         graphics.endFill();
     }
 }</code></pre>
 <h2 id='h-map-and-tile-metadata'>Map and Tile Metadata</h2>
 <p>To better visualize how the tiles are drawn let&#39;s define some constants.
-Note, game logic should remain in 2D coordinates and that is empasized below
-with different variables.</p>
+Note, game logic should remain in 2D coordinates. Transformation to iso
+coordinates occurs when placing or hit testing on the stage.</p>
 <pre><code class="js"><span class="comment">// map</span>
 <span class="keyword">var</span> rows = <span class="number">5</span>;
 <span class="keyword">var</span> cols = <span class="number">4</span>;
@@ -210,38 +213,37 @@ with different variables.</p>
     G, G, W, W
 ];
 
-<span class="keyword">var</span> twoDHeight =  <span class="number">120</span>;
-<span class="keyword">var</span> twoDWidth =  <span class="number">120</span>;
-<span class="keyword">var</span> tileWidth = twoDWidth;
-<span class="keyword">var</span> tileHeight = twoDHeight / <span class="number">2</span>;
+<span class="keyword">var</span> tileHeight =  <span class="number">60</span>;
+<span class="keyword">var</span> tileWidth = <span class="number">60</span>;
 
 <span class="comment">// tiles</span>
-<span class="keyword">var</span> grass = colorRhombus(<span class="number">0x80CF5A</span>, <span class="number">0x339900</span>, tileWidth, tileHeight);
-<span class="keyword">var</span> dirt = colorRhombus(<span class="number">0x96712F</span>, <span class="number">0x403014</span>, tileWidth, tileHeight);
-<span class="keyword">var</span> water = colorRhombus(<span class="number">0x85b9bb</span>, <span class="number">0x476263</span>, tileWidth, tileHeight);
+<span class="keyword">var</span> grass = isoTile(<span class="number">0x80CF5A</span>, <span class="number">0x339900</span>, tileWidth, tileHeight);
+<span class="keyword">var</span> dirt = isoTile(<span class="number">0x96712F</span>, <span class="number">0x403014</span>, tileWidth, tileHeight);
+<span class="keyword">var</span> water = isoTile(<span class="number">0x85b9bb</span>, <span class="number">0x476263</span>, tileWidth, tileHeight);
 <span class="keyword">var</span> empty = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>};
 <span class="keyword">var</span> tileMethods = [grass, dirt, water, empty];</code></pre>
 <h2 id='h-rendering-the-isometric-map'>Rendering the Isometric Map</h2>
 <p>This algorithm draws the map with the x-axis increasing
 in southeast direction and the y-axis increasing in a southwest direction.</p>
-<pre><code class="js"><span class="function"><span class="keyword">function</span> <span class="title">drawMap</span><span class="params">(xOffset, rows, cols)</span> {</span>
-    <span class="keyword">var</span> tileType, x, y, idx;
+<pre><code class="js">
+<span class="function"><span class="keyword">function</span> <span class="title">drawMap</span><span class="params">(xOffset, rows, cols)</span> {</span>
+    <span class="keyword">var</span> tileType, x, y, isoX, isoY, idx, iso={};
 
     <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; rows; i++) {
         <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; cols; j++) {
             idx = i * cols + j;
             tileType = terrain[idx];
 
-            <span class="comment">// 2D coordinate</span>
-            x = j * twoDWidth;
-            y = i * twoDHeight;
+            <span class="comment">// cartesian 2D coordinate</span>
+            x = j * tileWidth;
+            y = i * tileHeight;
 
-            <span class="comment">// image placement coordinates</span>
-            x = (x - y) / <span class="number">2</span>;
-            y = (x + y) / <span class="number">2</span>;
+            <span class="comment">// iso coordinate</span>
+            isoX = x - y;
+            isoY = (x + y) / <span class="number">2</span>;
 
             drawTile = tileMethods[tileType];
-            drawTile(xOffset + x, y);
+            drawTile(xOffset + isoX, isoY);
         }
     }
 }
