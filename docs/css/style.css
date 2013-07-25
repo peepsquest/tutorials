@@ -655,7 +655,7 @@ Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiac
   text-shadow: none;
 }
 .light-text {
-  color: #b20048;
+  color: #777777;
 }
 * {
   box-sizing: border-box;
@@ -680,11 +680,11 @@ body {
   width: 250px;
   height: 100%;
   overflow: auto;
-  color: #b20048;
+  color: #777777;
   border-right: solid 1px #eee;
 }
 #sidebar a {
-  color: #b20048;
+  color: #777777;
 }
 #sidebar .active {
   font-weight: bold;
@@ -755,7 +755,7 @@ a strong {
   margin-left: 14px;
   /* font-size: 12px; */
 
-  color: #b20048;
+  color: #777777;
   font-family: consolas, menlo, "ubuntu mono", monospace;
   font-weight: normal;
   font-size: 14px;
@@ -825,4 +825,9 @@ a strong {
   position: relative;
   top: 15px;
   left: 8px;
+}
+#text-logo {
+  color: #8DCC06;
+  font-size: 64px;
+  font-family: 'impact';
 }

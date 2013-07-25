@@ -1,3 +1,6 @@
+<div id="text-logo">PeepsQuest</div>
+
+
 # PeepsQuest Dev
 
 We're ambitiously building an innovative social platform for the creative gamer

@@ -6,7 +6,8 @@ exports.server =
 
 
 exports.project = (pm) ->
-  {f, $, Utils} = pm
+  {$, Utils} = pm
+  f = pm.filters(require('pm-spritesheet'))
   $.registerExecutable 'git'
 
   changeToDocs = f.tap (asset) ->
@@ -16,7 +17,7 @@ exports.project = (pm) ->
     return f.tap (asset) ->
       asset.filename = Utils.changeExtname(asset.filename, extname)
 
-  all: ['clean', 'docs', 'stylesheets', 'staticFiles']
+  all: ['clean', 'docs', 'stylesheets', 'staticFiles', 'spritesheet']
 
   _toc:
     files: 'src/toc.md'
@@ -109,5 +110,14 @@ exports.project = (pm) ->
         else
           $.info '_gh-pages updated. cd into it and `git push origin gh-pages`'
         cb()
+
+  spritesheet:
+    files: 'src/examples/img/tp/*.png'
+    dev: [
+      f.spritesheet filename: 'docs/examples/img/tp/spritesheet.png', root: 'src/examples/img/tp'
+    ]
+
+
+
 
 

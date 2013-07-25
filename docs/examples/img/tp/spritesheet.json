@@ -1,0 +1,95 @@
+{
+  "frames": {
+    "flowerTop.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 119,
+        "h": 181
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 119,
+        "h": 181
+      },
+      "sourceSize": {
+        "w": 119,
+        "h": 181
+      }
+    },
+    "helmlok.png": {
+      "frame": {
+        "x": 119,
+        "y": 0,
+        "w": 123,
+        "h": 177
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 123,
+        "h": 177
+      },
+      "sourceSize": {
+        "w": 123,
+        "h": 177
+      }
+    },
+    "skully.png": {
+      "frame": {
+        "x": 242,
+        "y": 0,
+        "w": 155,
+        "h": 165
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 155,
+        "h": 165
+      },
+      "sourceSize": {
+        "w": 155,
+        "h": 165
+      }
+    },
+    "eggHead.png": {
+      "frame": {
+        "x": 0,
+        "y": 181,
+        "w": 142,
+        "h": 157
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 142,
+        "h": 157
+      },
+      "sourceSize": {
+        "w": 142,
+        "h": 157
+      }
+    }
+  },
+  "meta": {
+    "app": "http://www.texturepacker.com",
+    "version": "1.0",
+    "image": "spritesheet.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 397,
+      "h": 338
+    },
+    "scale": 1
+  }
+}
