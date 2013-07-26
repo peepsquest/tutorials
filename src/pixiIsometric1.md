@@ -2,7 +2,7 @@
   <img id="logo" src="img/pixi.png" />
 </a>
 
-# Pixi.js Isometric Map Part 1
+# Pixi.js Isometric Map Part 1 - Basics
 
 :::BEGIN Example
 
@@ -33,7 +33,7 @@ isometric tile.
 var graphics = new PIXI.Graphics();
 stage.addChild(graphics);
 
-// an iso tile is twice as wide as it is tall (h is original dimension)
+// An iso tile is twice as wide as it is tall (2w x h)
 function isoTile(backgroundColor, borderColor, w, h) {
     var h_2 = h/2;
 
@@ -58,15 +58,13 @@ coordinates occurs when placing or hit testing on the stage.
 
 ```js
 // map
-var rows = 5;
-var cols = 4;
 var G = 0, D = 1, W = 2, X  = 3;
 var terrain = [
-    G, G, G, G,
-    D, D, X, D,
-    D, G, X, W,
-    D, G, W, W,
-    G, G, W, W
+    [G, G, G, G],
+    [D, D, X, D],
+    [D, G, X, W],
+    [D, G, W, W],
+    [G, G, W, W],
 ];
 
 var tileHeight =  60;
@@ -87,14 +85,11 @@ in southeast direction and the y-axis increasing in a southwest direction.
 
 ```js
 
-function drawMap(xOffset, rows, cols) {
-    var tileType, x, y, isoX, isoY, idx, iso={};
+function drawMap(terrain, xOffset) {
+    var tileType, x, y, isoX, isoY, idx;
 
-    for (var i = 0; i < rows; i++) {
-        for (var j = 0; j < cols; j++) {
-            idx = i * cols + j;
-            tileType = terrain[idx];
-
+    for (var i = 0, iL = terrain.length; i < iL; i++) {
+        for (var j = 0, jL = terrain[i].length; j < jL; j++) {
             // cartesian 2D coordinate
             x = j * tileWidth;
             y = i * tileHeight;
@@ -103,13 +98,14 @@ function drawMap(xOffset, rows, cols) {
             isoX = x - y;
             isoY = (x + y) / 2;
 
+            tileType = terrain[i][j];
             drawTile = tileMethods[tileType];
             drawTile(xOffset + isoX, isoY);
         }
     }
 }
 
-drawMap(WIDTH / 2, rows, cols);
+drawMap(terrain, WIDTH / 2);
 ```
 
 Since there is no interactivity, render the map once.

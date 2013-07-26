@@ -21,10 +21,15 @@
         </ul>
         
         <h2 id='h-tutorialsindexhtml'><a href="index.html">Tutorials</a></h2>
+<h3 id='h-general'>General</h3>
 <ul>
 <li><a href="creatingSpritesheets.html">Creating Sprite Sheets</a></li>
-<li><a href="pixiBasics.html">Pixi.js Basics</a></li>
-<li><a href="pixiIsometric1.html">Pixi.js Isometric Tiles 1</a></li>
+</ul>
+<h3 id='h-pixijs'>Pixi.js</h3>
+<ul>
+<li><a href="pixiBasics.html">Basics</a></li>
+<li><a href="pixiIsometric1.html">Isometric Map - Basics</a></li>
+<li><a href="pixiIsometric2.html">Isometric Map - Height</a></li>
 </ul>
 
       </section>
@@ -34,7 +39,7 @@
         <p><a href='index.html'>
   <img id="logo" src="img/pixi.png" />
 </a></p>
-<h1 id='h-pixijs-isometric-map-part-1'>Pixi.js Isometric Map Part 1</h1>
+<h1 id='h-pixijs-isometric-map-part-1-basics'>Pixi.js Isometric Map Part 1 - Basics</h1>
 <p><div class='section-example'><p>This example draws an isometric map using a tile created from Pixi.js primitives. Inspired by <a href="http://gamedev.tutsplus.com/tutorials/implementation/creating-isometric-worlds-a-primer-for-game-developers/">Juwal Bose&#39;s Isometric Worlds</a>.</p>
 <div id="pixiisometric10_tabs" class="tabs">
   <ul>
@@ -71,7 +76,7 @@ document.body.appendChild(renderer.view);
 <span class="keyword">var</span> graphics = <span class="keyword">new</span> PIXI.Graphics();
 stage.addChild(graphics);
 
-<span class="comment">// an iso tile is twice as wide as it is tall (h is original dimension)</span>
+<span class="comment">// An iso tile is twice as wide as it is tall (2w x h)</span>
 
 <span class="function"><span class="keyword">function</span> <span class="title">isoTile</span><span class="params">(backgroundColor, borderColor, w, h)</span> {</span>
   <span class="keyword">var</span> h_2 = h / <span class="number">2</span>;
@@ -89,18 +94,16 @@ stage.addChild(graphics);
 }
 
 <span class="comment">// map</span>
-<span class="keyword">var</span> rows = <span class="number">5</span>;
-<span class="keyword">var</span> cols = <span class="number">4</span>;
 <span class="keyword">var</span> G = <span class="number">0</span>,
   D = <span class="number">1</span>,
   W = <span class="number">2</span>,
   X = <span class="number">3</span>;
 <span class="keyword">var</span> terrain = [
-  G, G, G, G,
-  D, D, X, D,
-  D, G, X, W,
-  D, G, W, W,
-  G, G, W, W
+  [G, G, G, G],
+  [D, D, X, D],
+  [D, G, X, W],
+  [D, G, W, W],
+  [G, G, W, W],
 ];
 
 <span class="keyword">var</span> tileHeight = <span class="number">60</span>;
@@ -114,14 +117,11 @@ stage.addChild(graphics);
 <span class="keyword">var</span> tileMethods = [grass, dirt, water, empty];
 
 
-<span class="function"><span class="keyword">function</span> <span class="title">drawMap</span><span class="params">(xOffset, rows, cols)</span> {</span>
-  <span class="keyword">var</span> tileType, x, y, isoX, isoY, idx, iso = {};
+<span class="function"><span class="keyword">function</span> <span class="title">drawMap</span><span class="params">(terrain, xOffset)</span> {</span>
+  <span class="keyword">var</span> tileType, x, y, isoX, isoY, idx;
 
-  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; rows; i++) {
-    <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; cols; j++) {
-      idx = i * cols + j;
-      tileType = terrain[idx];
-
+  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, iL = terrain.length; i &lt; iL; i++) {
+    <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>, jL = terrain[i].length; j &lt; jL; j++) {
       <span class="comment">// cartesian 2D coordinate</span>
       x = j * tileWidth;
       y = i * tileHeight;
@@ -130,13 +130,14 @@ stage.addChild(graphics);
       isoX = x - y;
       isoY = (x + y) / <span class="number">2</span>;
 
+      tileType = terrain[i][j];
       drawTile = tileMethods[tileType];
       drawTile(xOffset + isoX, isoY);
     }
   }
 }
 
-drawMap(WIDTH / <span class="number">2</span>, rows, cols);
+drawMap(terrain, WIDTH / <span class="number">2</span>);
 
 <span class="function"><span class="keyword">function</span> <span class="title">animate</span><span class="params">()</span> {</span>
   renderer.render(stage);
@@ -182,7 +183,7 @@ isometric tile.</p>
 <pre><code class="js"><span class="keyword">var</span> graphics = <span class="keyword">new</span> PIXI.Graphics();
 stage.addChild(graphics);
 
-<span class="comment">// an iso tile is twice as wide as it is tall (h is original dimension)</span>
+<span class="comment">// An iso tile is twice as wide as it is tall (2w x h)</span>
 <span class="function"><span class="keyword">function</span> <span class="title">isoTile</span><span class="params">(backgroundColor, borderColor, w, h)</span> {</span>
     <span class="keyword">var</span> h_2 = h/<span class="number">2</span>;
 
@@ -202,15 +203,13 @@ stage.addChild(graphics);
 Note, game logic should remain in 2D coordinates. Transformation to iso
 coordinates occurs when placing or hit testing on the stage.</p>
 <pre><code class="js"><span class="comment">// map</span>
-<span class="keyword">var</span> rows = <span class="number">5</span>;
-<span class="keyword">var</span> cols = <span class="number">4</span>;
 <span class="keyword">var</span> G = <span class="number">0</span>, D = <span class="number">1</span>, W = <span class="number">2</span>, X  = <span class="number">3</span>;
 <span class="keyword">var</span> terrain = [
-    G, G, G, G,
-    D, D, X, D,
-    D, G, X, W,
-    D, G, W, W,
-    G, G, W, W
+    [G, G, G, G],
+    [D, D, X, D],
+    [D, G, X, W],
+    [D, G, W, W],
+    [G, G, W, W],
 ];
 
 <span class="keyword">var</span> tileHeight =  <span class="number">60</span>;
@@ -226,14 +225,11 @@ coordinates occurs when placing or hit testing on the stage.</p>
 <p>This algorithm draws the map with the x-axis increasing
 in southeast direction and the y-axis increasing in a southwest direction.</p>
 <pre><code class="js">
-<span class="function"><span class="keyword">function</span> <span class="title">drawMap</span><span class="params">(xOffset, rows, cols)</span> {</span>
-    <span class="keyword">var</span> tileType, x, y, isoX, isoY, idx, iso={};
+<span class="function"><span class="keyword">function</span> <span class="title">drawMap</span><span class="params">(terrain, xOffset)</span> {</span>
+    <span class="keyword">var</span> tileType, x, y, isoX, isoY, idx;
 
-    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; rows; i++) {
-        <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; cols; j++) {
-            idx = i * cols + j;
-            tileType = terrain[idx];
-
+    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, iL = terrain.length; i &lt; iL; i++) {
+        <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>, jL = terrain[i].length; j &lt; jL; j++) {
             <span class="comment">// cartesian 2D coordinate</span>
             x = j * tileWidth;
             y = i * tileHeight;
@@ -242,13 +238,14 @@ in southeast direction and the y-axis increasing in a southwest direction.</p>
             isoX = x - y;
             isoY = (x + y) / <span class="number">2</span>;
 
+            tileType = terrain[i][j];
             drawTile = tileMethods[tileType];
             drawTile(xOffset + isoX, isoY);
         }
     }
 }
 
-drawMap(WIDTH / <span class="number">2</span>, rows, cols);</code></pre>
+drawMap(terrain, WIDTH / <span class="number">2</span>);</code></pre>
 <p>Since there is no interactivity, render the map once.</p>
 <pre><code class="js"><span class="function"><span class="keyword">function</span> <span class="title">animate</span><span class="params">()</span> {</span>
   renderer.render(stage);

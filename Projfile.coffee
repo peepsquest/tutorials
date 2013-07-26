@@ -61,8 +61,8 @@ exports.project = (pm) ->
   staticFiles:
     desc: 'Copies static files'
     dev: ->
-      $.cp '-Rf', 'src/examples/*', 'docs/examples'
-      $.cp '-Rf', 'src/img/*', 'docs/img'
+      $.xcopy 'src/examples/', 'docs/examples'
+      $.xcopy 'src/img/', 'docs/img'
       # needed since we only copy docs/* to gh-pages
       #$.cp 'dist/backbone.giraffe*js', 'docs'
 
@@ -117,7 +117,10 @@ exports.project = (pm) ->
       f.spritesheet filename: 'docs/examples/img/tp/spritesheet.png', root: 'src/examples/img/tp'
     ]
 
-
-
-
+  roadTiles:
+    dev:'Create spritesheet for roadTiles_nova'
+    files: 'src/examples/vendor/roadTiles/png/*.png'
+    dev: [
+      f.spritesheet filename: 'src/examples/img/roadTiles.png', root: 'src/examples/vendor/roadTiles/png/'
+    ]
 

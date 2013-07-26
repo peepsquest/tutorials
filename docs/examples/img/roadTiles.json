@@ -1,0 +1,1935 @@
+{
+  "frames": {
+    "beach.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "beachCornerES.png": {
+      "frame": {
+        "x": 100,
+        "y": 0,
+        "w": 100,
+        "h": 58
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 58
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 58
+      }
+    },
+    "beachCornerNE.png": {
+      "frame": {
+        "x": 0,
+        "y": 65,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "beachCornerNW.png": {
+      "frame": {
+        "x": 100,
+        "y": 65,
+        "w": 100,
+        "h": 58
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 58
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 58
+      }
+    },
+    "beachCornerSW.png": {
+      "frame": {
+        "x": 0,
+        "y": 130,
+        "w": 100,
+        "h": 58
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 58
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 58
+      }
+    },
+    "beachE.png": {
+      "frame": {
+        "x": 200,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "beachES.png": {
+      "frame": {
+        "x": 200,
+        "y": 65,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "beachN.png": {
+      "frame": {
+        "x": 0,
+        "y": 188,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "beachNE.png": {
+      "frame": {
+        "x": 200,
+        "y": 130,
+        "w": 100,
+        "h": 58
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 58
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 58
+      }
+    },
+    "beachNW.png": {
+      "frame": {
+        "x": 100,
+        "y": 188,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "beachS.png": {
+      "frame": {
+        "x": 100,
+        "y": 130,
+        "w": 100,
+        "h": 58
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 58
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 58
+      }
+    },
+    "beachSW.png": {
+      "frame": {
+        "x": 200,
+        "y": 188,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "beachW.png": {
+      "frame": {
+        "x": 300,
+        "y": 0,
+        "w": 100,
+        "h": 58
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 58
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 58
+      }
+    },
+    "bridgeEW.png": {
+      "frame": {
+        "x": 300,
+        "y": 58,
+        "w": 100,
+        "h": 62
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 62
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 62
+      }
+    },
+    "bridgeNS.png": {
+      "frame": {
+        "x": 300,
+        "y": 120,
+        "w": 100,
+        "h": 62
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 62
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 62
+      }
+    },
+    "crossroad.png": {
+      "frame": {
+        "x": 300,
+        "y": 182,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "crossroadESW.png": {
+      "frame": {
+        "x": 0,
+        "y": 253,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "crossroadNES.png": {
+      "frame": {
+        "x": 100,
+        "y": 253,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "crossroadNEW.png": {
+      "frame": {
+        "x": 200,
+        "y": 253,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "crossroadNSW.png": {
+      "frame": {
+        "x": 300,
+        "y": 253,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "dirt.png": {
+      "frame": {
+        "x": 0,
+        "y": 318,
+        "w": 100,
+        "h": 58
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 58
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 58
+      }
+    },
+    "dirtDouble.png": {
+      "frame": {
+        "x": 400,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "endE.png": {
+      "frame": {
+        "x": 400,
+        "y": 65,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "endN.png": {
+      "frame": {
+        "x": 400,
+        "y": 130,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "endS.png": {
+      "frame": {
+        "x": 400,
+        "y": 195,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "endW.png": {
+      "frame": {
+        "x": 400,
+        "y": 260,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "exitE.png": {
+      "frame": {
+        "x": 0,
+        "y": 376,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "exitN.png": {
+      "frame": {
+        "x": 100,
+        "y": 376,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "exitS.png": {
+      "frame": {
+        "x": 200,
+        "y": 376,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "exitW.png": {
+      "frame": {
+        "x": 300,
+        "y": 376,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "grass.png": {
+      "frame": {
+        "x": 400,
+        "y": 376,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "grassWhole.png": {
+      "frame": {
+        "x": 500,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "hillE.png": {
+      "frame": {
+        "x": 500,
+        "y": 65,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "hillES.png": {
+      "frame": {
+        "x": 500,
+        "y": 130,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "hillN.png": {
+      "frame": {
+        "x": 500,
+        "y": 195,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "hillNE.png": {
+      "frame": {
+        "x": 500,
+        "y": 260,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "hillNW.png": {
+      "frame": {
+        "x": 500,
+        "y": 325,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "hillS.png": {
+      "frame": {
+        "x": 0,
+        "y": 441,
+        "w": 100,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 80
+      }
+    },
+    "hillSW.png": {
+      "frame": {
+        "x": 100,
+        "y": 441,
+        "w": 100,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 80
+      }
+    },
+    "hillW.png": {
+      "frame": {
+        "x": 200,
+        "y": 441,
+        "w": 100,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 80
+      }
+    },
+    "lotE.png": {
+      "frame": {
+        "x": 300,
+        "y": 441,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "lotES.png": {
+      "frame": {
+        "x": 400,
+        "y": 441,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "lotN.png": {
+      "frame": {
+        "x": 500,
+        "y": 441,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "lotNE.png": {
+      "frame": {
+        "x": 0,
+        "y": 521,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "lotNW.png": {
+      "frame": {
+        "x": 100,
+        "y": 521,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "lotS.png": {
+      "frame": {
+        "x": 200,
+        "y": 521,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "lotSW.png": {
+      "frame": {
+        "x": 300,
+        "y": 521,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "lotW.png": {
+      "frame": {
+        "x": 400,
+        "y": 521,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "riverBankedES.png": {
+      "frame": {
+        "x": 500,
+        "y": 521,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "riverBankedEW.png": {
+      "frame": {
+        "x": 600,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "riverBankedNE.png": {
+      "frame": {
+        "x": 600,
+        "y": 65,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "riverBankedNS.png": {
+      "frame": {
+        "x": 600,
+        "y": 130,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "riverBankedNW.png": {
+      "frame": {
+        "x": 600,
+        "y": 195,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "riverBankedSW.png": {
+      "frame": {
+        "x": 600,
+        "y": 260,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "riverES.png": {
+      "frame": {
+        "x": 600,
+        "y": 325,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "riverEW.png": {
+      "frame": {
+        "x": 600,
+        "y": 390,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "riverNE.png": {
+      "frame": {
+        "x": 600,
+        "y": 455,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "riverNS.png": {
+      "frame": {
+        "x": 600,
+        "y": 520,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "riverNW.png": {
+      "frame": {
+        "x": 0,
+        "y": 586,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "riverSW.png": {
+      "frame": {
+        "x": 100,
+        "y": 586,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "road.png": {
+      "frame": {
+        "x": 200,
+        "y": 586,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "roadES.png": {
+      "frame": {
+        "x": 300,
+        "y": 586,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "roadEW.png": {
+      "frame": {
+        "x": 400,
+        "y": 586,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "roadHill2E.png": {
+      "frame": {
+        "x": 500,
+        "y": 586,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "roadHill2N.png": {
+      "frame": {
+        "x": 600,
+        "y": 586,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "roadHill2S.png": {
+      "frame": {
+        "x": 700,
+        "y": 0,
+        "w": 100,
+        "h": 77
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 77
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 77
+      }
+    },
+    "roadHill2W.png": {
+      "frame": {
+        "x": 700,
+        "y": 77,
+        "w": 100,
+        "h": 77
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 77
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 77
+      }
+    },
+    "roadHillE.png": {
+      "frame": {
+        "x": 700,
+        "y": 154,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "roadHillN.png": {
+      "frame": {
+        "x": 700,
+        "y": 219,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "roadHillS.png": {
+      "frame": {
+        "x": 700,
+        "y": 284,
+        "w": 100,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 80
+      }
+    },
+    "roadHillW.png": {
+      "frame": {
+        "x": 700,
+        "y": 364,
+        "w": 100,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 80
+      }
+    },
+    "roadNE.png": {
+      "frame": {
+        "x": 700,
+        "y": 444,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "roadNS.png": {
+      "frame": {
+        "x": 700,
+        "y": 509,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "roadNW.png": {
+      "frame": {
+        "x": 700,
+        "y": 574,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "roadSW.png": {
+      "frame": {
+        "x": 0,
+        "y": 651,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "water.png": {
+      "frame": {
+        "x": 100,
+        "y": 318,
+        "w": 100,
+        "h": 58
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 58
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 58
+      }
+    },
+    "waterCornerES.png": {
+      "frame": {
+        "x": 200,
+        "y": 318,
+        "w": 100,
+        "h": 58
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 58
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 58
+      }
+    },
+    "waterCornerNE.png": {
+      "frame": {
+        "x": 100,
+        "y": 651,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "waterCornerNW.png": {
+      "frame": {
+        "x": 300,
+        "y": 318,
+        "w": 100,
+        "h": 58
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 58
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 58
+      }
+    },
+    "waterCornerSW.png": {
+      "frame": {
+        "x": 200,
+        "y": 651,
+        "w": 100,
+        "h": 58
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 58
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 58
+      }
+    },
+    "waterE.png": {
+      "frame": {
+        "x": 0,
+        "y": 716,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "waterES.png": {
+      "frame": {
+        "x": 100,
+        "y": 716,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "waterN.png": {
+      "frame": {
+        "x": 200,
+        "y": 716,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "waterNE.png": {
+      "frame": {
+        "x": 300,
+        "y": 716,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "waterNW.png": {
+      "frame": {
+        "x": 400,
+        "y": 716,
+        "w": 100,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 65
+      }
+    },
+    "waterS.png": {
+      "frame": {
+        "x": 300,
+        "y": 651,
+        "w": 100,
+        "h": 58
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 58
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 58
+      }
+    },
+    "waterSW.png": {
+      "frame": {
+        "x": 400,
+        "y": 651,
+        "w": 100,
+        "h": 58
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 58
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 58
+      }
+    },
+    "waterW.png": {
+      "frame": {
+        "x": 500,
+        "y": 651,
+        "w": 100,
+        "h": 58
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 58
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 58
+      }
+    },
+    "coniferAltTall.png": {
+      "frame": {
+        "x": 500,
+        "y": 390,
+        "w": 19,
+        "h": 48
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 19,
+        "h": 48
+      },
+      "sourceSize": {
+        "w": 19,
+        "h": 48
+      }
+    },
+    "coniferTall.png": {
+      "frame": {
+        "x": 519,
+        "y": 390,
+        "w": 19,
+        "h": 48
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 19,
+        "h": 48
+      },
+      "sourceSize": {
+        "w": 19,
+        "h": 48
+      }
+    },
+    "treeAltTall.png": {
+      "frame": {
+        "x": 538,
+        "y": 390,
+        "w": 11,
+        "h": 41
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 11,
+        "h": 41
+      },
+      "sourceSize": {
+        "w": 11,
+        "h": 41
+      }
+    },
+    "treeTall.png": {
+      "frame": {
+        "x": 549,
+        "y": 390,
+        "w": 12,
+        "h": 41
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 41
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 41
+      }
+    },
+    "coniferAltShort.png": {
+      "frame": {
+        "x": 561,
+        "y": 390,
+        "w": 14,
+        "h": 36
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 14,
+        "h": 36
+      },
+      "sourceSize": {
+        "w": 14,
+        "h": 36
+      }
+    },
+    "coniferShort.png": {
+      "frame": {
+        "x": 575,
+        "y": 390,
+        "w": 14,
+        "h": 36
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 14,
+        "h": 36
+      },
+      "sourceSize": {
+        "w": 14,
+        "h": 36
+      }
+    },
+    "treeAltShort.png": {
+      "frame": {
+        "x": 589,
+        "y": 390,
+        "w": 11,
+        "h": 32
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 11,
+        "h": 32
+      },
+      "sourceSize": {
+        "w": 11,
+        "h": 32
+      }
+    },
+    "treeShort.png": {
+      "frame": {
+        "x": 400,
+        "y": 325,
+        "w": 11,
+        "h": 32
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 11,
+        "h": 32
+      },
+      "sourceSize": {
+        "w": 11,
+        "h": 32
+      }
+    }
+  },
+  "meta": {
+    "app": "http://www.texturepacker.com",
+    "version": "1.0",
+    "image": "roadTiles.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 800,
+      "h": 781
+    },
+    "scale": 1
+  }
+}

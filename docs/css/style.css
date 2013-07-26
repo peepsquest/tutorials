@@ -699,7 +699,7 @@ body {
 }
 #sidebar h3 {
   font-size: 14px;
-  color: #444444;
+  color: #777777;
 }
 #sidebar a {
   text-decoration: none;
@@ -829,5 +829,5 @@ a strong {
 #text-logo {
   color: #8DCC06;
   font-size: 64px;
-  font-family: 'impact';
+  font-family: Georgia, 'Times New Roman', serif;
 }
