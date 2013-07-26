@@ -30,11 +30,10 @@ document.body.appendChild(renderer.view);
 Loading the SpriteSheet is as simple as specifiying the URL to the JSON file
 and assigning a handler to `loader.onComplete`. Pixi.js
 treats a JSON file as Texture Packer metadata. With this metadata,
-Pixi.js loads images and creates a `Frame`
+Pixi.js is able to load images from areas in the spritesheet and creates a `Frame`
 for each.
 
 Frame are used to construct `Texture` objects which in turn are used to create `Sprite` objects.
-`AssetLoader#load` is called later.
 
 ```js
 var loader = new PIXI.AssetLoader(['img/roadTiles.json']);
@@ -42,7 +41,7 @@ var loader = new PIXI.AssetLoader(['img/roadTiles.json']);
 
 ## Map and Tile Metadata
 
-This is the map we want to render on the stage.
+Here is the map we want to render on the stage.
 
 ```js
 // map
@@ -55,6 +54,7 @@ var terrain = [
     [G, G, W, W, W],
 ];
 
+// Tiles with height can exceed these dimensions.
 var tileHeight = 50;
 var tileWidth = 50;
 
@@ -66,11 +66,10 @@ var sand = isoTile('beach.png');
 var tileMethods = [grass, dirt, water, sand];
 ```
 
-
 ## Drawing Tiles
 
 In an earlier tutorial, flat isometric tiles were drawn from the north corner. We quickly see
-an error in this logic. Tiles with height (z-direction) seem to float as they are drawn
+an error in that logic. Tiles with height (z-direction) seem to float as they are drawn
 from the top instead of the bottom. Ooops!
 
 :::@ --no-capture
@@ -92,8 +91,8 @@ function isoTile(filename) {
 
 ![](examples/img/spritesheet-floating-water.png)
 
-The water and dirt appear to float above the grassline. To fix
-this, tiles need to be drawn from the bottom left. Fortunately,
+The water and dirt appear to float at top of the grassline. The fix
+is to draw tiles from the bottom left. Fortunately,
 Pixi provides an anchor property. Too easy!
 
 ```js
@@ -139,8 +138,8 @@ function drawMap(terrain, xOffset, yOffset) {
 
 ```
 
-Everything is ready. Tell the loader to load and when it finishes finishes
-loading `start` starts the example in motion.
+Everything is ready. Tell the loader to load and when it finishes
+`start` puts the example in motion.
 
 ```js
 loader.onComplete = start;
