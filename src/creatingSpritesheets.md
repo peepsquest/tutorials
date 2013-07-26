@@ -1,10 +1,12 @@
+
 <style>
 img  {
   border: solid 3px #ccc;
 }
+#logo {
+    border: none;
+}
 </style>
-
-<div id="text-logo">PeepsQuest</div>
 
 # Creating Sprite Sheets
 

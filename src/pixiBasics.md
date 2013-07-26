@@ -1,7 +1,3 @@
-<a href='index.html'>
-  <img id="logo" src="img/pixi.png" />
-</a>
-
 # Pixi.js Basics
 
 :::BEGIN Example
