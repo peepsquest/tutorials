@@ -16,6 +16,7 @@ var terrain = [
     [G, G, W, W, W],
 ];
 
+// Tiles with height can exceed these dimensions.
 var tileHeight = 50;
 var tileWidth = 50;
 

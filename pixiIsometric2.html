@@ -88,6 +88,7 @@ document.body.appendChild(renderer.view);
   [G, G, W, W, W],
 ];
 
+<span class="comment">// Tiles with height can exceed these dimensions.</span>
 <span class="keyword">var</span> tileHeight = <span class="number">50</span>;
 <span class="keyword">var</span> tileWidth = <span class="number">50</span>;
 
@@ -178,13 +179,12 @@ document.body.appendChild(renderer.view);</code></pre>
 <p>Loading the SpriteSheet is as simple as specifiying the URL to the JSON file
 and assigning a handler to <code>loader.onComplete</code>. Pixi.js
 treats a JSON file as Texture Packer metadata. With this metadata,
-Pixi.js loads images and creates a <code>Frame</code>
+Pixi.js is able to load images from areas in the spritesheet and creates a <code>Frame</code>
 for each.</p>
-<p>Frame are used to construct <code>Texture</code> objects which in turn are used to create <code>Sprite</code> objects.
-<code>AssetLoader#load</code> is called later.</p>
+<p>Frame are used to construct <code>Texture</code> objects which in turn are used to create <code>Sprite</code> objects.</p>
 <pre><code class="js"><span class="keyword">var</span> loader = <span class="keyword">new</span> PIXI.AssetLoader([<span class="string">'img/roadTiles.json'</span>]);</code></pre>
 <h2 id='h-map-and-tile-metadata'>Map and Tile Metadata</h2>
-<p>This is the map we want to render on the stage.</p>
+<p>Here is the map we want to render on the stage.</p>
 <pre><code class="js"><span class="comment">// map</span>
 <span class="keyword">var</span> G=<span class="number">0</span>, D=<span class="number">1</span>, W=<span class="number">2</span>;
 <span class="keyword">var</span> terrain = [
@@ -195,6 +195,7 @@ for each.</p>
     [G, G, W, W, W],
 ];
 
+<span class="comment">// Tiles with height can exceed these dimensions.</span>
 <span class="keyword">var</span> tileHeight = <span class="number">50</span>;
 <span class="keyword">var</span> tileWidth = <span class="number">50</span>;
 
@@ -206,7 +207,7 @@ for each.</p>
 <span class="keyword">var</span> tileMethods = [grass, dirt, water, sand];</code></pre>
 <h2 id='h-drawing-tiles'>Drawing Tiles</h2>
 <p>In an earlier tutorial, flat isometric tiles were drawn from the north corner. We quickly see
-an error in this logic. Tiles with height (z-direction) seem to float as they are drawn
+an error in that logic. Tiles with height (z-direction) seem to float as they are drawn
 from the top instead of the bottom. Ooops!</p>
 <pre><code class="js"><span class="function"><span class="keyword">function</span> <span class="title">isoTile</span><span class="params">(filename)</span> {</span>
   <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">(x, y)</span> {</span>
@@ -221,8 +222,8 @@ from the top instead of the bottom. Ooops!</p>
   }
 }</code></pre>
 <p><img src="examples/img/spritesheet-floating-water.png" alt=""></p>
-<p>The water and dirt appear to float above the grassline. To fix
-this, tiles need to be drawn from the bottom left. Fortunately,
+<p>The water and dirt appear to float at top of the grassline. The fix
+is to draw tiles from the bottom left. Fortunately,
 Pixi provides an anchor property. Too easy!</p>
 <pre><code class="js"><span class="function"><span class="keyword">function</span> <span class="title">isoTile</span><span class="params">(filename)</span> {</span>
   <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">(x, y)</span> {</span>
@@ -258,8 +259,8 @@ in southeast direction and the y-axis increasing in a southwest direction.</p>
         }
     }
 }</code></pre>
-<p>Everything is ready. Tell the loader to load and when it finishes finishes
-loading <code>start</code> starts the example in motion.</p>
+<p>Everything is ready. Tell the loader to load and when it finishes
+<code>start</code> puts the example in motion.</p>
 <pre><code class="js">loader.onComplete = start;
 loader.load();
 
