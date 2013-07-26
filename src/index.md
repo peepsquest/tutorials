@@ -1,5 +1,3 @@
-<div id="text-logo">PeepsQuest</div>
-
 # Game Development
 
 This project contains guides and tutorials we write as we build, code and learn for PeepsQuest. We are an open
