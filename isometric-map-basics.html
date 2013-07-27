@@ -1,0 +1,387 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>PeepsQuest Dev</title>
+    <!-- Stylesheets -->
+    <link rel='stylesheet' type='text/css' href='css/style.css' />
+
+    <!-- Scripts -->
+    <!--[if lt IE 9]><script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body>
+
+  <div id="page-wrapper">
+
+    <div class="row">
+
+      <!-- Sidebar -->
+      <section id="sidebar" class="col sidebar">
+        <h2><a href="index.html#">PeepsQuest Dev</a></h2>
+        <ul>
+          <li><a href="https://github.com/peepsquest/tutorials">Github</a></li>
+        </ul>
+        
+        
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>PeepsQuest Dev</title>
+    <!-- Stylesheets -->
+    <link rel='stylesheet' type='text/css' href='css/style.css' />
+
+    <!-- Scripts -->
+    <!--[if lt IE 9]><script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body>
+
+  <div id="page-wrapper">
+
+    <div class="row">
+
+      <!-- Sidebar -->
+      <section id="sidebar" class="col sidebar">
+        <h2><a href="index.html#">PeepsQuest Dev</a></h2>
+        <ul>
+          <li><a href="https://github.com/peepsquest/tutorials">Github</a></li>
+        </ul>
+        
+        <h2 id='h-tutorialsindexhtml'><a href="index.html">Tutorials</a></h2>
+<h3 id='h-general'>General</h3>
+<ul>
+<li><a href="creating-sprite-sheets.html">Creating Sprite Sheets</a></li>
+</ul>
+<h3 id='h-pixijs'>Pixi.js</h3>
+<ul>
+<li><a href="pixi-basics.html">Basics</a></li>
+<li><a href="isometric-map-basics.html">Isometric - Map Basics</a></li>
+<li><a href="isometric-tiles-with-height.html">Isometric - Tiles w/ Height</a></li>
+<li><a href="isometric-placing-avatar.html">Isometric - Avatar</a></li>
+</ul>
+
+      </section>
+
+      <!-- Main Body -->
+      <article id="content" class="col content">
+        <a href='index.html'>
+          <img id="logo" src="img/peepsquest.png" />
+        </a>
+        <h2 id='h-tutorialsindexhtml'><a href="index.html">Tutorials</a></h2>
+<h3 id='h-general'>General</h3>
+<ul>
+<li><a href="creating-sprite-sheets.html">Creating Sprite Sheets</a></li>
+</ul>
+<h3 id='h-pixijs'>Pixi.js</h3>
+<ul>
+<li><a href="pixi-basics.html">Basics</a></li>
+<li><a href="isometric-map-basics.html">Isometric - Map Basics</a></li>
+<li><a href="isometric-tiles-with-height.html">Isometric - Tiles w/ Height</a></li>
+<li><a href="isometric-placing-avatar.html">Isometric - Avatar</a></li>
+</ul>
+
+      </article>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <script src="examples/tutdown.js"></script>
+  <script>
+  $(function() {
+    $('.more-details').click(function() {
+      $this = $(this);
+      if ($this.hasClass('collapsed')) {
+        $this.removeClass('collapsed');
+        $this.addClass('uncollapsed');
+      } else {
+        $this.removeClass('uncollapsed');
+        $this.addClass('collapsed');
+      }
+    });
+  });
+  </script>
+  <!--
+  <script type="text/javascript">
+    (function() {
+      var b = document.createElement("script"); b.type = "text/javascript"; b.async = true;
+      b.src = "https://barc.com/js/libs/barc/barc.js";
+      var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(b, s);
+    })();
+  </script>
+  -->
+  <script type="text/javascript">
+    $('#sidebar a').each(function() {
+      var
+        $a = $(this),
+        href = window.location.href;
+      if (href.indexOf && href.indexOf($a.attr('href')) > -1 && href.indexOf('#') === -1) // hacky to grab only example links
+        $a.closest('li').addClass('active');
+    });
+  </script>
+</body>
+</html>
+
+
+      </section>
+
+      <!-- Main Body -->
+      <article id="content" class="col content">
+        <a href='index.html'>
+          <img id="logo" src="img/peepsquest.png" />
+        </a>
+        <h1 id='h-pixijs-isometric-views-part-1-basics'>Pixi.js Isometric Views Part 1 - Basics</h1>
+<div class='section-example'><p>This example draws an isometric map using a tile created from Pixi.js primitives. Inspired by <a href="http://gamedev.tutsplus.com/tutorials/implementation/creating-isometric-worlds-a-primer-for-game-developers/">Juwal Bose&#39;s Isometric Worlds</a>.</p>
+<div id="isometric-map-basics0_tabs" class="tabs">
+  <ul>
+    <li class="active">
+  <a href="#isometric-map-basics0result-tab" rel="isometric-map-basics0result-tab">
+    result
+  </a>
+</li><li>
+  <a href="#isometric-map-basics0scriptjs-tab" rel="isometric-map-basics0scriptjs-tab">
+    script.js
+  </a>
+</li><li>
+  <a href="#isometric-map-basics0markuphtml-tab" rel="isometric-map-basics0markuphtml-tab">
+    markup.html
+  </a>
+</li><li>
+  <a href="#isometric-map-basics0stylecss-tab" rel="isometric-map-basics0stylecss-tab">
+    style.css
+  </a>
+</li>
+  </ul>
+</div>
+<div id="isometric-map-basics0_tabs_content" class="tabs_content">
+  <div id="isometric-map-basics0result-tab" class="tab_content">
+  <iframe id="isometric-map-basics0" src="examples/isometric-map-basics0.html" class="result"  style='height: 310px;'></iframe>
+</div><div id="isometric-map-basics0scriptjs-tab" class="tab_content">
+  <pre><code class="language-js"><span class="keyword">var</span> WIDTH = <span class="number">700</span>;
+<span class="keyword">var</span> HEIGHT = <span class="number">300</span>;
+<span class="keyword">var</span> stage = <span class="keyword">new</span> PIXI.Stage(<span class="number">0xEEFFFF</span>);
+<span class="keyword">var</span> renderer = PIXI.autoDetectRenderer(WIDTH, HEIGHT);
+
+document.body.appendChild(renderer.view);
+
+<span class="keyword">var</span> graphics = <span class="keyword">new</span> PIXI.Graphics();
+stage.addChild(graphics);
+
+<span class="comment">// An iso tile is twice as wide as it is tall (2w x h)</span>
+
+<span class="function"><span class="keyword">function</span> <span class="title">isoTile</span><span class="params">(backgroundColor, borderColor, w, h)</span> {</span>
+  <span class="keyword">var</span> h_2 = h / <span class="number">2</span>;
+
+  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">(x, y)</span> {</span>
+    graphics.beginFill(backgroundColor);
+    graphics.lineStyle(<span class="number">1</span>, borderColor, <span class="number">1</span>);
+    graphics.moveTo(x, y);
+    graphics.lineTo(x + w, y + h_2);
+    graphics.lineTo(x, y + h);
+    graphics.lineTo(x - w, y + h_2);
+    graphics.lineTo(x, y);
+    graphics.endFill();
+  }
+}
+
+<span class="comment">// map</span>
+<span class="keyword">var</span> G = <span class="number">0</span>,
+  D = <span class="number">1</span>,
+  W = <span class="number">2</span>,
+  X = <span class="number">3</span>;
+<span class="keyword">var</span> terrain = [
+  [G, G, G, G],
+  [D, D, X, D],
+  [D, G, X, W],
+  [D, G, W, W],
+  [G, G, W, W],
+];
+
+<span class="keyword">var</span> tileHeight = <span class="number">60</span>;
+<span class="keyword">var</span> tileWidth = <span class="number">60</span>;
+
+<span class="comment">// tiles</span>
+<span class="keyword">var</span> grass = isoTile(<span class="number">0x80CF5A</span>, <span class="number">0x339900</span>, tileWidth, tileHeight);
+<span class="keyword">var</span> dirt = isoTile(<span class="number">0x96712F</span>, <span class="number">0x403014</span>, tileWidth, tileHeight);
+<span class="keyword">var</span> water = isoTile(<span class="number">0x85b9bb</span>, <span class="number">0x476263</span>, tileWidth, tileHeight);
+<span class="keyword">var</span> empty = <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>};
+<span class="keyword">var</span> tileMethods = [grass, dirt, water, empty];
+
+
+<span class="function"><span class="keyword">function</span> <span class="title">drawMap</span><span class="params">(terrain, xOffset)</span> {</span>
+  <span class="keyword">var</span> tileType, x, y, isoX, isoY, idx;
+
+  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, iL = terrain.length; i &lt; iL; i++) {
+    <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>, jL = terrain[i].length; j &lt; jL; j++) {
+      <span class="comment">// cartesian 2D coordinate</span>
+      x = j * tileWidth;
+      y = i * tileHeight;
+
+      <span class="comment">// iso coordinate</span>
+      isoX = x - y;
+      isoY = (x + y) / <span class="number">2</span>;
+
+      tileType = terrain[i][j];
+      drawTile = tileMethods[tileType];
+      drawTile(xOffset + isoX, isoY);
+    }
+  }
+}
+
+drawMap(terrain, WIDTH / <span class="number">2</span>);
+
+<span class="function"><span class="keyword">function</span> <span class="title">animate</span><span class="params">()</span> {</span>
+  renderer.render(stage);
+}
+
+requestAnimFrame(animate);</code></pre>
+</div><div id="isometric-map-basics0markuphtml-tab" class="tab_content">
+  <pre><code class="language-html"><span class="doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;<span class="title">html</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">head</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">'stylesheet'</span> <span class="attribute">type</span>=<span class="value">'text/css'</span> <span class="attribute">href</span>=<span class="value">'../css/reset.css'</span> /&gt;</span>
+    <span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">'stylesheet'</span> <span class="attribute">type</span>=<span class="value">'text/css'</span> <span class="attribute">href</span>=<span class="value">'isometric-map-basics0-style.css'</span> /&gt;</span>
+  <span class="tag">&lt;/<span class="title">head</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">body</span>&gt;</span>
+    <span class="comment">&lt;!--
+&lt;script src="http://code.jquery.com/jquery-1.9.1.min.js"&gt;&lt;/script&gt;
+&lt;script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"&gt;&lt;/script&gt;
+&lt;script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"&gt;&lt;/script&gt;
+--&gt;</span>
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"js/vendor/pixi.dev.js"</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">'text/javascript'</span> <span class="attribute">src</span>=<span class="value">'isometric-map-basics0-script.js'</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">body</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">html</span>&gt;</span>
+</code></pre>
+</div><div id="isometric-map-basics0stylecss-tab" class="tab_content">
+  <pre><code class="language-css"><span class="tag">body</span> <span class="rules">{
+  <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">0</span></span></span>;
+  <span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">0</span></span></span>;
+<span class="rule">}</span></span></code></pre>
+</div>
+</div><h2 id='h-setup-stage-and-renderer'>Setup Stage and Renderer</h2>
+<p>Setup the stage as usual.</p>
+<pre><code class="js"><span class="keyword">var</span> WIDTH = <span class="number">700</span>;
+<span class="keyword">var</span> HEIGHT = <span class="number">300</span>;
+<span class="keyword">var</span> stage = <span class="keyword">new</span> PIXI.Stage(<span class="number">0xEEFFFF</span>);
+<span class="keyword">var</span> renderer = PIXI.autoDetectRenderer(WIDTH, HEIGHT);
+
+document.body.appendChild(renderer.view);</code></pre>
+<h2 id='h-rendering-a-tile'>Rendering a Tile</h2>
+<p>Let&#39;s use Pixi.js primitives to draw isometric tiles. An isometric tile
+is twice as wide as it is tall. So, a 60x60 square tile becomes a 120x60
+isometric tile.</p>
+<pre><code class="js"><span class="keyword">var</span> graphics = <span class="keyword">new</span> PIXI.Graphics();
+stage.addChild(graphics);
+
+<span class="comment">// An iso tile is twice as wide as it is tall (2w x h)</span>
+<span class="function"><span class="keyword">function</span> <span class="title">isoTile</span><span class="params">(backgroundColor, borderColor, w, h)</span> {</span>
+    <span class="keyword">var</span> h_2 = h/<span class="number">2</span>;
+
+    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">(x, y)</span> {</span>
+        graphics.beginFill(backgroundColor);
+        graphics.lineStyle(<span class="number">1</span>, borderColor, <span class="number">1</span>);
+        graphics.moveTo(x, y);
+        graphics.lineTo(x + w, y + h_2);
+        graphics.lineTo(x, y + h);
+        graphics.lineTo(x - w, y + h_2);
+        graphics.lineTo(x , y);
+        graphics.endFill();
+    }
+}</code></pre>
+<h2 id='h-map-and-tile-metadata'>Map and Tile Metadata</h2>
+<p>To better visualize how the tiles are drawn let&#39;s define some constants.
+Note, game logic should remain in 2D coordinates. Transformation to iso
+coordinates occurs when placing or hit testing on the stage.</p>
+<pre><code class="js"><span class="comment">// map</span>
+<span class="keyword">var</span> G = <span class="number">0</span>, D = <span class="number">1</span>, W = <span class="number">2</span>, X  = <span class="number">3</span>;
+<span class="keyword">var</span> terrain = [
+    [G, G, G, G],
+    [D, D, X, D],
+    [D, G, X, W],
+    [D, G, W, W],
+    [G, G, W, W],
+];
+
+<span class="keyword">var</span> tileHeight =  <span class="number">60</span>;
+<span class="keyword">var</span> tileWidth = <span class="number">60</span>;
+
+<span class="comment">// tiles</span>
+<span class="keyword">var</span> grass = isoTile(<span class="number">0x80CF5A</span>, <span class="number">0x339900</span>, tileWidth, tileHeight);
+<span class="keyword">var</span> dirt = isoTile(<span class="number">0x96712F</span>, <span class="number">0x403014</span>, tileWidth, tileHeight);
+<span class="keyword">var</span> water = isoTile(<span class="number">0x85b9bb</span>, <span class="number">0x476263</span>, tileWidth, tileHeight);
+<span class="keyword">var</span> empty = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>};
+<span class="keyword">var</span> tileMethods = [grass, dirt, water, empty];</code></pre>
+<h2 id='h-rendering-the-isometric-map'>Rendering the Isometric Map</h2>
+<p>This algorithm draws the map with the x-axis increasing
+in southeast direction and the y-axis increasing in a southwest direction.</p>
+<pre><code class="js">
+<span class="function"><span class="keyword">function</span> <span class="title">drawMap</span><span class="params">(terrain, xOffset)</span> {</span>
+    <span class="keyword">var</span> tileType, x, y, isoX, isoY, idx;
+
+    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, iL = terrain.length; i &lt; iL; i++) {
+        <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>, jL = terrain[i].length; j &lt; jL; j++) {
+            <span class="comment">// cartesian 2D coordinate</span>
+            x = j * tileWidth;
+            y = i * tileHeight;
+
+            <span class="comment">// iso coordinate</span>
+            isoX = x - y;
+            isoY = (x + y) / <span class="number">2</span>;
+
+            tileType = terrain[i][j];
+            drawTile = tileMethods[tileType];
+            drawTile(xOffset + isoX, isoY);
+        }
+    }
+}
+
+drawMap(terrain, WIDTH / <span class="number">2</span>);</code></pre>
+<p>Since there is no interactivity, render the map once.</p>
+<pre><code class="js"><span class="function"><span class="keyword">function</span> <span class="title">animate</span><span class="params">()</span> {</span>
+  renderer.render(stage);
+}
+
+requestAnimFrame(animate);</code></pre>
+</div>
+      </article>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <script src="examples/tutdown.js"></script>
+  <script>
+  $(function() {
+    $('.more-details').click(function() {
+      $this = $(this);
+      if ($this.hasClass('collapsed')) {
+        $this.removeClass('collapsed');
+        $this.addClass('uncollapsed');
+      } else {
+        $this.removeClass('uncollapsed');
+        $this.addClass('collapsed');
+      }
+    });
+  });
+  </script>
+  <!--
+  <script type="text/javascript">
+    (function() {
+      var b = document.createElement("script"); b.type = "text/javascript"; b.async = true;
+      b.src = "https://barc.com/js/libs/barc/barc.js";
+      var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(b, s);
+    })();
+  </script>
+  -->
+  <script type="text/javascript">
+    $('#sidebar a').each(function() {
+      var
+        $a = $(this),
+        href = window.location.href;
+      if (href.indexOf && href.indexOf($a.attr('href')) > -1 && href.indexOf('#') === -1) // hacky to grab only example links
+        $a.closest('li').addClass('active');
+    });
+  </script>
+</body>
+</html>
+

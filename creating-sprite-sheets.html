@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>PeepsQuest Dev</title>
+    <!-- Stylesheets -->
+    <link rel='stylesheet' type='text/css' href='css/style.css' />
+
+    <!-- Scripts -->
+    <!--[if lt IE 9]><script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body>
+
+  <div id="page-wrapper">
+
+    <div class="row">
+
+      <!-- Sidebar -->
+      <section id="sidebar" class="col sidebar">
+        <h2><a href="index.html#">PeepsQuest Dev</a></h2>
+        <ul>
+          <li><a href="https://github.com/peepsquest/tutorials">Github</a></li>
+        </ul>
+        
+        <h2 id='h-tutorialsindexhtml'><a href="index.html">Tutorials</a></h2>
+<h3 id='h-general'>General</h3>
+<ul>
+<li><a href="creating-sprite-sheets.html">Creating Sprite Sheets</a></li>
+</ul>
+<h3 id='h-pixijs'>Pixi.js</h3>
+<ul>
+<li><a href="pixi-basics.html">Basics</a></li>
+<li><a href="isometric-map-basics.html">Isometric - Map Basics</a></li>
+<li><a href="isometric-tiles-with-height.html">Isometric - Tiles w/ Height</a></li>
+<li><a href="isometric-placing-avatar.html">Isometric - Avatar</a></li>
+</ul>
+
+      </section>
+
+      <!-- Main Body -->
+      <article id="content" class="col content">
+        <a href='index.html'>
+          <img id="logo" src="img/peepsquest.png" />
+        </a>
+        <style>
+img  {
+  border: solid 3px #ccc;
+}
+#logo {
+    border: none;
+}
+</style>
+
+<h1 id='h-creating-sprite-sheets'>Creating Sprite Sheets</h1>
+<p>We were somewhat dismayed that Pixi.js uses a proprietary commercial app to build sprite sheets.
+We rely solely on open source tools, so we built an open source filter for our node.js build tool---<a href="http://projmate.github.io">Projmate</a>.
+The <code>pm-spritesheet</code> filter generates sprite sheets and a JSON meta file compatible with Texture Packer (as used by pixi.js).</p>
+<p>In this tutorial four images</p>
+<p><img src="examples/img/tp/eggHead.png" alt="">
+<img src="examples/img/tp/flowerTop.png" alt="">
+<img src="examples/img/tp/helmlok.png" alt="">
+<img src="examples/img/tp/skully.png" alt=""></p>
+<p>are combined into a single sprite sheet. These images are from pixi.js&#39; <code>Example 2</code>.</p>
+<p><img src="examples/img/tp/spritesheet.png" alt=""></p>
+<h3 id='h-installing-projmate'>Installing Projmate</h3>
+<p>Projmate is command-line build tool we use internally for almost half a year now
+that works well in Linux, Mac and Windows.  In order to use it, first install
+these pre-requisites</p>
+<ul>
+<li><a href="http://www.imagemagick.org/script/index.php">imagemagick</a></li>
+<li><a href="http://nodejs.org/">node.js + npm</a></li>
+</ul>
+<p>Install Projmate globally</p>
+<pre><code>npm install -g projmate-cli@0.1.0-dev</code></pre>
+<p>Inside a project install the sprite sheet filter</p>
+<pre><code>npm install pm-spritesheet</code></pre>
+<h3 id='h-generate-sprite-sheet-task'>Generate Sprite Sheet Task</h3>
+<p>Projmate, like most build tools, breaks down a project into smaller units of work called tasks that can
+depend on each other. What is different about Projmate is that a task is defined by one or more pipelines which
+define behaviour for <code>development</code>, <code>test</code> and <code>production</code> mode.  For example, in <code>production</code> mode a task can
+minify, compress, add a banner, optimize, etc.</p>
+<p>In this example, we want to generate a sprite sheet from all the <code>tp/*.png</code> files pixi.js&#39; second example
+folder</p>
+<pre><code>▾ tp/
+    eggHead.png
+    flowerTop.png
+    helmlok.png
+    skully.png</code></pre>
+<p>First create a build file <code>Projfile.js</code> at the root of your
+project. The pipeline for <code>spritesheet</code> task requires only
+the <code>spritesheet</code> filter which is passed all files matching <code>files</code>.
+<code>spritesheet</code> filter then retrieves dimensions for each image and
+determines an eficient layout then generates the image and meta file.</p>
+<div class='note'>
+Projmate has many filters: CoffeeScript, CommonJS, PreProcessor,
+Template, Handlebars, Uglify, Less, YUI Docs, ... to name a few
+</div>
+
+<pre><code class="js">exports.project = <span class="function"><span class="keyword">function</span><span class="params">(pm)</span> {</span>
+  <span class="keyword">var</span> f = pm.filters(require(<span class="string">'pm-spritesheet'</span>));
+
+  <span class="keyword">return</span> {
+    spritesheet: {
+      files: <span class="string">'tp/*.png'</span>,
+      dev: [
+        f.spritesheet({filename: <span class="string">'SpriteSheet.png'</span>, root: <span class="string">'tp/'</span>, jsonStyle:<span class="string">'texturePacker'</span>})
+      ]
+    }
+  };
+
+};</code></pre>
+<p>To run the <code>spritesheet</code> task from the terminal</p>
+<pre><code>pm run spritesheet</code></pre>
+<p>The generated sprite sheet and JSON meta file is supported by pixi.js. We&#39;ll
+cover this in a future example.</p>
+<p>The only caveat is <code>Projmate</code> is not well documented as a small team can only do so much. Look at this
+project&#39;s <code>Projfile.coffee</code> which has the <code>spritesheet</code> task for this tutorial.</p>
+
+      </article>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <script src="examples/tutdown.js"></script>
+  <script>
+  $(function() {
+    $('.more-details').click(function() {
+      $this = $(this);
+      if ($this.hasClass('collapsed')) {
+        $this.removeClass('collapsed');
+        $this.addClass('uncollapsed');
+      } else {
+        $this.removeClass('uncollapsed');
+        $this.addClass('collapsed');
+      }
+    });
+  });
+  </script>
+  <!--
+  <script type="text/javascript">
+    (function() {
+      var b = document.createElement("script"); b.type = "text/javascript"; b.async = true;
+      b.src = "https://barc.com/js/libs/barc/barc.js";
+      var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(b, s);
+    })();
+  </script>
+  -->
+  <script type="text/javascript">
+    $('#sidebar a').each(function() {
+      var
+        $a = $(this),
+        href = window.location.href;
+      if (href.indexOf && href.indexOf($a.attr('href')) > -1 && href.indexOf('#') === -1) // hacky to grab only example links
+        $a.closest('li').addClass('active');
+    });
+  </script>
+</body>
+</html>
+
