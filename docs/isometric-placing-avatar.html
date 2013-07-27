@@ -1,0 +1,550 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>PeepsQuest Dev</title>
+    <!-- Stylesheets -->
+    <link rel='stylesheet' type='text/css' href='css/style.css' />
+
+    <!-- Scripts -->
+    <!--[if lt IE 9]><script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body>
+
+  <div id="page-wrapper">
+
+    <div class="row">
+
+      <!-- Sidebar -->
+      <section id="sidebar" class="col sidebar">
+        <h2><a href="index.html#">PeepsQuest Dev</a></h2>
+        <ul>
+          <li><a href="https://github.com/peepsquest/tutorials">Github</a></li>
+        </ul>
+        
+        
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>PeepsQuest Dev</title>
+    <!-- Stylesheets -->
+    <link rel='stylesheet' type='text/css' href='css/style.css' />
+
+    <!-- Scripts -->
+    <!--[if lt IE 9]><script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body>
+
+  <div id="page-wrapper">
+
+    <div class="row">
+
+      <!-- Sidebar -->
+      <section id="sidebar" class="col sidebar">
+        <h2><a href="index.html#">PeepsQuest Dev</a></h2>
+        <ul>
+          <li><a href="https://github.com/peepsquest/tutorials">Github</a></li>
+        </ul>
+        
+        <h2 id='h-tutorialsindexhtml'><a href="index.html">Tutorials</a></h2>
+<h3 id='h-general'>General</h3>
+<ul>
+<li><a href="creating-sprite-sheets.html">Creating Sprite Sheets</a></li>
+</ul>
+<h3 id='h-pixijs'>Pixi.js</h3>
+<ul>
+<li><a href="pixi-basics.html">Basics</a></li>
+<li><a href="isometric-map-basics.html">Isometric - Map Basics</a></li>
+<li><a href="isometric-tiles-with-height.html">Isometric - Tiles w/ Height</a></li>
+<li><a href="isometric-placing-avatar.html">Isometric - Avatar</a></li>
+</ul>
+
+      </section>
+
+      <!-- Main Body -->
+      <article id="content" class="col content">
+        <a href='index.html'>
+          <img id="logo" src="img/peepsquest.png" />
+        </a>
+        <h2 id='h-tutorialsindexhtml'><a href="index.html">Tutorials</a></h2>
+<h3 id='h-general'>General</h3>
+<ul>
+<li><a href="creating-sprite-sheets.html">Creating Sprite Sheets</a></li>
+</ul>
+<h3 id='h-pixijs'>Pixi.js</h3>
+<ul>
+<li><a href="pixi-basics.html">Basics</a></li>
+<li><a href="isometric-map-basics.html">Isometric - Map Basics</a></li>
+<li><a href="isometric-tiles-with-height.html">Isometric - Tiles w/ Height</a></li>
+<li><a href="isometric-placing-avatar.html">Isometric - Avatar</a></li>
+</ul>
+
+      </article>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <script src="examples/tutdown.js"></script>
+  <script>
+  $(function() {
+    $('.more-details').click(function() {
+      $this = $(this);
+      if ($this.hasClass('collapsed')) {
+        $this.removeClass('collapsed');
+        $this.addClass('uncollapsed');
+      } else {
+        $this.removeClass('uncollapsed');
+        $this.addClass('collapsed');
+      }
+    });
+  });
+  </script>
+  <!--
+  <script type="text/javascript">
+    (function() {
+      var b = document.createElement("script"); b.type = "text/javascript"; b.async = true;
+      b.src = "https://barc.com/js/libs/barc/barc.js";
+      var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(b, s);
+    })();
+  </script>
+  -->
+  <script type="text/javascript">
+    $('#sidebar a').each(function() {
+      var
+        $a = $(this),
+        href = window.location.href;
+      if (href.indexOf && href.indexOf($a.attr('href')) > -1 && href.indexOf('#') === -1) // hacky to grab only example links
+        $a.closest('li').addClass('active');
+    });
+  </script>
+</body>
+</html>
+
+
+      </section>
+
+      <!-- Main Body -->
+      <article id="content" class="col content">
+        <a href='index.html'>
+          <img id="logo" src="img/peepsquest.png" />
+        </a>
+        <h1 id='h-pixijs-isometric-map-part-3-placing-avatar'>Pixi.js Isometric Map Part 3 - Placing Avatar</h1>
+<div class='section-example'><p>In this example, we&#39;ll add an avatar/character to the map the can be moved.
+Move the orb using <code>ARROW</code> or <code>SHIFT + ARROW</code> to lock to axis. (click the
+map first)</p>
+<div id="isometric-placing-avatar0_tabs" class="tabs">
+  <ul>
+    <li class="active">
+  <a href="#isometric-placing-avatar0result-tab" rel="isometric-placing-avatar0result-tab">
+    result
+  </a>
+</li><li>
+  <a href="#isometric-placing-avatar0scriptjs-tab" rel="isometric-placing-avatar0scriptjs-tab">
+    script.js
+  </a>
+</li><li>
+  <a href="#isometric-placing-avatar0markuphtml-tab" rel="isometric-placing-avatar0markuphtml-tab">
+    markup.html
+  </a>
+</li><li>
+  <a href="#isometric-placing-avatar0stylecss-tab" rel="isometric-placing-avatar0stylecss-tab">
+    style.css
+  </a>
+</li>
+  </ul>
+</div>
+<div id="isometric-placing-avatar0_tabs_content" class="tabs_content">
+  <div id="isometric-placing-avatar0result-tab" class="tab_content">
+  <iframe id="isometric-placing-avatar0" src="examples/isometric-placing-avatar0.html" class="result"  style='height: 310px;'></iframe>
+</div><div id="isometric-placing-avatar0scriptjs-tab" class="tab_content">
+  <pre><code class="language-js"><span class="comment">// account for tile thickness</span>
+<span class="comment">/* globals PIXI, kd, requestAnimFrame */</span>
+<span class="string">"use strict"</span>;
+
+<span class="comment">// avatar is 32x32 + 6px for shadow</span>
+<span class="keyword">var</span> AVATAR_X_OFFSET = <span class="number">32</span> / <span class="number">2</span>;
+<span class="keyword">var</span> AVATAR_Y_OFFSET = <span class="number">32</span> / <span class="number">2</span>;
+<span class="keyword">var</span> MAP_WIDTH = <span class="number">250</span>;
+<span class="keyword">var</span> MAP_HEIGHT = <span class="number">250</span>;
+<span class="keyword">var</span> STAGE_WIDTH = <span class="number">700</span>;
+<span class="keyword">var</span> STAGE_HEIGHT = <span class="number">300</span>;
+<span class="keyword">var</span> TILE_WIDTH = <span class="number">50</span>;
+<span class="keyword">var</span> TILE_HEIGHT = <span class="number">50</span>;
+<span class="keyword">var</span> THICKNESS = <span class="number">8</span>; <span class="comment">// 10 pixels of dirt height</span>
+
+<span class="comment">// isometric view and anchor at bottom left skews everything,</span>
+<span class="comment">// basically moves the map so iso (0, 0) is near the middle top</span>
+<span class="keyword">var</span> SKEW_X_OFFSET = STAGE_WIDTH / <span class="number">2</span> - TILE_WIDTH;
+<span class="keyword">var</span> SKEW_Y_OFFSET = TILE_HEIGHT * <span class="number">2</span>;
+
+<span class="keyword">var</span> avatar;
+<span class="keyword">var</span> stage = <span class="keyword">new</span> PIXI.Stage(<span class="number">0xEEFFFF</span>);
+<span class="keyword">var</span> renderer = PIXI.autoDetectRenderer(STAGE_WIDTH, STAGE_HEIGHT);
+document.body.appendChild(renderer.view);
+
+<span class="keyword">var</span> loader = <span class="keyword">new</span> PIXI.AssetLoader([<span class="string">'img/roadTiles.json'</span>]);
+
+<span class="comment">// map</span>
+<span class="keyword">var</span> G = <span class="number">0</span>,
+  D = <span class="number">1</span>,
+  W = <span class="number">2</span>;
+<span class="keyword">var</span> terrain = [
+  [D, D, G, G, W],
+  [D, D, G, G, W],
+  [D, G, G, W, W],
+  [D, G, W, W, W],
+  [D, G, W, W, W],
+];
+
+<span class="comment">// Tiles with height can exceed these dimensions.</span>
+<span class="keyword">var</span> tileHeight = <span class="number">50</span>;
+<span class="keyword">var</span> tileWidth = <span class="number">50</span>;
+
+<span class="comment">// tiles</span>
+<span class="keyword">var</span> grass = isoTile(<span class="string">'grass.png'</span>);
+<span class="keyword">var</span> dirt = isoTile(<span class="string">'dirt.png'</span>);
+<span class="keyword">var</span> water = isoTile(<span class="string">'water.png'</span>);
+<span class="keyword">var</span> tileMethods = [grass, dirt, water];
+
+<span class="function"><span class="keyword">function</span> <span class="title">isoTile</span><span class="params">(filename)</span> {</span>
+  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">(x, y)</span> {</span>
+    <span class="keyword">var</span> tile = PIXI.Sprite.fromFrame(filename);
+    tile.position.x = x;
+    tile.position.y = y;
+
+    <span class="comment">// bottom-left</span>
+    tile.anchor.x = <span class="number">0.0</span>;
+    tile.anchor.y = <span class="number">1</span>;
+    stage.addChild(tile);
+  };
+}
+
+<span class="comment">// 2D to isometric</span>
+
+<span class="function"><span class="keyword">function</span> <span class="title">ddToIso</span><span class="params">(x, y)</span> {</span>
+  <span class="keyword">return</span> {
+    x: x - y,
+    y: (x + y) / <span class="number">2</span>
+  };
+}
+
+<span class="function"><span class="keyword">function</span> <span class="title">stageMap</span><span class="params">(terrain)</span> {</span>
+  <span class="keyword">var</span> stageTile, tileType, x, y, iso;
+
+  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, iL = terrain.length; i &lt; iL; i++) {
+    <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>, jL = terrain[i].length; j &lt; jL; j++) {
+      <span class="comment">// dd 2D coordinate</span>
+      x = j * tileWidth;
+      y = i * tileHeight;
+
+      <span class="comment">// iso coordinate</span>
+      iso = ddToIso(x, y);
+
+      tileType = terrain[i][j];
+      stageTile = tileMethods[tileType];
+      stageTile(iso.x + SKEW_X_OFFSET, iso.y + SKEW_Y_OFFSET);
+    }
+  }
+}
+
+<span class="function"><span class="keyword">function</span> <span class="title">Coordinates</span><span class="params">()</span> {</span>
+  <span class="comment">// Converts 2D coordinates to tile coordinates taking into</span>
+  <span class="comment">// account anchor placement and thickness of tile</span>
+  <span class="function"><span class="keyword">function</span> <span class="title">ddToTile</span><span class="params">(x, y)</span> {</span>
+    <span class="keyword">var</span> iso = ddToIso(x, y);
+    <span class="keyword">return</span> {
+      x: iso.x + SKEW_X_OFFSET + TILE_WIDTH,
+      y: iso.y + SKEW_Y_OFFSET - TILE_WIDTH - THICKNESS
+    };
+  }
+
+  <span class="comment">// Offset a 2D point keeping the point within the boundaries</span>
+  <span class="comment">// of the map.</span>
+
+  <span class="function"><span class="keyword">function</span> <span class="title">ddOffset</span><span class="params">(pt, byX, byY)</span> {</span>
+    pt.x = Math.max(<span class="number">0</span>, Math.min(pt.x + byX, MAP_WIDTH));
+    pt.y = Math.max(<span class="number">0</span>, Math.min(pt.y + byY, MAP_HEIGHT));
+  }
+
+  <span class="comment">// Avatars avatar has depth too so we must ensure</span>
+
+  <span class="function"><span class="keyword">function</span> <span class="title">ddToAvatar</span><span class="params">(x, y)</span> {</span>
+    x = Math.min(MAP_WIDTH - <span class="number">10</span>, Math.max(<span class="number">0</span>, x));
+    y = Math.min(MAP_HEIGHT - <span class="number">10</span>, Math.max(<span class="number">0</span>, y));
+
+    <span class="keyword">var</span> tile = ddToTile(x, y);
+    <span class="keyword">return</span> {
+      x: tile.x - AVATAR_X_OFFSET,
+      y: tile.y + AVATAR_Y_OFFSET
+    };
+  }
+
+  <span class="keyword">return</span> {
+    ddToTile: ddToTile,
+    ddToAvatar: ddToAvatar,
+    ddOffset: ddOffset
+  };
+}
+<span class="keyword">var</span> coords = Coordinates();
+
+
+<span class="function"><span class="keyword">function</span> <span class="title">stageAvatar</span><span class="params">(x, y)</span> {</span>
+  <span class="keyword">var</span> avatar = PIXI.Sprite.fromImage(<span class="string">'img/redOrb.png'</span>);
+
+  <span class="comment">// track 2D position</span>
+  avatar.location = <span class="keyword">new</span> PIXI.Point(x, y);
+
+  <span class="keyword">var</span> pt = coords.ddToAvatar(x, y);
+  avatar.position.x = pt.x;
+  avatar.position.y = pt.y;
+  avatar.anchor.x = <span class="number">0</span>;
+  avatar.anchor.y = <span class="number">1</span>;
+
+  stage.addChild(avatar);
+  <span class="keyword">return</span> avatar;
+}
+
+<span class="function"><span class="keyword">function</span> <span class="title">moveAvatar</span><span class="params">(byX, byY)</span> {</span>
+  <span class="comment">// ensures avatar stays within bounds</span>
+  coords.ddOffset(avatar.location, byX, byY);
+
+  <span class="keyword">var</span> p = coords.ddToAvatar(avatar.location.x, avatar.location.y);
+  avatar.position.x = p.x;
+  avatar.position.y = p.y;
+}
+
+<span class="comment">// keyboard input, ARROW to move, SHIFT + ARROW to move on axis</span>
+
+<span class="function"><span class="keyword">function</span> <span class="title">moveUp</span><span class="params">(e)</span> {</span>
+  e.shiftKey ? moveAvatar(<span class="number">0</span>, -<span class="number">2</span>) : moveAvatar(-<span class="number">2</span>, -<span class="number">2</span>);
+}
+
+<span class="function"><span class="keyword">function</span> <span class="title">moveDown</span><span class="params">(e)</span> {</span>
+  e.shiftKey ? moveAvatar(<span class="number">0</span>, <span class="number">2</span>) : moveAvatar(<span class="number">2</span>, <span class="number">2</span>);
+}
+
+<span class="function"><span class="keyword">function</span> <span class="title">moveLeft</span><span class="params">(e)</span> {</span>
+  e.shiftKey ? moveAvatar(-<span class="number">2</span>, <span class="number">0</span>) : moveAvatar(-<span class="number">2</span>, <span class="number">2</span>);
+}
+
+<span class="function"><span class="keyword">function</span> <span class="title">moveRight</span><span class="params">(e)</span> {</span>
+  e.shiftKey ? moveAvatar(<span class="number">2</span>, <span class="number">0</span>) : moveAvatar(<span class="number">2</span>, -<span class="number">2</span>);
+}
+
+<span class="comment">// game loop optimized keyboard handling</span>
+kd.UP.down(moveUp);
+kd.DOWN.down(moveDown);
+kd.LEFT.down(moveLeft);
+kd.RIGHT.down(moveRight);
+
+loader.onComplete = start;
+loader.load();
+
+<span class="function"><span class="keyword">function</span> <span class="title">start</span><span class="params">()</span> {</span>
+  stageMap(terrain);
+  avatar = stageAvatar(<span class="number">0</span>, <span class="number">0</span>);
+
+  <span class="function"><span class="keyword">function</span> <span class="title">animate</span><span class="params">()</span> {</span>
+    <span class="comment">// keyboard handler</span>
+    kd.tick();
+    requestAnimFrame(animate);
+    renderer.render(stage);
+  }
+  requestAnimFrame(animate);
+}</code></pre>
+</div><div id="isometric-placing-avatar0markuphtml-tab" class="tab_content">
+  <pre><code class="language-html"><span class="doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;<span class="title">html</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">head</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">'stylesheet'</span> <span class="attribute">type</span>=<span class="value">'text/css'</span> <span class="attribute">href</span>=<span class="value">'../css/reset.css'</span> /&gt;</span>
+    <span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">'stylesheet'</span> <span class="attribute">type</span>=<span class="value">'text/css'</span> <span class="attribute">href</span>=<span class="value">'isometric-placing-avatar0-style.css'</span> /&gt;</span>
+  <span class="tag">&lt;/<span class="title">head</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">body</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">'js/vendor/keydrown.js'</span>&gt;</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+
+<span class="comment">&lt;!--
+&lt;script src="http://code.jquery.com/jquery-1.9.1.min.js"&gt;&lt;/script&gt;
+&lt;script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"&gt;&lt;/script&gt;
+&lt;script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"&gt;&lt;/script&gt;
+--&gt;</span>
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"js/vendor/pixi.dev.js"</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">'text/javascript'</span> <span class="attribute">src</span>=<span class="value">'isometric-placing-avatar0-script.js'</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">body</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">html</span>&gt;</span>
+</code></pre>
+</div><div id="isometric-placing-avatar0stylecss-tab" class="tab_content">
+  <pre><code class="language-css"><span class="tag">body</span> <span class="rules">{
+  <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">0</span></span></span>;
+  <span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">0</span></span></span>;
+<span class="rule">}</span></span></code></pre>
+</div>
+</div><h2 id='h-loading-avatar'>Loading Avatar</h2>
+<p>Placing the avatar onto the stage is not much different than placing a tile.</p>
+<ol>
+<li>Load the avatars texture and create a sprite from it.</li>
+<li>Transform the avatar&#39;s 2D position in isometric coordinates.</li>
+</ol>
+<p>We must track the current avatar location which should not be confused
+with the sprite position. The sprite position is used to render an
+image on the screen and is affected by zoom, pan, etc.</p>
+<p>The avatar&#39;s location is stored in <code>avatar.location</code>.
+I do this because it is convenient for this tutorial. In your game,
+consider using an entity-component library to encapsulate the logic
+of an avatar.</p>
+<pre><code class="js">
+<span class="function"><span class="keyword">function</span> <span class="title">stageAvatar</span><span class="params">(x, y)</span> {</span>
+  <span class="keyword">var</span> avatar = PIXI.Sprite.fromImage(<span class="string">'img/redOrb.png'</span>);
+
+  <span class="comment">// track 2D position</span>
+  avatar.location = <span class="keyword">new</span> PIXI.Point(x, y);
+
+  <span class="keyword">var</span> pt = coords.ddToAvatar(x, y);
+  avatar.position.x = pt.x;
+  avatar.position.y = pt.y;
+  avatar.anchor.x = <span class="number">0</span>;
+  avatar.anchor.y = <span class="number">1</span>;
+
+  stage.addChild(avatar);
+  <span class="keyword">return</span> avatar;
+}</code></pre>
+<p><code>ddToAvatar</code> is a function which converts a 2D point into a point on
+the map. There are several things to consider</p>
+<ol>
+<li>Isometric conversion</li>
+<li>Tile thickness</li>
+<li>The footprint of the avatar</li>
+<li>Restricting avatar within the map dimension</li>
+<li>Avatar&#39;s anchor point</li>
+</ol>
+<p>I won&#39;t go into much of the particular details. The constants in
+the equations help explain the logic.</p>
+<pre><code class="js"><span class="comment">// Converts 2D coordinates to tile coordinates taking into</span>
+<span class="comment">// account anchor placement and thickness of tile</span>
+<span class="function"><span class="keyword">function</span> <span class="title">ddToTile</span><span class="params">(x, y)</span> {</span>
+  <span class="keyword">var</span> iso = ddToIso(x, y);
+  <span class="keyword">return</span> {
+    x: iso.x + SKEW_X_OFFSET + TILE_WIDTH,
+    y: iso.y + SKEW_Y_OFFSET - TILE_WIDTH - THICKNESS
+  };
+}
+
+<span class="comment">// Offset a 2D point keeping the point within the boundaries</span>
+<span class="comment">// of the map.</span>
+<span class="function"><span class="keyword">function</span> <span class="title">ddOffset</span><span class="params">(pt, byX, byY)</span> {</span>
+  pt.x = Math.max(<span class="number">0</span>, Math.min(pt.x + byX, MAP_WIDTH));
+  pt.y = Math.max(<span class="number">0</span>, Math.min(pt.y + byY, MAP_HEIGHT));
+}
+
+<span class="comment">// Avatars avatar have depth</span>
+<span class="function"><span class="keyword">function</span> <span class="title">ddToAvatar</span><span class="params">(x, y)</span> {</span>
+  x = Math.min(MAP_WIDTH - <span class="number">10</span>, Math.max(<span class="number">0</span>, x));
+  y = Math.min(MAP_HEIGHT - <span class="number">10</span>, Math.max(<span class="number">0</span>, y));
+
+  <span class="keyword">var</span> tile = ddToTile(x, y);
+  x = tile.x - AVATAR_WIDTH / <span class="number">2</span>; <span class="comment">// 32 width</span>
+  y = tile.y + AVATAR_HEIGHT - <span class="number">6</span>; <span class="comment">// 32 height + ?px shadow</span>
+
+  <span class="keyword">return</span> {
+    x: x,
+    y: y
+  };
+}</code></pre>
+<h2 id='h-avatar-movement'>Avatar Movement</h2>
+<p>The avatar moves using the keyboard. We need to do a couple of things.</p>
+<ol>
+<li>Hook into keyboard events</li>
+<li>For each keyboard event, determine the next location for the avatar</li>
+</ol>
+<p>I use a custom version of <a href="https://github.com/jeremyckahn/keydrown">keydrown</a>
+to also capture the original event. That is needed to detech the shift key.</p>
+<pre><code class="js"><span class="function"><span class="keyword">function</span> <span class="title">moveAvatar</span><span class="params">(byX, byY)</span> {</span>
+  <span class="comment">// ensures avatar stays within bounds</span>
+  coords.ddOffset(avatar.location, byX, byY);
+
+  <span class="keyword">var</span> p = coords.ddToAvatar(avatar.location.x, avatar.location.y);
+  avatar.position.x = p.x;
+  avatar.position.y = p.y;
+}
+
+<span class="comment">// keyboard input, ARROW to move, SHIFT + ARROW to move on axis</span>
+<span class="function"><span class="keyword">function</span> <span class="title">moveUp</span><span class="params">(e)</span> {</span>
+  e.shiftKey ? moveAvatar(<span class="number">0</span>, -<span class="number">2</span>) : moveAvatar(-<span class="number">2</span>, -<span class="number">2</span>);
+}
+<span class="function"><span class="keyword">function</span> <span class="title">moveDown</span><span class="params">(e)</span> {</span>
+  e.shiftKey ? moveAvatar(<span class="number">0</span>, <span class="number">2</span>) : moveAvatar(<span class="number">2</span>, <span class="number">2</span>);
+}
+<span class="function"><span class="keyword">function</span> <span class="title">moveLeft</span><span class="params">(e)</span> {</span>
+  e.shiftKey ? moveAvatar(-<span class="number">2</span>, <span class="number">0</span>) : moveAvatar(-<span class="number">2</span>, <span class="number">2</span>);
+}
+<span class="function"><span class="keyword">function</span> <span class="title">moveRight</span><span class="params">(e)</span> {</span>
+  e.shiftKey ? moveAvatar(<span class="number">2</span>, <span class="number">0</span>) : moveAvatar(<span class="number">2</span>, -<span class="number">2</span>);
+}
+
+<span class="comment">// game loop optimized keyboard handling</span>
+kd.UP.down(moveUp);
+kd.DOWN.down(moveDown);
+kd.LEFT.down(moveLeft);
+kd.RIGHT.down(moveRight);</code></pre>
+<h2 id='h-game-loop'>Game Loop</h2>
+<p>It is important to render objects in depth order. The code below works
+but it would fail miserably if say a tile closest to you was a tall tree.
+The avatar would be walking on a branch instead of behind it on the
+ground. This covers the basics :)</p>
+<pre><code class="js">loader.onComplete = start;
+loader.load();
+<span class="function"><span class="keyword">function</span> <span class="title">start</span><span class="params">()</span> {</span>
+  stageMap(terrain);
+  avatar = stageAvatar(<span class="number">0</span>, <span class="number">0</span>);
+
+  <span class="function"><span class="keyword">function</span> <span class="title">animate</span><span class="params">()</span> {</span>
+    <span class="comment">// keyboard handler</span>
+    kd.tick();
+    requestAnimFrame(animate);
+    renderer.render(stage);
+  }
+  requestAnimFrame(animate);
+}</code></pre>
+</div>
+      </article>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <script src="examples/tutdown.js"></script>
+  <script>
+  $(function() {
+    $('.more-details').click(function() {
+      $this = $(this);
+      if ($this.hasClass('collapsed')) {
+        $this.removeClass('collapsed');
+        $this.addClass('uncollapsed');
+      } else {
+        $this.removeClass('uncollapsed');
+        $this.addClass('collapsed');
+      }
+    });
+  });
+  </script>
+  <!--
+  <script type="text/javascript">
+    (function() {
+      var b = document.createElement("script"); b.type = "text/javascript"; b.async = true;
+      b.src = "https://barc.com/js/libs/barc/barc.js";
+      var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(b, s);
+    })();
+  </script>
+  -->
+  <script type="text/javascript">
+    $('#sidebar a').each(function() {
+      var
+        $a = $(this),
+        href = window.location.href;
+      if (href.indexOf && href.indexOf($a.attr('href')) > -1 && href.indexOf('#') === -1) // hacky to grab only example links
+        $a.closest('li').addClass('active');
+    });
+  </script>
+</body>
+</html>
+

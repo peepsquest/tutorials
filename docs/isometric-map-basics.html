@@ -23,16 +23,42 @@
           <li><a href="https://github.com/peepsquest/tutorials">Github</a></li>
         </ul>
         
+        
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>PeepsQuest Dev</title>
+    <!-- Stylesheets -->
+    <link rel='stylesheet' type='text/css' href='css/style.css' />
+
+    <!-- Scripts -->
+    <!--[if lt IE 9]><script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body>
+
+  <div id="page-wrapper">
+
+    <div class="row">
+
+      <!-- Sidebar -->
+      <section id="sidebar" class="col sidebar">
+        <h2><a href="index.html#">PeepsQuest Dev</a></h2>
+        <ul>
+          <li><a href="https://github.com/peepsquest/tutorials">Github</a></li>
+        </ul>
+        
         <h2 id='h-tutorialsindexhtml'><a href="index.html">Tutorials</a></h2>
 <h3 id='h-general'>General</h3>
 <ul>
-<li><a href="creatingSpritesheets.html">Creating Sprite Sheets</a></li>
+<li><a href="creating-sprite-sheets.html">Creating Sprite Sheets</a></li>
 </ul>
 <h3 id='h-pixijs'>Pixi.js</h3>
 <ul>
-<li><a href="pixiBasics.html">Basics</a></li>
-<li><a href="pixiIsometric1.html">Isometric Map - Basics</a></li>
-<li><a href="pixiIsometric2.html">Isometric Map - Height</a></li>
+<li><a href="pixi-basics.html">Basics</a></li>
+<li><a href="isometric-map-basics.html">Isometric - Map Basics</a></li>
+<li><a href="isometric-tiles-with-height.html">Isometric - Tiles w/ Height</a></li>
+<li><a href="isometric-placing-avatar.html">Isometric - Avatar</a></li>
 </ul>
 
       </section>
@@ -42,33 +68,95 @@
         <a href='index.html'>
           <img id="logo" src="img/peepsquest.png" />
         </a>
-        <h1 id='h-pixijs-isometric-map-part-1-basics'>Pixi.js Isometric Map Part 1 - Basics</h1>
-<p><div class='section-example'><p>This example draws an isometric map using a tile created from Pixi.js primitives. Inspired by <a href="http://gamedev.tutsplus.com/tutorials/implementation/creating-isometric-worlds-a-primer-for-game-developers/">Juwal Bose&#39;s Isometric Worlds</a>.</p>
-<div id="pixiisometric10_tabs" class="tabs">
+        <h2 id='h-tutorialsindexhtml'><a href="index.html">Tutorials</a></h2>
+<h3 id='h-general'>General</h3>
+<ul>
+<li><a href="creating-sprite-sheets.html">Creating Sprite Sheets</a></li>
+</ul>
+<h3 id='h-pixijs'>Pixi.js</h3>
+<ul>
+<li><a href="pixi-basics.html">Basics</a></li>
+<li><a href="isometric-map-basics.html">Isometric - Map Basics</a></li>
+<li><a href="isometric-tiles-with-height.html">Isometric - Tiles w/ Height</a></li>
+<li><a href="isometric-placing-avatar.html">Isometric - Avatar</a></li>
+</ul>
+
+      </article>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <script src="examples/tutdown.js"></script>
+  <script>
+  $(function() {
+    $('.more-details').click(function() {
+      $this = $(this);
+      if ($this.hasClass('collapsed')) {
+        $this.removeClass('collapsed');
+        $this.addClass('uncollapsed');
+      } else {
+        $this.removeClass('uncollapsed');
+        $this.addClass('collapsed');
+      }
+    });
+  });
+  </script>
+  <!--
+  <script type="text/javascript">
+    (function() {
+      var b = document.createElement("script"); b.type = "text/javascript"; b.async = true;
+      b.src = "https://barc.com/js/libs/barc/barc.js";
+      var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(b, s);
+    })();
+  </script>
+  -->
+  <script type="text/javascript">
+    $('#sidebar a').each(function() {
+      var
+        $a = $(this),
+        href = window.location.href;
+      if (href.indexOf && href.indexOf($a.attr('href')) > -1 && href.indexOf('#') === -1) // hacky to grab only example links
+        $a.closest('li').addClass('active');
+    });
+  </script>
+</body>
+</html>
+
+
+      </section>
+
+      <!-- Main Body -->
+      <article id="content" class="col content">
+        <a href='index.html'>
+          <img id="logo" src="img/peepsquest.png" />
+        </a>
+        <h1 id='h-pixijs-isometric-views-part-1-basics'>Pixi.js Isometric Views Part 1 - Basics</h1>
+<div class='section-example'><p>This example draws an isometric map using a tile created from Pixi.js primitives. Inspired by <a href="http://gamedev.tutsplus.com/tutorials/implementation/creating-isometric-worlds-a-primer-for-game-developers/">Juwal Bose&#39;s Isometric Worlds</a>.</p>
+<div id="isometric-map-basics0_tabs" class="tabs">
   <ul>
     <li class="active">
-  <a href="#pixiisometric10result-tab" rel="pixiisometric10result-tab">
+  <a href="#isometric-map-basics0result-tab" rel="isometric-map-basics0result-tab">
     result
   </a>
 </li><li>
-  <a href="#pixiisometric10scriptjs-tab" rel="pixiisometric10scriptjs-tab">
+  <a href="#isometric-map-basics0scriptjs-tab" rel="isometric-map-basics0scriptjs-tab">
     script.js
   </a>
 </li><li>
-  <a href="#pixiisometric10markuphtml-tab" rel="pixiisometric10markuphtml-tab">
+  <a href="#isometric-map-basics0markuphtml-tab" rel="isometric-map-basics0markuphtml-tab">
     markup.html
   </a>
 </li><li>
-  <a href="#pixiisometric10stylecss-tab" rel="pixiisometric10stylecss-tab">
+  <a href="#isometric-map-basics0stylecss-tab" rel="isometric-map-basics0stylecss-tab">
     style.css
   </a>
 </li>
   </ul>
 </div>
-<div id="pixiisometric10_tabs_content" class="tabs_content">
-  <div id="pixiisometric10result-tab" class="tab_content">
-  <iframe id="pixiisometric10" src="examples/pixiIsometric10.html" class="result"  style='height: 310px;'></iframe>
-</div><div id="pixiisometric10scriptjs-tab" class="tab_content">
+<div id="isometric-map-basics0_tabs_content" class="tabs_content">
+  <div id="isometric-map-basics0result-tab" class="tab_content">
+  <iframe id="isometric-map-basics0" src="examples/isometric-map-basics0.html" class="result"  style='height: 310px;'></iframe>
+</div><div id="isometric-map-basics0scriptjs-tab" class="tab_content">
   <pre><code class="language-js"><span class="keyword">var</span> WIDTH = <span class="number">700</span>;
 <span class="keyword">var</span> HEIGHT = <span class="number">300</span>;
 <span class="keyword">var</span> stage = <span class="keyword">new</span> PIXI.Stage(<span class="number">0xEEFFFF</span>);
@@ -147,12 +235,12 @@ drawMap(terrain, WIDTH / <span class="number">2</span>);
 }
 
 requestAnimFrame(animate);</code></pre>
-</div><div id="pixiisometric10markuphtml-tab" class="tab_content">
+</div><div id="isometric-map-basics0markuphtml-tab" class="tab_content">
   <pre><code class="language-html"><span class="doctype">&lt;!DOCTYPE html&gt;</span>
 <span class="tag">&lt;<span class="title">html</span>&gt;</span>
   <span class="tag">&lt;<span class="title">head</span>&gt;</span>
     <span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">'stylesheet'</span> <span class="attribute">type</span>=<span class="value">'text/css'</span> <span class="attribute">href</span>=<span class="value">'../css/reset.css'</span> /&gt;</span>
-    <span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">'stylesheet'</span> <span class="attribute">type</span>=<span class="value">'text/css'</span> <span class="attribute">href</span>=<span class="value">'pixiisometric10-style.css'</span> /&gt;</span>
+    <span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">'stylesheet'</span> <span class="attribute">type</span>=<span class="value">'text/css'</span> <span class="attribute">href</span>=<span class="value">'isometric-map-basics0-style.css'</span> /&gt;</span>
   <span class="tag">&lt;/<span class="title">head</span>&gt;</span>
   <span class="tag">&lt;<span class="title">body</span>&gt;</span>
     <span class="comment">&lt;!--
@@ -161,11 +249,11 @@ requestAnimFrame(animate);</code></pre>
 &lt;script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"&gt;&lt;/script&gt;
 --&gt;</span>
 <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"js/vendor/pixi.dev.js"</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">'text/javascript'</span> <span class="attribute">src</span>=<span class="value">'pixiisometric10-script.js'</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">'text/javascript'</span> <span class="attribute">src</span>=<span class="value">'isometric-map-basics0-script.js'</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
   <span class="tag">&lt;/<span class="title">body</span>&gt;</span>
 <span class="tag">&lt;/<span class="title">html</span>&gt;</span>
 </code></pre>
-</div><div id="pixiisometric10stylecss-tab" class="tab_content">
+</div><div id="isometric-map-basics0stylecss-tab" class="tab_content">
   <pre><code class="language-css"><span class="tag">body</span> <span class="rules">{
   <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">0</span></span></span>;
   <span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">0</span></span></span>;
@@ -255,8 +343,7 @@ drawMap(terrain, WIDTH / <span class="number">2</span>);</code></pre>
 }
 
 requestAnimFrame(animate);</code></pre>
-</div></p>
-
+</div>
       </article>
     </div>
   </div>

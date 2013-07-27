@@ -26,13 +26,14 @@
         <h2 id='h-tutorialsindexhtml'><a href="index.html">Tutorials</a></h2>
 <h3 id='h-general'>General</h3>
 <ul>
-<li><a href="creatingSpritesheets.html">Creating Sprite Sheets</a></li>
+<li><a href="creating-sprite-sheets.html">Creating Sprite Sheets</a></li>
 </ul>
 <h3 id='h-pixijs'>Pixi.js</h3>
 <ul>
-<li><a href="pixiBasics.html">Basics</a></li>
-<li><a href="pixiIsometric1.html">Isometric Map - Basics</a></li>
-<li><a href="pixiIsometric2.html">Isometric Map - Height</a></li>
+<li><a href="pixi-basics.html">Basics</a></li>
+<li><a href="isometric-map-basics.html">Isometric - Map Basics</a></li>
+<li><a href="isometric-tiles-with-height.html">Isometric - Tiles w/ Height</a></li>
+<li><a href="isometric-placing-avatar.html">Isometric - Avatar</a></li>
 </ul>
 
       </section>
@@ -43,33 +44,33 @@
           <img id="logo" src="img/peepsquest.png" />
         </a>
         <h1 id='h-pixijs-basics'>Pixi.js Basics</h1>
-<p><div class='section-example'><p>In this example we&#39;ll cover the basics of using a <code>Stage</code>, <code>Renderer</code>,
+<div class='section-example'><p>In this example we&#39;ll cover the basics of using a <code>Stage</code>, <code>Renderer</code>,
 <code>Sprite</code> and <code>Texture</code>. We&#39;ll draw a simple leaf and rotate it.</p>
-<div id="pixibasics0_tabs" class="tabs">
+<div id="pixi-basics0_tabs" class="tabs">
   <ul>
     <li class="active">
-  <a href="#pixibasics0result-tab" rel="pixibasics0result-tab">
+  <a href="#pixi-basics0result-tab" rel="pixi-basics0result-tab">
     result
   </a>
 </li><li>
-  <a href="#pixibasics0scriptjs-tab" rel="pixibasics0scriptjs-tab">
+  <a href="#pixi-basics0scriptjs-tab" rel="pixi-basics0scriptjs-tab">
     script.js
   </a>
 </li><li>
-  <a href="#pixibasics0markuphtml-tab" rel="pixibasics0markuphtml-tab">
+  <a href="#pixi-basics0markuphtml-tab" rel="pixi-basics0markuphtml-tab">
     markup.html
   </a>
 </li><li>
-  <a href="#pixibasics0stylecss-tab" rel="pixibasics0stylecss-tab">
+  <a href="#pixi-basics0stylecss-tab" rel="pixi-basics0stylecss-tab">
     style.css
   </a>
 </li>
   </ul>
 </div>
-<div id="pixibasics0_tabs_content" class="tabs_content">
-  <div id="pixibasics0result-tab" class="tab_content">
-  <iframe id="pixibasics0" src="examples/pixiBasics0.html" class="result"  style='height: 310px;'></iframe>
-</div><div id="pixibasics0scriptjs-tab" class="tab_content">
+<div id="pixi-basics0_tabs_content" class="tabs_content">
+  <div id="pixi-basics0result-tab" class="tab_content">
+  <iframe id="pixi-basics0" src="examples/pixi-basics0.html" class="result"  style='height: 310px;'></iframe>
+</div><div id="pixi-basics0scriptjs-tab" class="tab_content">
   <pre><code class="language-js"><span class="keyword">var</span> WIDTH = <span class="number">400</span>;
 <span class="keyword">var</span> HEIGHT = <span class="number">300</span>;
 <span class="keyword">var</span> stage = <span class="keyword">new</span> PIXI.Stage(<span class="number">0xEEFFFF</span>);
@@ -101,12 +102,12 @@ stage.addChild(leaf);
 }
 
 requestAnimFrame(animate);</code></pre>
-</div><div id="pixibasics0markuphtml-tab" class="tab_content">
+</div><div id="pixi-basics0markuphtml-tab" class="tab_content">
   <pre><code class="language-html"><span class="doctype">&lt;!DOCTYPE html&gt;</span>
 <span class="tag">&lt;<span class="title">html</span>&gt;</span>
   <span class="tag">&lt;<span class="title">head</span>&gt;</span>
     <span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">'stylesheet'</span> <span class="attribute">type</span>=<span class="value">'text/css'</span> <span class="attribute">href</span>=<span class="value">'../css/reset.css'</span> /&gt;</span>
-    <span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">'stylesheet'</span> <span class="attribute">type</span>=<span class="value">'text/css'</span> <span class="attribute">href</span>=<span class="value">'pixibasics0-style.css'</span> /&gt;</span>
+    <span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">'stylesheet'</span> <span class="attribute">type</span>=<span class="value">'text/css'</span> <span class="attribute">href</span>=<span class="value">'pixi-basics0-style.css'</span> /&gt;</span>
   <span class="tag">&lt;/<span class="title">head</span>&gt;</span>
   <span class="tag">&lt;<span class="title">body</span>&gt;</span>
     <span class="comment">&lt;!--
@@ -115,11 +116,11 @@ requestAnimFrame(animate);</code></pre>
 &lt;script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"&gt;&lt;/script&gt;
 --&gt;</span>
 <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"js/vendor/pixi.dev.js"</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">'text/javascript'</span> <span class="attribute">src</span>=<span class="value">'pixibasics0-script.js'</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">'text/javascript'</span> <span class="attribute">src</span>=<span class="value">'pixi-basics0-script.js'</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
   <span class="tag">&lt;/<span class="title">body</span>&gt;</span>
 <span class="tag">&lt;/<span class="title">html</span>&gt;</span>
 </code></pre>
-</div><div id="pixibasics0stylecss-tab" class="tab_content">
+</div><div id="pixi-basics0stylecss-tab" class="tab_content">
   <pre><code class="language-css"><span class="tag">body</span> <span class="rules">{
   <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">0</span></span></span>;
   <span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">0</span></span></span>;
@@ -166,8 +167,7 @@ direction.</p>
 }
 
 requestAnimFrame(animate);</code></pre>
-</div></p>
-
+</div>
       </article>
     </div>
   </div>

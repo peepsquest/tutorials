@@ -1,4 +1,4 @@
-# Pixi.js Isometric Map Part 1 - Basics
+# Pixi.js Isometric Views Part 1 - Basics
 
 :::BEGIN Example
 

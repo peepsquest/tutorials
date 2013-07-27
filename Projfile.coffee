@@ -31,7 +31,6 @@ exports.project = (pm) ->
     deps: ['_toc']
     files: [
       'src/*.md'
-      '!src/toc.md'
     ]
     dev: [
       f.tutdown
@@ -60,6 +59,7 @@ exports.project = (pm) ->
 
   staticFiles:
     desc: 'Copies static files'
+    watch: 'src/examples'
     dev: ->
       $.xcopy 'src/examples/', 'docs/examples'
       $.xcopy 'src/img/', 'docs/img'
@@ -71,12 +71,15 @@ exports.project = (pm) ->
     $.mkdir '-p', 'docs'
 
 
-  getPixi:
+  dependencies:
     desc: 'Fetches Pixi edge scripts'
     dev: (done) ->
       files =
         'https://raw.github.com/GoodBoyDigital/pixi.js/dev/bin/pixi.dev.js': 'src/examples/js/vendor/pixi.dev.js'
+        'https://raw.github.com/jeremyckahn/keydrown/master/dist/keydrown.js': 'src/examples/js/vendor/keydrown.js'
       $.wget(files).then done
+
+
 
 
   "gh-pages":
