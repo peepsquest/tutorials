@@ -5,12 +5,14 @@
 In this example we'll cover the basics of using the [grapefruitjs](https://github.com/grapefruitjs/grapefruit)
 game engine built on __pixi.js__.
 
-<div class='note'><em>GrapefruitJs</em> is in its infancy and should not used per its author,
-[Chad Engler](https://github.com/englercj). This is a learning
-process for me to see how experienced game developers setup a game. The author is an active
-contributor to __Pixi.js__</div>
+<div class='note'><em>GrapefruitJs</em> is in its infancy and should not be used yet per its author,
+[Chad Engler](https://github.com/englercj).
+The author is an active contributor to __Pixi.js__. This is more of a learning
+excercise for me to see how experienced game developers setup a game.
 
-Pan by dragging with the mouse or move the orb around with the arrow keys.
+</div>
+
+Pan by dragging with the mouse or move the orb around with the arrow keys (issue with iframe).
 
 {{{EXAMPLE style='height: 600px;'}}}
 
@@ -38,7 +40,7 @@ The `start` method loads `Data.resources` and when completed `onGameReady` is in
 ## Loading a World
 
 AFAICT a world is just a display container. The important data structure is the `GameState` and
-more importantly the active state. Inside the `GameState` is the game loop.
+more importantly the active game state. Inside the `GameState` is the game loop.
 
 :::< examples/grapefruit-basics.coffee --block game-ready
 

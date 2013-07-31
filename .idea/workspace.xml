@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ef95ca51-4f3c-48b5-b77d-9540e4ac39ac" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/examples/grapefruit-basics.coffee" afterPath="$PROJECT_DIR$/src/examples/grapefruit-basics.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/grapefruit-basics.md" afterPath="$PROJECT_DIR$/src/grapefruit-basics.md" />
-    </list>
+    <list default="true" id="ef95ca51-4f3c-48b5-b77d-9540e4ac39ac" name="Default" comment="" />
     <ignored path="tutorials.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -52,10 +49,10 @@
           <provider selected="true" editor-type-id="text-editor">
             <state line="132" column="0" selection-start="3735" selection-end="3735" vertical-scroll-proportion="0.0" vertical-offset="1610" max-vertical-offset="2812">
               <folding>
-                <marker date="1375243752472" expanded="true" signature="561:1719" placeholder="{...}" />
-                <marker date="1375243752472" expanded="true" signature="1091:1661" placeholder="{...}" />
-                <marker date="1375243752472" expanded="true" signature="1196:1632" placeholder="{...}" />
-                <marker date="1375243752472" expanded="true" signature="1530:1595" placeholder="{&quot;resourceUrl&quot;: 'img/redOrb.png'...}" />
+                <marker date="1375245198737" expanded="true" signature="561:1719" placeholder="{...}" />
+                <marker date="1375245198737" expanded="true" signature="1091:1661" placeholder="{...}" />
+                <marker date="1375245198737" expanded="true" signature="1196:1632" placeholder="{...}" />
+                <marker date="1375245198737" expanded="true" signature="1530:1595" placeholder="{&quot;resourceUrl&quot;: 'img/redOrb.png'...}" />
               </folding>
             </state>
           </provider>
@@ -409,7 +406,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="49" y="301" width="1744" height="1050" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295583" sideWeight="0.8344247" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295583" sideWeight="0.8344247" order="6" side_tool="false" content_ui="tabs" />
@@ -588,10 +585,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="132" column="0" selection-start="3735" selection-end="3735" vertical-scroll-proportion="0.0" vertical-offset="1610" max-vertical-offset="2812">
           <folding>
-            <marker date="1375243752472" expanded="true" signature="561:1719" placeholder="{...}" />
-            <marker date="1375243752472" expanded="true" signature="1091:1661" placeholder="{...}" />
-            <marker date="1375243752472" expanded="true" signature="1196:1632" placeholder="{...}" />
-            <marker date="1375243752472" expanded="true" signature="1530:1595" placeholder="{&quot;resourceUrl&quot;: 'img/redOrb.png'...}" />
+            <marker date="1375245198737" expanded="true" signature="561:1719" placeholder="{...}" />
+            <marker date="1375245198737" expanded="true" signature="1091:1661" placeholder="{...}" />
+            <marker date="1375245198737" expanded="true" signature="1196:1632" placeholder="{...}" />
+            <marker date="1375245198737" expanded="true" signature="1530:1595" placeholder="{&quot;resourceUrl&quot;: 'img/redOrb.png'...}" />
           </folding>
         </state>
       </provider>
