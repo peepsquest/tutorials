@@ -27,8 +27,6 @@ class Game extends gf.Game
 
 #{{{ Content game-ready
   onGameReady: ->
-    {world, avatar} = @options.assets
-
     state = new gf.GameState('world')
     @addState state
     state.loadWorld 'world'
@@ -47,8 +45,6 @@ class Game extends gf.Game
 #{{{ Content panning
 # context for these are TiledMap, which means Function.bind is being used
 mapDown = (e) ->
-  # needed to capture events in iframe of this example (not needed otherwise)
-  window.focus()
   pos = e.getLocalPosition(@parent)
   @drag = pos
 
@@ -74,7 +70,7 @@ class Avatar extends gf.Sprite
     @setupKeyboardHandlers state
 
   ###
-  * Sets up keyboard handlers using closure instead of bind.
+  * Sets up keyboard handlers using closures instead of bind.
   ###
   setupKeyboardHandlers: (state) ->
     that = @
@@ -109,7 +105,6 @@ class Avatar extends gf.Sprite
 #{{{ Content start-game
 $ ->
   $game = $('#game')
-
   game = new Game 'game',
     width: $game.width() - 3
     height: $game.height() - 3

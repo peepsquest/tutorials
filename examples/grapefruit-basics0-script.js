@@ -35,8 +35,7 @@
     };
 
     Game.prototype.onGameReady = function() {
-      var avatar, hero, state, world, _ref;
-      _ref = this.options.assets, world = _ref.world, avatar = _ref.avatar;
+      var hero, state;
       state = new gf.GameState('world');
       this.addState(state);
       state.loadWorld('world');
@@ -58,7 +57,6 @@
 
   mapDown = function(e) {
     var pos;
-    window.focus();
     pos = e.getLocalPosition(this.parent);
     return this.drag = pos;
   };
