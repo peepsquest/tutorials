@@ -23,31 +23,6 @@
           <li><a href="https://github.com/peepsquest/tutorials">Github</a></li>
         </ul>
         
-        
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <title>PeepsQuest Dev</title>
-    <!-- Stylesheets -->
-    <link rel='stylesheet' type='text/css' href='css/style.css' />
-
-    <!-- Scripts -->
-    <!--[if lt IE 9]><script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-</head>
-<body>
-
-  <div id="page-wrapper">
-
-    <div class="row">
-
-      <!-- Sidebar -->
-      <section id="sidebar" class="col sidebar">
-        <h2><a href="index.html#">PeepsQuest Dev</a></h2>
-        <ul>
-          <li><a href="https://github.com/peepsquest/tutorials">Github</a></li>
-        </ul>
-        
         <h2 id='h-tutorialsindexhtml'><a href="index.html">Tutorials</a></h2>
 <h3 id='h-general'>General</h3>
 <ul>
@@ -60,68 +35,10 @@
 <li><a href="isometric-tiles-with-height.html">Isometric - Tiles w/ Height</a></li>
 <li><a href="isometric-placing-avatar.html">Isometric - Avatar</a></li>
 </ul>
-
-      </section>
-
-      <!-- Main Body -->
-      <article id="content" class="col content">
-        <a href='index.html'>
-          <img id="logo" src="img/peepsquest.png" />
-        </a>
-        <h2 id='h-tutorialsindexhtml'><a href="index.html">Tutorials</a></h2>
-<h3 id='h-general'>General</h3>
+<h3 id='h-grapefruitjs'>Grapefruit.js</h3>
 <ul>
-<li><a href="creating-sprite-sheets.html">Creating Sprite Sheets</a></li>
+<li><a href="grapefruit-basics.html">Basics</a></li>
 </ul>
-<h3 id='h-pixijs'>Pixi.js</h3>
-<ul>
-<li><a href="pixi-basics.html">Basics</a></li>
-<li><a href="isometric-map-basics.html">Isometric - Map Basics</a></li>
-<li><a href="isometric-tiles-with-height.html">Isometric - Tiles w/ Height</a></li>
-<li><a href="isometric-placing-avatar.html">Isometric - Avatar</a></li>
-</ul>
-
-      </article>
-    </div>
-  </div>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-  <script src="examples/tutdown.js"></script>
-  <script>
-  $(function() {
-    $('.more-details').click(function() {
-      $this = $(this);
-      if ($this.hasClass('collapsed')) {
-        $this.removeClass('collapsed');
-        $this.addClass('uncollapsed');
-      } else {
-        $this.removeClass('uncollapsed');
-        $this.addClass('collapsed');
-      }
-    });
-  });
-  </script>
-  <!--
-  <script type="text/javascript">
-    (function() {
-      var b = document.createElement("script"); b.type = "text/javascript"; b.async = true;
-      b.src = "https://barc.com/js/libs/barc/barc.js";
-      var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(b, s);
-    })();
-  </script>
-  -->
-  <script type="text/javascript">
-    $('#sidebar a').each(function() {
-      var
-        $a = $(this),
-        href = window.location.href;
-      if (href.indexOf && href.indexOf($a.attr('href')) > -1 && href.indexOf('#') === -1) // hacky to grab only example links
-        $a.closest('li').addClass('active');
-    });
-  </script>
-</body>
-</html>
-
 
       </section>
 
@@ -243,12 +160,9 @@ loader.load();
     <span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">'stylesheet'</span> <span class="attribute">type</span>=<span class="value">'text/css'</span> <span class="attribute">href</span>=<span class="value">'isometric-tiles-with-height0-style.css'</span> /&gt;</span>
   <span class="tag">&lt;/<span class="title">head</span>&gt;</span>
   <span class="tag">&lt;<span class="title">body</span>&gt;</span>
-    <span class="comment">&lt;!--
-&lt;script src="http://code.jquery.com/jquery-1.9.1.min.js"&gt;&lt;/script&gt;
-&lt;script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"&gt;&lt;/script&gt;
-&lt;script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"&gt;&lt;/script&gt;
---&gt;</span>
-<span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"js/vendor/pixi.dev.js"</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-1.10.2.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"</span>&gt;</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"js/vendor/gf.js"</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
     <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">'text/javascript'</span> <span class="attribute">src</span>=<span class="value">'isometric-tiles-with-height0-script.js'</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
   <span class="tag">&lt;/<span class="title">body</span>&gt;</span>
 <span class="tag">&lt;/<span class="title">html</span>&gt;</span>
@@ -312,7 +226,7 @@ from the top instead of the bottom. Ooops!</p>
     stage.addChild(tile);
   }
 }</code></pre>
-<p><img src="examples/img/spritesheet-floating-water.png" alt=""></p>
+<p><img src="examples/img/spritesheet-floating-water.png" alt="water floating"></p>
 <p>The water and dirt appear to float at top of the grassline. The fix
 is to draw tiles from the bottom left. Fortunately,
 Pixi provides an anchor property. Too easy!</p>

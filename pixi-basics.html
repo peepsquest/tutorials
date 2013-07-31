@@ -35,6 +35,10 @@
 <li><a href="isometric-tiles-with-height.html">Isometric - Tiles w/ Height</a></li>
 <li><a href="isometric-placing-avatar.html">Isometric - Avatar</a></li>
 </ul>
+<h3 id='h-grapefruitjs'>Grapefruit.js</h3>
+<ul>
+<li><a href="grapefruit-basics.html">Basics</a></li>
+</ul>
 
       </section>
 
@@ -95,13 +99,13 @@ leaf.position.y = HEIGHT / <span class="number">2</span>;
 <span class="comment">// place it on the stage for rendering</span>
 stage.addChild(leaf);
 
-<span class="function"><span class="keyword">function</span> <span class="title">animate</span><span class="params">()</span> {</span>
+<span class="function"><span class="keyword">function</span> <span class="title">gameLoop</span><span class="params">()</span> {</span>
+  requestAnimFrame(gameLoop);
   leaf.rotation -= <span class="number">0.02</span>;
   renderer.render(stage);
-  requestAnimFrame(animate);
 }
 
-requestAnimFrame(animate);</code></pre>
+requestAnimFrame(gameLoop);</code></pre>
 </div><div id="pixi-basics0markuphtml-tab" class="tab_content">
   <pre><code class="language-html"><span class="doctype">&lt;!DOCTYPE html&gt;</span>
 <span class="tag">&lt;<span class="title">html</span>&gt;</span>
@@ -110,12 +114,9 @@ requestAnimFrame(animate);</code></pre>
     <span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">'stylesheet'</span> <span class="attribute">type</span>=<span class="value">'text/css'</span> <span class="attribute">href</span>=<span class="value">'pixi-basics0-style.css'</span> /&gt;</span>
   <span class="tag">&lt;/<span class="title">head</span>&gt;</span>
   <span class="tag">&lt;<span class="title">body</span>&gt;</span>
-    <span class="comment">&lt;!--
-&lt;script src="http://code.jquery.com/jquery-1.9.1.min.js"&gt;&lt;/script&gt;
-&lt;script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"&gt;&lt;/script&gt;
-&lt;script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"&gt;&lt;/script&gt;
---&gt;</span>
-<span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"js/vendor/pixi.dev.js"</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-1.10.2.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"</span>&gt;</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"js/vendor/gf.js"</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
     <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">'text/javascript'</span> <span class="attribute">src</span>=<span class="value">'pixi-basics0-script.js'</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
   <span class="tag">&lt;/<span class="title">body</span>&gt;</span>
 <span class="tag">&lt;/<span class="title">html</span>&gt;</span>
@@ -140,7 +141,7 @@ page using either Canvas or WebGL depending on the features of the browser.</p>
 <span class="comment">// attach render to page</span>
 document.body.appendChild(renderer.view);</code></pre>
 <h2 id='h-adding-the-leaf'>Adding the Leaf</h2>
-<p>Let&#39;s create a sprite which is a basic visual entity in games. The visual
+<p>Let&#39;s create a sprite which is the basic visual unit in games. The visual
 appearance of a sprite is the texture assigned to it.</p>
 <pre><code class="js"><span class="keyword">var</span> texture = PIXI.Texture.fromImage(<span class="string">'img/leaf.png'</span>);
 <span class="keyword">var</span> leaf = <span class="keyword">new</span> PIXI.Sprite(texture);
@@ -156,17 +157,20 @@ leaf.position.y = HEIGHT / <span class="number">2</span>;
 <span class="comment">// place it on the stage for rendering</span>
 stage.addChild(leaf);</code></pre>
 <h2 id='h-animation'>Animation</h2>
-<p>To animate it, we&#39;ll request an animation frame repeatedly using the
+<p>To animate the sprite, we&#39;ll request an animation frame repeatedly using the
 same function, each time rotating the leaf by a fraction of a radiant.
-In this example, we use a negative value which animates in a counter-clockwise
-direction.</p>
-<pre><code class="js"><span class="function"><span class="keyword">function</span> <span class="title">animate</span><span class="params">()</span> {</span>
+In this example, we use a negative value to animate the leaf in a
+counter-clockwise direction.</p>
+<p>Most browsers limit the frame per second (fps) to 60. In other words each run of
+the game loop is a frame and in most browsers a trivial game will run no more than 60 times in a second.
+If the game loop is computationally expensive the fps will drop accordingly.</p>
+<pre><code class="js"><span class="function"><span class="keyword">function</span> <span class="title">gameLoop</span><span class="params">()</span> {</span>
+  requestAnimFrame(gameLoop);
   leaf.rotation -= <span class="number">0.02</span>;
   renderer.render(stage);
-  requestAnimFrame(animate);
 }
 
-requestAnimFrame(animate);</code></pre>
+requestAnimFrame(gameLoop);</code></pre>
 </div>
       </article>
     </div>
