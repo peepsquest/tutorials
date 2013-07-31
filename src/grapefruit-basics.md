@@ -21,7 +21,7 @@ the world (still learning __grapefruit__).
 
 `gf.AssetLoader` loads assets using an array of URLs or objects.
 I opt for objects to show `gf.assetCache` is in use later when the orb is loaded. __grapefruit.js__ supports
-the popular[Tiled Map Editor](http://www.mapeditor.org/) TMX (JSON) format as well as the Texture Packer
+the popular [Tiled Map Editor](http://www.mapeditor.org/) TMX (JSON) format as well as the Texture Packer
 format supported by __pixi.js__.
 
 (Is a world analogous to a scene?)

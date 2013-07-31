@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef95ca51-4f3c-48b5-b77d-9540e4ac39ac" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/examples/img/tp/spritesheet.png" afterPath="$PROJECT_DIR$/docs/examples/img/tp/spritesheet.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/examples/js/vendor/gf.js" afterPath="$PROJECT_DIR$/docs/examples/js/vendor/gf.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/examples/js/vendor/gf.js" afterPath="$PROJECT_DIR$/src/examples/js/vendor/gf.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/examples/grapefruit-basics.coffee" afterPath="$PROJECT_DIR$/docs/examples/grapefruit-basics.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/examples/grapefruit-basics.coffee" afterPath="$PROJECT_DIR$/src/examples/grapefruit-basics.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/grapefruit-basics.html" afterPath="$PROJECT_DIR$/docs/grapefruit-basics.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/examples/grapefruit-basics.js" afterPath="$PROJECT_DIR$/docs/examples/grapefruit-basics.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/examples/grapefruit-basics.map" afterPath="$PROJECT_DIR$/docs/examples/grapefruit-basics.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/grapefruit-basics.md" afterPath="$PROJECT_DIR$/src/grapefruit-basics.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/examples/grapefruit-basics0-script.js" afterPath="$PROJECT_DIR$/docs/examples/grapefruit-basics0-script.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="tutorials.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,7 +31,7 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="63" selection-start="953" selection-end="953" vertical-scroll-proportion="0.51411766" vertical-offset="0" max-vertical-offset="1843">
+            <state line="22" column="12" selection-start="793" selection-end="793" vertical-scroll-proportion="0.4917647" vertical-offset="0" max-vertical-offset="1843">
               <folding />
             </state>
           </provider>
@@ -548,7 +538,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/grapefruit-basics.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="63" selection-start="953" selection-end="953" vertical-scroll-proportion="0.51411766" vertical-offset="0" max-vertical-offset="1843">
+        <state line="22" column="12" selection-start="793" selection-end="793" vertical-scroll-proportion="0.4917647" vertical-offset="0" max-vertical-offset="1843">
           <folding />
         </state>
       </provider>
