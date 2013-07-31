@@ -4,7 +4,7 @@
  * Copyright (c) 2012, Chad Engler
  * https://github.com/englercj/grapefruit
  *
- * Compiled: 2013-07-30
+ * Compiled: 2013-07-31
  *
  * GrapeFruit Game Engine is licensed under the MIT License.
  * http://www.opensource.org/licenses/mit-license.php
@@ -74,19 +74,19 @@ var PIXI = PIXI || {};
  * The Point object represents a location in a two-dimensional coordinate system, where x represents the horizontal axis and y represents the vertical axis.
  *
  * @class Point
- * @constructor
+ * @constructor 
  * @param x {Number} position of the point
  * @param y {Number} position of the point
  */
 PIXI.Point = function(x, y)
 {
 	/**
-	 * @property x
+	 * @property x 
 	 * @type Number
 	 * @default 0
 	 */
 	this.x = x || 0;
-
+	
 	/**
 	 * @property y
 	 * @type Number
@@ -118,7 +118,7 @@ PIXI.Point.prototype.constructor = PIXI.Point;
  * the Rectangle object is an area defined by its position, as indicated by its top-left corner point (x, y) and by its width and its height.
  *
  * @class Rectangle
- * @constructor
+ * @constructor 
  * @param x {Number} The X coord of the upper-left corner of the rectangle
  * @param y {Number} The Y coord of the upper-left corner of the rectangle
  * @param width {Number} The overall wisth of this rectangle
@@ -132,21 +132,21 @@ PIXI.Rectangle = function(x, y, width, height)
 	 * @default 0
 	 */
 	this.x = x || 0;
-
+	
 	/**
 	 * @property y
 	 * @type Number
 	 * @default 0
 	 */
 	this.y = y || 0;
-
+	
 	/**
 	 * @property width
 	 * @type Number
 	 * @default 0
 	 */
 	this.width = width || 0;
-
+	
 	/**
 	 * @property height
 	 * @type Number
@@ -183,7 +183,7 @@ PIXI.Rectangle.prototype.contains = function(x, y)
 	if(x >= x1 && x <= x1 + this.width)
 	{
 		var y1 = this.y;
-
+		
 		if(y >= y1 && y <= y1 + this.height)
 		{
 			return true;
@@ -296,7 +296,7 @@ PIXI.Circle = function(x, y, radius)
      * @default 0
      */
     this.x = x || 0;
-
+    
     /**
      * @property y
      * @type Number
@@ -371,21 +371,21 @@ PIXI.Ellipse = function(x, y, width, height)
      * @default 0
      */
     this.x = x || 0;
-
+    
     /**
      * @property y
      * @type Number
      * @default 0
      */
     this.y = y || 0;
-
+    
     /**
      * @property width
      * @type Number
      * @default 0
      */
     this.width = width || 0;
-
+    
     /**
      * @property height
      * @type Number
@@ -466,7 +466,7 @@ PIXI.mat3.create = function()
 	matrix[6] = 0;
 	matrix[7] = 0;
 	matrix[8] = 1;
-
+	
 	return matrix;
 }
 
@@ -482,7 +482,7 @@ PIXI.mat3.identity = function(matrix)
 	matrix[6] = 0;
 	matrix[7] = 0;
 	matrix[8] = 1;
-
+	
 	return matrix;
 }
 
@@ -509,35 +509,35 @@ PIXI.mat4.create = function()
 	matrix[13] = 0;
 	matrix[14] = 0;
 	matrix[15] = 1;
-
+	
 	return matrix;
 }
 
-PIXI.mat3.multiply = function (mat, mat2, dest)
+PIXI.mat3.multiply = function (mat, mat2, dest) 
 {
 	if (!dest) { dest = mat; }
-
+	
 	// Cache the matrix values (makes for huge speed increases!)
 	var a00 = mat[0], a01 = mat[1], a02 = mat[2],
 	    a10 = mat[3], a11 = mat[4], a12 = mat[5],
 	    a20 = mat[6], a21 = mat[7], a22 = mat[8],
-
+	
 	    b00 = mat2[0], b01 = mat2[1], b02 = mat2[2],
 	    b10 = mat2[3], b11 = mat2[4], b12 = mat2[5],
 	    b20 = mat2[6], b21 = mat2[7], b22 = mat2[8];
-
+	
 	dest[0] = b00 * a00 + b01 * a10 + b02 * a20;
 	dest[1] = b00 * a01 + b01 * a11 + b02 * a21;
 	dest[2] = b00 * a02 + b01 * a12 + b02 * a22;
-
+	
 	dest[3] = b10 * a00 + b11 * a10 + b12 * a20;
 	dest[4] = b10 * a01 + b11 * a11 + b12 * a21;
 	dest[5] = b10 * a02 + b11 * a12 + b12 * a22;
-
+	
 	dest[6] = b20 * a00 + b21 * a10 + b22 * a20;
 	dest[7] = b20 * a01 + b21 * a11 + b22 * a21;
 	dest[8] = b20 * a02 + b21 * a12 + b22 * a22;
-
+	
 	return dest;
 }
 
@@ -554,11 +554,11 @@ PIXI.mat3.clone = function(mat)
 	matrix[6] = mat[6];
 	matrix[7] = mat[7];
 	matrix[8] = mat[8];
-
+	
 	return matrix;
 }
 
-PIXI.mat3.transpose = function (mat, dest)
+PIXI.mat3.transpose = function (mat, dest) 
 {
  	// If we are transposing ourselves we can skip a few steps but have to cache some values
     if (!dest || mat === dest) {
@@ -586,30 +586,30 @@ PIXI.mat3.transpose = function (mat, dest)
     return dest;
 }
 
-PIXI.mat3.toMat4 = function (mat, dest)
+PIXI.mat3.toMat4 = function (mat, dest) 
 {
 	if (!dest) { dest = PIXI.mat4.create(); }
-
+	
 	dest[15] = 1;
 	dest[14] = 0;
 	dest[13] = 0;
 	dest[12] = 0;
-
+	
 	dest[11] = 0;
 	dest[10] = mat[8];
 	dest[9] = mat[7];
 	dest[8] = mat[6];
-
+	
 	dest[7] = 0;
 	dest[6] = mat[5];
 	dest[5] = mat[4];
 	dest[4] = mat[3];
-
+	
 	dest[3] = 0;
 	dest[2] = mat[2];
 	dest[1] = mat[1];
 	dest[0] = mat[0];
-
+	
 	return dest;
 }
 
@@ -637,19 +637,19 @@ PIXI.mat4.create = function()
 	matrix[13] = 0;
 	matrix[14] = 0;
 	matrix[15] = 1;
-
+	
 	return matrix;
 }
 
-PIXI.mat4.transpose = function (mat, dest)
+PIXI.mat4.transpose = function (mat, dest) 
 {
 	// If we are transposing ourselves we can skip a few steps but have to cache some values
-	if (!dest || mat === dest)
+	if (!dest || mat === dest) 
 	{
 	    var a01 = mat[1], a02 = mat[2], a03 = mat[3],
 	        a12 = mat[6], a13 = mat[7],
 	        a23 = mat[11];
-
+	
 	    mat[1] = mat[4];
 	    mat[2] = mat[8];
 	    mat[3] = mat[12];
@@ -664,7 +664,7 @@ PIXI.mat4.transpose = function (mat, dest)
 	    mat[14] = a23;
 	    return mat;
 	}
-
+	
 	dest[0] = mat[0];
 	dest[1] = mat[4];
 	dest[2] = mat[8];
@@ -684,18 +684,18 @@ PIXI.mat4.transpose = function (mat, dest)
 	return dest;
 }
 
-PIXI.mat4.multiply = function (mat, mat2, dest)
+PIXI.mat4.multiply = function (mat, mat2, dest) 
 {
 	if (!dest) { dest = mat; }
-
+	
 	// Cache the matrix values (makes for huge speed increases!)
 	var a00 = mat[ 0], a01 = mat[ 1], a02 = mat[ 2], a03 = mat[3];
 	var a10 = mat[ 4], a11 = mat[ 5], a12 = mat[ 6], a13 = mat[7];
 	var a20 = mat[ 8], a21 = mat[ 9], a22 = mat[10], a23 = mat[11];
 	var a30 = mat[12], a31 = mat[13], a32 = mat[14], a33 = mat[15];
-
+	
 	// Cache only the current line of the second matrix
-    var b0  = mat2[0], b1 = mat2[1], b2 = mat2[2], b3 = mat2[3];
+    var b0  = mat2[0], b1 = mat2[1], b2 = mat2[2], b3 = mat2[3];  
     dest[0] = b0*a00 + b1*a10 + b2*a20 + b3*a30;
     dest[1] = b0*a01 + b1*a11 + b2*a21 + b3*a31;
     dest[2] = b0*a02 + b1*a12 + b2*a22 + b3*a32;
@@ -783,7 +783,7 @@ PIXI.DisplayObject = function()
 	 *
 	 * @property alpha
 	 * @type Number
-	 */
+	 */	
 	this.alpha = 1;
 
 	/**
@@ -791,7 +791,7 @@ PIXI.DisplayObject = function()
 	 *
 	 * @property visible
 	 * @type Boolean
-	 */
+	 */	
 	this.visible = true;
 
 	/**
@@ -800,7 +800,7 @@ PIXI.DisplayObject = function()
 	 *
 	 * @property hitArea
 	 * @type Rectangle|Circle|Ellipse|Polygon
-	 */
+	 */	
 	this.hitArea = null;
 
 	/**
@@ -825,7 +825,7 @@ PIXI.DisplayObject = function()
 	 * @property worldVisible
 	 * @type Boolean
 	 * @readOnly
-	 */
+	 */	
 	this.worldVisible = false;
 
 	/**
@@ -834,7 +834,7 @@ PIXI.DisplayObject = function()
 	 * @property parent
 	 * @type DisplayObjectContainer
 	 * @readOnly
-	 */
+	 */	
 	this.parent = null;
 
 	/**
@@ -843,7 +843,7 @@ PIXI.DisplayObject = function()
 	 * @property stage
 	 * @type Stage
 	 * @readOnly
-	 */
+	 */	
 	this.stage = null;
 
 	/**
@@ -852,7 +852,7 @@ PIXI.DisplayObject = function()
 	 * @property childIndex
 	 * @type Number
 	 * @readOnly
-	 */
+	 */	
 	this.childIndex = 0;
 
 	/**
@@ -1030,7 +1030,7 @@ Object.defineProperty(PIXI.DisplayObject.prototype, 'interactive', {
     },
     set: function(value) {
     	this._interactive = value;
-
+    	
     	// TODO more to be done here..
 		// need to sort out a re-crawl!
 		if(this.stage)this.stage.dirty = true;
@@ -1050,9 +1050,9 @@ Object.defineProperty(PIXI.DisplayObject.prototype, 'mask', {
         return this._mask;
     },
     set: function(value) {
-
+    	
         this._mask = value;
-
+        
         if(value)
         {
 	        this.addFilter(value)
@@ -1075,78 +1075,78 @@ PIXI.DisplayObject.prototype.addFilter = function(mask)
 {
 	if(this.filter)return;
 	this.filter = true;
-
-
+	
+	
 	// insert a filter block..
 	var start = new PIXI.FilterBlock();
 	var end = new PIXI.FilterBlock();
-
-
+	
+	
 	start.mask = mask;
 	end.mask = mask;
-
+	
 	start.first = start.last =  this;
 	end.first = end.last = this;
-
+	
 	start.open = true;
-
+	
 	/*
-	 *
+	 * 
 	 * insert start
-	 *
+	 * 
 	 */
-
+	
 	var childFirst = start
 	var childLast = start
 	var nextObject;
 	var previousObject;
-
+		
 	previousObject = this.first._iPrev;
-
+	
 	if(previousObject)
 	{
 		nextObject = previousObject._iNext;
 		childFirst._iPrev = previousObject;
-		previousObject._iNext = childFirst;
+		previousObject._iNext = childFirst;		
 	}
 	else
 	{
 		nextObject = this;
-	}
-
+	}	
+	
 	if(nextObject)
 	{
 		nextObject._iPrev = childLast;
 		childLast._iNext = nextObject;
 	}
-
-
+	
+	
 	// now insert the end filter block..
-
+	
 	/*
-	 *
+	 * 
 	 * insert end filter
-	 *
+	 * 
 	 */
 	var childFirst = end
 	var childLast = end
 	var nextObject = null;
 	var previousObject = null;
-
+		
 	previousObject = this.last;
 	nextObject = previousObject._iNext;
-
+	
 	if(nextObject)
 	{
 		nextObject._iPrev = childLast;
 		childLast._iNext = nextObject;
 	}
-
+	
 	childFirst._iPrev = previousObject;
-	previousObject._iNext = childFirst;
-
+	previousObject._iNext = childFirst;	
+	
 	var updateLast = this;
-
+	
 	var prevLast = this.last;
 	while(updateLast)
 	{
@@ -1156,17 +1156,17 @@ PIXI.DisplayObject.prototype.addFilter = function(mask)
 		}
 		updateLast = updateLast.parent;
 	}
-
+	
 	this.first = start;
-
+	
 	// if webGL...
 	if(this.__renderGroup)
 	{
 		this.__renderGroup.addFilterBlocks(start, end);
 	}
-
+	
 	mask.renderable = false;
-
+	
 }
 
 /*
@@ -1179,32 +1179,32 @@ PIXI.DisplayObject.prototype.removeFilter = function()
 {
 	if(!this.filter)return;
 	this.filter = false;
-
+	
 	// modify the list..
 	var startBlock = this.first;
-
+	
 	var nextObject = startBlock._iNext;
 	var previousObject = startBlock._iPrev;
-
+		
 	if(nextObject)nextObject._iPrev = previousObject;
-	if(previousObject)previousObject._iNext = nextObject;
-
+	if(previousObject)previousObject._iNext = nextObject;		
+	
 	this.first = startBlock._iNext;
-
-
+	
+	
 	// remove the end filter
 	var lastBlock = this.last;
-
+	
 	var nextObject = lastBlock._iNext;
 	var previousObject = lastBlock._iPrev;
-
+		
 	if(nextObject)nextObject._iPrev = previousObject;
-	previousObject._iNext = nextObject;
-
+	previousObject._iNext = nextObject;		
+	
 	// this is always true too!
 //	if(this.last == lastBlock)
 	//{
-	var tempLast =  lastBlock._iPrev;
+	var tempLast =  lastBlock._iPrev;	
 	// need to make sure the parents last is updated too
 	var updateLast = this;
 	while(updateLast.last == lastBlock)
@@ -1213,10 +1213,10 @@ PIXI.DisplayObject.prototype.removeFilter = function()
 		updateLast = updateLast.parent;
 		if(!updateLast)break;
 	}
-
+	
 	var mask = startBlock.mask
 	mask.renderable = true;
-
+	
 	// if webGL...
 	if(this.__renderGroup)
 	{
@@ -1239,8 +1239,8 @@ PIXI.DisplayObject.prototype.updateTransform = function()
 		this.rotationCache = this.rotation;
 		this._sr =  Math.sin(this.rotation);
 		this._cr =  Math.cos(this.rotation);
-	}
-
+	}	
+	
 	var localTransform = this.localTransform;
 	var parentTransform = this.parent.worldTransform;
 	var worldTransform = this.worldTransform;
@@ -1249,12 +1249,12 @@ PIXI.DisplayObject.prototype.updateTransform = function()
 	localTransform[1] = -this._sr * this.scale.y
 	localTransform[3] = this._sr * this.scale.x;
 	localTransform[4] = this._cr * this.scale.y;
-
+	
 	// TODO --> do we even need a local matrix???
-
+	
 	var px = this.pivot.x;
 	var py = this.pivot.y;
-
+   	
     // Cache the matrix values (makes for huge speed increases!)
     var a00 = localTransform[0], a01 = localTransform[1], a02 = this.position.x - localTransform[0] * px - py * localTransform[1],
         a10 = localTransform[3], a11 = localTransform[4], a12 = this.position.y - localTransform[4] * py - px * localTransform[3],
@@ -1264,7 +1264,7 @@ PIXI.DisplayObject.prototype.updateTransform = function()
 
 	localTransform[2] = a02
 	localTransform[5] = a12
-
+	
     worldTransform[0] = b00 * a00 + b01 * a10;
     worldTransform[1] = b00 * a01 + b01 * a11;
     worldTransform[2] = b00 * a02 + b01 * a12 + b02;
@@ -1288,21 +1288,21 @@ PIXI.DisplayObject.prototype.updateTransform = function()
  * A DisplayObjectContainer represents a collection of display objects.
  * It is the base class of all display objects that act as a container for other objects.
  *
- * @class DisplayObjectContainer
+ * @class DisplayObjectContainer 
  * @extends DisplayObject
  * @constructor
  */
 PIXI.DisplayObjectContainer = function()
 {
 	PIXI.DisplayObject.call( this );
-
+	
 	/**
 	 * [read-only] The of children of this container.
 	 *
 	 * @property children
 	 * @type Array<DisplayObject>
 	 * @readOnly
-	 */
+	 */	
 	this.children = [];
 }
 
@@ -1318,7 +1318,7 @@ Object.defineProperty(PIXI.DisplayObjectContainer.prototype, 'visible', {
     },
     set: function(value) {
         this._visible = value;
-
+        
     }
 });*/
 
@@ -1332,7 +1332,7 @@ PIXI.DisplayObjectContainer.prototype.addChild = function(child)
 {
 	if(child.parent != undefined)
 	{
-
+		
 		//// COULD BE THIS???
 		child.parent.removeChild(child);
 	//	return;
@@ -1340,11 +1340,11 @@ PIXI.DisplayObjectContainer.prototype.addChild = function(child)
 
 	child.parent = this;
 	child.childIndex = this.children.length;
-
-	this.children.push(child);
-
+	
+	this.children.push(child);	
+	
 	// updae the stage refference..
-
+	
 	if(this.stage)
 	{
 		var tmpChild = child;
@@ -1353,18 +1353,18 @@ PIXI.DisplayObjectContainer.prototype.addChild = function(child)
 			if(tmpChild.interactive)this.stage.dirty = true;
 			tmpChild.stage = this.stage;
 			tmpChild = tmpChild._iNext;
-		}
+		}	
 		while(tmpChild)
 	}
-
+	
 	// LINKED LIST //
-
+	
 	// modify the list..
 	var childFirst = child.first
 	var childLast = child.last;
 	var nextObject;
 	var previousObject;
-
+	
 	// this could be wrong if there is a filter??
 	if(this.filter)
 	{
@@ -1376,13 +1376,13 @@ PIXI.DisplayObjectContainer.prototype.addChild = function(child)
 	}
 
 	nextObject = previousObject._iNext;
-
+	
 	// always true in this case
 	//this.last = child.last;
 	// need to make sure the parents last is updated too
 	var updateLast = this;
 	var prevLast = previousObject;
-
+	
 	while(updateLast)
 	{
 		if(updateLast.last == prevLast)
@@ -1391,15 +1391,15 @@ PIXI.DisplayObjectContainer.prototype.addChild = function(child)
 		}
 		updateLast = updateLast.parent;
 	}
-
+	
 	if(nextObject)
 	{
 		nextObject._iPrev = childLast;
 		childLast._iNext = nextObject;
 	}
-
+	
 	childFirst._iPrev = previousObject;
-	previousObject._iNext = childFirst;
+	previousObject._iNext = childFirst;		
 
 	// need to remove any render groups..
 	if(this.__renderGroup)
@@ -1409,7 +1409,7 @@ PIXI.DisplayObjectContainer.prototype.addChild = function(child)
 		// add them to the new render group..
 		this.__renderGroup.addDisplayObjectAndChildren(child);
 	}
-
+	
 }
 
 /**
@@ -1428,7 +1428,7 @@ PIXI.DisplayObjectContainer.prototype.addChildAt = function(child, index)
 			child.parent.removeChild(child);
 		}
 		child.parent = this;
-
+		
 		if(this.stage)
 		{
 			var tmpChild = child;
@@ -1440,13 +1440,13 @@ PIXI.DisplayObjectContainer.prototype.addChildAt = function(child, index)
 			}
 			while(tmpChild)
 		}
-
+		
 		// modify the list..
 		var childFirst = child.first
 		var childLast = child.last;
 		var nextObject;
 		var previousObject;
-
+		
 		if(index == this.children.length)
 		{
 			previousObject =  this.last;
@@ -1469,18 +1469,18 @@ PIXI.DisplayObjectContainer.prototype.addChildAt = function(child, index)
 		{
 			previousObject = this.children[index-1].last;
 		}
-
+		
 		nextObject = previousObject._iNext;
-
+		
 		// always true in this case
 		if(nextObject)
 		{
 			nextObject._iPrev = childLast;
 			childLast._iNext = nextObject;
 		}
-
+		
 		childFirst._iPrev = previousObject;
-		previousObject._iNext = childFirst;
+		previousObject._iNext = childFirst;		
 
 		this.children.splice(index, 0, child);
 		// need to remove any render groups..
@@ -1491,7 +1491,7 @@ PIXI.DisplayObjectContainer.prototype.addChildAt = function(child, index)
 			// add them to the new render group..
 			this.__renderGroup.addDisplayObjectAndChildren(child);
 		}
-
+		
 	}
 	else
 	{
@@ -1510,21 +1510,21 @@ PIXI.DisplayObjectContainer.prototype.addChildAt = function(child, index)
 PIXI.DisplayObjectContainer.prototype.swapChildren = function(child, child2)
 {
 	/*
-	 * this funtion needs to be recoded..
+	 * this funtion needs to be recoded.. 
 	 * can be done a lot faster..
 	 */
 	return;
-
+	
 	// need to fix this function :/
 	/*
 	// TODO I already know this??
 	var index = this.children.indexOf( child );
 	var index2 = this.children.indexOf( child2 );
-
-	if ( index !== -1 && index2 !== -1 )
+	
+	if ( index !== -1 && index2 !== -1 ) 
 	{
 		// cool
-
+		
 		/*
 		if(this.stage)
 		{
@@ -1532,15 +1532,15 @@ PIXI.DisplayObjectContainer.prototype.swapChildren = function(child, child2)
 			// TODO sure there is a nicer way to achieve this!
 			this.stage.__removeChild(child);
 			this.stage.__removeChild(child2);
-
+			
 			this.stage.__addChild(child);
 			this.stage.__addChild(child2);
 		}
-
+		
 		// swap the positions..
 		this.children[index] = child2;
 		this.children[index2] = child;
-
+		
 	}
 	else
 	{
@@ -1575,22 +1575,22 @@ PIXI.DisplayObjectContainer.prototype.getChildAt = function(index)
 PIXI.DisplayObjectContainer.prototype.removeChild = function(child)
 {
 	var index = this.children.indexOf( child );
-	if ( index !== -1 )
+	if ( index !== -1 ) 
 	{
 		// unlink //
 		// modify the list..
 		var childFirst = child.first
 		var childLast = child.last;
-
+		
 		var nextObject = childLast._iNext;
 		var previousObject = childFirst._iPrev;
-
+			
 		if(nextObject)nextObject._iPrev = previousObject;
-		previousObject._iNext = nextObject;
-
+		previousObject._iNext = nextObject;		
+		
 		if(this.last == childLast)
 		{
-			var tempLast =  childFirst._iPrev;
+			var tempLast =  childFirst._iPrev;	
 			// need to make sure the parents last is updated too
 			var updateLast = this;
 			while(updateLast.last == childLast.last)
@@ -1600,10 +1600,10 @@ PIXI.DisplayObjectContainer.prototype.removeChild = function(child)
 				if(!updateLast)break;
 			}
 		}
-
+		
 		childLast._iNext = null;
 		childFirst._iPrev = null;
-
+		 
 		// update the stage reference..
 		if(this.stage)
 		{
@@ -1613,16 +1613,16 @@ PIXI.DisplayObjectContainer.prototype.removeChild = function(child)
 				if(tmpChild.interactive)this.stage.dirty = true;
 				tmpChild.stage = null;
 				tmpChild = tmpChild._iNext;
-			}
+			}	
 			while(tmpChild)
 		}
-
+	
 		// webGL trim
 		if(child.__renderGroup)
 		{
 			child.__renderGroup.removeDisplayObjectAndChildren(child);
 		}
-
+		
 		child.parent = undefined;
 		this.children.splice( index, 1 );
 	}
@@ -1641,12 +1641,12 @@ PIXI.DisplayObjectContainer.prototype.removeChild = function(child)
 PIXI.DisplayObjectContainer.prototype.updateTransform = function()
 {
 	if(!this.visible)return;
-
+	
 	PIXI.DisplayObject.prototype.updateTransform.call( this );
-
+	
 	for(var i=0,j=this.children.length; i<j; i++)
 	{
-		this.children[i].updateTransform();
+		this.children[i].updateTransform();	
 	}
 }
 
@@ -1674,7 +1674,7 @@ PIXI.Sprite = function(texture)
 
 	/**
 	 * The anchor sets the origin point of the texture.
-	 * The default is 0,0 this means the textures origin is the top left
+	 * The default is 0,0 this means the textures origin is the top left 
 	 * Setting than anchor to 0.5,0.5 means the textures origin is centered
 	 * Setting the anchor to 1,1 would mean the textures origin points will be the bottom right
 	 *
@@ -1778,9 +1778,9 @@ PIXI.Sprite.prototype.setTexture = function(texture)
 	// stop current texture;
 	if(this.texture.baseTexture != texture.baseTexture)
 	{
-		this.textureChange = true;
+		this.textureChange = true;	
 	}
-
+	
 	this.texture = texture;
 	this.updateFrame = true;
 }
@@ -1795,18 +1795,18 @@ PIXI.Sprite.prototype.setTexture = function(texture)
 PIXI.Sprite.prototype.onTextureUpdate = function(event)
 {
 	//this.texture.removeEventListener( 'update', this.onTextureUpdateBind );
-
+	
 	// so if _width is 0 then width was not set..
 	if(this._width)this.scale.x = this._width / this.texture.frame.width;
 	if(this._height)this.scale.y = this._height / this.texture.frame.height;
-
+	
 	this.updateFrame = true;
 }
 
 // some helper functions..
 
 /**
- *
+ * 
  * Helper function that creates a sprite that will contain a texture from the TextureCache based on the frameId
  * The frame ids are created when a Texture packer file has been loaded
  *
@@ -1823,7 +1823,7 @@ PIXI.Sprite.fromFrame = function(frameId)
 }
 
 /**
- *
+ * 
  * Helper function that creates a sprite that will contain a texture based on an image url
  * If the image is not in the texture cache it will be loaded
  *
@@ -1854,7 +1854,7 @@ PIXI.Sprite.fromImage = function(imageId)
 PIXI.MovieClip = function(textures)
 {
 	PIXI.Sprite.call(this, textures[0]);
-
+	
 	/**
 	 * The array of textures that make up the animation
 	 *
@@ -1862,7 +1862,7 @@ PIXI.MovieClip = function(textures)
 	 * @type Array
 	 */
 	this.textures = textures;
-
+	
 	/**
 	 * The speed that the MovieClip will play at. Higher is faster, lower is slower
 	 *
@@ -1888,7 +1888,7 @@ PIXI.MovieClip = function(textures)
 	 * @type Function
 	 */
 	this.onComplete = null;
-
+	
 	/**
 	 * [read-only] The index MovieClips current frame (this may not have to be a whole number)
 	 *
@@ -1897,8 +1897,8 @@ PIXI.MovieClip = function(textures)
 	 * @default 0
 	 * @readOnly
 	 */
-	this.currentFrame = 0;
-
+	this.currentFrame = 0; 
+	
 	/**
 	 * [read-only] Indicates if the MovieClip is currently playing
 	 *
@@ -1968,9 +1968,9 @@ PIXI.MovieClip.prototype.gotoAndPlay = function(frameNumber)
 PIXI.MovieClip.prototype.updateTransform = function()
 {
 	PIXI.Sprite.prototype.updateTransform.call(this);
-
+	
 	if(!this.playing)return;
-
+	
 	this.currentFrame += this.animationSpeed;
 	var round = (this.currentFrame + 0.5) | 0;
 	if(this.loop || round < this.textures.length)
@@ -2028,7 +2028,7 @@ PIXI.Text = function(text, style)
 
     this.setText(text);
     this.setStyle(style);
-
+    
     this.updateText();
     this.dirty = false;
 };
@@ -2085,9 +2085,9 @@ PIXI.Sprite.prototype.setText = function(text)
 PIXI.Text.prototype.updateText = function()
 {
 	this.context.font = this.style.font;
-
+	
 	var outputText = this.text;
-
+	
 	// word wrap
 	// preserve original text
 	if(this.style.wordWrap)outputText = this.wordWrap(this.text);
@@ -2105,7 +2105,7 @@ PIXI.Text.prototype.updateText = function()
 		maxLineWidth = Math.max(maxLineWidth, lineWidth);
 	}
 	this.canvas.width = maxLineWidth + this.style.strokeThickness;
-
+	
 	//calculate text height
 	var lineHeight = this.determineFontHeight("font: " + this.style.font  + ";") + this.style.strokeThickness;
 	this.canvas.height = lineHeight * lines.length;
@@ -2113,7 +2113,7 @@ PIXI.Text.prototype.updateText = function()
 	//set canvas text styles
 	this.context.fillStyle = this.style.fill;
 	this.context.font = this.style.font;
-
+	
 	this.context.strokeStyle = this.style.stroke;
 	this.context.lineWidth = this.style.strokeThickness;
 
@@ -2123,7 +2123,7 @@ PIXI.Text.prototype.updateText = function()
 	for (i = 0; i < lines.length; i++)
 	{
 		var linePosition = new PIXI.Point(this.style.strokeThickness / 2, this.style.strokeThickness / 2 + i * lineHeight);
-
+	
 		if(this.style.align == "right")
 		{
 			linePosition.x += maxLineWidth - lineWidths[i];
@@ -2143,7 +2143,7 @@ PIXI.Text.prototype.updateText = function()
 			this.context.fillText(lines[i], linePosition.x, linePosition.y);
 		}
 	}
-
+	
     this.updateTexture();
 };
 
@@ -2159,10 +2159,10 @@ PIXI.Text.prototype.updateTexture = function()
     this.texture.baseTexture.height = this.canvas.height;
     this.texture.frame.width = this.canvas.width;
     this.texture.frame.height = this.canvas.height;
-
+    
   	this._width = this.canvas.width;
     this._height = this.canvas.height;
-
+	
     PIXI.texturesToUpdate.push(this.texture.baseTexture);
 };
 
@@ -2176,10 +2176,10 @@ PIXI.Text.prototype.updateTransform = function()
 {
 	if(this.dirty)
 	{
-		this.updateText();
+		this.updateText();	
 		this.dirty = false;
 	}
-
+	
 	PIXI.Sprite.prototype.updateTransform.call(this);
 };
 
@@ -2191,12 +2191,12 @@ PIXI.Text.prototype.updateTransform = function()
  * @param fontStyle {Object}
  * @private
  */
-PIXI.Text.prototype.determineFontHeight = function(fontStyle)
+PIXI.Text.prototype.determineFontHeight = function(fontStyle) 
 {
 	// build a little reference dictionary so if the font style has been used return a
 	// cached version...
 	var result = PIXI.Text.heightCache[fontStyle];
-
+	
 	if(!result)
 	{
 		var body = document.getElementsByTagName("body")[0];
@@ -2205,13 +2205,13 @@ PIXI.Text.prototype.determineFontHeight = function(fontStyle)
 		dummy.appendChild(dummyText);
 		dummy.setAttribute("style", fontStyle + ';position:absolute;top:0;left:0');
 		body.appendChild(dummy);
-
+		
 		result = dummy.offsetHeight;
 		PIXI.Text.heightCache[fontStyle] = result;
-
+		
 		body.removeChild(dummy);
 	}
-
+	
 	return result;
 };
 
@@ -2231,7 +2231,7 @@ PIXI.Text.prototype.wordWrap = function(text)
 		if(p == start) {
 			return 1;
 		}
-
+		
 		if(ctx.measureText(text.substring(0,p)).width <= wrapWidth)
 		{
 			if(ctx.measureText(text.substring(0,p+1)).width > wrapWidth)
@@ -2248,7 +2248,7 @@ PIXI.Text.prototype.wordWrap = function(text)
 			return arguments.callee(ctx, text, start, p, wrapWidth);
 		}
 	};
-
+	 
 	var lineWrap = function(ctx, text, wrapWidth)
 	{
 		if(ctx.measureText(text).width <= wrapWidth || text.length < 1)
@@ -2258,14 +2258,14 @@ PIXI.Text.prototype.wordWrap = function(text)
 		var pos = searchWrapPos(ctx, text, 0, text.length, wrapWidth);
 		return text.substring(0, pos) + "\n" + arguments.callee(ctx, text.substring(pos), wrapWidth);
 	};
-
+	
 	var result = "";
 	var lines = text.split("\n");
 	for (var i = 0; i < lines.length; i++)
 	{
 		result += lineWrap(this.context, lines[i], this.style.wordWrapWidth) + "\n";
 	}
-
+	
 	return result;
 };
 
@@ -2281,7 +2281,7 @@ PIXI.Text.prototype.destroy = function(destroyTexture)
 	{
 		this.texture.destroy();
 	}
-
+		
 };
 
 PIXI.Text.heightCache = {};
@@ -2292,7 +2292,7 @@ PIXI.Text.heightCache = {};
 
 /**
  * A Text Object will create a line(s) of text using bitmap font. To split a line you can use "\n", "\r" or "\r\n"
- * You can generate the fnt files using
+ * You can generate the fnt files using 
  * http://www.angelcode.com/products/bmfont/ for windows or
  * http://www.bmglyph.com/ for mac.
  *
@@ -2382,7 +2382,7 @@ PIXI.BitmapText.prototype.updateText = function()
             prevCharCode = null;
             continue;
         }
-
+        
         var charData = data.chars[charCode];
         if(!charData) continue;
 
@@ -2445,7 +2445,7 @@ PIXI.BitmapText.prototype.updateTransform = function()
 
         this.dirty = false;
 	}
-
+	
 	PIXI.DisplayObjectContainer.prototype.updateTransform.call(this);
 };
 
@@ -2520,12 +2520,12 @@ PIXI.InteractionManager.prototype.collectInteractiveSprite = function(displayObj
 {
 	var children = displayObject.children;
 	var length = children.length;
-
+	
 	/// make an interaction tree... {item.__interactiveParent}
 	for (var i = length-1; i >= 0; i--)
 	{
 		var child = children[i];
-
+		
 		if(child.visible) {
 			// push all interactive bits
 			if(child.interactive)
@@ -2561,21 +2561,21 @@ PIXI.InteractionManager.prototype.collectInteractiveSprite = function(displayObj
  */
 PIXI.InteractionManager.prototype.setTarget = function(target)
 {
-	if (window.navigator.msPointerEnabled)
+	if (window.navigator.msPointerEnabled) 
 	{
 		// time to remove some of that zoom in ja..
 		target.view.style["-ms-content-zooming"] = "none";
     	target.view.style["-ms-touch-action"] = "none"
-
+    
 		// DO some window specific touch!
 	}
-
+	
 	this.target = target;
 	target.view.addEventListener('mousemove',  this.onMouseMove.bind(this), true);
 	target.view.addEventListener('mousedown',  this.onMouseDown.bind(this), true);
  	document.body.addEventListener('mouseup',  this.onMouseUp.bind(this), true);
  	target.view.addEventListener('mouseout',   this.onMouseUp.bind(this), true);
-
+	
 	// aint no multi touch just yet!
 	target.view.addEventListener("touchstart", this.onTouchStart.bind(this), true);
 	target.view.addEventListener("touchend", this.onTouchEnd.bind(this), true);
@@ -2591,7 +2591,7 @@ PIXI.InteractionManager.prototype.setTarget = function(target)
 PIXI.InteractionManager.prototype.update = function()
 {
 	if(!this.target)return;
-
+	
 	// frequency of 30fps??
 	var now = Date.now();
 	var diff = now - this.last;
@@ -2599,42 +2599,42 @@ PIXI.InteractionManager.prototype.update = function()
 	if(diff < 1)return;
 	this.last = now;
 	//
-
+	
 	// ok.. so mouse events??
 	// yes for now :)
 	// OPTIMSE - how often to check??
 	if(this.dirty)
 	{
 		this.dirty = false;
-
+		
 		var len = this.interactiveItems.length;
-
+		
 		for (var i=0; i < len; i++) {
 		  this.interactiveItems[i].interactiveChildren = false;
 		}
-
+		
 		this.interactiveItems = [];
-
+		
 		if(this.stage.interactive)this.interactiveItems.push(this.stage);
 		// go through and collect all the objects that are interactive..
 		this.collectInteractiveSprite(this.stage, this.stage);
 	}
-
+	
 	// loop through interactive objects!
 	var length = this.interactiveItems.length;
-
-	this.target.view.style.cursor = "default";
-
+	
+	this.target.view.style.cursor = "default";	
+				
 	for (var i = 0; i < length; i++)
 	{
 		var item = this.interactiveItems[i];
 		if(!item.visible)continue;
-
+		
 		// OPTIMISATION - only calculate every time if the mousemove function exists..
 		// OK so.. does the object have any other interactive functions?
 		// hit-test the clip!
-
-
+		
+		
 		if(item.mouseover || item.mouseout || item.buttonMode)
 		{
 			// ok so there are some functions so lets hit test it..
@@ -2644,13 +2644,13 @@ PIXI.InteractionManager.prototype.update = function()
 			// loks like there was a hit!
 			if(item.__hit)
 			{
-				if(item.buttonMode)this.target.view.style.cursor = "pointer";
-
+				if(item.buttonMode)this.target.view.style.cursor = "pointer";	
+				
 				if(!item.__isOver)
 				{
-
+					
 					if(item.mouseover)item.mouseover(this.mouse);
-					item.__isOver = true;
+					item.__isOver = true;	
 				}
 			}
 			else
@@ -2659,11 +2659,11 @@ PIXI.InteractionManager.prototype.update = function()
 				{
 					// roll out!
 					if(item.mouseout)item.mouseout(this.mouse);
-					item.__isOver = false;
+					item.__isOver = false;	
 				}
 			}
 		}
-
+		
 		// --->
 	}
 }
@@ -2680,18 +2680,18 @@ PIXI.InteractionManager.prototype.onMouseMove = function(event)
 	this.mouse.originalEvent = event || window.event; //IE uses window.event
 	// TODO optimize by not check EVERY TIME! maybe half as often? //
 	var rect = this.target.view.getBoundingClientRect();
-
+	
 	this.mouse.global.x = (event.clientX - rect.left) * (this.target.width / rect.width);
 	this.mouse.global.y = (event.clientY - rect.top) * ( this.target.height / rect.height);
-
+	
 	var length = this.interactiveItems.length;
 	var global = this.mouse.global;
-
-
+	
+	
 	for (var i = 0; i < length; i++)
 	{
 		var item = this.interactiveItems[i];
-
+		
 		if(item.mousemove)
 		{
 			//call the function!
@@ -2711,34 +2711,34 @@ PIXI.InteractionManager.prototype.onMouseDown = function(event)
 {
 	event.preventDefault();
 	this.mouse.originalEvent = event || window.event; //IE uses window.event
-
+	
 	// loop through inteaction tree...
-	// hit test each item! ->
+	// hit test each item! -> 
 	// get interactive items under point??
 	//stage.__i
 	var length = this.interactiveItems.length;
 	var global = this.mouse.global;
-
+	
 	var index = 0;
 	var parent = this.stage;
-
-	// while
-	// hit test
+	
+	// while 
+	// hit test 
 	for (var i = 0; i < length; i++)
 	{
 		var item = this.interactiveItems[i];
-
+		
 		if(item.mousedown || item.click)
 		{
 			item.__mouseIsDown = true;
 			item.__hit = this.hitTest(item, this.mouse);
-
+			
 			if(item.__hit)
 			{
 				//call the function!
 				if(item.mousedown)item.mousedown(this.mouse);
 				item.__isDown = true;
-
+				
 				// just the one!
 				if(!item.interactiveChildren)break;
 			}
@@ -2756,21 +2756,21 @@ PIXI.InteractionManager.prototype.onMouseDown = function(event)
 PIXI.InteractionManager.prototype.onMouseUp = function(event)
 {
 	this.mouse.originalEvent = event || window.event; //IE uses window.event
-
+	
 	var global = this.mouse.global;
-
-
+	
+	
 	var length = this.interactiveItems.length;
 	var up = false;
-
+	
 	for (var i = 0; i < length; i++)
 	{
 		var item = this.interactiveItems[i];
-
+		
 		if(item.mouseup || item.mouseupoutside || item.click)
 		{
 			item.__hit = this.hitTest(item, this.mouse);
-
+			
 			if(item.__hit && !up)
 			{
 				//call the function!
@@ -2782,7 +2782,7 @@ PIXI.InteractionManager.prototype.onMouseUp = function(event)
 				{
 					if(item.click)item.click(this.mouse);
 				}
-
+				
 				if(!item.interactiveChildren)up = true;
 			}
 			else
@@ -2792,8 +2792,8 @@ PIXI.InteractionManager.prototype.onMouseUp = function(event)
 					if(item.mouseupoutside)item.mouseupoutside(this.mouse);
 				}
 			}
-
-			item.__isDown = false;
+		
+			item.__isDown = false;	
 		}
 	}
 }
@@ -2809,7 +2809,7 @@ PIXI.InteractionManager.prototype.onMouseUp = function(event)
 PIXI.InteractionManager.prototype.hitTest = function(item, interactionData)
 {
 	var global = interactionData.global;
-
+	
 	if(!item.visible)return false;
 
 	var isSprite = (item instanceof PIXI.Sprite),
@@ -2821,7 +2821,7 @@ PIXI.InteractionManager.prototype.hitTest = function(item, interactionData)
 		y = a00 * id * global.y + -a10 * id * global.x + (-a12 * a00 + a02 * a10) * id;
 
 	interactionData.target = item;
-
+	
 	//a sprite or display object with a hit area defined
 	if(item.hitArea && item.hitArea.contains) {
 		if(item.hitArea.contains(x, y)) {
@@ -2830,7 +2830,7 @@ PIXI.InteractionManager.prototype.hitTest = function(item, interactionData)
 
 			return true;
 		}
-
+		
 		return false;
 	}
 	// a sprite with no hitarea defined
@@ -2840,11 +2840,11 @@ PIXI.InteractionManager.prototype.hitTest = function(item, interactionData)
 			height = item.texture.frame.height,
 			x1 = -width * item.anchor.x,
 			y1;
-
+		
 		if(x > x1 && x < x1 + width)
 		{
 			y1 = -height * item.anchor.y;
-
+		
 			if(y > y1 && y < y1 + height)
 			{
 				// set the target property if a hit is true!
@@ -2855,7 +2855,7 @@ PIXI.InteractionManager.prototype.hitTest = function(item, interactionData)
 	}
 
 	var length = item.children.length;
-
+	
 	for (var i = 0; i < length; i++)
 	{
 		var tempItem = item.children[i];
@@ -2868,7 +2868,7 @@ PIXI.InteractionManager.prototype.hitTest = function(item, interactionData)
 		}
 	}
 
-	return false;
+	return false;	
 }
 
 /**
@@ -2883,17 +2883,17 @@ PIXI.InteractionManager.prototype.onTouchMove = function(event)
 	this.mouse.originalEvent = event || window.event; //IE uses window.event
 	var rect = this.target.view.getBoundingClientRect();
 	var changedTouches = event.changedTouches;
-
-	for (var i=0; i < changedTouches.length; i++)
+	
+	for (var i=0; i < changedTouches.length; i++) 
 	{
 		var touchEvent = changedTouches[i];
 		var touchData = this.touchs[touchEvent.identifier];
-
+		
 		// update the touch position
 		touchData.global.x = (touchEvent.clientX - rect.left) * (this.target.width / rect.width);
 		touchData.global.y = (touchEvent.clientY - rect.top)  * (this.target.height / rect.height);
 	}
-
+	
 	var length = this.interactiveItems.length;
 	for (var i = 0; i < length; i++)
 	{
@@ -2913,38 +2913,38 @@ PIXI.InteractionManager.prototype.onTouchStart = function(event)
 {
 	event.preventDefault();
 	this.mouse.originalEvent = event || window.event; //IE uses window.event
-
+	
 	var rect = this.target.view.getBoundingClientRect();
-
+	
 	var changedTouches = event.changedTouches;
-	for (var i=0; i < changedTouches.length; i++)
+	for (var i=0; i < changedTouches.length; i++) 
 	{
 		var touchEvent = changedTouches[i];
-
+		
 		var touchData = this.pool.pop();
 		if(!touchData)touchData = new PIXI.InteractionData();
-
+		
 		this.touchs[touchEvent.identifier] = touchData;
 		touchData.global.x = (touchEvent.clientX - rect.left) * (this.target.width / rect.width);
 		touchData.global.y = (touchEvent.clientY - rect.top)  * (this.target.height / rect.height);
-
+		
 		var length = this.interactiveItems.length;
-
+		
 		for (var j = 0; j < length; j++)
 		{
 			var item = this.interactiveItems[j];
-
+			
 			if(item.touchstart || item.tap)
 			{
 				item.__hit = this.hitTest(item, touchData);
-
+				
 				if(item.__hit)
 				{
 					//call the function!
 					if(item.touchstart)item.touchstart(touchData);
 					item.__isDown = true;
 					item.__touchData = touchData;
-
+					
 					if(!item.interactiveChildren)break;
 				}
 			}
@@ -2964,28 +2964,28 @@ PIXI.InteractionManager.prototype.onTouchEnd = function(event)
 	this.mouse.originalEvent = event || window.event; //IE uses window.event
 	var rect = this.target.view.getBoundingClientRect();
 	var changedTouches = event.changedTouches;
-
-	for (var i=0; i < changedTouches.length; i++)
+	
+	for (var i=0; i < changedTouches.length; i++) 
 	{
 		var touchEvent = changedTouches[i];
 		var touchData = this.touchs[touchEvent.identifier];
 		var up = false;
 		touchData.global.x = (touchEvent.clientX - rect.left) * (this.target.width / rect.width);
 		touchData.global.y = (touchEvent.clientY - rect.top)  * (this.target.height / rect.height);
-
+		
 		var length = this.interactiveItems.length;
 		for (var j = 0; j < length; j++)
 		{
 			var item = this.interactiveItems[j];
 			var itemTouchData = item.__touchData; // <-- Here!
 			item.__hit = this.hitTest(item, touchData);
-
+		
 			if(itemTouchData == touchData)
 			{
 				// so this one WAS down...
-
+				
 				// hitTest??
-
+				
 				if(item.touchend || item.tap)
 				{
 					if(item.__hit && !up)
@@ -2995,7 +2995,7 @@ PIXI.InteractionManager.prototype.onTouchEnd = function(event)
 						{
 							if(item.tap)item.tap(touchData);
 						}
-
+						
 						if(!item.interactiveChildren)up = true;
 					}
 					else
@@ -3005,16 +3005,16 @@ PIXI.InteractionManager.prototype.onTouchEnd = function(event)
 							if(item.touchendoutside)item.touchendoutside(touchData);
 						}
 					}
-
+					
 					item.__isDown = false;
 				}
-
+				
 				item.__touchData = null;
-
+					
 			}
 			else
 			{
-
+				
 			}
 		}
 		// remove the touch..
@@ -3034,11 +3034,11 @@ PIXI.InteractionData = function()
 	/**
 	 * This point stores the global coords of where the touch/mouse event happened
 	 *
-	 * @property global
+	 * @property global 
 	 * @type Point
 	 */
 	this.global = new PIXI.Point();
-
+	
 	// this is here for legacy... but will remove
 	this.local = new PIXI.Point();
 
@@ -3070,7 +3070,7 @@ PIXI.InteractionData.prototype.getLocalPosition = function(displayObject)
 {
 	var worldTransform = displayObject.worldTransform;
 	var global = this.global;
-
+	
 	// do a cheeky transform to get the mouse coords;
 	var a00 = worldTransform[0], a01 = worldTransform[1], a02 = worldTransform[2],
         a10 = worldTransform[3], a11 = worldTransform[4], a12 = worldTransform[5],
@@ -3161,13 +3161,13 @@ PIXI.Stage.prototype.constructor = PIXI.Stage;
  */
 PIXI.Stage.prototype.updateTransform = function()
 {
-	this.worldAlpha = 1;
-
+	this.worldAlpha = 1;		
+	
 	for(var i=0,j=this.children.length; i<j; i++)
 	{
-		this.children[i].updateTransform();
+		this.children[i].updateTransform();	
 	}
-
+	
 	if(this.dirty)
 	{
 		this.dirty = false;
@@ -3208,26 +3208,26 @@ PIXI.Stage.prototype.getMousePosition = function()
 PIXI.Stage.prototype.__addChild = function(child)
 {
 	if(child.interactive)this.dirty = true;
-
+	
 	child.stage = this;
-
+	
 	if(child.children)
 	{
-		for (var i=0; i < child.children.length; i++)
+		for (var i=0; i < child.children.length; i++) 
 		{
 		  	this.__addChild(child.children[i]);
 		};
 	}
-
+	
 }
 
 
 PIXI.Stage.prototype.__removeChild = function(child)
 {
 	if(child.interactive)this.dirty = true;
-
+	
 	child.stage = undefined;
-
+	
 	if(child.children)
 	{
 		for(var i=0,j=child.children.length; i<j; i++)
@@ -3258,7 +3258,7 @@ var lastTime = 0;
 var vendors = ['ms', 'moz', 'webkit', 'o'];
 for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
     window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
-    window.cancelAnimationFrame = window[vendors[x]+'CancelAnimationFrame']
+    window.cancelAnimationFrame = window[vendors[x]+'CancelAnimationFrame'] 
                                || window[vendors[x]+'CancelRequestAnimationFrame'];
 }
 
@@ -3266,7 +3266,7 @@ if (!window.requestAnimationFrame)
     window.requestAnimationFrame = function(callback, element) {
         var currTime = new Date().getTime();
         var timeToCall = Math.max(0, 16 - (currTime - lastTime));
-        var id = window.setTimeout(function() { callback(currTime + timeToCall); },
+        var id = window.setTimeout(function() { callback(currTime + timeToCall); }, 
           timeToCall);
         lastTime = currTime + timeToCall;
         return id;
@@ -3299,19 +3299,19 @@ if (typeof Function.prototype.bind != 'function') {
     var slice = Array.prototype.slice;
     return function (thisArg) {
       var target = this, boundArgs = slice.call(arguments, 1);
-
+ 
       if (typeof target != 'function') throw new TypeError();
-
+ 
       function bound() {
 	var args = boundArgs.concat(slice.call(arguments));
 	target.apply(this instanceof bound ? this : thisArg, args);
       }
-
+ 
       bound.prototype = (function F(proto) {
           proto && (F.prototype = proto);
-          if (!(this instanceof F)) return new F;
+          if (!(this instanceof F)) return new F;          
 	})(target.prototype);
-
+ 
       return bound;
     };
   })();
@@ -3326,7 +3326,7 @@ if (typeof Function.prototype.bind != 'function') {
 var AjaxRequest = PIXI.AjaxRequest = function()
 {
 	var activexmodes = ["Msxml2.XMLHTTP", "Microsoft.XMLHTTP"] //activeX versions to check for in IE
-
+	
 	if (window.ActiveXObject)
 	{ //Test for support for ActiveXObject in IE first (as XMLHttpRequest in IE7 is broken)
 		for (var i=0; i<activexmodes.length; i++)
@@ -3359,7 +3359,7 @@ PIXI.runList = function(item)
 	var safe = 0;
 	var tmp = item.first;
 	console.log(tmp);
-
+	
 	while(tmp._iNext)
 	{
 		safe++;
@@ -3367,13 +3367,13 @@ PIXI.runList = function(item)
 		tmp = tmp._iNext;
 		console.log(tmp);//.childIndex);
 	//	console.log(tmp);
-
+	
 		if(safe > 100)
 		{
 			console.log("BREAK")
 			break
 		}
-	}
+	}	
 }
 
 
@@ -3401,14 +3401,14 @@ PIXI.runList = function(item)
 PIXI.EventTarget = function () {
 
 	var listeners = {};
-
+	
 	this.addEventListener = this.on = function ( type, listener ) {
-
-
+		
+		
 		if ( listeners[ type ] === undefined ) {
 
 			listeners[ type ] = [];
-
+			
 		}
 
 		if ( listeners[ type ].indexOf( listener ) === - 1 ) {
@@ -3419,11 +3419,11 @@ PIXI.EventTarget = function () {
 	};
 
 	this.dispatchEvent = this.emit = function ( event ) {
-
+		
 		for ( var listener in listeners[ event.type ] ) {
 
 			listeners[ event.type ][ listener ]( event );
-
+			
 		}
 
 	};
@@ -3481,7 +3481,7 @@ PIXI.autoDetectRenderer = function(width, height, view, transparent)
 	PolyK library
 	url: http://polyk.ivank.net
 	Released under MIT licence.
-
+	
 	Copyright (c) 2012 Ivan Kuckir
 
 	Permission is hereby granted, free of charge, to any person
@@ -3505,8 +3505,8 @@ PIXI.autoDetectRenderer = function(width, height, view, transparent)
 	FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 	OTHER DEALINGS IN THE SOFTWARE.
 
-	This is an amazing lib!
-
+	This is an amazing lib! 
+	
 	slightly modified by mat groves (matgroves.com);
 */
 
@@ -3522,13 +3522,13 @@ PIXI.PolyK = {};
 PIXI.PolyK.Triangulate = function(p)
 {
 	var sign = true;
-
+	
 	var n = p.length>>1;
 	if(n<3) return [];
 	var tgs = [];
 	var avl = [];
 	for(var i=0; i<n; i++) avl.push(i);
-
+	
 	var i = 0;
 	var al = n;
 	while(al > 3)
@@ -3536,11 +3536,11 @@ PIXI.PolyK.Triangulate = function(p)
 		var i0 = avl[(i+0)%al];
 		var i1 = avl[(i+1)%al];
 		var i2 = avl[(i+2)%al];
-
+		
 		var ax = p[2*i0],  ay = p[2*i0+1];
 		var bx = p[2*i1],  by = p[2*i1+1];
 		var cx = p[2*i2],  cy = p[2*i2+1];
-
+		
 		var earFound = false;
 		if(PIXI.PolyK._convex(ax, ay, bx, by, cx, cy, sign))
 		{
@@ -3559,7 +3559,7 @@ PIXI.PolyK.Triangulate = function(p)
 			al--;
 			i = 0;
 		}
-		else if(i++ > 3*al)
+		else if(i++ > 3*al) 
 		{
 			// need to flip flip reverse it!
 			// reset!
@@ -3568,17 +3568,17 @@ PIXI.PolyK.Triangulate = function(p)
 				var tgs = [];
 				avl = [];
 				for(var i=0; i<n; i++) avl.push(i);
-
+				
 				i = 0;
 				al = n;
-
+				
 				sign = false;
 			}
 			else
 			{
 				console.log("PIXI Warning: shape too complex to fill")
 				return [];
-			}
+			}				
 		}
 	}
 	tgs.push(avl[0], avl[1], avl[2]);
@@ -3600,13 +3600,13 @@ PIXI.PolyK._PointInTriangle = function(px, py, ax, ay, bx, by, cx, cy)
 	var v1y = by-ay;
 	var v2x = px-ax;
 	var v2y = py-ay;
-
+	
 	var dot00 = v0x*v0x+v0y*v0y;
 	var dot01 = v0x*v1x+v0y*v1y;
 	var dot02 = v0x*v2x+v0y*v2y;
 	var dot11 = v1x*v1x+v1y*v1y;
 	var dot12 = v1x*v2x+v1y*v2y;
-
+	
 	var invDenom = 1 / (dot00 * dot11 - dot01 * dot01);
 	var u = (dot11 * dot02 - dot01 * dot12) * invDenom;
 	var v = (dot00 * dot12 - dot01 * dot02) * invDenom;
@@ -3653,7 +3653,7 @@ PIXI.shaderVertexSrc = [
   "attribute vec2 aTextureCoord;",
   "attribute float aColor;",
   //"uniform mat4 uMVMatrix;",
-
+  
   "uniform vec2 projectionVector;",
   "varying vec2 vTextureCoord;",
   "varying float vColor;",
@@ -3725,30 +3725,30 @@ PIXI.primitiveShaderVertexSrc = [
   "}"
 ];
 
-PIXI.initPrimitiveShader = function()
+PIXI.initPrimitiveShader = function() 
 {
 	var gl = PIXI.gl;
 
 	var shaderProgram = PIXI.compileProgram(PIXI.primitiveShaderVertexSrc, PIXI.primitiveShaderFragmentSrc)
-
+	
     gl.useProgram(shaderProgram);
 
     shaderProgram.vertexPositionAttribute = gl.getAttribLocation(shaderProgram, "aVertexPosition");
     shaderProgram.colorAttribute = gl.getAttribLocation(shaderProgram, "aColor");
-
+    
     shaderProgram.projectionVector = gl.getUniformLocation(shaderProgram, "projectionVector");
     shaderProgram.translationMatrix = gl.getUniformLocation(shaderProgram, "translationMatrix");
-
+    
 	shaderProgram.alpha = gl.getUniformLocation(shaderProgram, "alpha");
 
 	PIXI.primitiveProgram = shaderProgram;
 }
 
-PIXI.initDefaultShader = function()
+PIXI.initDefaultShader = function() 
 {
 	var gl = this.gl;
 	var shaderProgram = PIXI.compileProgram(PIXI.shaderVertexSrc, PIXI.shaderFragmentSrc)
-
+	
     gl.useProgram(shaderProgram);
 
     shaderProgram.vertexPositionAttribute = gl.getAttribLocation(shaderProgram, "aVertexPosition");
@@ -3758,15 +3758,15 @@ PIXI.initDefaultShader = function()
 
    // shaderProgram.mvMatrixUniform = gl.getUniformLocation(shaderProgram, "uMVMatrix");
     shaderProgram.samplerUniform = gl.getUniformLocation(shaderProgram, "uSampler");
-
+    
 	PIXI.shaderProgram = shaderProgram;
 }
 
-PIXI.initDefaultStripShader = function()
+PIXI.initDefaultStripShader = function() 
 {
 	var gl = this.gl;
 	var shaderProgram = PIXI.compileProgram(PIXI.stripShaderVertexSrc, PIXI.stripShaderFragmentSrc)
-
+	
     gl.useProgram(shaderProgram);
 
     shaderProgram.vertexPositionAttribute = gl.getAttribLocation(shaderProgram, "aVertexPosition");
@@ -3778,9 +3778,9 @@ PIXI.initDefaultStripShader = function()
 	shaderProgram.colorAttribute = gl.getAttribLocation(shaderProgram, "aColor");
 
     shaderProgram.projectionVector = gl.getUniformLocation(shaderProgram, "projectionVector");
-
+    
     shaderProgram.samplerUniform = gl.getUniformLocation(shaderProgram, "uSampler");
-
+    
 	PIXI.stripShaderProgram = shaderProgram;
 }
 
@@ -3815,9 +3815,9 @@ PIXI.compileProgram = function(vertexSrc, fragmentSrc)
 	var gl = PIXI.gl;
 	var fragmentShader = PIXI.CompileFragmentShader(gl, fragmentSrc);
 	var vertexShader = PIXI.CompileVertexShader(gl, vertexSrc);
-
+	
 	var shaderProgram = gl.createProgram();
-
+	
     gl.attachShader(shaderProgram, vertexShader);
     gl.attachShader(shaderProgram, fragmentShader);
     gl.linkProgram(shaderProgram);
@@ -3827,36 +3827,36 @@ PIXI.compileProgram = function(vertexSrc, fragmentSrc)
     }
 
 	return shaderProgram;
-}
+} 
 
 
 PIXI.activateDefaultShader = function()
 {
 	var gl = PIXI.gl;
 	var shaderProgram = PIXI.shaderProgram;
-
+	
 	gl.useProgram(shaderProgram);
-
-
+	
+	
 	gl.enableVertexAttribArray(shaderProgram.vertexPositionAttribute);
     gl.enableVertexAttribArray(shaderProgram.textureCoordAttribute);
     gl.enableVertexAttribArray(shaderProgram.colorAttribute);
 }
 
-
+	
 
 PIXI.activatePrimitiveShader = function()
 {
 	var gl = PIXI.gl;
-
+	
 	gl.disableVertexAttribArray(PIXI.shaderProgram.textureCoordAttribute);
     gl.disableVertexAttribArray(PIXI.shaderProgram.colorAttribute);
-
+    
 	gl.useProgram(PIXI.primitiveProgram);
-
+	
 	gl.enableVertexAttribArray(PIXI.primitiveProgram.vertexPositionAttribute);
 	gl.enableVertexAttribArray(PIXI.primitiveProgram.colorAttribute);
-}
+} 
 
 
 /**
@@ -3870,7 +3870,7 @@ PIXI.activatePrimitiveShader = function()
  */
 PIXI.WebGLGraphics = function()
 {
-
+	
 }
 
 /**
@@ -3885,60 +3885,60 @@ PIXI.WebGLGraphics = function()
 PIXI.WebGLGraphics.renderGraphics = function(graphics, projection)
 {
 	var gl = PIXI.gl;
-
-	if(!graphics._webGL)graphics._webGL = {points:[], indices:[], lastIndex:0,
+	
+	if(!graphics._webGL)graphics._webGL = {points:[], indices:[], lastIndex:0, 
 										   buffer:gl.createBuffer(),
 										   indexBuffer:gl.createBuffer()};
-
+	
 	if(graphics.dirty)
 	{
 		graphics.dirty = false;
-
+		
 		if(graphics.clearDirty)
 		{
 			graphics.clearDirty = false;
-
+			
 			graphics._webGL.lastIndex = 0;
 			graphics._webGL.points = [];
 			graphics._webGL.indices = [];
-
+			
 		}
-
+		
 		PIXI.WebGLGraphics.updateGraphics(graphics);
 	}
-
-
+	
+	
 	PIXI.activatePrimitiveShader();
-
+	
 	// This  could be speeded up fo sure!
 	var m = PIXI.mat3.clone(graphics.worldTransform);
-
+	
 	PIXI.mat3.transpose(m);
-
-	// set the matrix transform for the
+	
+	// set the matrix transform for the 
  	gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
-
+ 	
  	gl.uniformMatrix3fv(PIXI.primitiveProgram.translationMatrix, false, m);
-
+ 	
 	gl.uniform2f(PIXI.primitiveProgram.projectionVector, projection.x, projection.y);
-
+	
 	gl.uniform1f(PIXI.primitiveProgram.alpha, graphics.worldAlpha);
 
 	gl.bindBuffer(gl.ARRAY_BUFFER, graphics._webGL.buffer);
-
+	
 	// WHY DOES THIS LINE NEED TO BE THERE???
 	gl.vertexAttribPointer(PIXI.shaderProgram.vertexPositionAttribute, 2, gl.FLOAT, false, 0, 0);
 	// its not even used.. but need to be set or it breaks?
 	// only on pc though..
-
+	
 	gl.vertexAttribPointer(PIXI.primitiveProgram.vertexPositionAttribute, 2, gl.FLOAT, false, 4 * 6, 0);
 	gl.vertexAttribPointer(PIXI.primitiveProgram.colorAttribute, 4, gl.FLOAT, false,4 * 6, 2 * 4);
-
+	
 	// set the index buffer!
 	gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, graphics._webGL.indexBuffer);
-
+	
 	gl.drawElements(gl.TRIANGLE_STRIP,  graphics._webGL.indices.length, gl.UNSIGNED_SHORT, 0 );
-
+	
 	// return to default shader...
 	PIXI.activateDefaultShader();
 }
@@ -3953,18 +3953,18 @@ PIXI.WebGLGraphics.renderGraphics = function(graphics, projection)
  */
 PIXI.WebGLGraphics.updateGraphics = function(graphics)
 {
-	for (var i=graphics._webGL.lastIndex; i < graphics.graphicsData.length; i++)
+	for (var i=graphics._webGL.lastIndex; i < graphics.graphicsData.length; i++) 
 	{
 		var data = graphics.graphicsData[i];
-
+		
 		if(data.type == PIXI.Graphics.POLY)
 		{
 			if(data.fill)
 			{
-				if(data.points.length>3)
+				if(data.points.length>3) 
 				PIXI.WebGLGraphics.buildPoly(data, graphics._webGL);
 			}
-
+			
 			if(data.lineWidth > 0)
 			{
 				PIXI.WebGLGraphics.buildLine(data, graphics._webGL);
@@ -3979,18 +3979,18 @@ PIXI.WebGLGraphics.updateGraphics = function(graphics)
 			PIXI.WebGLGraphics.buildCircle(data, graphics._webGL);
 		}
 	};
-
+	
 	graphics._webGL.lastIndex = graphics.graphicsData.length;
-
+	
 	var gl = PIXI.gl;
 
 	graphics._webGL.glPoints = new Float32Array(graphics._webGL.points);
-
+	
 	gl.bindBuffer(gl.ARRAY_BUFFER, graphics._webGL.buffer);
 	gl.bufferData(gl.ARRAY_BUFFER, graphics._webGL.glPoints, gl.STATIC_DRAW);
-
+	
 	graphics._webGL.glIndicies = new Uint16Array(graphics._webGL.indices);
-
+	
 	gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, graphics._webGL.indexBuffer);
     gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, graphics._webGL.glIndicies, gl.STATIC_DRAW);
 }
@@ -4008,45 +4008,45 @@ PIXI.WebGLGraphics.buildRectangle = function(graphicsData, webGLData)
 {
 	// --- //
 	// need to convert points to a nice regular data
-	//
+	// 
 	var rectData = graphicsData.points;
 	var x = rectData[0];
 	var y = rectData[1];
 	var width = rectData[2];
 	var height = rectData[3];
-
-
+	
+	
 	if(graphicsData.fill)
 	{
 		var color = HEXtoRGB(graphicsData.fillColor);
 		var alpha = graphicsData.fillAlpha;
-
+		
 		var r = color[0] * alpha;
 		var g = color[1] * alpha;
 		var b = color[2] * alpha;
-
+	
 		var verts = webGLData.points;
 		var indices = webGLData.indices;
-
+	
 		var vertPos = verts.length/6;
-
+		
 		// start
 		verts.push(x, y);
 		verts.push(r, g, b, alpha);
-
+		
 		verts.push(x + width, y);
 		verts.push(r, g, b, alpha);
-
+		
 		verts.push(x , y + height);
 		verts.push(r, g, b, alpha);
-
+		
 		verts.push(x + width, y + height);
 		verts.push(r, g, b, alpha);
-
+		
 		// insert 2 dead triangles..
 		indices.push(vertPos, vertPos, vertPos+1, vertPos+2, vertPos+3, vertPos+3)
 	}
-
+	
 	if(graphicsData.lineWidth)
 	{
 		graphicsData.points = [x, y,
@@ -4054,10 +4054,10 @@ PIXI.WebGLGraphics.buildRectangle = function(graphicsData, webGLData)
 				  x + width, y + height,
 				  x, y + height,
 				  x, y];
-
+	
 		PIXI.WebGLGraphics.buildLine(graphicsData, webGLData);
 	}
-
+	
 }
 
 /**
@@ -4073,16 +4073,16 @@ PIXI.WebGLGraphics.buildCircle = function(graphicsData, webGLData)
 {
 	// --- //
 	// need to convert points to a nice regular data
-	//
+	// 
 	var rectData = graphicsData.points;
 	var x = rectData[0];
 	var y = rectData[1];
 	var width = rectData[2];
 	var height = rectData[3];
-
+	
 	var totalSegs = 40;
 	var seg = (Math.PI * 2) / totalSegs ;
-
+		
 	if(graphicsData.fill)
 	{
 		var color = HEXtoRGB(graphicsData.fillColor);
@@ -4091,41 +4091,41 @@ PIXI.WebGLGraphics.buildCircle = function(graphicsData, webGLData)
 		var r = color[0] * alpha;
 		var g = color[1] * alpha;
 		var b = color[2] * alpha;
-
+	
 		var verts = webGLData.points;
 		var indices = webGLData.indices;
-
+	
 		var vecPos = verts.length/6;
-
+		
 		indices.push(vecPos);
-
-		for (var i=0; i < totalSegs + 1 ; i++)
+		
+		for (var i=0; i < totalSegs + 1 ; i++) 
 		{
 			verts.push(x,y, r, g, b, alpha);
-
+			
 			verts.push(x + Math.sin(seg * i) * width,
 					   y + Math.cos(seg * i) * height,
 					   r, g, b, alpha);
-
+		
 			indices.push(vecPos++, vecPos++);
 		};
-
+		
 		indices.push(vecPos-1);
 	}
-
+	
 	if(graphicsData.lineWidth)
 	{
 		graphicsData.points = [];
-
-		for (var i=0; i < totalSegs + 1; i++)
+		
+		for (var i=0; i < totalSegs + 1; i++) 
 		{
 			graphicsData.points.push(x + Math.sin(seg * i) * width,
 									 y + Math.cos(seg * i) * height)
 		};
-
+		
 		PIXI.WebGLGraphics.buildLine(graphicsData, webGLData);
 	}
-
+	
 }
 
 /**
@@ -4140,89 +4140,89 @@ PIXI.WebGLGraphics.buildCircle = function(graphicsData, webGLData)
 PIXI.WebGLGraphics.buildLine = function(graphicsData, webGLData)
 {
 	// TODO OPTIMISE!
-
+	
 	var wrap = true;
 	var points = graphicsData.points;
 	if(points.length == 0)return;
-
+	
 	// get first and last point.. figure out the middle!
 	var firstPoint = new PIXI.Point( points[0], points[1] );
 	var lastPoint = new PIXI.Point( points[points.length - 2], points[points.length - 1] );
-
+	
 	// if the first point is the last point - goona have issues :)
 	if(firstPoint.x == lastPoint.x && firstPoint.y == lastPoint.y)
 	{
 		points.pop();
 		points.pop();
-
+		
 		lastPoint = new PIXI.Point( points[points.length - 2], points[points.length - 1] );
-
+		
 		var midPointX = lastPoint.x + (firstPoint.x - lastPoint.x) *0.5;
 		var midPointY = lastPoint.y + (firstPoint.y - lastPoint.y) *0.5;
-
+		
 		points.unshift(midPointX, midPointY);
 		points.push(midPointX, midPointY)
 	}
-
+	
 	var verts = webGLData.points;
 	var indices = webGLData.indices;
 	var length = points.length / 2;
 	var indexCount = points.length;
 	var indexStart = verts.length/6;
-
+	
 	// DRAW the Line
 	var width = graphicsData.lineWidth / 2;
-
+	
 	// sort color
 	var color = HEXtoRGB(graphicsData.lineColor);
 	var alpha = graphicsData.lineAlpha;
 	var r = color[0] * alpha;
 	var g = color[1] * alpha;
 	var b = color[2] * alpha;
-
+	
 	var p1x, p1y, p2x, p2y, p3x, p3y;
 	var perpx, perpy, perp2x, perp2y, perp3x, perp3y;
 	var ipx, ipy;
 	var a1, b1, c1, a2, b2, c2;
 	var denom, pdist, dist;
-
+	
 	p1x = points[0];
 	p1y = points[1];
-
+	
 	p2x = points[2];
 	p2y = points[3];
-
+	
 	perpx = -(p1y - p2y);
 	perpy =  p1x - p2x;
-
+	
 	dist = Math.sqrt(perpx*perpx + perpy*perpy);
-
+	
 	perpx /= dist;
 	perpy /= dist;
 	perpx *= width;
 	perpy *= width;
-
+	
 	// start
 	verts.push(p1x - perpx , p1y - perpy,
 				r, g, b, alpha);
-
+	
 	verts.push(p1x + perpx , p1y + perpy,
 				r, g, b, alpha);
-
-	for (var i = 1; i < length-1; i++)
+	
+	for (var i = 1; i < length-1; i++) 
 	{
 		p1x = points[(i-1)*2];
 		p1y = points[(i-1)*2 + 1];
-
+		
 		p2x = points[(i)*2]
 		p2y = points[(i)*2 + 1]
-
+		
 		p3x = points[(i+1)*2];
 		p3y = points[(i+1)*2 + 1];
-
+		
 		perpx = -(p1y - p2y);
 		perpy = p1x - p2x;
-
+		
 		dist = Math.sqrt(perpx*perpx + perpy*perpy);
 		perpx /= dist;
 		perpy /= dist;
@@ -4231,91 +4231,91 @@ PIXI.WebGLGraphics.buildLine = function(graphicsData, webGLData)
 
 		perp2x = -(p2y - p3y);
 		perp2y = p2x - p3x;
-
+		
 		dist = Math.sqrt(perp2x*perp2x + perp2y*perp2y);
 		perp2x /= dist;
 		perp2y /= dist;
 		perp2x *= width;
 		perp2y *= width;
-
+		
 		a1 = (-perpy + p1y) - (-perpy + p2y);
 	    b1 = (-perpx + p2x) - (-perpx + p1x);
 	    c1 = (-perpx + p1x) * (-perpy + p2y) - (-perpx + p2x) * (-perpy + p1y);
 	    a2 = (-perp2y + p3y) - (-perp2y + p2y);
 	    b2 = (-perp2x + p2x) - (-perp2x + p3x);
 	    c2 = (-perp2x + p3x) * (-perp2y + p2y) - (-perp2x + p2x) * (-perp2y + p3y);
-
+	 
 	    denom = a1*b2 - a2*b1;
-
+	    
 	    if (denom == 0) {
 	    	denom+=1;
 	    }
-
+	    
 	    px = (b1*c2 - b2*c1)/denom;
 	    py = (a2*c1 - a1*c2)/denom;
-
+		
 		pdist = (px -p2x) * (px -p2x) + (py -p2y) + (py -p2y);
-
+		
 		if(pdist > 140 * 140)
 		{
 			perp3x = perpx - perp2x;
 			perp3y = perpy - perp2y;
-
+			
 			dist = Math.sqrt(perp3x*perp3x + perp3y*perp3y);
 			perp3x /= dist;
 			perp3y /= dist;
 			perp3x *= width;
 			perp3y *= width;
-
+			
 			verts.push(p2x - perp3x, p2y -perp3y);
 			verts.push(r, g, b, alpha);
-
+			
 			verts.push(p2x + perp3x, p2y +perp3y);
 			verts.push(r, g, b, alpha);
-
+			
 			verts.push(p2x - perp3x, p2y -perp3y);
 			verts.push(r, g, b, alpha);
-
+			
 			indexCount++;
 		}
 		else
 		{
 			verts.push(px , py);
 			verts.push(r, g, b, alpha);
-
+			
 			verts.push(p2x - (px-p2x), p2y - (py - p2y));//, 4);
 			verts.push(r, g, b, alpha);
 		}
 	}
-
+	
 	p1x = points[(length-2)*2]
-	p1y = points[(length-2)*2 + 1]
-
+	p1y = points[(length-2)*2 + 1] 
+	
 	p2x = points[(length-1)*2]
 	p2y = points[(length-1)*2 + 1]
-
+	
 	perpx = -(p1y - p2y)
 	perpy = p1x - p2x;
-
+	
 	dist = Math.sqrt(perpx*perpx + perpy*perpy);
 	perpx /= dist;
 	perpy /= dist;
 	perpx *= width;
 	perpy *= width;
-
+	
 	verts.push(p2x - perpx , p2y - perpy)
 	verts.push(r, g, b, alpha);
-
+	
 	verts.push(p2x + perpx , p2y + perpy)
 	verts.push(r, g, b, alpha);
-
+	
 	indices.push(indexStart);
-
-	for (var i=0; i < indexCount; i++)
+	
+	for (var i=0; i < indexCount; i++) 
 	{
 		indices.push(indexStart++);
 	};
-
+	
 	indices.push(indexStart-1);
 }
 
@@ -4332,25 +4332,25 @@ PIXI.WebGLGraphics.buildPoly = function(graphicsData, webGLData)
 {
 	var points = graphicsData.points;
 	if(points.length < 6)return;
-
+	
 	// get first and last point.. figure out the middle!
 	var verts = webGLData.points;
 	var indices = webGLData.indices;
-
+	
 	var length = points.length / 2;
-
+	
 	// sort color
 	var color = HEXtoRGB(graphicsData.fillColor);
 	var alpha = graphicsData.fillAlpha;
 	var r = color[0] * alpha;
 	var g = color[1] * alpha;
 	var b = color[2] * alpha;
-
+	
 	var triangles = PIXI.PolyK.Triangulate(points);
-
+	
 	var vertPos = verts.length / 6;
-
-	for (var i=0; i < triangles.length; i+=3)
+	
+	for (var i=0; i < triangles.length; i+=3) 
 	{
 		indices.push(triangles[i] + vertPos);
 		indices.push(triangles[i] + vertPos);
@@ -4358,8 +4358,8 @@ PIXI.WebGLGraphics.buildPoly = function(graphicsData, webGLData)
 		indices.push(triangles[i+2] +vertPos);
 		indices.push(triangles[i+2] + vertPos);
 	};
-
-	for (var i = 0; i < length; i++)
+	
+	for (var i = 0; i < length; i++) 
 	{
 		verts.push(points[i * 2], points[i * 2 + 1],
 				   r, g, b, alpha);
@@ -4396,7 +4396,7 @@ PIXI.gl;
  * @param height=0 {Number} the height of the canvas view
  * @param view {Canvas} the canvas to use as a view, optional
  * @param transparent=false {Boolean} the transparency of the render view, default false
- *
+ * 
  */
 PIXI.WebGLRenderer = function(width, height, view, transparent)
 {
@@ -4407,27 +4407,27 @@ PIXI.WebGLRenderer = function(width, height, view, transparent)
 	this.width = width || 800;
 	this.height = height || 600;
 
-	this.view = view || document.createElement( 'canvas' );
+	this.view = view || document.createElement( 'canvas' ); 
     this.view.width = this.width;
 	this.view.height = this.height;
 
-	// deal with losing context..
+	// deal with losing context..	
     var scope = this;
 	this.view.addEventListener('webglcontextlost', function(event) { scope.handleContextLost(event); }, false)
 	this.view.addEventListener('webglcontextrestored', function(event) { scope.handleContextRestored(event); }, false)
 
 	this.batchs = [];
 
-	try
+	try 
  	{
-        PIXI.gl = this.gl = this.view.getContext("experimental-webgl",  {
+        PIXI.gl = this.gl = this.view.getContext("experimental-webgl",  {  	
     		 alpha: this.transparent,
     		 antialias:true, // SPEED UP??
     		 premultipliedAlpha:false,
     		 stencil:true
         });
-    }
-    catch (e)
+    } 
+    catch (e) 
     {
     	throw new Error(" This browser does not support webGL. Try using the canvas renderer" + this);
     }
@@ -4446,7 +4446,7 @@ PIXI.WebGLRenderer = function(width, height, view, transparent)
    	gl.disable(gl.CULL_FACE);
 
     gl.enable(gl.BLEND);
-    gl.colorMask(true, true, true, this.transparent);
+    gl.colorMask(true, true, true, this.transparent); 
 
     PIXI.projection = new PIXI.Point(400, 300);
 
@@ -4465,7 +4465,7 @@ PIXI.WebGLRenderer.prototype.constructor = PIXI.WebGLRenderer;
  * @static
  * @method getBatch
  * @return {WebGLBatch}
- * @private
+ * @private 
  */
 PIXI.WebGLRenderer.getBatch = function()
 {
@@ -4489,7 +4489,7 @@ PIXI.WebGLRenderer.getBatch = function()
  */
 PIXI.WebGLRenderer.returnBatch = function(batch)
 {
-	batch.clean();
+	batch.clean();	
 	PIXI._batchs.push(batch);
 }
 
@@ -4502,20 +4502,20 @@ PIXI.WebGLRenderer.returnBatch = function(batch)
 PIXI.WebGLRenderer.prototype.render = function(stage)
 {
 	if(this.contextLost)return;
-
-
+	
+	
 	// if rendering a new stage clear the batchs..
 	if(this.__stage !== stage)
 	{
 		// TODO make this work
 		// dont think this is needed any more?
 		//if(this.__stage)this.checkVisibility(this.__stage, false)
-
+		
 		this.__stage = stage;
 		this.stageRenderGroup.setRenderable(stage);
 	}
-
-	// TODO not needed now...
+	
+	// TODO not needed now... 
 	// update children if need be
 	// best to remove first!
 	/*for (var i=0; i < stage.__childrenRemoved.length; i++)
@@ -4524,35 +4524,35 @@ PIXI.WebGLRenderer.prototype.render = function(stage)
 		if(group)group.removeDisplayObject(stage.__childrenRemoved[i]);
 	}*/
 
-	// update any textures
+	// update any textures	
 	PIXI.WebGLRenderer.updateTextures();
-
+		
 	// recursivly loop through all items!
 	//this.checkVisibility(stage, true);
-
-	// update the scene graph
+	
+	// update the scene graph	
 	stage.updateTransform();
-
+	
 	var gl = this.gl;
-
+	
 	// -- Does this need to be set every frame? -- //
-	gl.colorMask(true, true, true, this.transparent);
-	gl.viewport(0, 0, this.width, this.height);
-
-	// set the correct matrix..
+	gl.colorMask(true, true, true, this.transparent); 
+	gl.viewport(0, 0, this.width, this.height);	
+	
+	// set the correct matrix..	
    //	gl.uniformMatrix4fv(this.shaderProgram.mvMatrixUniform, false, this.projectionMatrix);
-
+   
    	gl.bindFramebuffer(gl.FRAMEBUFFER, null);
-
-	gl.clearColor(stage.backgroundColorSplit[0],stage.backgroundColorSplit[1],stage.backgroundColorSplit[2], !this.transparent);
+		
+	gl.clearColor(stage.backgroundColorSplit[0],stage.backgroundColorSplit[1],stage.backgroundColorSplit[2], !this.transparent);     
 	gl.clear(gl.COLOR_BUFFER_BIT);
 
 	// HACK TO TEST
 	//PIXI.projectionMatrix = this.projectionMatrix;
-
+	
 	this.stageRenderGroup.backgroundColor = stage.backgroundColorSplit;
 	this.stageRenderGroup.render(PIXI.projection);
-
+	
 	// interaction
 	// run interaction!
 	if(stage.interactive)
@@ -4564,15 +4564,15 @@ PIXI.WebGLRenderer.prototype.render = function(stage)
 			stage.interactionManager.setTarget(this);
 		}
 	}
-
+	
 	// after rendering lets confirm all frames that have been uodated..
 	if(PIXI.Texture.frameUpdates.length > 0)
 	{
-		for (var i=0; i < PIXI.Texture.frameUpdates.length; i++)
+		for (var i=0; i < PIXI.Texture.frameUpdates.length; i++) 
 		{
 		  	PIXI.Texture.frameUpdates[i].updateFrame = false;
 		};
-
+		
 		PIXI.Texture.frameUpdates = [];
 	}
 }
@@ -4603,7 +4603,7 @@ PIXI.WebGLRenderer.updateTextures = function()
 PIXI.WebGLRenderer.updateTexture = function(texture)
 {
 	var gl = PIXI.gl;
-
+	
 	if(!texture._glTexture)
 	{
 		texture._glTexture = gl.createTexture();
@@ -4668,7 +4668,7 @@ PIXI.WebGLRenderer.prototype.resize = function(width, height)
 	this.view.width = width;
 	this.view.height = height;
 
-	this.gl.viewport(0, 0, this.width, this.height);
+	this.gl.viewport(0, 0, this.width, this.height);	
 
 	//var projectionMatrix = this.projectionMatrix;
 
@@ -4703,20 +4703,20 @@ PIXI.WebGLRenderer.prototype.handleContextLost = function(event)
  */
 PIXI.WebGLRenderer.prototype.handleContextRestored = function(event)
 {
-	this.gl = this.view.getContext("experimental-webgl",  {
+	this.gl = this.view.getContext("experimental-webgl",  {  	
 		alpha: true
     });
 
-	this.initShaders();
+	this.initShaders();	
 
-	for(var key in PIXI.TextureCache)
+	for(var key in PIXI.TextureCache) 
 	{
         	var texture = PIXI.TextureCache[key].baseTexture;
         	texture._glTexture = null;
         	PIXI.WebGLRenderer.updateTexture(texture);
 	};
 
-	for (var i=0; i <  this.batchs.length; i++)
+	for (var i=0; i <  this.batchs.length; i++) 
 	{
 		this.batchs[i].restoreLostContext(this.gl)//
 		this.batchs[i].dirty = true;
@@ -4753,7 +4753,7 @@ PIXI._getBatch = function(gl)
  */
 PIXI._returnBatch = function(batch)
 {
-	batch.clean();
+	batch.clean();	
 	PIXI._batchs.push(batch);
 }
 
@@ -4762,7 +4762,7 @@ PIXI._returnBatch = function(batch)
  */
 PIXI._restoreBatchs = function(gl)
 {
-	for (var i=0; i < PIXI._batchs.length; i++)
+	for (var i=0; i < PIXI._batchs.length; i++) 
 	{
 	  PIXI._batchs[i].restoreLostContext(gl);
 	};
@@ -4783,7 +4783,7 @@ PIXI._restoreBatchs = function(gl)
 PIXI.WebGLBatch = function(gl)
 {
 	this.gl = gl;
-
+	
 	this.size = 0;
 
 	this.vertexBuffer =  gl.createBuffer();
@@ -4838,7 +4838,7 @@ PIXI.WebGLBatch.prototype.restoreLostContext = function(gl)
  * @method init
  * @param sprite {Sprite} the first sprite to be added to the batch. Only sprites with
  *		the same base texture and blend mode will be allowed to be added to this batch
- */
+ */	
 PIXI.WebGLBatch.prototype.init = function(sprite)
 {
 	sprite.batch = this;
@@ -4859,7 +4859,7 @@ PIXI.WebGLBatch.prototype.init = function(sprite)
  * @method insertBefore
  * @param sprite {Sprite} the sprite to be added
  * @param nextSprite {nextSprite} the first sprite will be inserted before this sprite
- */
+ */	
 PIXI.WebGLBatch.prototype.insertBefore = function(sprite, nextSprite)
 {
 	this.size++;
@@ -4888,7 +4888,7 @@ PIXI.WebGLBatch.prototype.insertBefore = function(sprite, nextSprite)
  * @method insertAfter
  * @param sprite {Sprite} the sprite to be added
  * @param  previousSprite {Sprite} the first sprite will be inserted after this sprite
- */
+ */	
 PIXI.WebGLBatch.prototype.insertAfter = function(sprite, previousSprite)
 {
 	this.size++;
@@ -4916,7 +4916,7 @@ PIXI.WebGLBatch.prototype.insertAfter = function(sprite, previousSprite)
  *
  * @method remove
  * @param sprite {Sprite} the sprite to be removed
- */
+ */	
 PIXI.WebGLBatch.prototype.remove = function(sprite)
 {
 	this.size--;
@@ -5002,7 +5002,7 @@ PIXI.WebGLBatch.prototype.split = function(sprite)
  * Merges two batchs together
  *
  * @method merge
- * @param batch {WebGLBatch} the batch that will be merged
+ * @param batch {WebGLBatch} the batch that will be merged 
  */
 PIXI.WebGLBatch.prototype.merge = function(batch)
 {
@@ -5047,22 +5047,22 @@ PIXI.WebGLBatch.prototype.growBatch = function()
 	gl.bindBuffer(gl.ARRAY_BUFFER, this.vertexBuffer);
 	gl.bufferData(gl.ARRAY_BUFFER,this.verticies , gl.DYNAMIC_DRAW);
 
-	this.uvs  = new Float32Array( this.dynamicSize * 8 )
+	this.uvs  = new Float32Array( this.dynamicSize * 8 )  
 	gl.bindBuffer(gl.ARRAY_BUFFER, this.uvBuffer);
 	gl.bufferData(gl.ARRAY_BUFFER, this.uvs , gl.DYNAMIC_DRAW);
 
 	this.dirtyUVS = true;
 
-	this.colors  = new Float32Array( this.dynamicSize * 4 )
+	this.colors  = new Float32Array( this.dynamicSize * 4 )  
 	gl.bindBuffer(gl.ARRAY_BUFFER, this.colorBuffer);
 	gl.bufferData(gl.ARRAY_BUFFER, this.colors , gl.DYNAMIC_DRAW);
 
 	this.dirtyColors = true;
 
-	this.indices = new Uint16Array(this.dynamicSize * 6);
+	this.indices = new Uint16Array(this.dynamicSize * 6); 
 	var length = this.indices.length/6;
 
-	for (var i=0; i < length; i++)
+	for (var i=0; i < length; i++) 
 	{
 	    var index2 = i * 6;
 	    var index3 = i * 4;
@@ -5115,7 +5115,7 @@ PIXI.WebGLBatch.prototype.refresh = function()
 		this.uvs[index +3] = frame.y / th;
 
 		this.uvs[index +4] = (frame.x + frame.width) / tw;
-		this.uvs[index +5] = (frame.y + frame.height) / th;
+		this.uvs[index +5] = (frame.y + frame.height) / th; 
 
 		this.uvs[index +6] = frame.x / tw;
 		this.uvs[index +7] = (frame.y + frame.height) / th;
@@ -5177,17 +5177,17 @@ PIXI.WebGLBatch.prototype.update = function()
 			tx = worldTransform[2];
 			ty = worldTransform[5];
 
-			this.verticies[index + 0 ] = a * w1 + c * h1 + tx;
+			this.verticies[index + 0 ] = a * w1 + c * h1 + tx; 
 			this.verticies[index + 1 ] = d * h1 + b * w1 + ty;
 
-			this.verticies[index + 2 ] = a * w0 + c * h1 + tx;
-			this.verticies[index + 3 ] = d * h1 + b * w0 + ty;
+			this.verticies[index + 2 ] = a * w0 + c * h1 + tx; 
+			this.verticies[index + 3 ] = d * h1 + b * w0 + ty; 
 
-			this.verticies[index + 4 ] = a * w0 + c * h0 + tx;
-			this.verticies[index + 5 ] = d * h0 + b * w0 + ty;
+			this.verticies[index + 4 ] = a * w0 + c * h0 + tx; 
+			this.verticies[index + 5 ] = d * h0 + b * w0 + ty; 
 
-			this.verticies[index + 6] =  a * w1 + c * h0 + tx;
-			this.verticies[index + 7] =  d * h0 + b * w1 + ty;
+			this.verticies[index + 6] =  a * w1 + c * h0 + tx; 
+			this.verticies[index + 7] =  d * h0 + b * w1 + ty; 
 
 			if(displayObject.updateFrame || displayObject.texture.updateFrame)
 			{
@@ -5206,7 +5206,7 @@ PIXI.WebGLBatch.prototype.update = function()
 				this.uvs[index +3] = frame.y / th;
 
 				this.uvs[index +4] = (frame.x + frame.width) / tw;
-				this.uvs[index +5] = (frame.y + frame.height) / th;
+				this.uvs[index +5] = (frame.y + frame.height) / th; 
 
 				this.uvs[index +6] = frame.x / tw;
 				this.uvs[index +7] = (frame.y + frame.height) / th;
@@ -5256,7 +5256,7 @@ PIXI.WebGLBatch.prototype.render = function(start, end)
 	start = start || 0;
 	//end = end || this.size;
 	if(end == undefined)end = this.size;
-
+	
 	if(this.dirty)
 	{
 		this.refresh();
@@ -5334,7 +5334,7 @@ PIXI.WebGLRenderGroup = function(gl)
 {
 	this.gl = gl;
 	this.root;
-
+	
 	this.backgroundColor;
 	this.batchs = [];
 	this.toRemove = [];
@@ -5348,18 +5348,18 @@ PIXI.WebGLRenderGroup.prototype.constructor = PIXI.WebGLRenderGroup;
  *
  * @method setRenderable
  * @param displayObject {DisplayObject}
- * @private
+ * @private 
  */
 PIXI.WebGLRenderGroup.prototype.setRenderable = function(displayObject)
 {
 	// has this changed??
 	if(this.root)this.removeDisplayObjectAndChildren(this.root);
-
+	
 	displayObject.worldVisible = displayObject.visible;
-
+	
 	// soooooo //
 	// to check if any batchs exist already??
-
+	
 	// TODO what if its already has an object? should remove it
 	this.root = displayObject;
 	this.addDisplayObjectAndChildren(displayObject);
@@ -5374,21 +5374,21 @@ PIXI.WebGLRenderGroup.prototype.setRenderable = function(displayObject)
 PIXI.WebGLRenderGroup.prototype.render = function(projection)
 {
 	PIXI.WebGLRenderer.updateTextures();
-
+	
 	var gl = this.gl;
 
-
+	
 	gl.uniform2f(PIXI.shaderProgram.projectionVector, projection.x, projection.y);
 	gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
-
-	// TODO remove this by replacing visible with getter setters..
+	
+	// TODO remove this by replacing visible with getter setters..	
 	this.checkVisibility(this.root, this.root.visible);
-
+	
 	// will render all the elements in the group
 	var renderable;
-
-
-	for (var i=0; i < this.batchs.length; i++)
+	
+	
+	for (var i=0; i < this.batchs.length; i++) 
 	{
 		renderable = this.batchs[i];
 		if(renderable instanceof PIXI.WebGLBatch)
@@ -5415,13 +5415,13 @@ PIXI.WebGLRenderGroup.prototype.render = function(projection)
 			if(renderable.open)
 			{
     			gl.enable(gl.STENCIL_TEST);
-
+					
 				gl.colorMask(false, false, false, false);
 				gl.stencilFunc(gl.ALWAYS,1,0xff);
 				gl.stencilOp(gl.KEEP,gl.KEEP,gl.REPLACE);
-
+  
 				PIXI.WebGLGraphics.renderGraphics(renderable.mask, projection);
-
+  					
 				gl.colorMask(true, true, true, false);
 				gl.stencilFunc(gl.NOTEQUAL,0,0xff);
 				gl.stencilOp(gl.KEEP,gl.KEEP,gl.KEEP);
@@ -5432,7 +5432,7 @@ PIXI.WebGLRenderGroup.prototype.render = function(projection)
 			}
 		}
 	}
-
+	
 }
 
 /**
@@ -5444,7 +5444,7 @@ PIXI.WebGLRenderGroup.prototype.render = function(projection)
  */
 PIXI.WebGLRenderGroup.prototype.handleFilter = function(filter, projection)
 {
-
+	
 }
 
 /**
@@ -5458,22 +5458,22 @@ PIXI.WebGLRenderGroup.prototype.handleFilter = function(filter, projection)
 PIXI.WebGLRenderGroup.prototype.renderSpecific = function(displayObject, projection)
 {
 	PIXI.WebGLRenderer.updateTextures();
-
+	
 	var gl = this.gl;
 	this.checkVisibility(displayObject, displayObject.visible);
-
+	
 //	gl.uniformMatrix4fv(PIXI.shaderProgram.mvMatrixUniform, false, projectionMatrix);
 	gl.uniform2f(PIXI.shaderProgram.projectionVector, projection.x, projection.y);
 
 	// to do!
 	// render part of the scene...
-
+	
 	var startIndex;
 	var startBatchIndex;
-
+	
 	var endIndex;
 	var endBatchIndex;
-
+	
 	/*
 	 *  LOOK FOR THE NEXT SPRITE
 	 *  This part looks for the closest next sprite that can go into a batch
@@ -5487,14 +5487,14 @@ PIXI.WebGLRenderGroup.prototype.renderSpecific = function(displayObject, project
 		if(nextRenderable.renderable && nextRenderable.__renderGroup)break;
 	}
 	var startBatch = nextRenderable.batch;
-
+	
 	if(nextRenderable instanceof PIXI.Sprite)
 	{
 		startBatch = nextRenderable.batch;
-
+		
 		var head = startBatch.head;
 		var next = head;
-
+		
 		// ok now we have the batch.. need to find the start index!
 		if(head == nextRenderable)
 		{
@@ -5503,7 +5503,7 @@ PIXI.WebGLRenderGroup.prototype.renderSpecific = function(displayObject, project
 		else
 		{
 			startIndex = 1;
-
+			
 			while(head.__next != nextRenderable)
 			{
 				startIndex++;
@@ -5515,7 +5515,7 @@ PIXI.WebGLRenderGroup.prototype.renderSpecific = function(displayObject, project
 	{
 		startBatch = nextRenderable;
 	}
-
+	
 	// Get the LAST renderable object
 	var lastRenderable = displayObject;
 	var endBatch;
@@ -5525,13 +5525,13 @@ PIXI.WebGLRenderGroup.prototype.renderSpecific = function(displayObject, project
 		lastItem = lastItem.children[lastItem.children.length-1];
 		if(lastItem.renderable)lastRenderable = lastItem;
 	}
-
+	
 	if(lastRenderable instanceof PIXI.Sprite)
 	{
 		endBatch = lastRenderable.batch;
-
+		
 		var head = endBatch.head;
-
+		
 		if(head == lastRenderable)
 		{
 			endIndex = 0;
@@ -5539,7 +5539,7 @@ PIXI.WebGLRenderGroup.prototype.renderSpecific = function(displayObject, project
 		else
 		{
 			endIndex = 1;
-
+			
 			while(head.__next != lastRenderable)
 			{
 				endIndex++;
@@ -5551,9 +5551,9 @@ PIXI.WebGLRenderGroup.prototype.renderSpecific = function(displayObject, project
 	{
 		endBatch = lastRenderable;
 	}
-
+	
 	// TODO - need to fold this up a bit!
-
+	
 	if(startBatch == endBatch)
 	{
 		if(startBatch instanceof PIXI.WebGLBatch)
@@ -5566,11 +5566,11 @@ PIXI.WebGLRenderGroup.prototype.renderSpecific = function(displayObject, project
 		}
 		return;
 	}
-
+	
 	// now we have first and last!
 	startBatchIndex = this.batchs.indexOf(startBatch);
 	endBatchIndex = this.batchs.indexOf(endBatch);
-
+	
 	// DO the first batch
 	if(startBatch instanceof PIXI.WebGLBatch)
 	{
@@ -5580,12 +5580,12 @@ PIXI.WebGLRenderGroup.prototype.renderSpecific = function(displayObject, project
 	{
 		this.renderSpecial(startBatch, projection);
 	}
-
+	
 	// DO the middle batchs..
-	for (var i=startBatchIndex+1; i < endBatchIndex; i++)
+	for (var i=startBatchIndex+1; i < endBatchIndex; i++) 
 	{
 		renderable = this.batchs[i];
-
+	
 		if(renderable instanceof PIXI.WebGLBatch)
 		{
 			this.batchs[i].render();
@@ -5595,7 +5595,7 @@ PIXI.WebGLRenderGroup.prototype.renderSpecific = function(displayObject, project
 			this.renderSpecial(renderable, projection);
 		}
 	}
-
+	
 	// DO the last batch..
 	if(endBatch instanceof PIXI.WebGLBatch)
 	{
@@ -5644,13 +5644,13 @@ PIXI.WebGLRenderGroup.prototype.renderSpecial = function(renderable, projection)
 		if(renderable.open)
 		{
 			gl.enable(gl.STENCIL_TEST);
-
+				
 			gl.colorMask(false, false, false, false);
 			gl.stencilFunc(gl.ALWAYS,1,0xff);
 			gl.stencilOp(gl.KEEP,gl.KEEP,gl.REPLACE);
-
+  
 			PIXI.WebGLGraphics.renderGraphics(renderable.mask, projection);
-
+			
 			// we know this is a render texture so enable alpha too..
 			gl.colorMask(true, true, true, true);
 			gl.stencilFunc(gl.NOTEQUAL,0,0xff);
@@ -5676,13 +5676,13 @@ PIXI.WebGLRenderGroup.prototype.checkVisibility = function(displayObject, global
 	// give the dp a reference to its renderGroup...
 	var children = displayObject.children;
 	//displayObject.worldVisible = globalVisible;
-	for (var i=0; i < children.length; i++)
+	for (var i=0; i < children.length; i++) 
 	{
 		var child = children[i];
-
+		
 		// TODO optimize... should'nt need to loop through everything all the time
 		child.worldVisible = child.visible && globalVisible;
-
+		
 		// everything should have a batch!
 		// time to see whats new!
 		if(child.textureChange)
@@ -5691,7 +5691,7 @@ PIXI.WebGLRenderGroup.prototype.checkVisibility = function(displayObject, global
 			if(child.worldVisible)this.updateTexture(child);
 			// update texture!!
 		}
-
+		
 		if(child.children.length > 0)
 		{
 			this.checkVisibility(child, child.worldVisible);
@@ -5708,11 +5708,11 @@ PIXI.WebGLRenderGroup.prototype.checkVisibility = function(displayObject, global
  */
 PIXI.WebGLRenderGroup.prototype.updateTexture = function(displayObject)
 {
-
+	
 	// TODO definitely can optimse this function..
-
+	
 	this.removeObject(displayObject);
-
+	
 	/*
 	 *  LOOK FOR THE PREVIOUS RENDERABLE
 	 *  This part looks for the closest previous sprite that can go into a batch
@@ -5724,7 +5724,7 @@ PIXI.WebGLRenderGroup.prototype.updateTexture = function(displayObject)
 		previousRenderable = previousRenderable._iPrev;
 		if(previousRenderable.renderable && previousRenderable.__renderGroup)break;
 	}
-
+	
 	/*
 	 *  LOOK FOR THE NEXT SPRITE
 	 *  This part looks for the closest next sprite that can go into a batch
@@ -5737,7 +5737,7 @@ PIXI.WebGLRenderGroup.prototype.updateTexture = function(displayObject)
 		nextRenderable = nextRenderable._iNext;
 		if(nextRenderable.renderable && nextRenderable.__renderGroup)break;
 	}
-
+	
 	this.insertObject(displayObject, previousRenderable, nextRenderable);
 }
 
@@ -5765,7 +5765,7 @@ PIXI.WebGLRenderGroup.prototype.addFilterBlocks = function(start, end)
 		if(previousRenderable.renderable && previousRenderable.__renderGroup)break;
 	}
 	this.insertAfter(start, previousRenderable);
-
+		
 	/*
 	 *  LOOK FOR THE NEXT SPRITE
 	 *  This part looks for the closest next sprite that can go into a batch
@@ -5805,20 +5805,20 @@ PIXI.WebGLRenderGroup.prototype.removeFilterBlocks = function(start, end)
 PIXI.WebGLRenderGroup.prototype.addDisplayObjectAndChildren = function(displayObject)
 {
 	if(displayObject.__renderGroup)displayObject.__renderGroup.removeDisplayObjectAndChildren(displayObject);
-
+	
 	/*
 	 *  LOOK FOR THE PREVIOUS RENDERABLE
 	 *  This part looks for the closest previous sprite that can go into a batch
 	 *  It keeps going back until it finds a sprite or the stage
 	 */
-
+	
 	var previousRenderable = displayObject.first;
 	while(previousRenderable != this.root.first)
 	{
 		previousRenderable = previousRenderable._iPrev;
 		if(previousRenderable.renderable && previousRenderable.__renderGroup)break;
 	}
-
+	
 	/*
 	 *  LOOK FOR THE NEXT SPRITE
 	 *  This part looks for the closest next sprite that can go into a batch
@@ -5831,22 +5831,22 @@ PIXI.WebGLRenderGroup.prototype.addDisplayObjectAndChildren = function(displayOb
 		nextRenderable = nextRenderable._iNext;
 		if(nextRenderable.renderable && nextRenderable.__renderGroup)break;
 	}
-
-	// one the display object hits this. we can break the loop
-
+	
+	// one the display object hits this. we can break the loop	
+	
 	var tempObject = displayObject.first;
 	var testObject = displayObject.last._iNext;
-	do
+	do	
 	{
 		tempObject.__renderGroup = this;
-
+		
 		if(tempObject.renderable)
 		{
-
+		
 			this.insertObject(tempObject, previousRenderable, nextRenderable);
 			previousRenderable = tempObject;
 		}
-
+		
 		tempObject = tempObject._iNext;
 	}
 	while(tempObject != testObject)
@@ -5862,10 +5862,10 @@ PIXI.WebGLRenderGroup.prototype.addDisplayObjectAndChildren = function(displayOb
 PIXI.WebGLRenderGroup.prototype.removeDisplayObjectAndChildren = function(displayObject)
 {
 	if(displayObject.__renderGroup != this)return;
-
+	
 //	var displayObject = displayObject.first;
 	var lastObject = displayObject.last;
-	do
+	do	
 	{
 		displayObject.__renderGroup = null;
 		if(displayObject.renderable)this.removeObject(displayObject);
@@ -5888,16 +5888,16 @@ PIXI.WebGLRenderGroup.prototype.insertObject = function(displayObject, previousO
 	// while looping below THE OBJECT MAY NOT HAVE BEEN ADDED
 	var previousSprite = previousObject;
 	var nextSprite = nextObject;
-
+	
 	/*
 	 * so now we have the next renderable and the previous renderable
-	 *
+	 * 
 	 */
 	if(displayObject instanceof PIXI.Sprite)
 	{
 		var previousBatch
 		var nextBatch
-
+		
 		if(previousSprite instanceof PIXI.Sprite)
 		{
 			previousBatch = previousSprite.batch;
@@ -5915,13 +5915,13 @@ PIXI.WebGLRenderGroup.prototype.insertObject = function(displayObject, previousO
 			// TODO reword!
 			previousBatch = previousSprite;
 		}
-
+	
 		if(nextSprite)
 		{
 			if(nextSprite instanceof PIXI.Sprite)
 			{
 				nextBatch = nextSprite.batch;
-
+			
 				//batch may not exist if item was added to the display list but not to the webGL
 				if(nextBatch)
 				{
@@ -5937,18 +5937,18 @@ PIXI.WebGLRenderGroup.prototype.insertObject = function(displayObject, previousO
 							// THERE IS A SPLIT IN THIS BATCH! //
 							var splitBatch = previousBatch.split(nextSprite);
 							// COOL!
-							// add it back into the array
+							// add it back into the array	
 							/*
 							 * OOPS!
 							 * seems the new sprite is in the middle of a batch
-							 * lets split it..
+							 * lets split it.. 
 							 */
 							var batch = PIXI.WebGLRenderer.getBatch();
 
 							var index = this.batchs.indexOf( previousBatch );
 							batch.init(displayObject);
 							this.batchs.splice(index+1, 0, batch, splitBatch);
-
+							
 							return;
 						}
 					}
@@ -5957,21 +5957,21 @@ PIXI.WebGLRenderGroup.prototype.insertObject = function(displayObject, previousO
 			else
 			{
 				// TODO re-word!
-
+				
 				nextBatch = nextSprite;
 			}
 		}
-
+		
 		/*
 		 * looks like it does not belong to any batch!
 		 * but is also not intersecting one..
 		 * time to create anew one!
 		 */
-
+		
 		var batch =  PIXI.WebGLRenderer.getBatch();
 		batch.init(displayObject);
 
-		if(previousBatch) // if this is invalid it means
+		if(previousBatch) // if this is invalid it means 
 		{
 			var index = this.batchs.indexOf( previousBatch );
 			this.batchs.splice(index+1, 0, batch);
@@ -5980,16 +5980,16 @@ PIXI.WebGLRenderGroup.prototype.insertObject = function(displayObject, previousO
 		{
 			this.batchs.push(batch);
 		}
-
+		
 		return;
 	}
 	else if(displayObject instanceof PIXI.TilingSprite)
 	{
-
+		
 		// add to a batch!!
 		this.initTilingSprite(displayObject);
 	//	this.batchs.push(displayObject);
-
+		
 	}
 	else if(displayObject instanceof PIXI.Strip)
 	{
@@ -6000,14 +6000,14 @@ PIXI.WebGLRenderGroup.prototype.insertObject = function(displayObject, previousO
 	else if(displayObject)// instanceof PIXI.Graphics)
 	{
 		//displayObject.initWebGL(this);
-
+		
 		// add to a batch!!
 		//this.initStrip(displayObject);
 		//this.batchs.push(displayObject);
 	}
-
+	
 	this.insertAfter(displayObject, previousSprite);
-
+			
 	// insert and SPLIT!
 
 }
@@ -6025,31 +6025,31 @@ PIXI.WebGLRenderGroup.prototype.insertAfter = function(item, displayObject)
 	if(displayObject instanceof PIXI.Sprite)
 	{
 		var previousBatch = displayObject.batch;
-
+		
 		if(previousBatch)
 		{
 			// so this object is in a batch!
-
+			
 			// is it not? need to split the batch
 			if(previousBatch.tail == displayObject)
 			{
-				// is it tail? insert in to batchs
+				// is it tail? insert in to batchs	
 				var index = this.batchs.indexOf( previousBatch );
 				this.batchs.splice(index+1, 0, item);
 			}
 			else
 			{
 				// TODO MODIFY ADD / REMOVE CHILD TO ACCOUNT FOR FILTERS (also get prev and next) //
-
+				
 				// THERE IS A SPLIT IN THIS BATCH! //
 				var splitBatch = previousBatch.split(displayObject.__next);
-
+				
 				// COOL!
-				// add it back into the array
+				// add it back into the array	
 				/*
 				 * OOPS!
 				 * seems the new sprite is in the middle of a batch
-				 * lets split it..
+				 * lets split it.. 
 				 */
 				var index = this.batchs.indexOf( previousBatch );
 				this.batchs.splice(index+1, 0, item, splitBatch);
@@ -6078,25 +6078,25 @@ PIXI.WebGLRenderGroup.prototype.removeObject = function(displayObject)
 {
 	// loop through children..
 	// display object //
-
+	
 	// add a child from the render group..
 	// remove it and all its children!
 	//displayObject.cacheVisible = false;//displayObject.visible;
 
 	/*
 	 * removing is a lot quicker..
-	 *
+	 * 
 	 */
 	var batchToRemove;
-
+	
 	if(displayObject instanceof PIXI.Sprite)
 	{
 		// should always have a batch!
 		var batch = displayObject.batch;
 		if(!batch)return; // this means the display list has been altered befre rendering
-
+		
 		batch.remove(displayObject);
-
+		
 		if(batch.size==0)
 		{
 			batchToRemove = batch;
@@ -6106,15 +6106,15 @@ PIXI.WebGLRenderGroup.prototype.removeObject = function(displayObject)
 	{
 		batchToRemove = displayObject;
 	}
-
+	
 	/*
 	 * Looks like there is somthing that needs removing!
 	 */
-	if(batchToRemove)
+	if(batchToRemove)	
 	{
 		var index = this.batchs.indexOf( batchToRemove );
 		if(index == -1)return;// this means it was added then removed before rendered
-
+		
 		// ok so.. check to see if you adjacent batchs should be joined.
 		// TODO may optimise?
 		if(index == 0 || index == this.batchs.length-1)
@@ -6122,24 +6122,24 @@ PIXI.WebGLRenderGroup.prototype.removeObject = function(displayObject)
 			// wha - eva! just get of the empty batch!
 			this.batchs.splice(index, 1);
 			if(batchToRemove instanceof PIXI.WebGLBatch)PIXI.WebGLRenderer.returnBatch(batchToRemove);
-
+		
 			return;
 		}
-
+		
 		if(this.batchs[index-1] instanceof PIXI.WebGLBatch && this.batchs[index+1] instanceof PIXI.WebGLBatch)
 		{
 			if(this.batchs[index-1].texture == this.batchs[index+1].texture && this.batchs[index-1].blendMode == this.batchs[index+1].blendMode)
 			{
 				//console.log("MERGE")
 				this.batchs[index-1].merge(this.batchs[index+1]);
-
+				
 				if(batchToRemove instanceof PIXI.WebGLBatch)PIXI.WebGLRenderer.returnBatch(batchToRemove);
 				PIXI.WebGLRenderer.returnBatch(this.batchs[index+1]);
 				this.batchs.splice(index, 2);
 				return;
 			}
 		}
-
+		
 		this.batchs.splice(index, 1);
 		if(batchToRemove instanceof PIXI.WebGLBatch)PIXI.WebGLRenderer.returnBatch(batchToRemove);
 	}
@@ -6157,26 +6157,26 @@ PIXI.WebGLRenderGroup.prototype.initTilingSprite = function(sprite)
 	var gl = this.gl;
 
 	// make the texture tilable..
-
+			
 	sprite.verticies = new Float32Array([0, 0,
 										  sprite.width, 0,
 										  sprite.width,  sprite.height,
 										 0,  sprite.height]);
-
+					
 	sprite.uvs = new Float32Array([0, 0,
 									1, 0,
 									1, 1,
 									0, 1]);
-
+				
 	sprite.colors = new Float32Array([1,1,1,1]);
-
+	
 	sprite.indices =  new Uint16Array([0, 1, 3,2])//, 2]);
-
+	
 	sprite._vertexBuffer = gl.createBuffer();
 	sprite._indexBuffer = gl.createBuffer();
 	sprite._uvBuffer = gl.createBuffer();
 	sprite._colorBuffer = gl.createBuffer();
-
+						
 	gl.bindBuffer(gl.ARRAY_BUFFER, sprite._vertexBuffer);
 	gl.bufferData(gl.ARRAY_BUFFER, sprite.verticies, gl.STATIC_DRAW);
 
@@ -6188,7 +6188,7 @@ PIXI.WebGLRenderGroup.prototype.initTilingSprite = function(sprite)
 
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, sprite._indexBuffer);
     gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, sprite.indices, gl.STATIC_DRAW);
-
+    
 //    return ( (x > 0) && ((x & (x - 1)) == 0) );
 
 	if(sprite.texture.baseTexture._glTexture)
@@ -6221,14 +6221,14 @@ PIXI.WebGLRenderGroup.prototype.renderStrip = function(strip, projection)
 	//PIXI.mat4.transpose(mat4Real);
 	//PIXI.mat4.multiply(projectionMatrix, mat4Real, mat4Real )
 
-
+	
 	gl.useProgram(PIXI.stripShaderProgram);
 
 	var m = PIXI.mat3.clone(strip.worldTransform);
-
+	
 	PIXI.mat3.transpose(m);
-
-	// set the matrix transform for the
+	
+	// set the matrix transform for the 
  	gl.uniformMatrix3fv(PIXI.stripShaderProgram.translationMatrix, false, m);
 	gl.uniform2f(PIXI.stripShaderProgram.projectionVector, projection.x, projection.y);
 	gl.uniform1f(PIXI.stripShaderProgram.alpha, strip.worldAlpha);
@@ -6243,25 +6243,25 @@ PIXI.WebGLRenderGroup.prototype.renderStrip = function(strip, projection)
 		gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_COLOR);
 	}
 	*/
-
-
+	
+	
 	if(!strip.dirty)
 	{
-
+		
 		gl.bindBuffer(gl.ARRAY_BUFFER, strip._vertexBuffer);
 		gl.bufferSubData(gl.ARRAY_BUFFER, 0, strip.verticies)
 	    gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, 2, gl.FLOAT, false, 0, 0);
-
+		
 		// update the uvs
 	   	gl.bindBuffer(gl.ARRAY_BUFFER, strip._uvBuffer);
 	    gl.vertexAttribPointer(shaderProgram.textureCoordAttribute, 2, gl.FLOAT, false, 0, 0);
-
+			
 	    gl.activeTexture(gl.TEXTURE0);
 	    gl.bindTexture(gl.TEXTURE_2D, strip.texture.baseTexture._glTexture);
-
+		
 		gl.bindBuffer(gl.ARRAY_BUFFER, strip._colorBuffer);
 	    gl.vertexAttribPointer(shaderProgram.colorAttribute, 1, gl.FLOAT, false, 0, 0);
-
+		
 		// dont need to upload!
 	    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, strip._indexBuffer);
 	}
@@ -6271,28 +6271,28 @@ PIXI.WebGLRenderGroup.prototype.renderStrip = function(strip, projection)
 		gl.bindBuffer(gl.ARRAY_BUFFER, strip._vertexBuffer);
 		gl.bufferData(gl.ARRAY_BUFFER, strip.verticies, gl.STATIC_DRAW)
 	    gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, 2, gl.FLOAT, false, 0, 0);
-
+		
 		// update the uvs
 	   	gl.bindBuffer(gl.ARRAY_BUFFER, strip._uvBuffer);
 	   	gl.bufferData(gl.ARRAY_BUFFER, strip.uvs, gl.STATIC_DRAW)
 	    gl.vertexAttribPointer(shaderProgram.textureCoordAttribute, 2, gl.FLOAT, false, 0, 0);
-
+			
 	    gl.activeTexture(gl.TEXTURE0);
 	    gl.bindTexture(gl.TEXTURE_2D, strip.texture.baseTexture._glTexture);
-
+		
 		gl.bindBuffer(gl.ARRAY_BUFFER, strip._colorBuffer);
 		gl.bufferData(gl.ARRAY_BUFFER, strip.colors, gl.STATIC_DRAW)
 	    gl.vertexAttribPointer(shaderProgram.colorAttribute, 1, gl.FLOAT, false, 0, 0);
-
+		
 		// dont need to upload!
 	    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, strip._indexBuffer);
 	    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, strip.indices, gl.STATIC_DRAW);
-
+	    
 	}
 	//console.log(gl.TRIANGLE_STRIP);
-
+	
 	gl.drawElements(gl.TRIANGLE_STRIP, strip.indices.length, gl.UNSIGNED_SHORT, 0);
-
+    
   	gl.useProgram(PIXI.shaderProgram);
 }
 
@@ -6308,31 +6308,31 @@ PIXI.WebGLRenderGroup.prototype.renderTilingSprite = function(sprite, projection
 {
 	var gl = this.gl;
 	var shaderProgram = PIXI.shaderProgram;
-
+	
 	var tilePosition = sprite.tilePosition;
 	var tileScale = sprite.tileScale;
-
+	
 	var offsetX =  tilePosition.x/sprite.texture.baseTexture.width;
 	var offsetY =  tilePosition.y/sprite.texture.baseTexture.height;
-
+	
 	var scaleX =  (sprite.width / sprite.texture.baseTexture.width)  / tileScale.x;
 	var scaleY =  (sprite.height / sprite.texture.baseTexture.height) / tileScale.y;
 
 	sprite.uvs[0] = 0 - offsetX;
 	sprite.uvs[1] = 0 - offsetY;
-
+	
 	sprite.uvs[2] = (1 * scaleX)  -offsetX;
 	sprite.uvs[3] = 0 - offsetY;
-
+	
 	sprite.uvs[4] = (1 *scaleX) - offsetX;
 	sprite.uvs[5] = (1 *scaleY) - offsetY;
-
+	
 	sprite.uvs[6] = 0 - offsetX;
 	sprite.uvs[7] = (1 *scaleY) - offsetY;
-
+	
 	gl.bindBuffer(gl.ARRAY_BUFFER, sprite._uvBuffer);
 	gl.bufferSubData(gl.ARRAY_BUFFER, 0, sprite.uvs)
-
+	
 	this.renderStrip(sprite, projectionMatrix);
 }
 
@@ -6348,12 +6348,12 @@ PIXI.WebGLRenderGroup.prototype.initStrip = function(strip)
 	// build the strip!
 	var gl = this.gl;
 	var shaderProgram = this.shaderProgram;
-
+	
 	strip._vertexBuffer = gl.createBuffer();
 	strip._indexBuffer = gl.createBuffer();
 	strip._uvBuffer = gl.createBuffer();
 	strip._colorBuffer = gl.createBuffer();
-
+	
 	gl.bindBuffer(gl.ARRAY_BUFFER, strip._vertexBuffer);
 	gl.bufferData(gl.ARRAY_BUFFER, strip.verticies, gl.DYNAMIC_DRAW);
 
@@ -6363,7 +6363,7 @@ PIXI.WebGLRenderGroup.prototype.initStrip = function(strip)
     gl.bindBuffer(gl.ARRAY_BUFFER, strip._colorBuffer);
 	gl.bufferData(gl.ARRAY_BUFFER, strip.colors, gl.STATIC_DRAW);
 
-
+	
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, strip._indexBuffer);
     gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, strip.indices, gl.STATIC_DRAW);
 }
@@ -6424,9 +6424,9 @@ PIXI.CanvasRenderer = function(width, height, view, transparent)
 	this.refresh = true;
 	// hack to enable some hardware acceleration!
 	//this.view.style["transform"] = "translatez(0)";
-
+	
     this.view.width = this.width;
-	this.view.height = this.height;
+	this.view.height = this.height;  
 	this.count = 0;
 }
 
@@ -6442,24 +6442,24 @@ PIXI.CanvasRenderer.prototype.constructor = PIXI.CanvasRenderer;
 PIXI.CanvasRenderer.prototype.render = function(stage)
 {
 	// update children if need be
-
+	
 	//stage.__childrenAdded = [];
 	//stage.__childrenRemoved = [];
-
+	
 	// update textures if need be
 	PIXI.texturesToUpdate = [];
 	PIXI.texturesToDestroy = [];
-
+	
 	stage.updateTransform();
-
+	
 	// update the background color
 	if(this.view.style.backgroundColor!=stage.backgroundColorString && !this.transparent)this.view.style.backgroundColor = stage.backgroundColorString;
 
-	this.context.setTransform(1,0,0,1,0,0);
+	this.context.setTransform(1,0,0,1,0,0); 
 	this.context.clearRect(0, 0, this.width, this.height)
     this.renderDisplayObject(stage);
     //as
-
+   
     // run interaction!
 	if(stage.interactive)
 	{
@@ -6470,14 +6470,14 @@ PIXI.CanvasRenderer.prototype.render = function(stage)
 			stage.interactionManager.setTarget(this);
 		}
 	}
-
+	
 	// remove frame updates..
 	if(PIXI.Texture.frameUpdates.length > 0)
 	{
 		PIXI.Texture.frameUpdates = [];
 	}
-
-
+	
+	
 }
 
 /**
@@ -6491,7 +6491,7 @@ PIXI.CanvasRenderer.prototype.resize = function(width, height)
 {
 	this.width = width;
 	this.height = height;
-
+	
 	this.view.width = width;
 	this.view.height = height;
 }
@@ -6508,50 +6508,50 @@ PIXI.CanvasRenderer.prototype.renderDisplayObject = function(displayObject)
 	// no loger recurrsive!
 	var transform;
 	var context = this.context;
-
+	
 	context.globalCompositeOperation = 'source-over';
-
-	// one the display object hits this. we can break the loop
+	
+	// one the display object hits this. we can break the loop	
 	var testObject = displayObject.last._iNext;
 	displayObject = displayObject.first;
-
-	do
+	
+	do	
 	{
 		transform = displayObject.worldTransform;
-
+		
 		if(!displayObject.visible)
 		{
 			displayObject = displayObject.last._iNext;
 			continue;
 		}
-
+		
 		if(!displayObject.renderable)
 		{
 			displayObject = displayObject._iNext;
 			continue;
 		}
-
+		
 		if(displayObject instanceof PIXI.Sprite)
 		{
-
+				
 			var frame = displayObject.texture.frame;
-
+			
 			if(frame)
 			{
 				context.globalAlpha = displayObject.worldAlpha;
-
+				
 				context.setTransform(transform[0], transform[3], transform[1], transform[4], transform[2], transform[5]);
-
-				context.drawImage(displayObject.texture.baseTexture.source,
+					
+				context.drawImage(displayObject.texture.baseTexture.source, 
 								   frame.x,
 								   frame.y,
 								   frame.width,
 								   frame.height,
-								   (displayObject.anchor.x) * -frame.width,
+								   (displayObject.anchor.x) * -frame.width, 
 								   (displayObject.anchor.y) * -frame.height,
 								   frame.width,
 								   frame.height);
-			}
+			}					   
 	   	}
 	   	else if(displayObject instanceof PIXI.Strip)
 		{
@@ -6577,21 +6577,21 @@ PIXI.CanvasRenderer.prototype.renderDisplayObject = function(displayObject)
 			if(displayObject.open)
 			{
 				context.save();
-
+				
 				var cacheAlpha = displayObject.mask.alpha;
 				var maskTransform = displayObject.mask.worldTransform;
-
+				
 				context.setTransform(maskTransform[0], maskTransform[3], maskTransform[1], maskTransform[4], maskTransform[2], maskTransform[5])
-
+				
 				displayObject.mask.worldAlpha = 0.5;
-
+				
 				context.worldAlpha = 0;
-
+				
 				PIXI.CanvasGraphics.renderGraphicsMask(displayObject.mask, context);
 		//		context.fillStyle = 0xFF0000;
 			//	context.fillRect(0, 0, 200, 200);
 				context.clip();
-
+				
 				displayObject.mask.worldAlpha = cacheAlpha;
 				//context.globalCompositeOperation = 'lighter';
 			}
@@ -6603,12 +6603,12 @@ PIXI.CanvasRenderer.prototype.renderDisplayObject = function(displayObject)
 		}
 	//	count++
 		displayObject = displayObject._iNext;
-
-
+		
+		
 	}
 	while(displayObject != testObject)
 
-
+	
 }
 
 /**
@@ -6623,26 +6623,26 @@ PIXI.CanvasRenderer.prototype.renderStripFlat = function(strip)
 	var context = this.context;
 	var verticies = strip.verticies;
 	var uvs = strip.uvs;
-
+	
 	var length = verticies.length/2;
 	this.count++;
-
+	
 	context.beginPath();
-	for (var i=1; i < length-2; i++)
+	for (var i=1; i < length-2; i++) 
 	{
-
+		
 		// draw some triangles!
 		var index = i*2;
-
+		
 		 var x0 = verticies[index],   x1 = verticies[index+2], x2 = verticies[index+4];
  		 var y0 = verticies[index+1], y1 = verticies[index+3], y2 = verticies[index+5];
-
+ 		 
 		context.moveTo(x0, y0);
 		context.lineTo(x1, y1);
 		context.lineTo(x2, y2);
-
-	};
-
+		
+	};	
+	
 	context.fillStyle = "#FF0000";
 	context.fill();
 	context.closePath();
@@ -6658,26 +6658,26 @@ PIXI.CanvasRenderer.prototype.renderStripFlat = function(strip)
 PIXI.CanvasRenderer.prototype.renderTilingSprite = function(sprite)
 {
 	var context = this.context;
-
+	
 	context.globalAlpha = sprite.worldAlpha;
-
+	
  	if(!sprite.__tilePattern) sprite.__tilePattern = context.createPattern(sprite.texture.baseTexture.source, "repeat");
-
+ 	
 	context.beginPath();
-
+	
 	var tilePosition = sprite.tilePosition;
 	var tileScale = sprite.tileScale;
-
+	
     // offset
     context.scale(tileScale.x,tileScale.y);
     context.translate(tilePosition.x, tilePosition.y);
-
+ 	
 	context.fillStyle = sprite.__tilePattern;
 	context.fillRect(-tilePosition.x,-tilePosition.y,sprite.width / tileScale.x, sprite.height / tileScale.y);
-
+	
 	context.scale(1/tileScale.x, 1/tileScale.y);
     context.translate(-tilePosition.x, -tilePosition.y);
-
+    
     context.closePath();
 }
 
@@ -6695,18 +6695,18 @@ PIXI.CanvasRenderer.prototype.renderStrip = function(strip)
 	// draw triangles!!
 	var verticies = strip.verticies;
 	var uvs = strip.uvs;
-
+	
 	var length = verticies.length/2;
 	this.count++;
-	for (var i=1; i < length-2; i++)
+	for (var i=1; i < length-2; i++) 
 	{
-
+		
 		// draw some triangles!
 		var index = i*2;
-
+		
 		 var x0 = verticies[index],   x1 = verticies[index+2], x2 = verticies[index+4];
  		 var y0 = verticies[index+1], y1 = verticies[index+3], y2 = verticies[index+5];
-
+ 		 
   		 var u0 = uvs[index] * strip.texture.width,   u1 = uvs[index+2] * strip.texture.width, u2 = uvs[index+4]* strip.texture.width;
    		 var v0 = uvs[index+1]* strip.texture.height, v1 = uvs[index+3] * strip.texture.height, v2 = uvs[index+5]* strip.texture.height;
 
@@ -6717,12 +6717,12 @@ PIXI.CanvasRenderer.prototype.renderStrip = function(strip)
 		context.lineTo(x1, y1);
 		context.lineTo(x2, y2);
 		context.closePath();
-
+		
 	//	context.fillStyle = "white"//rgb(1, 1, 1,1));
 	//	context.fill();
 		context.clip();
-
-
+		
+		
         // Compute matrix transform
         var delta = u0*v1 + v0*u2 + u1*v2 - v1*u2 - v0*u1 - u0*v2;
         var delta_a = x0*v1 + v0*x2 + x1*v2 - v1*x2 - v0*x1 - x0*v2;
@@ -6731,19 +6731,19 @@ PIXI.CanvasRenderer.prototype.renderStrip = function(strip)
         var delta_d = y0*v1 + v0*y2 + y1*v2 - v1*y2 - v0*y1 - y0*v2;
         var delta_e = u0*y1 + y0*u2 + u1*y2 - y1*u2 - y0*u1 - u0*y2;
         var delta_f = u0*v1*y2 + v0*y1*u2 + y0*u1*v2 - y0*v1*u2 - v0*u1*y2 - u0*y1*v2;
-
-
-
-
+		
+		
+		
+		    
         context.transform(delta_a/delta, delta_d/delta,
                       delta_b/delta, delta_e/delta,
                       delta_c/delta, delta_f/delta);
-
+                 
 		context.drawImage(strip.texture.baseTexture.source, 0, 0);
 	  	context.restore();
 	};
-
-//	context.globalCompositeOperation = 'source-over';
+	
+//	context.globalCompositeOperation = 'source-over';	
 }
 
 /**
@@ -6758,7 +6758,7 @@ PIXI.CanvasRenderer.prototype.renderStrip = function(strip)
  */
 PIXI.CanvasGraphics = function()
 {
-
+	
 }
 
 
@@ -6774,35 +6774,35 @@ PIXI.CanvasGraphics = function()
 PIXI.CanvasGraphics.renderGraphics = function(graphics, context)
 {
 	var worldAlpha = graphics.worldAlpha;
-
-	for (var i=0; i < graphics.graphicsData.length; i++)
+	
+	for (var i=0; i < graphics.graphicsData.length; i++) 
 	{
 		var data = graphics.graphicsData[i];
 		var points = data.points;
-
+		
 		context.strokeStyle = color = '#' + ('00000' + ( data.lineColor | 0).toString(16)).substr(-6);
 
 		context.lineWidth = data.lineWidth;
-
+		
 		if(data.type == PIXI.Graphics.POLY)
 		{
 			//if(data.lineWidth <= 0)continue;
-
+			
 			context.beginPath();
-
+			
 			context.moveTo(points[0], points[1]);
-
+			
 			for (var j=1; j < points.length/2; j++)
 			{
 				context.lineTo(points[j * 2], points[j * 2 + 1]);
-			}
-
+			} 
+	      	
 	      	// if the first and last point are the same close the path - much neater :)
 	      	if(points[0] == points[points.length-2] && points[1] == points[points.length-1])
 	      	{
 	      		context.closePath();
 	      	}
-
+			
 			if(data.fill)
 			{
 				context.globalAlpha = data.fillAlpha * worldAlpha;
@@ -6817,21 +6817,21 @@ PIXI.CanvasGraphics.renderGraphics = function(graphics, context)
 		}
 		else if(data.type == PIXI.Graphics.RECT)
 		{
-
+				
 			// TODO - need to be Undefined!
 			if(data.fillColor)
 			{
 				context.globalAlpha = data.fillAlpha * worldAlpha;
 				context.fillStyle = color = '#' + ('00000' + ( data.fillColor | 0).toString(16)).substr(-6);
 				context.fillRect(points[0], points[1], points[2], points[3]);
-
+				
 			}
 			if(data.lineWidth)
 			{
 				context.globalAlpha = data.lineAlpha * worldAlpha;
 				context.strokeRect(points[0], points[1], points[2], points[3]);
 			}
-
+			
 		}
 		else if(data.type == PIXI.Graphics.CIRC)
 		{
@@ -6839,7 +6839,7 @@ PIXI.CanvasGraphics.renderGraphics = function(graphics, context)
       		context.beginPath();
 			context.arc(points[0], points[1], points[2],0,2*Math.PI);
 			context.closePath();
-
+			
 			if(data.fill)
 			{
 				context.globalAlpha = data.fillAlpha * worldAlpha;
@@ -6854,19 +6854,19 @@ PIXI.CanvasGraphics.renderGraphics = function(graphics, context)
 		}
 		else if(data.type == PIXI.Graphics.ELIP)
 		{
-
+			
 			// elipse code taken from: http://stackoverflow.com/questions/2172798/how-to-draw-an-oval-in-html5-canvas
-
+			
 			var elipseData =  data.points;
-
+			
 			var w = elipseData[2] * 2;
 			var h = elipseData[3] * 2;
-
+	
 			var x = elipseData[0] - w/2;
 			var y = elipseData[1] - h/2;
-
+			
       		context.beginPath();
-
+			
 			var kappa = .5522848,
 			ox = (w / 2) * kappa, // control point offset horizontal
 			oy = (h / 2) * kappa, // control point offset vertical
@@ -6874,15 +6874,15 @@ PIXI.CanvasGraphics.renderGraphics = function(graphics, context)
 			ye = y + h,           // y-end
 			xm = x + w / 2,       // x-middle
 			ym = y + h / 2;       // y-middle
-
+			
 			context.moveTo(x, ym);
 			context.bezierCurveTo(x, ym - oy, xm - ox, y, xm, y);
 			context.bezierCurveTo(xm + ox, y, xe, ym - oy, xe, ym);
 			context.bezierCurveTo(xe, ym + oy, xm + ox, ye, xm, ye);
 			context.bezierCurveTo(xm - ox, ye, x, ym + oy, x, ym);
-
+  
 			context.closePath();
-
+			
 			if(data.fill)
 			{
 				context.globalAlpha = data.fillAlpha * worldAlpha;
@@ -6895,7 +6895,7 @@ PIXI.CanvasGraphics.renderGraphics = function(graphics, context)
       			context.stroke();
 			}
 		}
-
+      	
 	};
 }
 
@@ -6911,37 +6911,37 @@ PIXI.CanvasGraphics.renderGraphics = function(graphics, context)
 PIXI.CanvasGraphics.renderGraphicsMask = function(graphics, context)
 {
 	var worldAlpha = graphics.worldAlpha;
-
+	
 	var len = graphics.graphicsData.length;
 	if(len > 1)
 	{
 		len = 1;
 		console.log("Pixi.js warning: masks in canvas can only mask using the first path in the graphics object")
 	}
-
-	for (var i=0; i < 1; i++)
+	
+	for (var i=0; i < 1; i++) 
 	{
 		var data = graphics.graphicsData[i];
 		var points = data.points;
-
+		
 		if(data.type == PIXI.Graphics.POLY)
 		{
 			//if(data.lineWidth <= 0)continue;
-
+			
 			context.beginPath();
 			context.moveTo(points[0], points[1]);
-
+			
 			for (var j=1; j < points.length/2; j++)
 			{
 				context.lineTo(points[j * 2], points[j * 2 + 1]);
-			}
-
+			} 
+	      	
 	      	// if the first and last point are the same close the path - much neater :)
 	      	if(points[0] == points[points.length-2] && points[1] == points[points.length-1])
 	      	{
 	      		context.closePath();
 	      	}
-
+			
 		}
 		else if(data.type == PIXI.Graphics.RECT)
 		{
@@ -6958,18 +6958,18 @@ PIXI.CanvasGraphics.renderGraphicsMask = function(graphics, context)
 		}
 		else if(data.type == PIXI.Graphics.ELIP)
 		{
-
+			
 			// elipse code taken from: http://stackoverflow.com/questions/2172798/how-to-draw-an-oval-in-html5-canvas
 			var elipseData =  data.points;
-
+			
 			var w = elipseData[2] * 2;
 			var h = elipseData[3] * 2;
-
+	
 			var x = elipseData[0] - w/2;
 			var y = elipseData[1] - h/2;
-
+			
       		context.beginPath();
-
+			
 			var kappa = .5522848,
 			ox = (w / 2) * kappa, // control point offset horizontal
 			oy = (h / 2) * kappa, // control point offset vertical
@@ -6977,7 +6977,7 @@ PIXI.CanvasGraphics.renderGraphicsMask = function(graphics, context)
 			ye = y + h,           // y-end
 			xm = x + w / 2,       // x-middle
 			ym = y + h / 2;       // y-middle
-
+			
 			context.moveTo(x, ym);
 			context.bezierCurveTo(x, ym - oy, xm - ox, y, xm, y);
 			context.bezierCurveTo(xm + ox, y, xe, ym - oy, xe, ym);
@@ -6985,8 +6985,8 @@ PIXI.CanvasGraphics.renderGraphicsMask = function(graphics, context)
 			context.bezierCurveTo(xm - ox, ye, x, ym + oy, x, ym);
 			context.closePath();
 		}
-
-
+      	
+	   
 	};
 }
 
@@ -6996,18 +6996,18 @@ PIXI.CanvasGraphics.renderGraphicsMask = function(graphics, context)
 
 
 /**
- * The Graphics class contains a set of methods that you can use to create primitive shapes and lines.
+ * The Graphics class contains a set of methods that you can use to create primitive shapes and lines. 
  * It is important to know that with the webGL renderer only simple polys can be filled at this stage
  * Complex polys will not be filled. Heres an example of a complex poly: http://www.goodboydigital.com/wp-content/uploads/2013/06/complexPolygon.png
  *
- * @class Graphics
+ * @class Graphics 
  * @extends DisplayObjectContainer
  * @constructor
  */
 PIXI.Graphics = function()
 {
 	PIXI.DisplayObjectContainer.call( this );
-
+	
 	this.renderable = true;
 
     /**
@@ -7068,14 +7068,14 @@ PIXI.Graphics.prototype.constructor = PIXI.Graphics;
 PIXI.Graphics.prototype.lineStyle = function(lineWidth, color, alpha)
 {
 	if(this.currentPath.points.length == 0)this.graphicsData.pop();
-
+	
 	this.lineWidth = lineWidth || 0;
 	this.lineColor = color || 0;
 	this.lineAlpha = (alpha == undefined) ? 1 : alpha;
-
-	this.currentPath = {lineWidth:this.lineWidth, lineColor:this.lineColor, lineAlpha:this.lineAlpha,
+	
+	this.currentPath = {lineWidth:this.lineWidth, lineColor:this.lineColor, lineAlpha:this.lineAlpha, 
 						fillColor:this.fillColor, fillAlpha:this.fillAlpha, fill:this.filling, points:[], type:PIXI.Graphics.POLY};
-
+	
 	this.graphicsData.push(this.currentPath);
 }
 
@@ -7089,12 +7089,12 @@ PIXI.Graphics.prototype.lineStyle = function(lineWidth, color, alpha)
 PIXI.Graphics.prototype.moveTo = function(x, y)
 {
 	if(this.currentPath.points.length == 0)this.graphicsData.pop();
-
-	this.currentPath = this.currentPath = {lineWidth:this.lineWidth, lineColor:this.lineColor, lineAlpha:this.lineAlpha,
+	
+	this.currentPath = this.currentPath = {lineWidth:this.lineWidth, lineColor:this.lineColor, lineAlpha:this.lineAlpha, 
 						fillColor:this.fillColor, fillAlpha:this.fillAlpha, fill:this.filling, points:[], type:PIXI.Graphics.POLY};
-
+	
 	this.currentPath.points.push(x, y);
-
+	
 	this.graphicsData.push(this.currentPath);
 }
 
@@ -7150,11 +7150,11 @@ PIXI.Graphics.prototype.endFill = function()
 PIXI.Graphics.prototype.drawRect = function( x, y, width, height )
 {
 	if(this.currentPath.points.length == 0)this.graphicsData.pop();
-
-	this.currentPath = {lineWidth:this.lineWidth, lineColor:this.lineColor, lineAlpha:this.lineAlpha,
-						fillColor:this.fillColor, fillAlpha:this.fillAlpha, fill:this.filling,
+	
+	this.currentPath = {lineWidth:this.lineWidth, lineColor:this.lineColor, lineAlpha:this.lineAlpha, 
+						fillColor:this.fillColor, fillAlpha:this.fillAlpha, fill:this.filling, 
 						points:[x, y, width, height], type:PIXI.Graphics.RECT};
-
+						
 	this.graphicsData.push(this.currentPath);
 	this.dirty = true;
 }
@@ -7170,11 +7170,11 @@ PIXI.Graphics.prototype.drawRect = function( x, y, width, height )
 PIXI.Graphics.prototype.drawCircle = function( x, y, radius)
 {
 	if(this.currentPath.points.length == 0)this.graphicsData.pop();
-
-	this.currentPath = {lineWidth:this.lineWidth, lineColor:this.lineColor, lineAlpha:this.lineAlpha,
-						fillColor:this.fillColor, fillAlpha:this.fillAlpha, fill:this.filling,
+	
+	this.currentPath = {lineWidth:this.lineWidth, lineColor:this.lineColor, lineAlpha:this.lineAlpha, 
+						fillColor:this.fillColor, fillAlpha:this.fillAlpha, fill:this.filling, 
 						points:[x, y, radius, radius], type:PIXI.Graphics.CIRC};
-
+						
 	this.graphicsData.push(this.currentPath);
 	this.dirty = true;
 }
@@ -7191,11 +7191,11 @@ PIXI.Graphics.prototype.drawCircle = function( x, y, radius)
 PIXI.Graphics.prototype.drawElipse = function( x, y, width, height)
 {
 	if(this.currentPath.points.length == 0)this.graphicsData.pop();
-
-	this.currentPath = {lineWidth:this.lineWidth, lineColor:this.lineColor, lineAlpha:this.lineAlpha,
-						fillColor:this.fillColor, fillAlpha:this.fillAlpha, fill:this.filling,
+	
+	this.currentPath = {lineWidth:this.lineWidth, lineColor:this.lineColor, lineAlpha:this.lineAlpha, 
+						fillColor:this.fillColor, fillAlpha:this.fillAlpha, fill:this.filling, 
 						points:[x, y, width, height], type:PIXI.Graphics.ELIP};
-
+						
 	this.graphicsData.push(this.currentPath);
 	this.dirty = true;
 }
@@ -7209,7 +7209,7 @@ PIXI.Graphics.prototype.clear = function()
 {
 	this.lineWidth = 0;
 	this.filling = false;
-
+	
 	this.dirty = true;
 	this.clearDirty = true;
 	this.graphicsData = [];
@@ -7230,20 +7230,20 @@ PIXI.Strip = function(texture, width, height)
 	PIXI.DisplayObjectContainer.call( this );
 	this.texture = texture;
 	this.blendMode = PIXI.blendModes.NORMAL;
-
+	
 	try
 	{
 		this.uvs = new Float32Array([0, 1,
 				1, 1,
 				1, 0, 0,1]);
-
+	
 		this.verticies = new Float32Array([0, 0,
 						  0,0,
 						  0,0, 0,
 						  0, 0]);
-
+						  
 		this.colors = new Float32Array([1, 1, 1, 1]);
-
+		
 		this.indices = new Uint16Array([0, 1, 2, 3]);
 	}
 	catch(error)
@@ -7251,18 +7251,18 @@ PIXI.Strip = function(texture, width, height)
 		this.uvs = [0, 1,
 				1, 1,
 				1, 0, 0,1];
-
+	
 		this.verticies = [0, 0,
 						  0,0,
 						  0,0, 0,
 						  0, 0];
-
+						  
 		this.colors = [1, 1, 1, 1];
-
+		
 		this.indices = [0, 1, 2, 3];
 	}
-
-
+	
+	
 	/*
 	this.uvs = new Float32Array()
 	this.verticies = new Float32Array()
@@ -7271,7 +7271,7 @@ PIXI.Strip = function(texture, width, height)
 */
 	this.width = width;
 	this.height = height;
-
+	
 	// load the texture!
 	if(texture.baseTexture.hasLoaded)
 	{
@@ -7284,7 +7284,7 @@ PIXI.Strip = function(texture, width, height)
 		this.onTextureUpdateBind = this.onTextureUpdate.bind(this);
 		this.texture.addEventListener( 'update', this.onTextureUpdateBind );
 	}
-
+	
 	this.renderable = true;
 }
 
@@ -7296,8 +7296,8 @@ PIXI.Strip.prototype.setTexture = function(texture)
 {
 	//TODO SET THE TEXTURES
 	//TODO VISIBILITY
-
-	// stop current texture
+	
+	// stop current texture 
 	this.texture = texture;
 	this.width   = texture.frame.width;
 	this.height  = texture.frame.height;
@@ -7320,7 +7320,7 @@ PIXI.Rope = function(texture, points)
 {
 	PIXI.Strip.call( this, texture );
 	this.points = points;
-
+	
 	try
 	{
 		this.verticies = new Float32Array( points.length * 4);
@@ -7331,12 +7331,12 @@ PIXI.Rope = function(texture, points)
 	catch(error)
 	{
 		this.verticies = verticies
-
+		
 		this.uvs = uvs
 		this.colors = colors
 		this.indices = indices
 	}
-
+	
 	this.refresh();
 }
 
@@ -7349,99 +7349,99 @@ PIXI.Rope.prototype.refresh = function()
 {
 	var points = this.points;
 	if(points.length < 1)return;
-
+	
 	var uvs = this.uvs
 	var indices = this.indices;
 	var colors = this.colors;
-
+	
 	var lastPoint = points[0];
 	var nextPoint;
 	var perp = {x:0, y:0};
 	var point = points[0];
-
+	
 	this.count-=0.2;
-
-
+	
+	
 	uvs[0] = 0
 	uvs[1] = 1
 	uvs[2] = 0
 	uvs[3] = 1
-
+	
 	colors[0] = 1;
 	colors[1] = 1;
-
+	
 	indices[0] = 0;
 	indices[1] = 1;
-
+	
 	var total = points.length;
-
-	for (var i =  1; i < total; i++)
+		
+	for (var i =  1; i < total; i++) 
 	{
-
+		
 		var point = points[i];
 		var index = i * 4;
 		// time to do some smart drawing!
 		var amount = i/(total-1)
-
+		
 		if(i%2)
 		{
 			uvs[index] = amount;
 			uvs[index+1] = 0;
-
+			
 			uvs[index+2] = amount
 			uvs[index+3] = 1
-
+		
 		}
 		else
 		{
 			uvs[index] = amount
 			uvs[index+1] = 0
-
+			
 			uvs[index+2] = amount
 			uvs[index+3] = 1
 		}
-
+		
 		index = i * 2;
 		colors[index] = 1;
 		colors[index+1] = 1;
-
+		
 		index = i * 2;
 		indices[index] = index;
 		indices[index + 1] = index + 1;
-
+		
 		lastPoint = point;
 	}
 }
 
 PIXI.Rope.prototype.updateTransform = function()
 {
-
+	
 	var points = this.points;
 	if(points.length < 1)return;
-
-	var verticies = this.verticies
-
+	
+	var verticies = this.verticies 
+	
 	var lastPoint = points[0];
 	var nextPoint;
 	var perp = {x:0, y:0};
 	var point = points[0];
-
+	
 	this.count-=0.2;
-
-	verticies[0] = point.x + perp.x
+	
+	verticies[0] = point.x + perp.x 
 	verticies[1] = point.y + perp.y //+ 200
-	verticies[2] = point.x - perp.x
+	verticies[2] = point.x - perp.x 
 	verticies[3] = point.y - perp.y//+200
 	// time to do some smart drawing!
-
+	
 	var total = points.length;
-
-	for (var i =  1; i < total; i++)
+		
+	for (var i =  1; i < total; i++) 
 	{
-
+		
 		var point = points[i];
 		var index = i * 4;
-
+		
 		if(i < points.length-1)
 		{
 			nextPoint = points[i+1];
@@ -7450,35 +7450,35 @@ PIXI.Rope.prototype.updateTransform = function()
 		{
 			nextPoint = point
 		}
-
+		
 		perp.y = -(nextPoint.x - lastPoint.x);
 		perp.x = nextPoint.y - lastPoint.y;
-
+		
 		var ratio = (1 - (i / (total-1))) * 10;
 				if(ratio > 1)ratio = 1;
-
+				
 		var perpLength = Math.sqrt(perp.x * perp.x + perp.y * perp.y);
 		var num = this.texture.height/2//(20 + Math.abs(Math.sin((i + this.count) * 0.3) * 50) )* ratio;
 		perp.x /= perpLength;
 		perp.y /= perpLength;
-
+	
 		perp.x *= num;
 		perp.y *= num;
-
-		verticies[index] = point.x + perp.x
+		
+		verticies[index] = point.x + perp.x 
 		verticies[index+1] = point.y + perp.y
-		verticies[index+2] = point.x - perp.x
+		verticies[index+2] = point.x - perp.x 
 		verticies[index+3] = point.y - perp.y
 
 		lastPoint = point;
 	}
-
+	
 	PIXI.DisplayObjectContainer.prototype.updateTransform.call( this );
 }
 
 PIXI.Rope.prototype.setTexture = function(texture)
 {
-	// stop current texture
+	// stop current texture 
 	this.texture = texture;
 	this.updateFrame = true;
 }
@@ -7534,7 +7534,7 @@ PIXI.TilingSprite = function(texture, width, height)
 	 *
 	 * @property tileScale
 	 * @type Point
-	 */
+	 */	
 	this.tileScale = new PIXI.Point(1,1);
 
 	/**
@@ -7542,11 +7542,11 @@ PIXI.TilingSprite = function(texture, width, height)
 	 *
 	 * @property tilePosition
 	 * @type Point
-	 */
+	 */	
 	this.tilePosition = new PIXI.Point(0,0);
 
 	this.renderable = true;
-
+	
 	this.blendMode = PIXI.blendModes.NORMAL
 }
 
@@ -7564,8 +7564,8 @@ PIXI.TilingSprite.prototype.setTexture = function(texture)
 {
 	//TODO SET THE TEXTURES
 	//TODO VISIBILITY
-
-	// stop current texture
+	
+	// stop current texture 
 	this.texture = texture;
 	this.updateFrame = true;
 }
@@ -7586,10 +7586,10 @@ PIXI.TilingSprite.prototype.onTextureUpdate = function(event)
 /**
  * @author Mat Groves http://matgroves.com/ @Doormat23
  * based on pixi impact spine implementation made by Eemeli Kelokorpi (@ekelokorpi) https://github.com/ekelokorpi
- *
+ * 
  * Awesome JS run time provided by EsotericSoftware
  * https://github.com/EsotericSoftware/spine-runtimes
- *
+ * 
  */
 
 /**
@@ -7605,37 +7605,37 @@ PIXI.TilingSprite.prototype.onTextureUpdate = function(event)
 PIXI.Spine = function(url)
 {
 	PIXI.DisplayObjectContainer.call(this);
-
+	
 	this.spineData = PIXI.AnimCache[url];
-
+	
 	if(!this.spineData)
 	{
 		throw new Error("Spine data must be preloaded using PIXI.SpineLoader or PIXI.AssetLoader: " + url);
 		return;
 	}
-
+	
 	this.count = 0;
-
+	
 	this.sprites = [];
-
+	
 	this.skeleton = new spine.Skeleton(this.spineData);
 	this.skeleton.updateWorldTransform();
 
-	this.stateData = new spine.AnimationStateData(this.spineData);
+	this.stateData = new spine.AnimationStateData(this.spineData);	
 	this.state = new spine.AnimationState(this.stateData);
-
+	
 	// add the sprites..
 	for (var i = 0; i < this.skeleton.drawOrder.length; i++) {
-
+		
 		var attachmentName = this.skeleton.drawOrder[i].data.attachmentName;
-
+		
 		// kind of an assumtion here. that its a png
 		if(!PIXI.TextureCache[attachmentName])
 		{
 			attachmentName += ".png";
 		}
-
-
+		
+		
 		var sprite = new PIXI.Sprite(PIXI.Texture.fromFrame(attachmentName));
 		sprite.anchor.x = sprite.anchor.y = 0.5;
 		this.addChild(sprite);
@@ -7659,48 +7659,48 @@ PIXI.Spine.prototype.updateTransform = function()
 	this.state.apply(this.skeleton);
 	this.skeleton.updateWorldTransform();
 
-
-	for (var i = 0; i < this.skeleton.drawOrder.length; i++)
+	
+	for (var i = 0; i < this.skeleton.drawOrder.length; i++) 
 	{
 		var slot = this.skeleton.drawOrder[i];
 
 		var x = slot.bone.worldX + slot.attachment.x * slot.bone.m00 + slot.attachment.y * slot.bone.m01 + slot.attachment.width * 0.5;
 		var y = slot.bone.worldY + slot.attachment.x * slot.bone.m10 + slot.attachment.y * slot.bone.m11 + slot.attachment.height * 0.5;
 		//console.log(x + ' : ' + y);
-
-
+		
+		 
 			//console.log(slot.attachment.name)
 			if(slot.cacheName != slot.attachment.name)
 			{
 				var attachmentName = slot.attachment.name;
-
+		
 				if(!PIXI.TextureCache[attachmentName])
 				{
 					attachmentName += ".png";
 				}
-
+				
 				this.sprites[i].setTexture(PIXI.TextureCache[attachmentName]);
-
+				
 				slot.cacheName = slot.attachment.name;
 			}
-
+		
 		x += -((slot.attachment.width * (slot.bone.worldScaleX + slot.attachment.scaleX - 1))>>1);
 		y += -((slot.attachment.height * (slot.bone.worldScaleY + slot.attachment.scaleY - 1))>>1);
-
-
+		
+		
 		this.sprites[i].position.x = x;
 		this.sprites[i].position.y = y;
 		this.sprites[i].rotation = (-(slot.bone.worldRotation + slot.attachment.rotation)) * (Math.PI/180);
-	}
-
+	}	
+	
 	PIXI.DisplayObjectContainer.prototype.updateTransform.call(this);
 }
 
 /*
  * Awesome JS run time provided by EsotericSoftware
- *
+ * 
  * https://github.com/EsotericSoftware/spine-runtimes
- *
+ * 
  */
 
 var spine = {};
@@ -7810,7 +7810,7 @@ spine.Slot.prototype = {
 		this.g = data.g;
 		this.b = data.b;
 		this.a = data.a;
-
+		
 		var slotDatas = this.skeleton.data.slots;
 		for (var i = 0, n = slotDatas.length; i < n; i++) {
 			if (slotDatas[i] == data) {
@@ -8065,14 +8065,14 @@ spine.ScaleTimeline.prototype = {
 	apply: function (skeleton, time, alpha) {
 		var frames = this.frames;
 		if (time < frames[0]) return; // Time is before first frame.
-
+		
 		var bone = skeleton.bones[this.boneIndex];
 
 		if (time >= frames[frames.length - 3]) { // Time is after last frame.
 			bone.scaleX += (bone.data.scaleX - 1 + frames[frames.length - 2] - bone.scaleX) * alpha;
 			bone.scaleY += (bone.data.scaleY - 1 + frames[frames.length - 1] - bone.scaleY) * alpha;
-
-
+			
+			
 			return;
 		}
 
@@ -8177,10 +8177,10 @@ spine.AttachmentTimeline.prototype = {
 
 		var attachmentName = this.attachmentNames[frameIndex];
 		//console.log(skeleton.slots[this.slotIndex])
-
+		
 		// change the name!
 	//	skeleton.slots[this.slotIndex].attachmentName = attachmentName;
-
+		
 		skeleton.slots[this.slotIndex].setAttachment(!attachmentName ? null : skeleton.getAttachmentBySlotIndex(this.slotIndex, attachmentName));
 	}
 };
@@ -8352,11 +8352,11 @@ spine.Skeleton.prototype = {
 			if (slot.data.name == slotName) {
 				var attachment = null;
 				if (attachmentName) {
-
+					
 					attachment = this.getAttachment(i, attachmentName);
 					if (attachment == null) throw "Attachment not found: " + attachmentName + ", for slot: " + slotName;
 				}
-
+				
 				slot.setAttachment(attachment);
 				return;
 			}
@@ -8438,7 +8438,7 @@ spine.RegionAttachment.prototype = {
 		offset[7/*Y4*/] = localYCos + localX2Sin;
 	},
 	computeVertices: function (x, y, bone, vertices) {
-
+		
 		x += bone.worldX;
 		y += bone.worldY;
 		var m00 = bone.m00;
@@ -8514,7 +8514,7 @@ spine.AnimationState.prototype = {
 				this.previous = null;
 			}
 			this.current.mix(skeleton, this.currentTime, this.currentLoop, alpha);
-		} else
+		} else 
 			this.current.apply(skeleton, this.currentTime, this.currentLoop);
 	},
 	clearAnimation: function () {
@@ -8660,15 +8660,15 @@ spine.SkeletonJson.prototype = {
 		name = map["name"] || name;
 
 		var type = spine.AttachmentType[map["type"] || "region"];
-
+		
 		// @ekelokorpi
 		// var attachment = this.attachmentLoader.newAttachment(skin, type, name);
 		var attachment = new spine.RegionAttachment();
-
+		
 		// @Doormat23
 		// add the name of the attachment
 		attachment.name = name;
-
+		
 		if (type == spine.AttachmentType.region) {
 			attachment.x = (map["x"] || 0) * this.scale;
 			attachment.y = (map["y"] || 0) * this.scale;
@@ -8732,7 +8732,7 @@ spine.SkeletonJson.prototype = {
 					}
 					timelines.push(timeline);
 					duration = Math.max(duration, timeline.frames[timeline.getFrameCount() * 3 - 3]);
-
+					
 				} else
 					throw "Invalid timeline type for a bone: " + timelineName + " (" + boneName + ")";
 			}
@@ -9045,14 +9045,14 @@ spine.Bone.yDown = true;
 /**
  * This object is one that will allow you to specify custom rendering functions based on render type
  *
- * @class CustomRenderable
+ * @class CustomRenderable 
  * @extends DisplayObject
  * @constructor
  */
 PIXI.CustomRenderable = function()
 {
 	PIXI.DisplayObject.call( this );
-
+	
 }
 
 // constructor
@@ -9158,19 +9158,19 @@ PIXI.BaseTexture = function(source)
 			this.hasLoaded = true;
 			this.width = this.source.width;
 			this.height = this.source.height;
-
+			
 			PIXI.texturesToUpdate.push(this);
 		}
 		else
 		{
-
+			
 			var scope = this;
 			this.source.onload = function(){
-
+				
 				scope.hasLoaded = true;
 				scope.width = scope.source.width;
 				scope.height = scope.source.height;
-
+			
 				// add it to somewhere...
 				PIXI.texturesToUpdate.push(scope);
 				scope.dispatchEvent( { type: 'loaded', content: scope } );
@@ -9183,7 +9183,7 @@ PIXI.BaseTexture = function(source)
 		this.hasLoaded = true;
 		this.width = this.source.width;
 		this.height = this.source.height;
-
+			
 		PIXI.texturesToUpdate.push(this);
 	}
 
@@ -9223,7 +9223,7 @@ PIXI.BaseTexture.fromImage = function(imageUrl, crossorigin)
 	{
 		// new Image() breaks tex loading in some versions of Chrome.
 		// See https://code.google.com/p/chromium/issues/detail?id=238071
-		var image = new Image();//document.createElement('img');
+		var image = new Image();//document.createElement('img'); 
 		if (crossorigin)
 		{
 			image.crossOrigin = '';
@@ -9296,7 +9296,7 @@ PIXI.Texture = function(baseTexture, frame)
 	{
 		if(this.noFrame)frame = new PIXI.Rectangle(0,0, baseTexture.width, baseTexture.height);
 		//console.log(frame)
-
+		
 		this.setFrame(frame);
 	}
 	else
@@ -9375,13 +9375,13 @@ PIXI.Texture.prototype.setFrame = function(frame)
 PIXI.Texture.fromImage = function(imageUrl, crossorigin)
 {
 	var texture = PIXI.TextureCache[imageUrl];
-
+	
 	if(!texture)
 	{
 		texture = new PIXI.Texture(PIXI.BaseTexture.fromImage(imageUrl, crossorigin));
 		PIXI.TextureCache[imageUrl] = texture;
 	}
-
+	
 	return texture;
 }
 
@@ -9431,7 +9431,7 @@ PIXI.Texture.addTextureToCache = function(texture, id)
 }
 
 /**
- * Remove a texture from the textureCache.
+ * Remove a texture from the textureCache. 
  *
  * @static
  * @method removeTextureFromCache
@@ -9456,11 +9456,11 @@ PIXI.Texture.frameUpdates = [];
 /**
  A RenderTexture is a special texture that allows any pixi displayObject to be rendered to it.
 
- __Hint__: All DisplayObjects (exmpl. Sprites) that renders on RenderTexture should be preloaded.
- Otherwise black rectangles will be drawn instead.
-
+ __Hint__: All DisplayObjects (exmpl. Sprites) that renders on RenderTexture should be preloaded. 
+ Otherwise black rectangles will be drawn instead.  
+ 
  RenderTexture takes snapshot of DisplayObject passed to render method. If DisplayObject is passed to render method, position and rotation of it will be ignored. For example:
-
+ 
 	var renderTexture = new PIXI.RenderTexture(800, 600);
 	var sprite = PIXI.Sprite.fromImage("spinObj_01.png");
 	sprite.position.x = 800/2;
@@ -9490,7 +9490,7 @@ PIXI.RenderTexture = function(width, height)
 
 	this.indetityMatrix = PIXI.mat3.create();
 
-	this.frame = new PIXI.Rectangle(0, 0, this.width, this.height);
+	this.frame = new PIXI.Rectangle(0, 0, this.width, this.height);	
 
 	if(PIXI.gl)
 	{
@@ -9519,7 +9519,7 @@ PIXI.RenderTexture.prototype.initWebGL = function()
    	gl.bindFramebuffer(gl.FRAMEBUFFER, this.glFramebuffer );
 
     this.glFramebuffer.width = this.width;
-    this.glFramebuffer.height = this.height;
+    this.glFramebuffer.height = this.height;	
 
 	this.baseTexture = new PIXI.BaseTexture();
 
@@ -9555,7 +9555,7 @@ PIXI.RenderTexture.prototype.initWebGL = function()
 	// set the correct render function..
 	this.render = this.renderWebGL;
 
-
+	
 }
 
 
@@ -9564,23 +9564,23 @@ PIXI.RenderTexture.prototype.resize = function(width, height)
 
 	this.width = width;
 	this.height = height;
-
+	
 	//this.frame.width = this.width
 	//this.frame.height = this.height;
-
-
+		
+	
 	if(PIXI.gl)
 	{
 		this.projection.x = this.width/2
 		this.projection.y = this.height/2;
-
+	
 		var gl = PIXI.gl;
 		gl.bindTexture(gl.TEXTURE_2D, this.baseTexture._glTexture);
 		gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA,  this.width,  this.height, 0, gl.RGBA, gl.UNSIGNED_BYTE, null);
 	}
 	else
 	{
-
+		
 		this.frame.width = this.width
 		this.frame.height = this.height;
 		this.renderer.resize(this.width, this.height);
@@ -9616,15 +9616,15 @@ PIXI.RenderTexture.prototype.renderWebGL = function(displayObject, position, cle
 	var gl = PIXI.gl;
 
 	// enable the alpha color mask..
-	gl.colorMask(true, true, true, true);
+	gl.colorMask(true, true, true, true); 
 
-	gl.viewport(0, 0, this.width, this.height);
+	gl.viewport(0, 0, this.width, this.height);	
 
 	gl.bindFramebuffer(gl.FRAMEBUFFER, this.glFramebuffer );
 
 	if(clear)
 	{
-		gl.clearColor(0,0,0, 0);
+		gl.clearColor(0,0,0, 0);     
 		gl.clear(gl.COLOR_BUFFER_BIT);
 	}
 
@@ -9637,18 +9637,18 @@ PIXI.RenderTexture.prototype.renderWebGL = function(displayObject, position, cle
 	displayObject.worldTransform[4] = -1;
 	displayObject.worldTransform[5] = this.projection.y * 2;
 
-
+	
 	if(position)
 	{
 		displayObject.worldTransform[2] = position.x;
 		displayObject.worldTransform[5] -= position.y;
 	}
-
+	
 
 
 	for(var i=0,j=children.length; i<j; i++)
 	{
-		children[i].updateTransform();
+		children[i].updateTransform();	
 	}
 
 	var renderGroup = displayObject.__renderGroup;
@@ -9686,25 +9686,25 @@ PIXI.RenderTexture.prototype.renderCanvas = function(displayObject, position, cl
 	var children = displayObject.children;
 
 	displayObject.worldTransform = PIXI.mat3.create();
-
+	
 	if(position)
 	{
 		displayObject.worldTransform[2] = position.x;
 		displayObject.worldTransform[5] = position.y;
 	}
-
+	
 
 	for(var i=0,j=children.length; i<j; i++)
 	{
-		children[i].updateTransform();
+		children[i].updateTransform();	
 	}
 
 	if(clear)this.renderer.context.clearRect(0,0, this.width, this.height);
-
+	
     this.renderer.renderDisplayObject(displayObject);
-
-    this.renderer.context.setTransform(1,0,0,1,0,0);
-
+    
+    this.renderer.context.setTransform(1,0,0,1,0,0); 
+    
 
   //  PIXI.texturesToUpdate.push(this.baseTexture);
 }
@@ -9766,8 +9766,8 @@ PIXI.AssetLoader = function(assetURLs, crossorigin)
         "xml":  PIXI.BitmapFontLoader,
         "fnt":  PIXI.BitmapFontLoader
     };
-
-
+    
+    
 };
 
 /**
@@ -9777,7 +9777,7 @@ PIXI.AssetLoader = function(assetURLs, crossorigin)
 
 /**
  * Fired when all the assets have loaded
- * @event onComplete
+ * @event onComplete 
  */
 
 // constructor
@@ -9824,7 +9824,7 @@ PIXI.AssetLoader.prototype.onAssetLoaded = function()
     this.loadCount--;
 	this.dispatchEvent({type: "onProgress", content: this});
 	if(this.onProgress) this.onProgress();
-
+	
 	if(this.loadCount == 0)
 	{
 		this.dispatchEvent({type: "onComplete", content: this});
@@ -9884,7 +9884,7 @@ PIXI.JsonLoader = function (url, crossorigin) {
 	 * @readOnly
 	 */
 	this.loaded = false;
-
+	
 };
 
 // constructor
@@ -9917,7 +9917,7 @@ PIXI.JsonLoader.prototype.onJSONLoaded = function () {
 	if (this.ajaxRequest.readyState == 4) {
 		if (this.ajaxRequest.status == 200 || window.location.href.indexOf("http") == -1) {
 			this.json = JSON.parse(this.ajaxRequest.responseText);
-
+			
 			if(this.json.frames)
 			{
 				// sprite sheet
@@ -9925,12 +9925,12 @@ PIXI.JsonLoader.prototype.onJSONLoaded = function () {
 				var textureUrl = this.baseUrl + this.json.meta.image;
 				var image = new PIXI.ImageLoader(textureUrl, this.crossorigin);
 				var frameData = this.json.frames;
-
+			
 				this.texture = image.texture.baseTexture;
 				image.addEventListener("loaded", function (event) {
 					scope.onLoaded();
 				});
-
+			
 				for (var i in frameData) {
 					var rect = frameData[i].frame;
 					if (rect) {
@@ -9948,9 +9948,9 @@ PIXI.JsonLoader.prototype.onJSONLoaded = function () {
 						}
 					}
 				}
-
+			
 				image.load();
-
+				
 			}
 			else if(this.json.bones)
 			{
@@ -10366,10 +10366,10 @@ PIXI.BitmapFontLoader.prototype.onLoaded = function()
 /**
  * @author Mat Groves http://matgroves.com/ @Doormat23
  * based on pixi impact spine implementation made by Eemeli Kelokorpi (@ekelokorpi) https://github.com/ekelokorpi
- *
+ * 
  * Awesome JS run time provided by EsotericSoftware
  * https://github.com/EsotericSoftware/spine-runtimes
- *
+ * 
  */
 
 /**
@@ -10377,7 +10377,7 @@ PIXI.BitmapFontLoader.prototype.onLoaded = function()
  * To generate the data you need to use http://esotericsoftware.com/ and export the "JSON" format
  * Due to a clash of names  You will need to change the extension of the spine file from *.json to *.anim for it to load
  * See example 12 (http://www.goodboydigital.com/pixijs/examples/12/) to see a working example and check out the source
- * You will need to generate a sprite sheet to accompany the spine data
+ * You will need to generate a sprite sheet to accompany the spine data 
  * When loaded this class will dispatch a "loaded" event
  *
  * @class Spine
@@ -10386,7 +10386,7 @@ PIXI.BitmapFontLoader.prototype.onLoaded = function()
  * @param url {String} The url of the JSON file
  * @param crossorigin {Boolean} Whether requests should be treated as crossorigin
  */
-PIXI.SpineLoader = function(url, crossorigin)
+PIXI.SpineLoader = function(url, crossorigin) 
 {
 	PIXI.EventTarget.call(this);
 
@@ -10424,7 +10424,7 @@ PIXI.SpineLoader.prototype.constructor = PIXI.SpineLoader;
  * @method load
  */
 PIXI.SpineLoader.prototype.load = function () {
-
+	
 	var scope = this;
 	var jsonLoader = new PIXI.JsonLoader(this.url, this.crossorigin);
 	jsonLoader.addEventListener("loaded", function (event) {
@@ -10443,7 +10443,7 @@ PIXI.SpineLoader.prototype.load = function () {
 PIXI.SpineLoader.prototype.onJSONLoaded = function (event) {
 	var spineJsonParser = new spine.SkeletonJson();
 	var skeletonData = spineJsonParser.readSkeletonData(this.json);
-
+	
 	PIXI.AnimCache[this.url] = skeletonData;
 
 	this.onLoaded();
@@ -10478,17 +10478,17 @@ PIXI.SpineLoader.prototype.onLoaded = function () {
 }).call(this);
 (function(){
 /* Copyright (c) 2007 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -10503,7 +10503,7 @@ Object.create = Object.create || function(o) {
 	F.prototype = o;
 	return new F();
 };
-
+ 
 //var VERSION = CP_VERSION_MAJOR + "." + CP_VERSION_MINOR + "." + CP_VERSION_RELEASE;
 
 var cp;
@@ -10578,7 +10578,7 @@ var deleteObjFromList = function(arr, obj)
 		if(arr[i] === obj){
 			arr[i] = arr[arr.length - 1];
 			arr.length--;
-
+			
 			return;
 		}
 	}
@@ -10633,11 +10633,11 @@ cp.momentForPoly = function(m, verts, offset)
 
 		var a = vcross2(v2x, v2y, v1x, v1y);
 		var b = vdot2(v1x, v1y, v1x, v1y) + vdot2(v1x, v1y, v2x, v2y) + vdot2(v2x, v2y, v2x, v2y);
-
+		
 		sum1 += a*b;
 		sum2 += a;
 	}
-
+	
 	return (m*sum1)/(6*sum2);
 };
 
@@ -10647,7 +10647,7 @@ cp.areaForPoly = function(verts)
 	for(var i=0, len=verts.length; i<len; i+=2){
 		area += vcross(new Vect(verts[i], verts[i+1]), new Vect(verts[(i+2)%len], verts[(i+3)%len]));
 	}
-
+	
 	return -area/2;
 };
 
@@ -10655,23 +10655,23 @@ cp.centroidForPoly = function(verts)
 {
 	var sum = 0;
 	var vsum = new Vect(0,0);
-
+	
 	for(var i=0, len=verts.length; i<len; i+=2){
 		var v1 = new Vect(verts[i], verts[i+1]);
 		var v2 = new Vect(verts[(i+2)%len], verts[(i+3)%len]);
 		var cross = vcross(v1, v2);
-
+		
 		sum += cross;
 		vsum = vadd(vsum, vmult(vadd(v1, v2), cross));
 	}
-
+	
 	return vmult(vsum, 1/(3*sum));
 };
 
 cp.recenterPoly = function(verts)
 {
 	var centroid = cp.centroidForPoly(verts);
-
+	
 	for(var i=0; i<verts.length; i+=2){
 		verts[i] -= centroid.x;
 		verts[i+1] -= centroid.y;
@@ -10688,8 +10688,8 @@ cp.momentForBox2 = function(m, box)
 	var width = box.r - box.l;
 	var height = box.t - box.b;
 	var offset = vmult([box.l + box.r, box.b + box.t], 0.5);
-
-	// TODO NaN when offset is 0 and m is INFINITY
+	
+	// TODO NaN when offset is 0 and m is INFINITY	
 	return cp.momentForBox(m, width, height) + m*vlengthsq(offset);
 };
 
@@ -10701,12 +10701,12 @@ var loopIndexes = cp.loopIndexes = function(verts)
 	var minx, miny, maxx, maxy;
 	minx = maxx = verts[0];
 	miny = maxy = verts[1];
-
+	
 	var count = verts.length >> 1;
   for(var i=1; i<count; i++){
 		var x = verts[i*2];
 		var y = verts[i*2 + 1];
-
+		
     if(x < minx || (x == minx && y < miny)){
 			minx = x;
 			miny = y;
@@ -10734,13 +10734,13 @@ var SWAP = function(arr, idx1, idx2)
 var QHullPartition = function(verts, offs, count, a, b, tol)
 {
 	if(count === 0) return 0;
-
+	
 	var max = 0;
 	var pivot = offs;
-
+	
 	var delta = vsub(b, a);
 	var valueTol = tol * vlength(delta);
-
+	
 	var head = offs;
 	for(var tail = offs+count-1; head <= tail;){
 		var v = new Vect(verts[head * 2], verts[head * 2 + 1]);
@@ -10750,14 +10750,14 @@ var QHullPartition = function(verts, offs, count, a, b, tol)
 				max = value;
 				pivot = head;
 			}
-
+			
 			head++;
 		} else {
 			SWAP(verts, head, tail);
 			tail--;
 		}
 	}
-
+	
 	// move the new pivot to the front if it's not already there.
 	if(pivot != offs) SWAP(verts, offs, pivot);
 	return head - offs;
@@ -10775,11 +10775,11 @@ var QHullReduce = function(tol, verts, offs, count, a, pivot, b, resultPos)
 		var left_count = QHullPartition(verts, offs, count, a, pivot, tol);
 		var left = new Vect(verts[offs*2], verts[offs*2+1]);
 		var index = QHullReduce(tol, verts, offs + 1, left_count - 1, a, left, pivot, resultPos);
-
+		
 		var pivotPos = resultPos + index++;
 		verts[pivotPos*2] = pivot.x;
 		verts[pivotPos*2+1] = pivot.y;
-
+		
 		var right_count = QHullPartition(verts, offs + left_count, count - left_count, pivot, b, tol);
 		var right = new Vect(verts[(offs+left_count)*2], verts[(offs+left_count)*2+1]);
 		return index + QHullReduce(tol, verts, offs + left_count + 1, right_count - 1, pivot, right, b, resultPos + index);
@@ -10807,7 +10807,7 @@ cp.convexHull = function(verts, result, tolerance)
 		// If a result array was not specified, reduce the input instead.
 		result = verts;
 	}
-
+	
 	// Degenerate case, all points are the same.
 	var indexes = loopIndexes(verts);
 	var start = indexes[0], end = indexes[1];
@@ -10816,13 +10816,13 @@ cp.convexHull = function(verts, result, tolerance)
 		result.length = 2;
 		return result;
 	}
-
+	
 	SWAP(result, 0, start);
 	SWAP(result, 1, end == 0 ? start : end);
-
+	
 	var a = new Vect(result[0], result[1]);
 	var b = new Vect(result[2], result[3]);
-
+	
 	var count = verts.length >> 1;
 	//if(first) (*first) = start;
 	var resultCount = QHullReduce(tolerance, result, 2, count - 2, a, b, a, 1) + 1;
@@ -10859,17 +10859,17 @@ var lerpconst = function(f1, f2, d)
 };
 
 /* Copyright (c) 2007 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -11101,7 +11101,7 @@ var vnear = cp.v.near = function(v1, v2, dist)
 var vslerp = cp.v.slerp = function(v1, v2, t)
 {
 	var omega = Math.acos(vdot(v1, v2));
-
+	
 	if(omega) {
 		var denom = 1/Math.sin(omega);
 		return vadd(vmult(v1, Math.sin((1 - t)*omega)*denom), vmult(v2, Math.sin(t*omega)*denom));
@@ -11136,17 +11136,17 @@ var vstr = cp.v.str = function(v)
 };
 
 /* Copyright (c) 2007 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -11267,25 +11267,25 @@ var bbWrapVect = function(bb, v)
 	var ix = Math.abs(bb.r - bb.l);
 	var modx = (v.x - bb.l) % ix;
 	var x = (modx > 0) ? modx : modx + ix;
-
+	
 	var iy = Math.abs(bb.t - bb.b);
 	var mody = (v.y - bb.b) % iy;
 	var y = (mody > 0) ? mody : mody + iy;
-
+	
 	return new Vect(x + bb.l, y + bb.b);
 };
 /* Copyright (c) 2007 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -11294,7 +11294,7 @@ var bbWrapVect = function(bb, v)
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
+ 
 /// Segment query info struct.
 /* These are created using literals where needed.
 typedef struct cpSegmentQueryInfo {
@@ -11333,21 +11333,21 @@ var Shape = cp.Shape = function(body) {
 	/// Sensor flag.
 	/// Sensor shapes call collision callbacks but don't produce collisions.
 	this.sensor = false;
-
+	
 	/// Coefficient of restitution. (elasticity)
 	this.e = 0;
 	/// Coefficient of friction.
 	this.u = 0;
 	/// Surface velocity used when solving for friction.
 	this.surface_v = vzero;
-
+	
 	/// Collision type of this shape used when picking collision handlers.
 	this.collision_type = 0;
 	/// Group of this shape. Shapes in the same group don't collide.
 	this.group = 0;
 	// Layer bitmask for this shape. Shapes only collide if the bitwise and of their layers is non-zero.
 	this.layers = CP_ALL_LAYERS;
-
+	
 	this.space = null;
 
 	// Copy the collision code from the prototype into the actual object. This makes collision
@@ -11461,7 +11461,7 @@ var CircleShape = cp.CircleShape = function(body, radius, offset)
 {
 	this.c = this.tc = offset;
 	this.r = radius;
-
+	
 	this.type = 'circle';
 
 	Shape.call(this, body);
@@ -11487,10 +11487,10 @@ CircleShape.prototype.cacheData = function(p, rot)
 	var delta = vsub(p, this.tc);
 	var distsq = vlengthsq(delta);
 	var r = this.r;
-
+	
 	if(distsq < r*r){
 		var info = new PointQueryExtendedInfo(this);
-
+		
 		var dist = Math.sqrt(distsq);
 		info.d = r - dist;
 		info.n = vmult(delta, 1/dist);
@@ -11504,7 +11504,7 @@ CircleShape.prototype.nearestPointQuery = function(p)
 	var deltay = p.y - this.tc.y;
 	var d = vlength2(deltax, deltay);
 	var r = this.r;
-
+	
 	var nearestp = new Vect(this.tc.x + deltax * r/d, this.tc.y + deltay * r/d);
 	return new NearestPointQueryInfo(this, nearestp, d - r);
 };
@@ -11514,13 +11514,13 @@ var circleSegmentQuery = function(shape, center, r, a, b, info)
 	// offset the line to be relative to the circle
 	a = vsub(a, center);
 	b = vsub(b, center);
-
+	
 	var qa = vdot(a, a) - 2*vdot(a, b) + vdot(b, b);
 	var qb = -2*vdot(a, a) + 2*vdot(a, b);
 	var qc = vdot(a, a) - r*r;
-
+	
 	var det = qb*qb - 4*qa*qc;
-
+	
 	if(det >= 0)
 	{
 		var t = (-qb - Math.sqrt(det))/(2*qa);
@@ -11557,12 +11557,12 @@ var SegmentShape = cp.SegmentShape = function(body, a, b, r)
 	this.n = vperp(vnormalize(vsub(b, a)));
 
 	this.ta = this.tb = this.tn = null;
-
+	
 	this.r = r;
-
+	
 	this.a_tangent = vzero;
 	this.b_tangent = vzero;
-
+	
 	this.type = 'segment';
 	Shape.call(this, body);
 };
@@ -11574,9 +11574,9 @@ SegmentShape.prototype.cacheData = function(p, rot)
 	this.ta = vadd(p, vrotate(this.a, rot));
 	this.tb = vadd(p, vrotate(this.b, rot));
 	this.tn = vrotate(this.n, rot);
-
+	
 	var l,r,b,t;
-
+	
 	if(this.ta.x < this.tb.x){
 		l = this.ta.x;
 		r = this.tb.x;
@@ -11584,7 +11584,7 @@ SegmentShape.prototype.cacheData = function(p, rot)
 		l = this.tb.x;
 		r = this.ta.x;
 	}
-
+	
 	if(this.ta.y < this.tb.y){
 		b = this.ta.y;
 		t = this.tb.y;
@@ -11592,7 +11592,7 @@ SegmentShape.prototype.cacheData = function(p, rot)
 		b = this.tb.y;
 		t = this.ta.y;
 	}
-
+	
 	var rad = this.r;
 
 	this.bb_l = l - rad;
@@ -11604,12 +11604,12 @@ SegmentShape.prototype.cacheData = function(p, rot)
 SegmentShape.prototype.nearestPointQuery = function(p)
 {
 	var closest = closestPointOnSegment(p, this.ta, this.tb);
-
+		
 	var deltax = p.x - closest.x;
 	var deltay = p.y - closest.y;
 	var d = vlength2(deltax, deltay);
 	var r = this.r;
-
+	
 	var nearestp = (d ? vadd(closest, vmult(new Vect(deltax, deltay), r/d)) : closest);
 	return new NearestPointQueryInfo(this, nearestp, d - r);
 };
@@ -11619,26 +11619,26 @@ SegmentShape.prototype.segmentQuery = function(a, b)
 	var n = this.tn;
 	var d = vdot(vsub(this.ta, a), n);
 	var r = this.r;
-
+	
 	var flipped_n = (d > 0 ? vneg(n) : n);
 	var n_offset = vsub(vmult(flipped_n, r), a);
-
+	
 	var seg_a = vadd(this.ta, n_offset);
 	var seg_b = vadd(this.tb, n_offset);
 	var delta = vsub(b, a);
-
+	
 	if(vcross(delta, seg_a)*vcross(delta, seg_b) <= 0){
 		var d_offset = d + (d > 0 ? -r : r);
 		var ad = -d_offset;
 		var bd = vdot(delta, n) - d_offset;
-
+		
 		if(ad*bd < 0){
 			return new SegmentQueryInfo(this, ad/(ad - bd), flipped_n);
 		}
 	} else if(r !== 0){
 		var info1 = circleSegmentQuery(this, this.ta, this.r, a, b);
 		var info2 = circleSegmentQuery(this, this.tb, this.r, a, b);
-
+		
 		if (info1){
 			return info2 && info2.t < info1.t ? info2 : info1;
 		} else {
@@ -11674,17 +11674,17 @@ CP_DeclareShapeGetter(cpSegmentShape, cpFloat, Radius);
 */
 
 /* Copyright (c) 2007 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -11693,7 +11693,7 @@ CP_DeclareShapeGetter(cpSegmentShape, cpFloat, Radius);
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
+ 
 /// Check that a set of vertexes is convex and has a clockwise winding.
 var polyValidate = function(verts)
 {
@@ -11705,13 +11705,13 @@ var polyValidate = function(verts)
 		var by = verts[(i+3)%len];
 		var cx = verts[(i+4)%len];
 		var cy = verts[(i+5)%len];
-
+		
 		//if(vcross(vsub(b, a), vsub(c, b)) > 0){
 		if(vcross2(bx - ax, by - ay, cx - bx, cy - by) > 0){
 			return false;
 		}
 	}
-
+	
 	return true;
 };
 
@@ -11745,7 +11745,7 @@ PolyShape.prototype.setVerts = function(verts, offset)
 
 	// Fail if the user attempts to pass a concave poly, or a bad winding.
 	assert(polyValidate(verts), "Polygon is concave or has a reversed winding. Consider using cpConvexHull()");
-
+	
 	var len = verts.length;
 	var numVerts = len >> 1;
 
@@ -11755,7 +11755,7 @@ PolyShape.prototype.setVerts = function(verts, offset)
 	this.tVerts = new Array(len);
 	this.planes = new Array(numVerts);
 	this.tPlanes = new Array(numVerts);
-
+	
 	for(var i=0; i<len; i+=2){
 		//var a = vadd(offset, verts[i]);
 		//var b = vadd(offset, verts[(i+1)%numVerts]);
@@ -11779,7 +11779,7 @@ var BoxShape = cp.BoxShape = function(body, width, height)
 {
 	var hw = width/2;
 	var hh = height/2;
-
+	
 	return BoxShape2(body, new BB(-hw, -hh, hw, hh));
 };
 
@@ -11792,7 +11792,7 @@ var BoxShape2 = cp.BoxShape2 = function(body, box)
 		box.r, box.t,
 		box.r, box.b,
 	];
-
+	
 	return new PolyShape(body, verts, vzero);
 };
 
@@ -11800,10 +11800,10 @@ PolyShape.prototype.transformVerts = function(p, rot)
 {
 	var src = this.verts;
 	var dst = this.tVerts;
-
+	
 	var l = Infinity, r = -Infinity;
 	var b = Infinity, t = -Infinity;
-
+	
 	for(var i=0; i<src.length; i+=2){
 		//var v = vadd(p, vrotate(src[i], rot));
 		var x = src[i];
@@ -11813,7 +11813,7 @@ PolyShape.prototype.transformVerts = function(p, rot)
 		var vy = p.y + x*rot.y + y*rot.x;
 
 		//console.log('(' + x + ',' + y + ') -> (' + vx + ',' + vy + ')');
-
+		
 		dst[i] = vx;
 		dst[i+1] = vy;
 
@@ -11833,7 +11833,7 @@ PolyShape.prototype.transformAxes = function(p, rot)
 {
 	var src = this.planes;
 	var dst = this.tPlanes;
-
+	
 	for(var i=0; i<src.length; i++){
 		var n = vrotate(src[i].n, rot);
 		dst[i].n = n;
@@ -11851,30 +11851,30 @@ PolyShape.prototype.nearestPointQuery = function(p)
 {
 	var planes = this.tPlanes;
 	var verts = this.tVerts;
-
+	
 	var v0x = verts[verts.length - 2];
 	var v0y = verts[verts.length - 1];
 	var minDist = Infinity;
 	var closestPoint = vzero;
 	var outside = false;
-
+	
 	for(var i=0; i<planes.length; i++){
 		if(planes[i].compare(p) > 0) outside = true;
-
+		
 		var v1x = verts[i*2];
 		var v1y = verts[i*2 + 1];
 		var closest = closestPointOnSegment2(p.x, p.y, v0x, v0y, v1x, v1y);
-
+		
 		var dist = vdist(p, closest);
 		if(dist < minDist){
 			minDist = dist;
 			closestPoint = closest;
 		}
-
+		
 		v0x = v1x;
 		v0y = v1y;
 	}
-
+	
 	return new NearestPointQueryInfo(this, closestPoint, (outside ? minDist : -minDist));
 };
 
@@ -11884,16 +11884,16 @@ PolyShape.prototype.segmentQuery = function(a, b)
 	var verts = this.tVerts;
 	var numVerts = axes.length;
 	var len = numVerts * 2;
-
+	
 	for(var i=0; i<numVerts; i++){
 		var n = axes[i].n;
 		var an = vdot(a, n);
 		if(axes[i].d > an) continue;
-
+		
 		var bn = vdot(b, n);
 		var t = (axes[i].d - an)/(bn - an);
 		if(t < 0 || 1 < t) continue;
-
+		
 		var point = vlerp(a, b, t);
 		var dt = -vcross(n, point);
 		var dtMin = -vcross2(n.x, n.y, verts[i*2], verts[i*2+1]);
@@ -11912,38 +11912,38 @@ PolyShape.prototype.valueOnAxis = function(n, d)
 {
 	var verts = this.tVerts;
 	var m = vdot2(n.x, n.y, verts[0], verts[1]);
-
+	
 	for(var i=2; i<verts.length; i+=2){
 		m = min(m, vdot2(n.x, n.y, verts[i], verts[i+1]));
 	}
-
+	
 	return m - d;
 };
 
 PolyShape.prototype.containsVert = function(vx, vy)
 {
 	var planes = this.tPlanes;
-
+	
 	for(var i=0; i<planes.length; i++){
 		var n = planes[i].n;
 		var dist = vdot2(n.x, n.y, vx, vy) - planes[i].d;
 		if(dist > 0) return false;
 	}
-
+	
 	return true;
 };
 
 PolyShape.prototype.containsVertPartial = function(vx, vy, n)
 {
 	var planes = this.tPlanes;
-
+	
 	for(var i=0; i<planes.length; i++){
 		var n2 = planes[i].n;
 		if(vdot(n2, n) < 0) continue;
 		var dist = vdot2(n2.x, n2.y, vx, vy) - planes[i].d;
 		if(dist > 0) return false;
 	}
-
+	
 	return true;
 };
 
@@ -12324,17 +12324,17 @@ Body.prototype.kineticEnergy = function()
 };
 
 /* Copyright (c) 2010 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -12346,28 +12346,28 @@ Body.prototype.kineticEnergy = function()
 
 /**
 	@defgroup cpSpatialIndex cpSpatialIndex
-
+	
 	Spatial indexes are data structures that are used to accelerate collision detection
 	and spatial queries. Chipmunk provides a number of spatial index algorithms to pick from
 	and they are programmed in a generic way so that you can use them for holding more than
 	just Shapes.
-
+	
 	It works by using pointers to the objects you add and using a callback to ask your code
 	for bounding boxes when it needs them. Several types of queries can be performed an index as well
 	as reindexing and full collision information. All communication to the spatial indexes is performed
 	through callback functions.
-
+	
 	Spatial indexes should be treated as opaque structs.
 	This means you shouldn't be reading any of the fields directly.
 
 	All spatial indexes define the following methods:
-
+		
 	// The number of objects in the spatial index.
 	count = 0;
 
 	// Iterate the objects in the spatial index. @c func will be called once for each object.
 	each(func);
-
+	
 	// Returns true if the spatial index contains the given object.
 	// Most spatial indexes use hashed storage, so you must provide a hash value too.
 	contains(obj, hashid);
@@ -12377,7 +12377,7 @@ Body.prototype.kineticEnergy = function()
 
 	// Remove an object from a spatial index.
 	remove(obj, hashid);
-
+	
 	// Perform a full reindex of a spatial index.
 	reindex();
 
@@ -12406,7 +12406,7 @@ Body.prototype.kineticEnergy = function()
 var SpatialIndex = cp.SpatialIndex = function(staticIndex)
 {
 	this.staticIndex = staticIndex;
-
+	
 
 	if(staticIndex){
 		if(staticIndex.dynamicIndex){
@@ -12430,17 +12430,17 @@ SpatialIndex.prototype.collideStatic = function(staticIndex, func)
 
 
 /* Copyright (c) 2009 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -12455,7 +12455,7 @@ SpatialIndex.prototype.collideStatic = function(staticIndex, func)
 var BBTree = cp.BBTree = function(staticIndex)
 {
 	SpatialIndex.call(this, staticIndex);
-
+	
 	this.velocityFunc = null;
 
 	// This is a hash from object ID -> object for the objects stored in the BBTree.
@@ -12464,11 +12464,11 @@ var BBTree = cp.BBTree = function(staticIndex)
 	this.count = 0;
 
 	this.root = null;
-
+	
 	// A linked list containing an object pool of tree nodes and pairs.
 	this.pooledNodes = null;
 	this.pooledPairs = null;
-
+	
 	this.stamp = 0;
 };
 
@@ -12484,7 +12484,7 @@ var Node = function(tree, a, b)
 	this.bb_r = max(a.bb_r, b.bb_r);
 	this.bb_t = max(a.bb_t, b.bb_t);
 	this.parent = null;
-
+	
 	this.setA(a);
 	this.setB(b);
 };
@@ -12524,7 +12524,7 @@ BBTree.prototype.getBB = function(obj, dest)
 		var coef = 0.1;
 		var x = (obj.bb_r - obj.bb_l)*coef;
 		var y = (obj.bb_t - obj.bb_b)*coef;
-
+		
 		var v = vmult(velocityFunc(obj), 0.1);
 
 		dest.bb_l = obj.bb_l + min(-x, v.x);
@@ -12604,7 +12604,7 @@ var unlinkThread = function(prev, leaf, next)
 	if(next){
 		if(next.leafA === leaf) next.prevA = prev; else next.prevB = prev;
 	}
-
+	
 	if(prev){
 		if(prev.leafA === leaf) prev.nextA = next; else prev.nextB = next;
 	} else {
@@ -12618,7 +12618,7 @@ Leaf.prototype.clearPairs = function(tree)
 		next;
 
 	this.pairs = null;
-
+	
 	while(pair){
 		if(pair.leafA === this){
 			next = pair.nextA;
@@ -12641,7 +12641,7 @@ var pairInsert = function(a, b, tree)
 	if(nextA){
 		if(nextA.leafA === a) nextA.prevA = pair; else nextA.prevB = pair;
 	}
-
+	
 	if(nextB){
 		if(nextB.leafA === b) nextB.prevA = pair; else nextB.prevB = pair;
 	}
@@ -12683,7 +12683,7 @@ Node.prototype.otherChild = function(child)
 Node.prototype.replaceChild = function(child, value, tree)
 {
 	assertSoft(child == this.A || child == this.B, "Node is not a child of parent.");
-
+	
 	if(this.A == child){
 		this.A.recycle(tree);
 		this.setA(value);
@@ -12691,7 +12691,7 @@ Node.prototype.replaceChild = function(child, value, tree)
 		this.B.recycle(tree);
 		this.setB(value);
 	}
-
+	
 	for(var node=this; node; node = node.parent){
 		//node.bb = bbMerge(node.A.bb, node.B.bb);
 		var a = node.A;
@@ -12734,18 +12734,18 @@ var subtreeInsert = function(subtree, leaf, tree)
 	} else {
 		var cost_a = subtree.B.bbArea() + bbTreeMergedArea(subtree.A, leaf);
 		var cost_b = subtree.A.bbArea() + bbTreeMergedArea(subtree.B, leaf);
-
+		
 		if(cost_a === cost_b){
 			cost_a = bbProximity(subtree.A, leaf);
 			cost_b = bbProximity(subtree.B, leaf);
-		}
+		}	
 
 		if(cost_b < cost_a){
 			subtree.setB(subtreeInsert(subtree.B, leaf, tree));
 		} else {
 			subtree.setA(subtreeInsert(subtree.A, leaf, tree));
 		}
-
+		
 //		subtree.bb = bbMerge(subtree.bb, leaf.bb);
 		subtree.bb_l = min(subtree.bb_l, leaf.bb_l);
 		subtree.bb_b = min(subtree.bb_b, leaf.bb_b);
@@ -12782,20 +12782,20 @@ var nodeSegmentQuery = function(node, a, b)
 	var tx2 = (node.bb_r == a.x ?  Infinity : (node.bb_r - a.x)*idx);
 	var txmin = min(tx1, tx2);
 	var txmax = max(tx1, tx2);
-
+	
 	var idy = 1/(b.y - a.y);
 	var ty1 = (node.bb_b == a.y ? -Infinity : (node.bb_b - a.y)*idy);
 	var ty2 = (node.bb_t == a.y ?  Infinity : (node.bb_t - a.y)*idy);
 	var tymin = min(ty1, ty2);
 	var tymax = max(ty1, ty2);
-
+	
 	if(tymin <= txmax && txmin <= tymax){
 		var min_ = max(txmin, tymin);
 		var max_ = min(txmax, tymax);
-
+		
 		if(0.0 <= max_ && min_ <= 1.0) return max(min_, 0.0);
 	}
-
+	
 	return Infinity;
 };
 
@@ -12806,7 +12806,7 @@ var subtreeSegmentQuery = function(subtree, a, b, t_exit, func)
 	} else {
 		var t_a = nodeSegmentQuery(subtree.A, a, b);
 		var t_b = nodeSegmentQuery(subtree.B, a, b);
-
+		
 		if(t_a < t_b){
 			if(t_a < t_exit) t_exit = min(t_exit, subtreeSegmentQuery(subtree.A, a, b, t_exit, func));
 			if(t_b < t_exit) t_exit = min(t_exit, subtreeSegmentQuery(subtree.B, a, b, t_exit, func));
@@ -12814,7 +12814,7 @@ var subtreeSegmentQuery = function(subtree, a, b, t_exit, func)
 			if(t_b < t_exit) t_exit = min(t_exit, subtreeSegmentQuery(subtree.B, a, b, t_exit, func));
 			if(t_a < t_exit) t_exit = min(t_exit, subtreeSegmentQuery(subtree.A, a, b, t_exit, func));
 		}
-
+		
 		return t_exit;
 	}
 };
@@ -12885,7 +12885,7 @@ Leaf.prototype.markSubtree = function(tree, staticRoot, func)
 {
 	if(this.stamp == tree.getStamp()){
 		if(staticRoot) staticRoot.markLeafQuery(this, false, tree, func);
-
+		
 		for(var node = this; node.parent; node = node.parent){
 			if(node == node.parent.A){
 				node.parent.B.markLeafQuery(this, true, tree, func);
@@ -12927,16 +12927,16 @@ Leaf.prototype.update = function(tree)
 	//if(!bbContainsBB(this.bb, bb)){
 	if(!this.containsObj(obj)){
 		tree.getBB(this.obj, this);
-
+		
 		root = subtreeRemove(root, this, tree);
 		tree.root = subtreeInsert(root, this, tree);
-
+		
 		this.clearPairs(tree);
 		this.stamp = tree.getStamp();
-
+		
 		return true;
 	}
-
+	
 	return false;
 };
 
@@ -12963,7 +12963,7 @@ BBTree.prototype.insert = function(obj, hashid)
 	this.leaves[hashid] = leaf;
 	this.root = subtreeInsert(this.root, leaf, this);
 	this.count++;
-
+	
 	leaf.stamp = this.getStamp();
 	leaf.addPairs(this);
 	this.incrementStamp();
@@ -12992,7 +12992,7 @@ var voidQueryFunc = function(obj1, obj2){};
 BBTree.prototype.reindexQuery = function(func)
 {
 	if(!this.root) return;
-
+	
 	// LeafUpdate() may modify this.root. Don't cache it.
 	var hashid,
 		leaves = this.leaves;
@@ -13000,13 +13000,13 @@ BBTree.prototype.reindexQuery = function(func)
 	{
 		leaves[hashid].update(this);
 	}
-
+	
 	var staticIndex = this.staticIndex;
 	var staticRoot = staticIndex && staticIndex.root;
-
+	
 	this.root.markSubtree(this, staticRoot, func);
 	if(staticIndex && !staticRoot) this.collideStatic(this, staticIndex, func);
-
+	
 	this.incrementStamp();
 };
 
@@ -13073,7 +13073,7 @@ var partitionNodes = function(tree, nodes, offset, count)
 	} else if(count == 2) {
 		return tree.makeNode(nodes[offset], nodes[offset + 1]);
 	}
-
+	
 	// Find the AABB for these nodes
 	//var bb = nodes[offset].bb;
 	var node = nodes[offset];
@@ -13091,10 +13091,10 @@ var partitionNodes = function(tree, nodes, offset, count)
 		bb_r = max(bb_r, node.bb_r);
 		bb_t = max(bb_t, node.bb_t);
 	}
-
+	
 	// Split it on it's longest axis
 	var splitWidth = (bb_r - bb_l > bb_t - bb_b);
-
+	
 	// Sort the bounds and use the median as the splitting point
 	var bounds = new Array(count*2);
 	if(splitWidth){
@@ -13108,7 +13108,7 @@ var partitionNodes = function(tree, nodes, offset, count)
 			bounds[2*i + 1] = nodes[i].bb_t;
 		}
 	}
-
+	
 	bounds.sort(function(a, b) {
 		// This might run faster if the function was moved out into the global scope.
 		return a - b;
@@ -13121,7 +13121,7 @@ var partitionNodes = function(tree, nodes, offset, count)
 	var b_l = bb_l, b_b = bb_b, b_r = bb_r, b_t = bb_t;
 
 	if(splitWidth) a_r = b_l = split; else a_t = b_b = split;
-
+	
 	// Partition the nodes
 	var right = end;
 	for(var left=offset; left < right;){
@@ -13135,13 +13135,13 @@ var partitionNodes = function(tree, nodes, offset, count)
 			left++;
 		}
 	}
-
+	
 	if(right == count){
 		var node = null;
 		for(var i=offset; i<end; i++) node = subtreeInsert(node, nodes[i], tree);
 		return node;
 	}
-
+	
 	// Recurse and build the node!
 	return NodeNew(tree,
 		partitionNodes(tree, nodes, offset, right - offset),
@@ -13157,12 +13157,12 @@ var partitionNodes = function(tree, nodes, offset, count)
 //		Node *node = root;
 //		int bit = 0;
 //		unsigned int path = tree.opath;
-//
+//		
 //		while(!NodeIsLeaf(node)){
 //			node = (path&(1<<bit) ? node.a : node.b);
 //			bit = (bit + 1)&(sizeof(unsigned int)*8 - 1);
 //		}
-//
+//		
 //		root = subtreeRemove(root, node, tree);
 //		tree.root = subtreeInsert(root, node, tree);
 //	}
@@ -13177,7 +13177,7 @@ BBTree.prototype.optimize = function()
 	{
 		nodes[i++] = this.nodes[hashid];
 	}
-
+	
 	tree.subtreeRecycle(root);
 	this.root = partitionNodes(tree, nodes, nodes.length);
 };
@@ -13190,7 +13190,7 @@ var nodeRender = function(node, depth)
 		nodeRender(node.A, depth + 1);
 		nodeRender(node.B, depth + 1);
 	}
-
+	
 	var str = '';
 	for(var i = 0; i < depth; i++) {
 		str += ' ';
@@ -13211,22 +13211,22 @@ NodeRender(Node *node, int depth)
 		NodeRender(node.a, depth + 1);
 		NodeRender(node.b, depth + 1);
 	}
-
+	
 	bb bb = node.bb;
-
-//	GLfloat v = depth/2.0f;
+	
+//	GLfloat v = depth/2.0f;	
 //	glColor3f(1.0f - v, v, 0.0f);
 	glLineWidth(max(5.0f - depth, 1.0f));
 	glBegin(GL_LINES); {
 		glVertex2f(bb.l, bb.b);
 		glVertex2f(bb.l, bb.t);
-
+		
 		glVertex2f(bb.l, bb.t);
 		glVertex2f(bb.r, bb.t);
-
+		
 		glVertex2f(bb.r, bb.t);
 		glVertex2f(bb.r, bb.b);
-
+		
 		glVertex2f(bb.r, bb.b);
 		glVertex2f(bb.l, bb.b);
 	}; glEnd();
@@ -13238,23 +13238,23 @@ bbTreeRenderDebug(cpSpatialIndex *index){
 		cpAssertWarn(false, "Ignoring bbTreeRenderDebug() call to non-tree spatial index.");
 		return;
 	}
-
+	
 	bbTree *tree = (bbTree *)index;
 	if(tree.root) NodeRender(tree.root, 0);
 }
 */
 /* Copyright (c) 2007 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -13320,15 +13320,15 @@ var Arbiter = function(a, b) {
 	/// Calculated value to use for applying surface velocities.
 	/// Override in a pre-solve collision handler for custom behavior.
 	this.surface_vr = vzero;
-
+	
 	this.a = a; this.body_a = a.body;
 	this.b = b; this.body_b = b.body;
-
+	
 	this.thread_a_next = this.thread_a_prev = null;
 	this.thread_b_next = this.thread_b_prev = null;
-
+	
 	this.contacts = null;
-
+	
 	this.stamp = 0;
 	this.handler = null;
 	this.swappedColl = false;
@@ -13350,12 +13350,12 @@ Arbiter.prototype.totalImpulse = function()
 {
 	var contacts = this.contacts;
 	var sum = new Vect(0,0);
-
+	
 	for(var i=0, count=contacts.length; i<count; i++){
 		var con = contacts[i];
 		sum.add(vmult(con.n, con.jnAcc));
 	}
-
+	
 	return this.swappedColl ? sum : sum.neg();
 };
 
@@ -13365,7 +13365,7 @@ Arbiter.prototype.totalImpulseWithFriction = function()
 {
 	var contacts = this.contacts;
 	var sum = new Vect(0,0);
-
+	
 	for(var i=0, count=contacts.length; i<count; i++){
 		var con = contacts[i];
 		sum.add(new Vect(con.jnAcc, con.jtAcc).rotate(con.n));
@@ -13380,16 +13380,16 @@ Arbiter.prototype.totalKE = function()
 {
 	var eCoef = (1 - this.e)/(1 + this.e);
 	var sum = 0;
-
+	
 	var contacts = this.contacts;
 	for(var i=0, count=contacts.length; i<count; i++){
 		var con = contacts[i];
 		var jnAcc = con.jnAcc;
 		var jtAcc = con.jtAcc;
-
+		
 		sum += eCoef*jnAcc*jnAcc/con.nMass + jtAcc*jtAcc/con.tMass;
 	}
-
+	
 	return sum;
 };
 
@@ -13432,12 +13432,12 @@ var ContactPoint = function(point, normal, dist)
 Arbiter.prototype.getContactPointSet = function()
 {
 	var set = new Array(this.contacts.length);
-
+	
 	var i;
 	for(i=0; i<set.length; i++){
 		set[i] = new ContactPoint(this.contacts[i].p, this.contacts[i].n, this.contacts[i].dist);
 	}
-
+	
 	return set;
 };
 
@@ -13479,7 +13479,7 @@ var unthreadHelper = function(arb, body, prev, next)
 	} else {
 		body.arbiterList = next;
 	}
-
+	
 	if(next){
 		// cpArbiterThreadForBody(next, body)->prev = prev;
 		if(next.body_a === body){
@@ -13503,15 +13503,15 @@ Arbiter.prototype.unthread = function()
 //{
 //	cpFloat fsum = 0;
 //	cpVect vsum = vzero;
-//
+//	
 //	for(int i=0; i<numContacts; i++){
 //		cpContact *con = &contacts[i];
 //		cpVect j = vrotate(con.n, v(con.jnAcc, con.jtAcc));
-//
+//		
 //		fsum += vlength(j);
 //		vsum = vadd(vsum, j);
 //	}
-//
+//	
 //	cpFloat vmag = vlength(vsum);
 //	return (1 - vmag/fsum);
 //}
@@ -13523,10 +13523,10 @@ Arbiter.prototype.update = function(contacts, handler, a, b)
 		// Iterate over the possible pairs to look for hash value matches.
 		for(var i=0; i<this.contacts.length; i++){
 			var old = this.contacts[i];
-
+			
 			for(var j=0; j<contacts.length; j++){
 				var new_contact = contacts[j];
-
+				
 				// This could trigger false positives, but is fairly unlikely nor serious if it does.
 				if(new_contact.hash === old.hash){
 					// Copy the persistant contact information.
@@ -13536,20 +13536,20 @@ Arbiter.prototype.update = function(contacts, handler, a, b)
 			}
 		}
 	}
-
+	
 	this.contacts = contacts;
-
+	
 	this.handler = handler;
 	this.swappedColl = (a.collision_type !== handler.a);
-
+	
 	this.e = a.e * b.e;
 	this.u = a.u * b.u;
 	this.surface_vr = vsub(a.surface_v, b.surface_v);
-
+	
 	// For collisions between two similar primitive types, the order could have been swapped.
 	this.a = a; this.body_a = a.body;
 	this.b = b; this.body_b = b.body;
-
+	
 	// mark it as new if it's been cached
 	if(this.state == 'cached') this.state = 'first coll';
 };
@@ -13558,22 +13558,22 @@ Arbiter.prototype.preStep = function(dt, slop, bias)
 {
 	var a = this.body_a;
 	var b = this.body_b;
-
+	
 	for(var i=0; i<this.contacts.length; i++){
 		var con = this.contacts[i];
-
+		
 		// Calculate the offsets.
 		con.r1 = vsub(con.p, a.p);
 		con.r2 = vsub(con.p, b.p);
-
+		
 		// Calculate the mass normal and mass tangent.
 		con.nMass = 1/k_scalar(a, b, con.r1, con.r2, con.n);
 		con.tMass = 1/k_scalar(a, b, con.r1, con.r2, vperp(con.n));
-
+	
 		// Calculate the target bias velocity.
 		con.bias = -bias*min(0, con.dist + slop)/dt;
 		con.jBias = 0;
-
+		
 		// Calculate the target bounce velocity.
 		con.bounce = normal_relative_velocity(a, b, con.r1, con.r2, con.n)*this.e;
 	}
@@ -13582,10 +13582,10 @@ Arbiter.prototype.preStep = function(dt, slop, bias)
 Arbiter.prototype.applyCachedImpulse = function(dt_coef)
 {
 	if(this.isFirstContact()) return;
-
+	
 	var a = this.body_a;
 	var b = this.body_b;
-
+	
 	for(var i=0; i<this.contacts.length; i++){
 		var con = this.contacts[i];
 		//var j = vrotate(con.n, new Vect(con.jnAcc, con.jtAcc));
@@ -13619,11 +13619,11 @@ Arbiter.prototype.applyImpulse = function()
 		var n = con.n;
 		var r1 = con.r1;
 		var r2 = con.r2;
-
+		
 		//var vr = relative_velocity(a, b, r1, r2);
 		var vrx = b.vx - r2.y * b.w - (a.vx - r1.y * a.w);
 		var vry = b.vy + r2.x * b.w - (a.vy + r1.x * a.w);
-
+		
 		//var vb1 = vadd(vmult(vperp(r1), a.w_bias), a.v_bias);
 		//var vb2 = vadd(vmult(vperp(r2), b.w_bias), b.v_bias);
 		//var vbn = vdot(vsub(vb2, vb1), n);
@@ -13634,20 +13634,20 @@ Arbiter.prototype.applyImpulse = function()
 		var vrn = vdot2(vrx, vry, n.x, n.y);
 		//var vrt = vdot(vadd(vr, surface_vr), vperp(n));
 		var vrt = vdot2(vrx + surface_vr.x, vry + surface_vr.y, -n.y, n.x);
-
+		
 		var jbn = (con.bias - vbn)*nMass;
 		var jbnOld = con.jBias;
 		con.jBias = max(jbnOld + jbn, 0);
-
+		
 		var jn = -(con.bounce + vrn)*nMass;
 		var jnOld = con.jnAcc;
 		con.jnAcc = max(jnOld + jn, 0);
-
+		
 		var jtMax = friction*con.jnAcc;
 		var jt = -vrt*con.tMass;
 		var jtOld = con.jtAcc;
 		con.jtAcc = clamp(jtOld + jt, -jtMax, jtMax);
-
+		
 		//apply_bias_impulses(a, b, r1, r2, vmult(n, con.jBias - jbnOld));
 		var bias_x = n.x * (con.jBias - jbnOld);
 		var bias_y = n.y * (con.jBias - jbnOld);
@@ -13676,17 +13676,17 @@ Arbiter.prototype.next = function(body)
 	return (this.body_a == body ? this.thread_a_next : this.thread_b_next);
 };
 /* Copyright (c) 2007 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -13703,12 +13703,12 @@ var Contact = function(p, n, dist, hash)
 	this.p = p;
 	this.n = n;
 	this.dist = dist;
-
+	
 	this.r1 = this.r2 = vzero;
 	this.nMass = this.tMass = this.bounce = this.bias = 0;
 
 	this.jnAcc = this.jtAcc = this.jBias = 0;
-
+	
 	this.hash = hash;
 	numContacts++;
 };
@@ -13723,7 +13723,7 @@ var circle2circleQuery = function(p1, p2, r1, r2)
 	var delta = vsub(p2, p1);
 	var distsq = vlengthsq(delta);
 	if(distsq >= mindist*mindist) return;
-
+	
 	var dist = Math.sqrt(distsq);
 
 	// Allocate and initialize the contact.
@@ -13747,15 +13747,15 @@ var circle2segment = function(circleShape, segmentShape)
 	var seg_a = segmentShape.ta;
 	var seg_b = segmentShape.tb;
 	var center = circleShape.tc;
-
+	
 	var seg_delta = vsub(seg_b, seg_a);
 	var closest_t = clamp01(vdot(seg_delta, vsub(center, seg_a))/vlengthsq(seg_delta));
 	var closest = vadd(seg_a, vmult(seg_delta, closest_t));
-
+	
 	var contact = circle2circleQuery(center, closest, circleShape.r, segmentShape.r);
 	if(contact){
 		var n = contact.n;
-
+		
 		// Reject endcap collisions if tangents are provided.
 		return (
 			(closest_t === 0 && vdot(n, segmentShape.a_tangent) < 0) ||
@@ -13779,7 +13779,7 @@ var findMSA = function(poly, planes)
 	var min_index = 0;
 	var min = poly.valueOnAxis(planes[0].n, planes[0].d);
 	if(min > 0) return -1;
-
+	
 	for(var i=1; i<planes.length; i++){
 		var dist = poly.valueOnAxis(planes[i].n, planes[i].d);
 		if(dist > 0) {
@@ -13789,7 +13789,7 @@ var findMSA = function(poly, planes)
 			min_index = i;
 		}
 	}
-
+	
 	last_MSA_min = min;
 	return min_index;
 };
@@ -13809,7 +13809,7 @@ var findVertsFallback = function(poly1, poly2, n, dist)
 			arr.push(new Contact(new Vect(vx, vy), n, dist, hashPair(poly1.hashid, i)));
 		}
 	}
-
+	
 	var verts2 = poly2.tVerts;
 	for(var i=0; i<verts2.length; i+=2){
 		var vx = verts2[i];
@@ -13818,7 +13818,7 @@ var findVertsFallback = function(poly1, poly2, n, dist)
 			arr.push(new Contact(new Vect(vx, vy), n, dist, hashPair(poly2.hashid, i)));
 		}
 	}
-
+	
 	return arr;
 };
 
@@ -13835,7 +13835,7 @@ var findVerts = function(poly1, poly2, n, dist)
 			arr.push(new Contact(new Vect(vx, vy), n, dist, hashPair(poly1.hashid, i>>1)));
 		}
 	}
-
+	
 	var verts2 = poly2.tVerts;
 	for(var i=0; i<verts2.length; i+=2){
 		var vx = verts2[i];
@@ -13844,7 +13844,7 @@ var findVerts = function(poly1, poly2, n, dist)
 			arr.push(new Contact(new Vect(vx, vy), n, dist, hashPair(poly2.hashid, i>>1)));
 		}
 	}
-
+	
 	return (arr.length ? arr : findVertsFallback(poly1, poly2, n, dist));
 };
 
@@ -13854,11 +13854,11 @@ var poly2poly = function(poly1, poly2)
 	var mini1 = findMSA(poly2, poly1.tPlanes);
 	if(mini1 == -1) return NONE;
 	var min1 = last_MSA_min;
-
+	
 	var mini2 = findMSA(poly1, poly2.tPlanes);
 	if(mini2 == -1) return NONE;
 	var min2 = last_MSA_min;
-
+	
 	// There is overlap, find the penetrating verts
 	if(min1 > min2)
 		return findVerts(poly1, poly2, poly1.tPlanes[mini1].n, min1);
@@ -13875,12 +13875,12 @@ var segValueOnAxis = function(seg, n, d)
 };
 
 // Identify vertexes that have penetrated the segment.
-var findPointsBehindSeg = function(arr, seg, poly, pDist, coef)
+var findPointsBehindSeg = function(arr, seg, poly, pDist, coef) 
 {
 	var dta = vcross(seg.tn, seg.ta);
 	var dtb = vcross(seg.tn, seg.tb);
 	var n = vmult(seg.tn, coef);
-
+	
 	var verts = poly.tVerts;
 	for(var i=0; i<verts.length; i+=2){
 		var vx = verts[i];
@@ -13902,12 +13902,12 @@ var seg2poly = function(seg, poly)
 
 	var planes = poly.tPlanes;
 	var numVerts = planes.length;
-
+	
 	var segD = vdot(seg.tn, seg.ta);
 	var minNorm = poly.valueOnAxis(seg.tn, segD) - seg.r;
 	var minNeg = poly.valueOnAxis(vneg(seg.tn), -segD) - seg.r;
 	if(minNeg > 0 || minNorm > 0) return NONE;
-
+	
 	var mini = 0;
 	var poly_min = segValueOnAxis(seg, planes[0].n, planes[0].d);
 	if(poly_min > 0) return NONE;
@@ -13920,34 +13920,34 @@ var seg2poly = function(seg, poly)
 			mini = i;
 		}
 	}
-
+	
 	var poly_n = vneg(planes[mini].n);
-
+	
 	var va = vadd(seg.ta, vmult(poly_n, seg.r));
 	var vb = vadd(seg.tb, vmult(poly_n, seg.r));
 	if(poly.containsVert(va.x, va.y))
 		arr.push(new Contact(va, poly_n, poly_min, hashPair(seg.hashid, 0)));
 	if(poly.containsVert(vb.x, vb.y))
 		arr.push(new Contact(vb, poly_n, poly_min, hashPair(seg.hashid, 1)));
-
+	
 	// Floating point precision problems here.
 	// This will have to do for now.
 //	poly_min -= cp_collision_slop; // TODO is this needed anymore?
-
+	
 	if(minNorm >= poly_min || minNeg >= poly_min) {
 		if(minNorm > minNeg)
 			findPointsBehindSeg(arr, seg, poly, minNorm, 1);
 		else
 			findPointsBehindSeg(arr, seg, poly, minNeg, -1);
 	}
-
+	
 	// If no other collision points are found, try colliding endpoints.
 	if(arr.length === 0){
 		var mini2 = mini * 2;
 		var verts = poly.tVerts;
 
 		var poly_a = new Vect(verts[mini2], verts[mini2+1]);
-
+		
 		var con;
 		if((con = circle2circleQuery(seg.ta, poly_a, seg.r, 0, arr))) return [con];
 		if((con = circle2circleQuery(seg.tb, poly_a, seg.r, 0, arr))) return [con];
@@ -13968,7 +13968,7 @@ var seg2poly = function(seg, poly)
 var circle2poly = function(circ, poly)
 {
 	var planes = poly.tPlanes;
-
+	
 	var mini = 0;
 	var min = vdot(planes[0].n, circ.tc) - planes[0].d - circ.r;
 	for(var i=0; i<planes.length; i++){
@@ -13980,7 +13980,7 @@ var circle2poly = function(circ, poly)
 			mini = i;
 		}
 	}
-
+	
 	var n = planes[mini].n;
 
 	var verts = poly.tVerts;
@@ -13997,7 +13997,7 @@ var circle2poly = function(circ, poly)
 	var dta = vcross2(n.x, n.y, ax, ay);
 	var dtb = vcross2(n.x, n.y, bx, by);
 	var dt = vcross(n, circ.tc);
-
+		
 	if(dt < dtb){
 		var con = circle2circleQuery(circ.tc, new Vect(bx, by), circ.r, 0, con);
 		return con ? [con] : NONE;
@@ -14015,7 +14015,7 @@ var circle2poly = function(circ, poly)
 };
 
 // The javascripty way to do this would be either nested object or methods on the prototypes.
-//
+// 
 // However, the *fastest* way is the method below.
 // See: http://jsperf.com/dispatch
 
@@ -14049,17 +14049,17 @@ var collideShapes = cp.collideShapes = function(a, b)
 };
 
 /* Copyright (c) 2007 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -14079,64 +14079,64 @@ var Space = cp.Space = function() {
 	this.bodies = [];
 	this.rousedBodies = [];
 	this.sleepingComponents = [];
-
+	
 	this.staticShapes = new BBTree(null);
 	this.activeShapes = new BBTree(this.staticShapes);
-
+	
 	this.arbiters = [];
 	this.contactBuffersHead = null;
 	this.cachedArbiters = {};
 	//this.pooledArbiters = [];
-
+	
 	this.constraints = [];
-
+	
 	this.locked = 0;
-
+	
 	this.collisionHandlers = {};
 	this.defaultHandler = defaultCollisionHandler;
 
 	this.postStepCallbacks = [];
-
+	
 	/// Number of iterations to use in the impulse solver to solve contacts.
 	this.iterations = 10;
-
+	
 	/// Gravity to pass to rigid bodies when integrating velocity.
 	this.gravity = vzero;
-
+	
 	/// Damping rate expressed as the fraction of velocity bodies retain each second.
 	/// A value of 0.9 would mean that each body's velocity will drop 10% per second.
 	/// The default value is 1.0, meaning no damping is applied.
 	/// @note This damping value is different than those of cpDampedSpring and cpDampedRotarySpring.
 	this.damping = 1;
-
+	
 	/// Speed threshold for a body to be considered idle.
 	/// The default value of 0 means to let the space guess a good threshold based on gravity.
 	this.idleSpeedThreshold = 0;
-
+	
 	/// Time a group of bodies must remain idle in order to fall asleep.
 	/// Enabling sleeping also implicitly enables the the contact graph.
 	/// The default value of Infinity disables the sleeping algorithm.
 	this.sleepTimeThreshold = Infinity;
-
+	
 	/// Amount of encouraged penetration between colliding shapes..
 	/// Used to reduce oscillating contacts and keep the collision cache warm.
 	/// Defaults to 0.1. If you have poor simulation quality,
 	/// increase this number as much as possible without allowing visible amounts of overlap.
 	this.collisionSlop = 0.1;
-
+	
 	/// Determines how fast overlapping shapes are pushed apart.
 	/// Expressed as a fraction of the error remaining after each second.
 	/// Defaults to pow(1.0 - 0.1, 60.0) meaning that Chipmunk fixes 10% of overlap each frame at 60Hz.
 	this.collisionBias = Math.pow(1 - 0.1, 60);
-
+	
 	/// Number of frames that contact information should persist.
 	/// Defaults to 3. There is probably never a reason to change this value.
 	this.collisionPersistence = 3;
-
+	
 	/// Rebuild the contact graph during each step. Must be enabled to use the cpBodyEachArbiter() function.
 	/// Disabled by default for a small performance boost. Enabled implicitly when the sleeping feature is enabled.
 	this.enableContactGraph = false;
-
+	
 	/// The designated static body for this space.
 	/// You can modify this body, or replace it with your own static body.
 	/// By default it points to a statically allocated cpBody in the cpSpace struct.
@@ -14170,10 +14170,10 @@ var assertSpaceUnlocked = function(space)
 Space.prototype.addCollisionHandler = function(a, b, begin, preSolve, postSolve, separate)
 {
 	assertSpaceUnlocked(this);
-
+		
 	// Remove any old function so the new one will get added.
 	this.removeCollisionHandler(a, b);
-
+	
 	var handler = new CollisionHandler();
 	handler.a = a;
 	handler.b = b;
@@ -14189,7 +14189,7 @@ Space.prototype.addCollisionHandler = function(a, b, begin, preSolve, postSolve,
 Space.prototype.removeCollisionHandler = function(a, b)
 {
 	assertSpaceUnlocked(this);
-
+	
 	delete this.collisionHandlers[hashPair(a, b)];
 };
 
@@ -14223,17 +14223,17 @@ Space.prototype.addShape = function(shape)
 {
 	var body = shape.body;
 	if(body.isStatic()) return this.addStaticShape(shape);
-
+	
 	assert(!shape.space, "This shape is already added to a space and cannot be added to another.");
 	assertSpaceUnlocked(this);
-
+	
 	body.activate();
 	body.addShape(shape);
-
+	
 	shape.update(body.p, body.rot);
 	this.activeShapes.insert(shape, shape.hashid);
 	shape.space = this;
-
+		
 	return shape;
 };
 
@@ -14242,14 +14242,14 @@ Space.prototype.addStaticShape = function(shape)
 {
 	assert(!shape.space, "This shape is already added to a space and cannot be added to another.");
 	assertSpaceUnlocked(this);
-
+	
 	var body = shape.body;
 	body.addShape(shape);
 
 	shape.update(body.p, body.rot);
 	this.staticShapes.insert(shape, shape.hashid);
 	shape.space = this;
-
+	
 	return shape;
 };
 
@@ -14259,10 +14259,10 @@ Space.prototype.addBody = function(body)
 	assert(!body.isStatic(), "Static bodies cannot be added to a space as they are not meant to be simulated.");
 	assert(!body.space, "This body is already added to a space and cannot be added to another.");
 	assertSpaceUnlocked(this);
-
+	
 	this.bodies.push(body);
 	body.space = this;
-
+	
 	return body;
 };
 
@@ -14271,18 +14271,18 @@ Space.prototype.addConstraint = function(constraint)
 {
 	assert(!constraint.space, "This shape is already added to a space and cannot be added to another.");
 	assertSpaceUnlocked(this);
-
+	
 	var a = constraint.a, b = constraint.b;
 
 	a.activate();
 	b.activate();
 	this.constraints.push(constraint);
-
+	
 	// Push onto the heads of the bodies' constraint lists
 	constraint.next_a = a.constraintList; a.constraintList = constraint;
 	constraint.next_b = b.constraintList; b.constraintList = constraint;
 	constraint.space = this;
-
+	
 	return constraint;
 };
 
@@ -14299,12 +14299,12 @@ Space.prototype.filterArbiters = function(body, filter)
 		){
 			// Call separate when removing shapes.
 			if(filter && arb.state !== 'cached') arb.callSeparate(this);
-
+			
 			arb.unthread();
 
 			deleteObjFromList(this.arbiters, arb);
 			//this.pooledArbiters.push(arb);
-
+			
 			delete this.cachedArbiters[hash];
 		}
 	}
@@ -14320,7 +14320,7 @@ Space.prototype.removeShape = function(shape)
 		assert(this.containsShape(shape),
 			"Cannot remove a shape that was not added to the space. (Removed twice maybe?)");
 		assertSpaceUnlocked(this);
-
+		
 		body.activate();
 		body.removeShape(shape);
 		this.filterArbiters(body, shape);
@@ -14335,7 +14335,7 @@ Space.prototype.removeStaticShape = function(shape)
 	assert(this.containsShape(shape),
 		"Cannot remove a static or sleeping shape that was not added to the space. (Removed twice maybe?)");
 	assertSpaceUnlocked(this);
-
+	
 	var body = shape.body;
 	if(body.isStatic()) body.activateStatic(shape);
 	body.removeShape(shape);
@@ -14350,7 +14350,7 @@ Space.prototype.removeBody = function(body)
 	assert(this.containsBody(body),
 		"Cannot remove a body that was not added to the space. (Removed twice maybe?)");
 	assertSpaceUnlocked(this);
-
+	
 	body.activate();
 //	this.filterArbiters(body, null);
 	deleteObjFromList(this.bodies, body);
@@ -14363,11 +14363,11 @@ Space.prototype.removeConstraint = function(constraint)
 	assert(this.containsConstraint(constraint),
 		"Cannot remove a constraint that was not added to the space. (Removed twice maybe?)");
 	assertSpaceUnlocked(this);
-
+	
 	constraint.a.activate();
 	constraint.b.activate();
 	deleteObjFromList(this.constraints, constraint);
-
+	
 	constraint.a.removeConstraint(constraint);
 	constraint.b.removeConstraint(constraint);
 	constraint.space = null;
@@ -14405,15 +14405,15 @@ Space.prototype.eachBody = function(func)
 {
 	this.lock(); {
 		var bodies = this.bodies;
-
+		
 		for(var i=0; i<bodies.length; i++){
 			func(bodies[i]);
 		}
-
+		
 		var components = this.sleepingComponents;
 		for(var i=0; i<components.length; i++){
 			var root = components[i];
-
+			
 			var body = root;
 			while(body){
 				var next = body.nodeNext;
@@ -14438,7 +14438,7 @@ Space.prototype.eachConstraint = function(func)
 {
 	this.lock(); {
 		var constraints = this.constraints;
-
+		
 		for(var i=0; i<constraints.length; i++){
 			func(constraints[i]);
 		}
@@ -14451,7 +14451,7 @@ Space.prototype.eachConstraint = function(func)
 Space.prototype.reindexStatic = function()
 {
 	assert(!this.locked, "You cannot manually reindex objects while the space is locked. Wait until the current query or step is complete.");
-
+	
 	this.staticShapes.each(function(shape){
 		var body = shape.body;
 		shape.update(body.p, body.rot);
@@ -14463,10 +14463,10 @@ Space.prototype.reindexStatic = function()
 Space.prototype.reindexShape = function(shape)
 {
 	assert(!this.locked, "You cannot manually reindex objects while the space is locked. Wait until the current query or step is complete.");
-
+	
 	var body = shape.body;
 	shape.update(body.p, body.rot);
-
+	
 	// attempt to rehash the shape in both hashes
 	this.activeShapes.reindexObject(shape, shape.hashid);
 	this.staticShapes.reindexObject(shape, shape.hashid);
@@ -14484,33 +14484,33 @@ Space.prototype.reindexShapesForBody = function(body)
 Space.prototype.useSpatialHash = function(dim, count)
 {
 	throw new Error('Spatial Hash not implemented.');
-
+	
 	var staticShapes = new SpaceHash(dim, count, null);
 	var activeShapes = new SpaceHash(dim, count, staticShapes);
-
+	
 	this.staticShapes.each(function(shape){
 		staticShapes.insert(shape, shape.hashid);
 	});
 	this.activeShapes.each(function(shape){
 		activeShapes.insert(shape, shape.hashid);
 	});
-
+		
 	this.staticShapes = staticShapes;
 	this.activeShapes = activeShapes;
 };
 
 /* Copyright (c) 2007 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -14519,13 +14519,13 @@ Space.prototype.useSpatialHash = function(dim, count)
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
+ 
 /// **** Sleeping Functions
 
 Space.prototype.activateBody = function(body)
 {
 	assert(!body.isRogue(), "Internal error: Attempting to activate a rogue body.");
-
+	
 	if(this.locked){
 		// cpSpaceActivateBody() is called again once the space is unlocked
 		if(this.rousedBodies.indexOf(body) === -1) this.rousedBodies.push(body);
@@ -14537,28 +14537,28 @@ Space.prototype.activateBody = function(body)
 			this.staticShapes.remove(shape, shape.hashid);
 			this.activeShapes.insert(shape, shape.hashid);
 		}
-
+		
 		for(var arb = body.arbiterList; arb; arb = arb.next(body)){
 			var bodyA = arb.body_a;
 			if(body === bodyA || bodyA.isStatic()){
 				//var contacts = arb.contacts;
-
+				
 				// Restore contact values back to the space's contact buffer memory
 				//arb.contacts = cpContactBufferGetArray(this);
 				//memcpy(arb.contacts, contacts, numContacts*sizeof(cpContact));
 				//cpSpacePushContacts(this, numContacts);
-
+				
 				// Reinsert the arbiter into the arbiter cache
 				var a = arb.a, b = arb.b;
 				this.cachedArbiters[hashPair(a.hashid, b.hashid)] = arb;
-
+				
 				// Update the arbiter's state
 				arb.stamp = this.stamp;
 				arb.handler = this.lookupHandler(a.collision_type, b.collision_type);
 				this.arbiters.push(arb);
 			}
 		}
-
+		
 		for(var constraint = body.constraintList; constraint; constraint = constraint.nodeNext){
 			var bodyA = constraint.a;
 			if(body === bodyA || bodyA.isStatic()) this.constraints.push(constraint);
@@ -14569,20 +14569,20 @@ Space.prototype.activateBody = function(body)
 Space.prototype.deactivateBody = function(body)
 {
 	assert(!body.isRogue(), "Internal error: Attempting to deactivate a rogue body.");
-
+	
 	deleteObjFromList(this.bodies, body);
-
+	
 	for(var i = 0; i < body.shapeList.length; i++){
 		var shape = body.shapeList[i];
 		this.activeShapes.remove(shape, shape.hashid);
 		this.staticShapes.insert(shape, shape.hashid);
 	}
-
+	
 	for(var arb = body.arbiterList; arb; arb = arb.next(body)){
 		var bodyA = arb.body_a;
 		if(body === bodyA || bodyA.isStatic()){
 			this.uncacheArbiter(arb);
-
+			
 			// Save contact values to a new block of memory so they won't time out
 			//size_t bytes = arb.numContacts*sizeof(cpContact);
 			//cpContact *contacts = (cpContact *)cpcalloc(1, bytes);
@@ -14590,7 +14590,7 @@ Space.prototype.deactivateBody = function(body)
 			//arb.contacts = contacts;
 		}
 	}
-
+		
 	for(var constraint = body.constraintList; constraint; constraint = constraint.nodeNext){
 		var bodyA = constraint.a;
 		if(body === bodyA || bodyA.isStatic()) deleteObjFromList(this.constraints, constraint);
@@ -14606,20 +14606,20 @@ var componentActivate = function(root)
 {
 	if(!root || !root.isSleeping(root)) return;
 	assert(!root.isRogue(), "Internal Error: componentActivate() called on a rogue body.");
-
+	
 	var space = root.space;
 	var body = root;
 	while(body){
 		var next = body.nodeNext;
-
+		
 		body.nodeIdleTime = 0;
 		body.nodeRoot = null;
 		body.nodeNext = null;
 		space.activateBody(body);
-
+		
 		body = next;
 	}
-
+	
 	deleteObjFromList(space.sleepingComponents, root);
 };
 
@@ -14634,13 +14634,13 @@ Body.prototype.activate = function()
 Body.prototype.activateStatic = function(filter)
 {
 	assert(this.isStatic(), "Body.activateStatic() called on a non-static body.");
-
+	
 	for(var arb = this.arbiterList; arb; arb = arb.next(this)){
 		if(!filter || filter == arb.a || filter == arb.b){
 			(arb.body_a == this ? arb.body_b : arb.body_a).activate();
 		}
 	}
-
+	
 	// TODO should also activate joints!
 };
 
@@ -14650,7 +14650,7 @@ Body.prototype.pushArbiter = function(arb)
 		"Internal Error: Dangling contact graph pointers detected. (A)");
 	assertSoft((arb.body_a === this ? arb.thread_a_prev : arb.thread_b_prev) === null,
 		"Internal Error: Dangling contact graph pointers detected. (B)");
-
+	
 	var next = this.arbiterList;
 	assertSoft(next === null || (next.body_a === this ? next.thread_a_prev : next.thread_b_prev) === null,
 		"Internal Error: Dangling contact graph pointers detected. (C)");
@@ -14705,7 +14705,7 @@ var componentActive = function(root, threshold)
 	for(var body = root; body; body = body.nodeNext){
 		if(body.nodeIdleTime < threshold) return true;
 	}
-
+	
 	return false;
 };
 
@@ -14717,7 +14717,7 @@ Space.prototype.processComponents = function(dt)
 	// These checks can be removed at some stage (if DEBUG == undefined)
 	for(var i=0; i<bodies.length; i++){
 		var body = bodies[i];
-
+		
 		assertSoft(body.nodeNext === null, "Internal Error: Dangling next pointer detected in contact graph.");
 		assertSoft(body.nodeRoot === null, "Internal Error: Dangling root pointer detected in contact graph.");
 	}
@@ -14726,7 +14726,7 @@ Space.prototype.processComponents = function(dt)
 	if(sleep){
 		var dv = this.idleSpeedThreshold;
 		var dvsq = (dv ? dv*dv : vlengthsq(this.gravity)*dt*dt);
-
+	
 		for(var i=0; i<bodies.length; i++){
 			var body = bodies[i];
 
@@ -14741,51 +14741,51 @@ Space.prototype.processComponents = function(dt)
 	for(var i=0, count=arbiters.length; i<count; i++){
 		var arb = arbiters[i];
 		var a = arb.body_a, b = arb.body_b;
-
-		if(sleep){
+	
+		if(sleep){	
 			if((b.isRogue() && !b.isStatic()) || a.isSleeping()) a.activate();
 			if((a.isRogue() && !a.isStatic()) || b.isSleeping()) b.activate();
 		}
-
+		
 		a.pushArbiter(arb);
 		b.pushArbiter(arb);
 	}
-
+	
 	if(sleep){
 		// Bodies should be held active if connected by a joint to a non-static rouge body.
 		var constraints = this.constraints;
 		for(var i=0; i<constraints.length; i++){
 			var constraint = constraints[i];
 			var a = constraint.a, b = constraint.b;
-
+			
 			if(b.isRogue() && !b.isStatic()) a.activate();
 			if(a.isRogue() && !a.isStatic()) b.activate();
 		}
-
+		
 		// Generate components and deactivate sleeping ones
 		for(var i=0; i<bodies.length;){
 			var body = bodies[i];
-
+			
 			if(componentRoot(body) === null){
-				// Body not in a component yet. Perform a DFS to flood fill mark
+				// Body not in a component yet. Perform a DFS to flood fill mark 
 				// the component in the contact graph using this body as the root.
 				floodFillComponent(body, body);
-
+				
 				// Check if the component should be put to sleep.
 				if(!componentActive(body, this.sleepTimeThreshold)){
 					this.sleepingComponents.push(body);
 					for(var other = body; other; other = other.nodeNext){
 						this.deactivateBody(other);
 					}
-
+					
 					// deactivateBody() removed the current body from the list.
 					// Skip incrementing the index counter.
 					continue;
 				}
 			}
-
+			
 			i++;
-
+			
 			// Only sleeping bodies retain their component node pointers.
 			body.nodeRoot = null;
 			body.nodeNext = null;
@@ -14800,38 +14800,38 @@ Body.prototype.sleep = function()
 
 Body.prototype.sleepWithGroup = function(group){
 	assert(!this.isStatic() && !this.isRogue(), "Rogue and static bodies cannot be put to sleep.");
-
+	
 	var space = this.space;
 	assert(space, "Cannot put a rogue body to sleep.");
 	assert(!space.locked, "Bodies cannot be put to sleep during a query or a call to cpSpaceStep(). Put these calls into a post-step callback.");
 	assert(group === null || group.isSleeping(), "Cannot use a non-sleeping body as a group identifier.");
-
+	
 	if(this.isSleeping()){
 		assert(componentRoot(this) === componentRoot(group), "The body is already sleeping and it's group cannot be reassigned.");
 		return;
 	}
-
+	
 	for(var i = 0; i < this.shapeList.length; i++){
 		this.shapeList[i].update(this.p, this.rot);
 	}
 	space.deactivateBody(this);
-
+	
 	if(group){
 		var root = componentRoot(group);
-
+		
 		this.nodeRoot = root;
 		this.nodeNext = root.nodeNext;
 		this.nodeIdleTime = 0;
-
+		
 		root.nodeNext = this;
 	} else {
 		this.nodeRoot = this;
 		this.nodeNext = null;
 		this.nodeIdleTime = 0;
-
+		
 		space.sleepingComponents.push(this);
 	}
-
+	
 	deleteObjFromList(space.bodies, this);
 };
 
@@ -14844,17 +14844,17 @@ Space.prototype.activateShapesTouchingShape = function(shape){
 };
 
 /* Copyright (c) 2007 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -14892,7 +14892,7 @@ Space.prototype.pointQueryFirst = function(point, layers, group)
 	this.pointQuery(point, layers, group, function(shape) {
 		if(!shape.sensor) outShape = shape;
 	});
-
+	
 	return outShape;
 };
 
@@ -14942,14 +14942,14 @@ Space.prototype.segmentQuery = function(start, end, layers, group, func)
 {
 	var helper = function(shape){
 		var info;
-
+		
 		if(
 			!(shape.group && group === shape.group) && (layers & shape.layers) &&
 			(info = shape.segmentQuery(start, end))
 		){
 			func(shape, info.t, info.n);
 		}
-
+		
 		return 1;
 	};
 
@@ -14967,7 +14967,7 @@ Space.prototype.segmentQueryFirst = function(start, end, layers, group)
 
 	var helper = function(shape){
 		var info;
-
+		
 		if(
 			!(shape.group && group === shape.group) && (layers & shape.layers) &&
 			!shape.sensor &&
@@ -14976,13 +14976,13 @@ Space.prototype.segmentQueryFirst = function(start, end, layers, group)
 		){
 			out = info;
 		}
-
+		
 		return out ? out.t : 1;
 	};
 
 	this.staticShapes.segmentQuery(start, end, 1, helper);
 	this.activeShapes.segmentQuery(start, end, out ? out.t : 1, helper);
-
+	
 	return out;
 };
 
@@ -14998,7 +14998,7 @@ Space.prototype.bbQuery = function(bb, layers, group, func)
 			func(shape);
 		}
 	};
-
+	
 	this.lock(); {
 		this.activeShapes.query(bb, helper);
 		this.staticShapes.query(bb, helper);
@@ -15018,7 +15018,7 @@ Space.prototype.shapeQuery = function(shape, func)
 
 	//shapeQueryContext context = {func, data, false};
 	var anyCollision = false;
-
+	
 	var helper = function(b){
 		var a = shape;
 		// Reject any of the simple cases
@@ -15027,9 +15027,9 @@ Space.prototype.shapeQuery = function(shape, func)
 			!(a.layers & b.layers) ||
 			a === b
 		) return;
-
+		
 		var contacts;
-
+		
 		// Shape 'a' should have the lower shape type. (required by collideShapes() )
 		if(a.collisionCode <= b.collisionCode){
 			contacts = collideShapes(a, b);
@@ -15037,16 +15037,16 @@ Space.prototype.shapeQuery = function(shape, func)
 			contacts = collideShapes(b, a);
 			for(var i=0; i<contacts.length; i++) contacts[i].n = vneg(contacts[i].n);
 		}
-
+		
 		if(contacts.length){
 			anyCollision = !(a.sensor || b.sensor);
-
+			
 			if(func){
 				var set = new Array(contacts.length);
 				for(var i=0; i<contacts.length; i++){
 					set[i] = new ContactPoint(contacts[i].p, contacts[i].n, contacts[i].dist);
 				}
-
+				
 				func(b, set);
 			}
 		}
@@ -15056,7 +15056,7 @@ Space.prototype.shapeQuery = function(shape, func)
 		this.activeShapes.query(bb, helper);
 		this.staticShapes.query(bb, helper);
 	} this.unlock(true);
-
+	
 	return anyCollision;
 };
 
@@ -15446,17 +15446,17 @@ Space.prototype.step = function(dt)
 };
 
 /* Copyright (c) 2007 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -15481,7 +15481,7 @@ var relative_velocity = function(a, b, r1, r2){
 	//var v2_sum = vadd(b.v, vmult(vperp(r2), b.w));
 	var v2_sumx = b.vx + (-r2.y) * b.w;
 	var v2_sumy = b.vy + ( r2.x) * b.w;
-
+	
 //	return vsub(v2_sum, v1_sum);
 	return new Vect(v2_sumx - v1_sumx, v2_sumy - v1_sumy);
 };
@@ -15548,7 +15548,7 @@ var k_scalar = function(a, b, r1, r2, n)
 {
 	var value = k_scalar_body(a, r1, n) + k_scalar_body(b, r2, n);
 	assertSoft(value !== 0, "Unsolvable collision or constraint.");
-
+	
 	return value;
 };
 
@@ -15559,11 +15559,11 @@ var k_tensor = function(a, b, r1, r2, k1, k2)
 	// If I wasn't lazy and wrote a proper matrix class, this wouldn't be so gross...
 	var k11, k12, k21, k22;
 	var m_sum = a.m_inv + b.m_inv;
-
+	
 	// start with I*m_sum
 	k11 = m_sum; k12 = 0;
 	k21 = 0;     k22 = m_sum;
-
+	
 	// add the influence from r1
 	var a_i_inv = a.i_inv;
 	var r1xsq =  r1.x * r1.x * a_i_inv;
@@ -15571,7 +15571,7 @@ var k_tensor = function(a, b, r1, r2, k1, k2)
 	var r1nxy = -r1.x * r1.y * a_i_inv;
 	k11 += r1ysq; k12 += r1nxy;
 	k21 += r1nxy; k22 += r1xsq;
-
+	
 	// add the influnce from r2
 	var b_i_inv = b.i_inv;
 	var r2xsq =  r2.x * r2.x * b_i_inv;
@@ -15579,11 +15579,11 @@ var k_tensor = function(a, b, r1, r2, k1, k2)
 	var r2nxy = -r2.x * r2.y * b_i_inv;
 	k11 += r2ysq; k12 += r2nxy;
 	k21 += r2nxy; k22 += r2xsq;
-
+	
 	// invert
 	var determinant = k11*k22 - k12*k21;
 	assertSoft(determinant !== 0, "Unsolvable constraint.");
-
+	
 	var det_inv = 1/determinant;
 
 	k1.x =  k22*det_inv; k1.y = -k12*det_inv;
@@ -15601,17 +15601,17 @@ var bias_coef = function(errorBias, dt)
 };
 
 /* Copyright (c) 2007 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -15630,12 +15630,12 @@ var Constraint = cp.Constraint = function(a, b)
 	this.a = a;
 	/// The second body connected to this constraint.
 	this.b = b;
-
+	
 	this.space = null;
 
 	this.next_a = null;
 	this.next_b = null;
-
+	
 	/// The maximum force that this constraint is allowed to use.
 	this.maxForce = Infinity;
 	/// The rate at which joint error is corrected.
@@ -15674,17 +15674,17 @@ Constraint.prototype.next = function(body)
 };
 
 /* Copyright (c) 2007 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -15697,15 +15697,15 @@ Constraint.prototype.next = function(body)
 var PinJoint = cp.PinJoint = function(a, b, anchr1, anchr2)
 {
 	Constraint.call(this, a, b);
-
+	
 	this.anchr1 = anchr1;
 	this.anchr2 = anchr2;
-
+	
 	// STATIC_BODY_CHECK
 	var p1 = (a ? vadd(a.p, vrotate(anchr1, a.rot)) : anchr1);
 	var p2 = (b ? vadd(b.p, vrotate(anchr2, b.rot)) : anchr2);
 	this.dist = vlength(vsub(p2, p1));
-
+	
 	assertSoft(this.dist > 0, "You created a 0 length pin joint. A pivot joint will be much more stable.");
 
 	this.r1 = this.r2 = null;
@@ -15722,21 +15722,21 @@ PinJoint.prototype.preStep = function(dt)
 {
 	var a = this.a;
 	var b = this.b;
-
+	
 	this.r1 = vrotate(this.anchr1, a.rot);
 	this.r2 = vrotate(this.anchr2, b.rot);
-
+	
 	var delta = vsub(vadd(b.p, this.r2), vadd(a.p, this.r1));
 	var dist = vlength(delta);
 	this.n = vmult(delta, 1/(dist ? dist : Infinity));
-
+	
 	// calculate mass normal
 	this.nMass = 1/k_scalar(a, b, this.r1, this.r2, this.n);
-
+	
 	// calculate bias velocity
 	var maxBias = this.maxBias;
 	this.bias = clamp(-bias_coef(this.errorBias, dt)*(dist - this.dist)/dt, -maxBias, maxBias);
-
+	
 	// compute max impulse
 	this.jnMax = this.maxForce * dt;
 };
@@ -15755,13 +15755,13 @@ PinJoint.prototype.applyImpulse = function()
 
 	// compute relative velocity
 	var vrn = normal_relative_velocity(a, b, this.r1, this.r2, n);
-
+	
 	// compute normal impulse
 	var jn = (this.bias - vrn)*this.nMass;
 	var jnOld = this.jnAcc;
 	this.jnAcc = clamp(jnOld + jn, -this.jnMax, this.jnMax);
 	jn = this.jnAcc - jnOld;
-
+	
 	// apply impulse
 	apply_impulses(a, b, this.r1, this.r2, n.x*jn, n.y*jn);
 };
@@ -15772,17 +15772,17 @@ PinJoint.prototype.getImpulse = function()
 };
 
 /* Copyright (c) 2007 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -15795,7 +15795,7 @@ PinJoint.prototype.getImpulse = function()
 var SlideJoint = cp.SlideJoint = function(a, b, anchr1, anchr2, min, max)
 {
 	Constraint.call(this, a, b);
-
+	
 	this.anchr1 = anchr1;
 	this.anchr2 = anchr2;
 	this.min = min;
@@ -15803,7 +15803,7 @@ var SlideJoint = cp.SlideJoint = function(a, b, anchr1, anchr2, min, max)
 
 	this.r1 = this.r2 = this.n = null;
 	this.nMass = 0;
-
+	
 	this.jnAcc = this.jnMax = 0;
 	this.bias = 0;
 };
@@ -15814,10 +15814,10 @@ SlideJoint.prototype.preStep = function(dt)
 {
 	var a = this.a;
 	var b = this.b;
-
+	
 	this.r1 = vrotate(this.anchr1, a.rot);
 	this.r2 = vrotate(this.anchr2, b.rot);
-
+	
 	var delta = vsub(vadd(b.p, this.r2), vadd(a.p, this.r1));
 	var dist = vlength(delta);
 	var pdist = 0;
@@ -15831,14 +15831,14 @@ SlideJoint.prototype.preStep = function(dt)
 		this.n = vzero;
 		this.jnAcc = 0;
 	}
-
+	
 	// calculate mass normal
 	this.nMass = 1/k_scalar(a, b, this.r1, this.r2, this.n);
-
+	
 	// calculate bias velocity
 	var maxBias = this.maxBias;
 	this.bias = clamp(-bias_coef(this.errorBias, dt)*pdist/dt, -maxBias, maxBias);
-
+	
 	// compute max impulse
 	this.jnMax = this.maxForce * dt;
 };
@@ -15855,21 +15855,21 @@ SlideJoint.prototype.applyImpulse = function()
 
 	var a = this.a;
 	var b = this.b;
-
+	
 	var n = this.n;
 	var r1 = this.r1;
 	var r2 = this.r2;
-
+		
 	// compute relative velocity
 	var vr = relative_velocity(a, b, r1, r2);
 	var vrn = vdot(vr, n);
-
+	
 	// compute normal impulse
 	var jn = (this.bias - vrn)*this.nMass;
 	var jnOld = this.jnAcc;
 	this.jnAcc = clamp(jnOld + jn, -this.jnMax, 0);
 	jn = this.jnAcc - jnOld;
-
+	
 	// apply impulse
 	apply_impulses(a, b, this.r1, this.r2, n.x * jn, n.y * jn);
 };
@@ -15880,17 +15880,17 @@ SlideJoint.prototype.getImpulse = function()
 };
 
 /* Copyright (c) 2007 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -15904,7 +15904,7 @@ SlideJoint.prototype.getImpulse = function()
 var PivotJoint = cp.PivotJoint = function(a, b, anchr1, anchr2)
 {
 	Constraint.call(this, a, b);
-
+	
 	if(typeof anchr2 === 'undefined') {
 		var pivot = anchr1;
 
@@ -15916,7 +15916,7 @@ var PivotJoint = cp.PivotJoint = function(a, b, anchr1, anchr2)
 	this.anchr2 = anchr2;
 
 	this.r1 = this.r2 = vzero;
-
+	
 	this.k1 = new Vect(0,0); this.k2 = new Vect(0,0);
 
 	this.jAcc = vzero;
@@ -15931,16 +15931,16 @@ PivotJoint.prototype.preStep = function(dt)
 {
 	var a = this.a;
 	var b = this.b;
-
+	
 	this.r1 = vrotate(this.anchr1, a.rot);
 	this.r2 = vrotate(this.anchr2, b.rot);
-
+	
 	// Calculate mass tensor. Result is stored into this.k1 & this.k2.
 	k_tensor(a, b, this.r1, this.r2, this.k1, this.k2);
-
+	
 	// compute max impulse
 	this.jMaxLen = this.maxForce * dt;
-
+	
 	// calculate bias velocity
 	var delta = vsub(vadd(b.p, this.r2), vadd(a.p, this.r1));
 	this.bias = vclamp(vmult(delta, -bias_coef(this.errorBias, dt)/dt), this.maxBias);
@@ -15955,18 +15955,18 @@ PivotJoint.prototype.applyImpulse = function()
 {
 	var a = this.a;
 	var b = this.b;
-
+	
 	var r1 = this.r1;
 	var r2 = this.r2;
-
+		
 	// compute relative velocity
 	var vr = relative_velocity(a, b, r1, r2);
-
+	
 	// compute normal impulse
 	var j = mult_k(vsub(this.bias, vr), this.k1, this.k2);
 	var jOld = this.jAcc;
 	this.jAcc = vclamp(vadd(this.jAcc, j), this.jMaxLen);
-
+	
 	// apply impulse
 	apply_impulses(a, b, this.r1, this.r2, this.jAcc.x - jOld.x, this.jAcc.y - jOld.y);
 };
@@ -15977,17 +15977,17 @@ PivotJoint.prototype.getImpulse = function()
 };
 
 /* Copyright (c) 2007 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -16000,12 +16000,12 @@ PivotJoint.prototype.getImpulse = function()
 var GrooveJoint = cp.GrooveJoint = function(a, b, groove_a, groove_b, anchr2)
 {
 	Constraint.call(this, a, b);
-
+	
 	this.grv_a = groove_a;
 	this.grv_b = groove_b;
 	this.grv_n = vperp(vnormalize(vsub(groove_b, groove_a)));
 	this.anchr2 = anchr2;
-
+	
 	this.grv_tn = null;
 	this.clamp = 0;
 	this.r1 = this.r2 = null;
@@ -16024,7 +16024,7 @@ GrooveJoint.prototype.preStep = function(dt)
 {
 	var a = this.a;
 	var b = this.b;
-
+	
 	// calculate endpoints in worldspace
 	var ta = a.local2World(this.grv_a);
 	var tb = a.local2World(this.grv_b);
@@ -16032,10 +16032,10 @@ GrooveJoint.prototype.preStep = function(dt)
 	// calculate axis
 	var n = vrotate(this.grv_n, a.rot);
 	var d = vdot(ta, n);
-
+	
 	this.grv_tn = n;
 	this.r2 = vrotate(this.anchr2, b.rot);
-
+	
 	// calculate tangential distance along the axis of r2
 	var td = vcross(vadd(b.p, this.r2), n);
 	// calculate clamping factor and r2
@@ -16049,13 +16049,13 @@ GrooveJoint.prototype.preStep = function(dt)
 		this.clamp = 0;
 		this.r1 = vsub(vadd(vmult(vperp(n), -td), vmult(n, d)), a.p);
 	}
-
+	
 	// Calculate mass tensor
-	k_tensor(a, b, this.r1, this.r2, this.k1, this.k2);
-
+	k_tensor(a, b, this.r1, this.r2, this.k1, this.k2);	
+	
 	// compute max impulse
 	this.jMaxLen = this.maxForce * dt;
-
+	
 	// calculate bias velocity
 	var delta = vsub(vadd(b.p, this.r2), vadd(a.p, this.r1));
 	this.bias = vclamp(vmult(delta, -bias_coef(this.errorBias, dt)/dt), this.maxBias);
@@ -16076,17 +16076,17 @@ GrooveJoint.prototype.applyImpulse = function()
 {
 	var a = this.a;
 	var b = this.b;
-
+	
 	var r1 = this.r1;
 	var r2 = this.r2;
-
+	
 	// compute impulse
 	var vr = relative_velocity(a, b, r1, r2);
 
 	var j = mult_k(vsub(this.bias, vr), this.k1, this.k2);
 	var jOld = this.jAcc;
 	this.jAcc = this.grooveConstrain(vadd(jOld, j));
-
+	
 	// apply impulse
 	apply_impulses(a, b, this.r1, this.r2, this.jAcc.x - jOld.x, this.jAcc.y - jOld.y);
 };
@@ -16100,7 +16100,7 @@ GrooveJoint.prototype.setGrooveA = function(value)
 {
 	this.grv_a = value;
 	this.grv_n = vperp(vnormalize(vsub(this.grv_b, value)));
-
+	
 	this.activateBodies();
 };
 
@@ -16108,22 +16108,22 @@ GrooveJoint.prototype.setGrooveB = function(value)
 {
 	this.grv_b = value;
 	this.grv_n = vperp(vnormalize(vsub(value, this.grv_a)));
-
+	
 	this.activateBodies();
 };
 
 /* Copyright (c) 2007 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -16140,10 +16140,10 @@ var defaultSpringForce = function(spring, dist){
 var DampedSpring = cp.DampedSpring = function(a, b, anchr1, anchr2, restLength, stiffness, damping)
 {
 	Constraint.call(this, a, b);
-
+	
 	this.anchr1 = anchr1;
 	this.anchr2 = anchr2;
-
+	
 	this.restLength = restLength;
 	this.stiffness = stiffness;
 	this.damping = damping;
@@ -16162,18 +16162,18 @@ DampedSpring.prototype.preStep = function(dt)
 {
 	var a = this.a;
 	var b = this.b;
-
+	
 	this.r1 = vrotate(this.anchr1, a.rot);
 	this.r2 = vrotate(this.anchr2, b.rot);
-
+	
 	var delta = vsub(vadd(b.p, this.r2), vadd(a.p, this.r1));
 	var dist = vlength(delta);
 	this.n = vmult(delta, 1/(dist ? dist : Infinity));
-
+	
 	var k = k_scalar(a, b, this.r1, this.r2, this.n);
 	assertSoft(k !== 0, "Unsolvable this.");
 	this.nMass = 1/k;
-
+	
 	this.target_vrn = 0;
 	this.v_coef = 1 - Math.exp(-this.damping*dt*k);
 
@@ -16188,18 +16188,18 @@ DampedSpring.prototype.applyImpulse = function()
 {
 	var a = this.a;
 	var b = this.b;
-
+	
 	var n = this.n;
 	var r1 = this.r1;
 	var r2 = this.r2;
 
 	// compute relative velocity
 	var vrn = normal_relative_velocity(a, b, r1, r2, n);
-
+	
 	// compute velocity loss from drag
 	var v_damp = (this.target_vrn - vrn)*this.v_coef;
 	this.target_vrn = vrn + v_damp;
-
+	
 	v_damp *= this.nMass;
 	apply_impulses(a, b, this.r1, this.r2, this.n.x * v_damp, this.n.y * v_damp);
 };
@@ -16210,17 +16210,17 @@ DampedSpring.prototype.getImpulse = function()
 };
 
 /* Copyright (c) 2007 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -16237,7 +16237,7 @@ var defaultSpringTorque = function(spring, relativeAngle){
 var DampedRotarySpring = cp.DampedRotarySpring = function(a, b, restAngle, stiffness, damping)
 {
 	Constraint.call(this, a, b);
-
+	
 	this.restAngle = restAngle;
 	this.stiffness = stiffness;
 	this.damping = damping;
@@ -16254,7 +16254,7 @@ DampedRotarySpring.prototype.preStep = function(dt)
 {
 	var a = this.a;
 	var b = this.b;
-
+	
 	var moment = a.i_inv + b.i_inv;
 	assertSoft(moment !== 0, "Unsolvable spring.");
 	this.iSum = 1/moment;
@@ -16274,15 +16274,15 @@ DampedRotarySpring.prototype.applyImpulse = function()
 {
 	var a = this.a;
 	var b = this.b;
-
+	
 	// compute relative velocity
 	var wrn = a.w - b.w;//normal_relative_velocity(a, b, r1, r2, n) - this.target_vrn;
-
+	
 	// compute velocity loss from drag
 	// not 100% certain spring is derived correctly, though it makes sense
 	var w_damp = (this.target_wrn - wrn)*this.w_coef;
 	this.target_wrn = wrn + w_damp;
-
+	
 	//apply_impulses(a, b, this.r1, this.r2, vmult(this.n, v_damp*this.nMass));
 	var j_damp = w_damp*this.iSum;
 	a.w += j_damp*a.i_inv;
@@ -16292,17 +16292,17 @@ DampedRotarySpring.prototype.applyImpulse = function()
 // DampedRotarySpring.prototype.getImpulse = function(){ return 0; };
 
 /* Copyright (c) 2007 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -16315,7 +16315,7 @@ DampedRotarySpring.prototype.applyImpulse = function()
 var RotaryLimitJoint = cp.RotaryLimitJoint = function(a, b, min, max)
 {
 	Constraint.call(this, a, b);
-
+	
 	this.min = min;
 	this.max = max;
 
@@ -16330,7 +16330,7 @@ RotaryLimitJoint.prototype.preStep = function(dt)
 {
 	var a = this.a;
 	var b = this.b;
-
+	
 	var dist = b.a - a.a;
 	var pdist = 0;
 	if(dist > this.max) {
@@ -16338,14 +16338,14 @@ RotaryLimitJoint.prototype.preStep = function(dt)
 	} else if(dist < this.min) {
 		pdist = this.min - dist;
 	}
-
+	
 	// calculate moment of inertia coefficient.
 	this.iSum = 1/(1/a.i + 1/b.i);
-
+	
 	// calculate bias velocity
 	var maxBias = this.maxBias;
 	this.bias = clamp(-bias_coef(this.errorBias, dt)*pdist/dt, -maxBias, maxBias);
-
+	
 	// compute max impulse
 	this.jMax = this.maxForce * dt;
 
@@ -16357,7 +16357,7 @@ RotaryLimitJoint.prototype.applyCachedImpulse = function(dt_coef)
 {
 	var a = this.a;
 	var b = this.b;
-
+	
 	var j = this.jAcc*dt_coef;
 	a.w -= j*a.i_inv;
 	b.w += j*b.i_inv;
@@ -16369,11 +16369,11 @@ RotaryLimitJoint.prototype.applyImpulse = function()
 
 	var a = this.a;
 	var b = this.b;
-
+	
 	// compute relative rotational velocity
 	var wr = b.w - a.w;
-
-	// compute normal impulse
+	
+	// compute normal impulse	
 	var j = -(this.bias + wr)*this.iSum;
 	var jOld = this.jAcc;
 	if(this.bias < 0){
@@ -16382,7 +16382,7 @@ RotaryLimitJoint.prototype.applyImpulse = function()
 		this.jAcc = clamp(jOld + j, -this.jMax, 0);
 	}
 	j = this.jAcc - jOld;
-
+	
 	// apply impulse
 	a.w -= j*a.i_inv;
 	b.w += j*b.i_inv;
@@ -16394,17 +16394,17 @@ RotaryLimitJoint.prototype.getImpulse = function()
 };
 
 /* Copyright (c) 2007 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -16421,10 +16421,10 @@ var RatchetJoint = cp.RatchetJoint = function(a, b, phase, ratchet)
 	this.angle = 0;
 	this.phase = phase;
 	this.ratchet = ratchet;
-
+	
 	// STATIC_BODY_CHECK
 	this.angle = (b ? b.a : 0) - (a ? a.a : 0);
-
+	
 	this.iSum = this.bias = this.jAcc = this.jMax = 0;
 };
 
@@ -16434,28 +16434,28 @@ RatchetJoint.prototype.preStep = function(dt)
 {
 	var a = this.a;
 	var b = this.b;
-
+	
 	var angle = this.angle;
 	var phase = this.phase;
 	var ratchet = this.ratchet;
-
+	
 	var delta = b.a - a.a;
 	var diff = angle - delta;
 	var pdist = 0;
-
+	
 	if(diff*ratchet > 0){
 		pdist = diff;
 	} else {
 		this.angle = Math.floor((delta - phase)/ratchet)*ratchet + phase;
 	}
-
+	
 	// calculate moment of inertia coefficient.
 	this.iSum = 1/(a.i_inv + b.i_inv);
-
+	
 	// calculate bias velocity
 	var maxBias = this.maxBias;
 	this.bias = clamp(-bias_coef(this.errorBias, dt)*pdist/dt, -maxBias, maxBias);
-
+	
 	// compute max impulse
 	this.jMax = this.maxForce * dt;
 
@@ -16467,7 +16467,7 @@ RatchetJoint.prototype.applyCachedImpulse = function(dt_coef)
 {
 	var a = this.a;
 	var b = this.b;
-
+	
 	var j = this.jAcc*dt_coef;
 	a.w -= j*a.i_inv;
 	b.w += j*b.i_inv;
@@ -16479,17 +16479,17 @@ RatchetJoint.prototype.applyImpulse = function()
 
 	var a = this.a;
 	var b = this.b;
-
+	
 	// compute relative rotational velocity
 	var wr = b.w - a.w;
 	var ratchet = this.ratchet;
-
-	// compute normal impulse
+	
+	// compute normal impulse	
 	var j = -(this.bias + wr)*this.iSum;
 	var jOld = this.jAcc;
 	this.jAcc = clamp((jOld + j)*ratchet, 0, this.jMax*Math.abs(ratchet))/ratchet;
 	j = this.jAcc - jOld;
-
+	
 	// apply impulse
 	a.w -= j*a.i_inv;
 	b.w += j*b.i_inv;
@@ -16501,17 +16501,17 @@ RatchetJoint.prototype.getImpulse = function(joint)
 };
 
 /* Copyright (c) 2007 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -16524,11 +16524,11 @@ RatchetJoint.prototype.getImpulse = function(joint)
 var GearJoint = cp.GearJoint = function(a, b, phase, ratio)
 {
 	Constraint.call(this, a, b);
-
+	
 	this.phase = phase;
 	this.ratio = ratio;
 	this.ratio_inv = 1/ratio;
-
+	
 	this.jAcc = 0;
 
 	this.iSum = this.bias = this.jMax = 0;
@@ -16540,14 +16540,14 @@ GearJoint.prototype.preStep = function(dt)
 {
 	var a = this.a;
 	var b = this.b;
-
+	
 	// calculate moment of inertia coefficient.
 	this.iSum = 1/(a.i_inv*this.ratio_inv + this.ratio*b.i_inv);
-
+	
 	// calculate bias velocity
 	var maxBias = this.maxBias;
 	this.bias = clamp(-bias_coef(this.errorBias, dt)*(b.a*this.ratio - a.a - this.phase)/dt, -maxBias, maxBias);
-
+	
 	// compute max impulse
 	this.jMax = this.maxForce * dt;
 };
@@ -16556,7 +16556,7 @@ GearJoint.prototype.applyCachedImpulse = function(dt_coef)
 {
 	var a = this.a;
 	var b = this.b;
-
+	
 	var j = this.jAcc*dt_coef;
 	a.w -= j*a.i_inv*this.ratio_inv;
 	b.w += j*b.i_inv;
@@ -16566,16 +16566,16 @@ GearJoint.prototype.applyImpulse = function()
 {
 	var a = this.a;
 	var b = this.b;
-
+	
 	// compute relative rotational velocity
 	var wr = b.w*this.ratio - a.w;
-
-	// compute normal impulse
+	
+	// compute normal impulse	
 	var j = (this.bias - wr)*this.iSum;
 	var jOld = this.jAcc;
 	this.jAcc = clamp(jOld + j, -this.jMax, this.jMax);
 	j = this.jAcc - jOld;
-
+	
 	// apply impulse
 	a.w -= j*a.i_inv*this.ratio_inv;
 	b.w += j*b.i_inv;
@@ -16594,17 +16594,17 @@ GearJoint.prototype.setRatio = function(value)
 };
 
 /* Copyright (c) 2007 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -16617,9 +16617,9 @@ GearJoint.prototype.setRatio = function(value)
 var SimpleMotor = cp.SimpleMotor = function(a, b, rate)
 {
 	Constraint.call(this, a, b);
-
+	
 	this.rate = rate;
-
+	
 	this.jAcc = 0;
 
 	this.iSum = this.jMax = 0;
@@ -16631,7 +16631,7 @@ SimpleMotor.prototype.preStep = function(dt)
 {
 	// calculate moment of inertia coefficient.
 	this.iSum = 1/(this.a.i_inv + this.b.i_inv);
-
+	
 	// compute max impulse
 	this.jMax = this.maxForce * dt;
 };
@@ -16640,7 +16640,7 @@ SimpleMotor.prototype.applyCachedImpulse = function(dt_coef)
 {
 	var a = this.a;
 	var b = this.b;
-
+	
 	var j = this.jAcc*dt_coef;
 	a.w -= j*a.i_inv;
 	b.w += j*b.i_inv;
@@ -16650,16 +16650,16 @@ SimpleMotor.prototype.applyImpulse = function()
 {
 	var a = this.a;
 	var b = this.b;
-
+	
 	// compute relative rotational velocity
 	var wr = b.w - a.w + this.rate;
-
-	// compute normal impulse
+	
+	// compute normal impulse	
 	var j = -wr*this.iSum;
 	var jOld = this.jAcc;
 	this.jAcc = clamp(jOld + j, -this.jMax, this.jMax);
 	j = this.jAcc - jOld;
-
+	
 	// apply impulse
 	a.w -= j*a.i_inv;
 	b.w += j*b.i_inv;
@@ -17135,7 +17135,7 @@ gf.plugin = {
      *      gf.setValues(obj, vals);
      *      //now obj is:
      *      // { vec: gf.Vector(2, 5), arr: [5, 10, 11] }
-     *
+     *      
      */
     //similar to https://github.com/mrdoob/three.js/blob/master/src/materials/Material.js#L42
     setValues: function(obj, values) {
@@ -21608,6 +21608,20 @@ gf.Game = function(contId, settings) {
      * @type Map
      * @readOnly
      */
+
+     //pixi does some prevent default on mousedown, so we need to
+     //make sure mousedown will focus the canvas or keyboard events break
+
+
+    //ensure that key events will work
+    var view = this.renderer.view;
+    if(!view.getAttribute('tabindex'))
+        view.setAttribute('tabindex','1');
+
+    view.focus();
+    view.addEventListener('click', function() {
+        view.focus();
+    }, false);
 };
 
 gf.inherits(gf.Game, Object, {
@@ -22309,18 +22323,12 @@ gf.input.Keyboard = function(view) {
      *
      * @property _clearSq
      * @type Number
-     * @private
+     * @private 
      */
     this._clearSq = null;
 
-
-
-    function onKeyDn() {
-      console.log("in closure");
-    }
-
-    document.addEventListener('keydown', this.onKeyDown.bind(this), false);
-    document.addEventListener('keyup', this.onKeyUp.bind(this), false);
+    view.addEventListener('keydown', this.onKeyDown.bind(this), false);
+    view.addEventListener('keyup', this.onKeyUp.bind(this), false);
 };
 
 gf.inherits(gf.input.Keyboard, gf.input.Input, {
@@ -24234,7 +24242,7 @@ gf.TiledTileset = function(settings) {
      * @type Vector
      */
     this.numTiles = new gf.Vector(
-        ~~((this.baseTexture.source.width - this.margin) / (this.tileSize.x - this.spacing)), //75 /
+        ~~((this.baseTexture.source.width - this.margin) / (this.tileSize.x - this.spacing)), //75 / 
         ~~((this.baseTexture.source.height - this.margin) / (this.tileSize.y - this.spacing))
     );
 

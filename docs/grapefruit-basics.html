@@ -135,8 +135,7 @@ the world (still learning <strong>grapefruit</strong>).</p>
     };
 
     Game.prototype.onGameReady = <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
-      <span class="keyword">var</span> avatar, hero, state, world, _ref;
-      _ref = <span class="keyword">this</span>.options.assets, world = _ref.world, avatar = _ref.avatar;
+      <span class="keyword">var</span> hero, state;
       state = <span class="keyword">new</span> gf.GameState(<span class="string">'world'</span>);
       <span class="keyword">this</span>.addState(state);
       state.loadWorld(<span class="string">'world'</span>);
@@ -158,7 +157,6 @@ the world (still learning <strong>grapefruit</strong>).</p>
 
   mapDown = <span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span>
     <span class="keyword">var</span> pos;
-    window.focus();
     pos = e.getLocalPosition(<span class="keyword">this</span>.parent);
     <span class="keyword">return</span> <span class="keyword">this</span>.drag = pos;
   };
@@ -297,8 +295,6 @@ assets = [
     <span class="property">@loader</span>.load <span class="property">@options</span>.assets
 
   <span class="attribute">onGameReady</span>:<span class="function"> -&gt;</span>
-    {world, avatar} = <span class="property">@options</span>.assets
-
     state = <span class="keyword">new</span> gf.GameState(<span class="string">'world'</span>)
     <span class="property">@addState</span> state
     state.loadWorld <span class="string">'world'</span>
@@ -316,7 +312,7 @@ assets = [
 <span class="comment"># context for these are TiledMap, which means Function.bind is being used</span>
 <span class="function"><span class="title">mapDown</span> = <span class="params">(e)</span> -&gt;</span>
   <span class="comment"># needed to capture events in iframe of this example (not needed otherwise)</span>
-  window.focus()
+  <span class="comment"># window.focus()</span>
   pos = e.getLocalPosition(<span class="property">@parent</span>)
   <span class="property">@drag</span> = pos
 
@@ -414,8 +410,6 @@ an HTMLElement container of fixed width and size.</p>
 more importantly the active game state. Hidden within <code>GameState</code> is the game loop <code>_tick</code> which
 makes everything run.</p>
 <pre><code class="coffee">  <span class="attribute">onGameReady</span>:<span class="function"> -&gt;</span>
-    {world, avatar} = <span class="property">@options</span>.assets
-
     state = <span class="keyword">new</span> gf.GameState(<span class="string">'world'</span>)
     <span class="property">@addState</span> state
     state.loadWorld <span class="string">'world'</span>
@@ -433,7 +427,7 @@ makes everything run.</p>
 <pre><code class="coffee"><span class="comment"># context for these are TiledMap, which means Function.bind is being used</span>
 <span class="function"><span class="title">mapDown</span> = <span class="params">(e)</span> -&gt;</span>
   <span class="comment"># needed to capture events in iframe of this example (not needed otherwise)</span>
-  window.focus()
+  <span class="comment"># window.focus()</span>
   pos = e.getLocalPosition(<span class="property">@parent</span>)
   <span class="property">@drag</span> = pos
 
