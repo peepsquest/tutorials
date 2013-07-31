@@ -425,6 +425,23 @@ more importantly the active state. Inside the <code>GameState</code> is the game
     <span class="property">@enableState</span> Data.worlds[<span class="number">0</span>]
     hero = <span class="keyword">new</span> Avatar({<span class="attribute">resourceUrl</span>: <span class="string">'img/redOrb.png'</span>, state})
     state.addChild hero</code></pre>
+<h2 id='h-panning-the-world'>Panning the World</h2>
+<p>Here we take advantage of the <code>gf.TiledMap</code> object to do panning. <strong>Grapefruit</strong> does all the work for us.</p>
+<pre><code class="coffee"><span class="comment"># context for these are TiledMap, which means Function.bind is being used</span>
+<span class="function"><span class="title">mapDown</span> = <span class="params">(e)</span> -&gt;</span>
+  pos = e.getLocalPosition(<span class="property">@parent</span>)
+  <span class="property">@drag</span> = pos
+
+<span class="function"><span class="title">mapUp</span> = <span class="params">(e)</span> -&gt;</span>
+  <span class="property">@drag</span> = <span class="literal">null</span>
+
+<span class="function"><span class="title">mapMove</span> = <span class="params">(e)</span> -&gt;</span>
+  <span class="keyword">if</span> <span class="property">@drag</span>
+    pos = e.getLocalPosition(<span class="property">@parent</span>)
+    dx = (pos.x - <span class="property">@drag</span>.x)
+    dy = (pos.y - <span class="property">@drag</span>.y)
+    <span class="property">@pan</span> dx, dy
+    <span class="property">@drag</span> = pos</code></pre>
 <h2 id='h-add-an-avatar'>Add an Avatar</h2>
 <p>The avatar is just another <code>Sprite</code>. I used a class again to encapsulate the keyboard binding. (Not sure if this
 is the best way to handle keyboard events and it seems to have problem inside an iframe).</p>
