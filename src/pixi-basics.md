@@ -27,7 +27,7 @@ document.body.appendChild(renderer.view);
 
 ## Adding the Leaf
 
-Let's create a sprite which is a basic visual entity in games. The visual
+Let's create a sprite which is the basic visual unit in games. The visual
 appearance of a sprite is the texture assigned to it.
 
 ```js
@@ -48,19 +48,23 @@ stage.addChild(leaf);
 
 ## Animation
 
-To animate it, we'll request an animation frame repeatedly using the
+To animate the sprite, we'll request an animation frame repeatedly using the
 same function, each time rotating the leaf by a fraction of a radiant.
-In this example, we use a negative value which animates in a counter-clockwise
-direction.
+In this example, we use a negative value to animate the leaf in a
+counter-clockwise direction.
+
+Most browsers limit the frame per second (fps) to 60. In other words each run of
+the game loop is a frame and in most browsers a trivial game will run no more than 60 times in a second.
+If the game loop is computationally expensive the fps will drop accordingly.
 
 ```js
-function animate() {
+function gameLoop() {
+  requestAnimFrame(gameLoop);
   leaf.rotation -= 0.02;
   renderer.render(stage);
-  requestAnimFrame(animate);
 }
 
-requestAnimFrame(animate);
+requestAnimFrame(gameLoop);
 ```
 
 :::> support/common.md

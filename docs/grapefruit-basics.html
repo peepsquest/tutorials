@@ -1,0 +1,521 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>PeepsQuest Dev</title>
+    <!-- Stylesheets -->
+    <link rel='stylesheet' type='text/css' href='css/style.css' />
+
+    <!-- Scripts -->
+    <!--[if lt IE 9]><script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body>
+
+  <div id="page-wrapper">
+
+    <div class="row">
+
+      <!-- Sidebar -->
+      <section id="sidebar" class="col sidebar">
+        <h2><a href="index.html#">PeepsQuest Dev</a></h2>
+        <ul>
+          <li><a href="https://github.com/peepsquest/tutorials">Github</a></li>
+        </ul>
+        
+        <h2 id='h-tutorialsindexhtml'><a href="index.html">Tutorials</a></h2>
+<h3 id='h-general'>General</h3>
+<ul>
+<li><a href="creating-sprite-sheets.html">Creating Sprite Sheets</a></li>
+</ul>
+<h3 id='h-pixijs'>Pixi.js</h3>
+<ul>
+<li><a href="pixi-basics.html">Basics</a></li>
+<li><a href="isometric-map-basics.html">Isometric - Map Basics</a></li>
+<li><a href="isometric-tiles-with-height.html">Isometric - Tiles w/ Height</a></li>
+<li><a href="isometric-placing-avatar.html">Isometric - Avatar</a></li>
+</ul>
+<h3 id='h-grapefruitjs'>Grapefruit.js</h3>
+<ul>
+<li><a href="grapefruit-basics.html">Basics</a></li>
+</ul>
+
+      </section>
+
+      <!-- Main Body -->
+      <article id="content" class="col content">
+        <a href='index.html'>
+          <img id="logo" src="img/peepsquest.png" />
+        </a>
+        <h1 id='h-grapefruitjs-basics-in-coffeescript'>Grapefruit.js Basics in CoffeeScript</h1>
+<div class='section-example'><p>In this example we&#39;ll cover the basics of using the <a href="https://github.com/grapefruitjs/grapefruit">grapefruitjs</a>
+game engine built on <strong>pixi.js</strong>.</p>
+<div class='note'><em>GrapefruitJs</em> is in its infancy and should not used per its author,
+<a href="https://github.com/englercj">Chad Engler</a>. This is a learning
+process for me to see how experienced game developers setup a game. The author is an active
+contributor to <strong>Pixi.js</strong></div>
+
+<p>Pan by dragging with the mouse or move the orb around with the arrow keys.</p>
+<div id="grapefruit-basics0_tabs" class="tabs">
+  <ul>
+    <li class="active">
+  <a href="#grapefruit-basics0result-tab" rel="grapefruit-basics0result-tab">
+    result
+  </a>
+</li><li>
+  <a href="#grapefruit-basics0markuphtml-tab" rel="grapefruit-basics0markuphtml-tab">
+    markup.html
+  </a>
+</li><li>
+  <a href="#grapefruit-basics0stylecss-tab" rel="grapefruit-basics0stylecss-tab">
+    style.css
+  </a>
+</li><li>
+  <a href="#grapefruit-basics0scriptjs-tab" rel="grapefruit-basics0scriptjs-tab">
+    script.js
+  </a>
+</li><li>
+  <a href="#grapefruit-basics0scriptscoffee-tab" rel="grapefruit-basics0scriptscoffee-tab">
+    scripts.coffee
+  </a>
+</li>
+  </ul>
+</div>
+<div id="grapefruit-basics0_tabs_content" class="tabs_content">
+  <div id="grapefruit-basics0result-tab" class="tab_content">
+  <iframe id="grapefruit-basics0" src="examples/grapefruit-basics0.html" class="result"  style='height: 600px;'></iframe>
+</div><div id="grapefruit-basics0scriptjs-tab" class="tab_content">
+  <pre><code class="language-js">(<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+  <span class="keyword">var</span> Avatar, Data, Game, mapDown, mapMove, mapUp,
+    __hasProp = {}.hasOwnProperty,
+    __extends = <span class="function"><span class="keyword">function</span><span class="params">(child, parent)</span> {</span>
+      <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> parent) {
+        <span class="keyword">if</span> (__hasProp.call(parent, key)) child[key] = parent[key];
+      }
+
+      <span class="function"><span class="keyword">function</span> <span class="title">ctor</span><span class="params">()</span> {</span>
+        <span class="keyword">this</span>.constructor = child;
+      }
+      ctor.prototype = parent.prototype;
+      child.prototype = <span class="keyword">new</span> ctor();
+      child.__super__ = parent.prototype;
+      <span class="keyword">return</span> child;
+    };
+
+  Data = {
+    resources: [<span class="string">'img/isometric_grass_and_water.json'</span>, <span class="string">'img/redOrb.png'</span>],
+    worlds: [<span class="string">'img/isometric_grass_and_water.json'</span>]
+  };
+
+  Game = (<span class="function"><span class="keyword">function</span><span class="params">(_super)</span> {</span>
+    __extends(Game, _super);
+
+    <span class="function"><span class="keyword">function</span> <span class="title">Game</span><span class="params">(containerId, options)</span> {</span>
+      <span class="keyword">this</span>.options = options;
+      _.defaults(<span class="keyword">this</span>.options, {
+        gravity: <span class="number">0</span>,
+        friction: <span class="number">0</span>
+      });
+      Game.__super__.constructor.apply(<span class="keyword">this</span>, arguments);
+    }
+
+    Game.prototype.start = <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+      <span class="keyword">var</span> _<span class="keyword">this</span> = <span class="keyword">this</span>;
+      <span class="keyword">this</span>.loader.on(<span class="string">'complete'</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+        _<span class="keyword">this</span>.onGameReady();
+        <span class="keyword">return</span> _<span class="keyword">this</span>.render();
+      });
+      <span class="keyword">return</span> <span class="keyword">this</span>.loader.load(Data.resources);
+    };
+
+    Game.prototype.onGameReady = <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+      <span class="keyword">var</span> hero, state, world, _i, _len, _ref;
+      _ref = Data.worlds;
+      <span class="keyword">for</span> (_i = <span class="number">0</span>, _len = _ref.length; _i &lt; _len; _i++) {
+        world = _ref[_i];
+        state = <span class="keyword">new</span> gf.GameState(world);
+        <span class="keyword">this</span>.addState(state);
+        state.loadWorld(world);
+        state.world.interactive = <span class="literal">true</span>;
+        state.world.mousedown = mapDown;
+        state.world.mouseup = mapUp;
+        state.world.mousemove = mapMove;
+      }
+      <span class="keyword">this</span>.enableState(Data.worlds[<span class="number">0</span>]);
+      hero = <span class="keyword">new</span> Avatar({
+        resourceUrl: <span class="string">'img/redOrb.png'</span>,
+        state: state
+      });
+      <span class="keyword">return</span> state.addChild(hero);
+    };
+
+    <span class="keyword">return</span> Game;
+
+  })(gf.Game);
+
+  mapDown = <span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span>
+    <span class="keyword">var</span> pos;
+    pos = e.getLocalPosition(<span class="keyword">this</span>.parent);
+    <span class="keyword">return</span> <span class="keyword">this</span>.drag = pos;
+  };
+
+  mapUp = <span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span>
+    <span class="keyword">return</span> <span class="keyword">this</span>.drag = <span class="literal">null</span>;
+  };
+
+  mapMove = <span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span>
+    <span class="keyword">var</span> dx, dy, pos;
+    <span class="keyword">if</span> (<span class="keyword">this</span>.drag) {
+      pos = e.getLocalPosition(<span class="keyword">this</span>.parent);
+      dx = pos.x - <span class="keyword">this</span>.drag.x;
+      dy = pos.y - <span class="keyword">this</span>.drag.y;
+      <span class="keyword">this</span>.pan(dx, dy);
+      <span class="keyword">return</span> <span class="keyword">this</span>.drag = pos;
+    }
+  };
+
+  Avatar = (<span class="function"><span class="keyword">function</span><span class="params">(_super)</span> {</span>
+    __extends(Avatar, _super);
+
+    <span class="function"><span class="keyword">function</span> <span class="title">Avatar</span><span class="params">(options)</span> {</span>
+      <span class="keyword">var</span> resourceUrl, state, t;
+      state = options.state, resourceUrl = options.resourceUrl;
+      t = PIXI.Texture.fromImage(resourceUrl);
+      Avatar.__super__.constructor.call(<span class="keyword">this</span>, t);
+      <span class="keyword">this</span>.setupKeyboardHandlers(state);
+    }
+
+    <span class="comment">/*
+     * Sets up keyboard handlers using closure instead of bind.
+     */</span>
+
+
+    Avatar.prototype.setupKeyboardHandlers = <span class="function"><span class="keyword">function</span><span class="params">(state)</span> {</span>
+      <span class="keyword">var</span> onKeyboardDown, onKeyboardLeft, onKeyboardRight, onKeyboardUp, that;
+      that = <span class="keyword">this</span>;
+      onKeyboardDown = <span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span>
+        <span class="keyword">var</span> position;
+        position = that.position;
+        <span class="keyword">return</span> position.y += <span class="number">2</span>;
+      };
+      onKeyboardRight = <span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span>
+        <span class="keyword">var</span> position;
+        position = that.position;
+        <span class="keyword">return</span> position.x += <span class="number">2</span>;
+      };
+      onKeyboardLeft = <span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span>
+        <span class="keyword">var</span> position;
+        position = that.position;
+        <span class="keyword">return</span> position.x -= <span class="number">2</span>;
+      };
+      onKeyboardUp = <span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span>
+        <span class="keyword">var</span> position;
+        position = that.position;
+        <span class="keyword">return</span> position.y -= <span class="number">2</span>;
+      };
+      state.input.keyboard.on(gf.input.KEY.DOWN, onKeyboardDown);
+      state.input.keyboard.on(gf.input.KEY.UP, onKeyboardUp);
+      state.input.keyboard.on(gf.input.KEY.LEFT, onKeyboardLeft);
+      <span class="keyword">return</span> state.input.keyboard.on(gf.input.KEY.RIGHT, onKeyboardRight);
+    };
+
+    <span class="keyword">return</span> Avatar;
+
+  })(gf.Sprite);
+
+  $(<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+    <span class="keyword">var</span> $game, game;
+    $game = $(<span class="string">'#game'</span>);
+    game = <span class="keyword">new</span> Game(<span class="string">'game'</span>, {
+      width: $game.width() - <span class="number">3</span>,
+      height: $game.height() - <span class="number">3</span>,
+      background: <span class="number">0x808080</span>
+    });
+    <span class="keyword">return</span> game.start();
+  });
+
+}).call(<span class="keyword">this</span>);
+
+
+<span class="comment">/*
+//@ sourceMappingURL=grapefruit-basics.map
+*/</span></code></pre>
+</div><div id="grapefruit-basics0markuphtml-tab" class="tab_content">
+  <pre><code class="language-html"><span class="doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;<span class="title">html</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">head</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">'stylesheet'</span> <span class="attribute">type</span>=<span class="value">'text/css'</span> <span class="attribute">href</span>=<span class="value">'../css/reset.css'</span> /&gt;</span>
+    <span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">'stylesheet'</span> <span class="attribute">type</span>=<span class="value">'text/css'</span> <span class="attribute">href</span>=<span class="value">'grapefruit-basics0-style.css'</span> /&gt;</span>
+  <span class="tag">&lt;/<span class="title">head</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">body</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">'game'</span>&gt;</span><span class="comment">&lt;!-- game goes here --&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-1.10.2.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"</span>&gt;</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"js/vendor/gf.js"</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">'text/javascript'</span> <span class="attribute">src</span>=<span class="value">'grapefruit-basics0-script.js'</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">body</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">html</span>&gt;</span>
+</code></pre>
+</div><div id="grapefruit-basics0stylecss-tab" class="tab_content">
+  <pre><code class="language-css"><span class="id">#game</span> <span class="rules">{
+  <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">590</span>px</span></span>;
+<span class="rule">}</span></span>
+<span class="tag">body</span> <span class="rules">{
+  <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">0</span></span></span>;
+  <span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">0</span></span></span>;
+<span class="rule">}</span></span></code></pre>
+</div><div id="grapefruit-basics0scriptscoffee-tab" class="tab_content">
+  <pre><code class="language-coffee">
+Data =
+  <span class="attribute">resources</span>: [
+    <span class="string">'img/isometric_grass_and_water.json'</span>
+    <span class="string">'img/redOrb.png'</span>
+  ]
+  <span class="attribute">worlds</span>: [
+    <span class="string">'img/isometric_grass_and_water.json'</span>
+  ]
+
+
+<span class="class"><span class="keyword">class</span> <span class="title">Game</span> <span class="keyword">extends</span> <span class="title">gf</span>.<span class="title">Game</span></span>
+
+  <span class="attribute">constructor</span>: <span class="function"><span class="params">(containerId, <span class="property">@options</span>)</span> -&gt;</span>
+    _.defaults <span class="property">@options</span>,
+      <span class="attribute">gravity</span>: <span class="number">0</span>
+      <span class="attribute">friction</span>: <span class="number">0</span>
+    <span class="keyword">super</span>
+
+  <span class="attribute">start</span>:<span class="function"> -&gt;</span>
+    <span class="property">@loader</span>.<span class="literal">on</span> <span class="string">'complete'</span>,<span class="function"> =&gt;</span>
+      <span class="property">@onGameReady</span>()
+      <span class="property">@render</span>()
+
+    <span class="property">@loader</span>.load Data.resources
+
+  <span class="attribute">onGameReady</span>:<span class="function"> -&gt;</span>
+    <span class="keyword">for</span> world <span class="keyword">in</span> Data.worlds
+      state = <span class="keyword">new</span> gf.GameState(world)
+
+      <span class="property">@addState</span> state
+      state.loadWorld world
+
+      state.world.interactive = <span class="literal">true</span>
+      state.world.mousedown = mapDown
+      state.world.mouseup = mapUp
+      state.world.mousemove = mapMove
+
+    <span class="property">@enableState</span> Data.worlds[<span class="number">0</span>]
+    hero = <span class="keyword">new</span> Avatar({<span class="attribute">resourceUrl</span>: <span class="string">'img/redOrb.png'</span>, state})
+    state.addChild hero
+
+
+
+<span class="comment"># context for these are TiledMap, which means Function.bind is being used</span>
+<span class="function"><span class="title">mapDown</span> = <span class="params">(e)</span> -&gt;</span>
+  pos = e.getLocalPosition(<span class="property">@parent</span>)
+  <span class="property">@drag</span> = pos
+
+<span class="function"><span class="title">mapUp</span> = <span class="params">(e)</span> -&gt;</span>
+  <span class="property">@drag</span> = <span class="literal">null</span>
+
+<span class="function"><span class="title">mapMove</span> = <span class="params">(e)</span> -&gt;</span>
+  <span class="keyword">if</span> <span class="property">@drag</span>
+    pos = e.getLocalPosition(<span class="property">@parent</span>)
+    dx = (pos.x - <span class="property">@drag</span>.x)
+    dy = (pos.y - <span class="property">@drag</span>.y)
+    <span class="property">@pan</span> dx, dy
+    <span class="property">@drag</span> = pos
+
+
+<span class="class"><span class="keyword">class</span> <span class="title">Avatar</span> <span class="keyword">extends</span> <span class="title">gf</span>.<span class="title">Sprite</span></span>
+
+  <span class="attribute">constructor</span>: <span class="function"><span class="params">(options)</span> -&gt;</span>
+    {state, resourceUrl} = options
+    t = PIXI.Texture.fromImage(resourceUrl)
+    <span class="keyword">super</span> t
+    <span class="property">@setupKeyboardHandlers</span> state
+
+  <span class="comment">###
+  * Sets up keyboard handlers using closure instead of bind.
+  ###</span>
+  <span class="attribute">setupKeyboardHandlers</span>: <span class="function"><span class="params">(state)</span> -&gt;</span>
+    that = @
+
+    <span class="function"><span class="title">onKeyboardDown</span> = <span class="params">(e)</span> -&gt;</span>
+      {position} = that
+      position.y += <span class="number">2</span>
+      <span class="comment">#e.originalEvent.preventDefault()</span>
+
+    <span class="function"><span class="title">onKeyboardRight</span> = <span class="params">(e)</span> -&gt;</span>
+      {position} = that
+      position.x += <span class="number">2</span>
+
+    <span class="function"><span class="title">onKeyboardLeft</span> = <span class="params">(e)</span> -&gt;</span>
+      {position} = that
+      position.x -= <span class="number">2</span>
+
+    <span class="function"><span class="title">onKeyboardUp</span> = <span class="params">(e)</span> -&gt;</span>
+      {position} = that
+      position.y -= <span class="number">2</span>
+
+    state.input.keyboard.<span class="literal">on</span> gf.input.KEY.DOWN, onKeyboardDown
+    state.input.keyboard.<span class="literal">on</span> gf.input.KEY.UP, onKeyboardUp
+    state.input.keyboard.<span class="literal">on</span> gf.input.KEY.LEFT, onKeyboardLeft
+    state.input.keyboard.<span class="literal">on</span> gf.input.KEY.RIGHT, onKeyboardRight
+
+
+
+<span class="comment"># addEventListener is not ready until document is ready</span>
+
+$<span class="function"> -&gt;</span>
+  $game = $(<span class="string">'#game'</span>)
+
+  game = <span class="keyword">new</span> Game <span class="string">'game'</span>,
+    <span class="attribute">width</span>: $game.width() - <span class="number">3</span>
+    <span class="attribute">height</span>: $game.height() - <span class="number">3</span>
+    <span class="attribute">background</span>: <span class="number">0x808080</span>
+  game.start()
+</code></pre>
+</div>
+</div><h2 id='h-defining-resources'>Defining resources</h2>
+<p>Resources are fetched using an array of URLs as in <code>pixi.js</code>. Let&#39;s define a <code>Data</code> object to
+to contain a list of resources to be fetched from the server. We need to track which resources are
+<a href="http://www.mapeditor.org/">Tiled Map Editor</a> JSON. <strong>grapefruit.js</strong> creates a world from the JSON.</p>
+<p>(Is a world analogous to a scene?)</p>
+<pre><code class="coffee">Data =
+  <span class="attribute">resources</span>: [
+    <span class="string">'img/isometric_grass_and_water.json'</span>
+    <span class="string">'img/redOrb.png'</span>
+  ]
+  <span class="attribute">worlds</span>: [
+    <span class="string">'img/isometric_grass_and_water.json'</span>
+  ]</code></pre>
+<h2 id='h-configure-the-game'>Configure the Game</h2>
+<p>The main thing to do is define an instance of <code>gf.Game</code> and configure it so it attaches to
+an HTMLElement container of fixed width and size.</p>
+<pre><code class="coffee"><span class="class"><span class="keyword">class</span> <span class="title">Game</span> <span class="keyword">extends</span> <span class="title">gf</span>.<span class="title">Game</span></span>
+
+  <span class="attribute">constructor</span>: <span class="function"><span class="params">(containerId, <span class="property">@options</span>)</span> -&gt;</span>
+    _.defaults <span class="property">@options</span>,
+      <span class="attribute">gravity</span>: <span class="number">0</span>
+      <span class="attribute">friction</span>: <span class="number">0</span>
+    <span class="keyword">super</span></code></pre>
+<p>The <code>start</code> method loads <code>Data.resources</code> and when completed <code>onGameReady</code> is invoked.</p>
+<pre><code class="coffee">  <span class="attribute">start</span>:<span class="function"> -&gt;</span>
+    <span class="property">@loader</span>.<span class="literal">on</span> <span class="string">'complete'</span>,<span class="function"> =&gt;</span>
+      <span class="property">@onGameReady</span>()
+      <span class="property">@render</span>()
+
+    <span class="property">@loader</span>.load Data.resources</code></pre>
+<h2 id='h-loading-a-world'>Loading a World</h2>
+<p>AFAICT a world is just a display container. The important data structure is the <code>GameState</code> and
+more importantly the active state. Inside the <code>GameState</code> is the game loop.</p>
+<pre><code class="coffee">  <span class="attribute">onGameReady</span>:<span class="function"> -&gt;</span>
+    <span class="keyword">for</span> world <span class="keyword">in</span> Data.worlds
+      state = <span class="keyword">new</span> gf.GameState(world)
+
+      <span class="property">@addState</span> state
+      state.loadWorld world
+
+      state.world.interactive = <span class="literal">true</span>
+      state.world.mousedown = mapDown
+      state.world.mouseup = mapUp
+      state.world.mousemove = mapMove
+
+    <span class="property">@enableState</span> Data.worlds[<span class="number">0</span>]
+    hero = <span class="keyword">new</span> Avatar({<span class="attribute">resourceUrl</span>: <span class="string">'img/redOrb.png'</span>, state})
+    state.addChild hero</code></pre>
+<h2 id='h-add-an-avatar'>Add an Avatar</h2>
+<p>The avatar is just another <code>Sprite</code>. I used a class again to encapsulate the keyboard binding. (Not sure if this
+is the best way to handle keyboard events and it seems to have problem inside an iframe).</p>
+<pre><code class="coffee"><span class="class"><span class="keyword">class</span> <span class="title">Avatar</span> <span class="keyword">extends</span> <span class="title">gf</span>.<span class="title">Sprite</span></span>
+
+  <span class="attribute">constructor</span>: <span class="function"><span class="params">(options)</span> -&gt;</span>
+    {state, resourceUrl} = options
+    t = PIXI.Texture.fromImage(resourceUrl)
+    <span class="keyword">super</span> t
+    <span class="property">@setupKeyboardHandlers</span> state
+
+  <span class="comment">###
+  * Sets up keyboard handlers using closure instead of bind.
+  ###</span>
+  <span class="attribute">setupKeyboardHandlers</span>: <span class="function"><span class="params">(state)</span> -&gt;</span>
+    that = @
+
+    <span class="function"><span class="title">onKeyboardDown</span> = <span class="params">(e)</span> -&gt;</span>
+      {position} = that
+      position.y += <span class="number">2</span>
+      <span class="comment">#e.originalEvent.preventDefault()</span>
+
+    <span class="function"><span class="title">onKeyboardRight</span> = <span class="params">(e)</span> -&gt;</span>
+      {position} = that
+      position.x += <span class="number">2</span>
+
+    <span class="function"><span class="title">onKeyboardLeft</span> = <span class="params">(e)</span> -&gt;</span>
+      {position} = that
+      position.x -= <span class="number">2</span>
+
+    <span class="function"><span class="title">onKeyboardUp</span> = <span class="params">(e)</span> -&gt;</span>
+      {position} = that
+      position.y -= <span class="number">2</span>
+
+    state.input.keyboard.<span class="literal">on</span> gf.input.KEY.DOWN, onKeyboardDown
+    state.input.keyboard.<span class="literal">on</span> gf.input.KEY.UP, onKeyboardUp
+    state.input.keyboard.<span class="literal">on</span> gf.input.KEY.LEFT, onKeyboardLeft
+    state.input.keyboard.<span class="literal">on</span> gf.input.KEY.RIGHT, onKeyboardRight</code></pre>
+<h2 id='h-starting-the-game'>Starting the Game</h2>
+<p>The game is attached to a <code>div</code>.</p>
+<pre><code class="html"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">'game'</span>&gt;</span><span class="comment">&lt;!-- game goes here --&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></pre>
+<p>Calculate the width of the div, which is set by CSS, and pass the <code>div</code> info to the game and start it.</p>
+<pre><code class="coffee"><span class="comment"># addEventListener is not ready until document is ready</span>
+
+$<span class="function"> -&gt;</span>
+  $game = $(<span class="string">'#game'</span>)
+
+  game = <span class="keyword">new</span> Game <span class="string">'game'</span>,
+    <span class="attribute">width</span>: $game.width() - <span class="number">3</span>
+    <span class="attribute">height</span>: $game.height() - <span class="number">3</span>
+    <span class="attribute">background</span>: <span class="number">0x808080</span>
+  game.start()</code></pre>
+</div>
+      </article>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <script src="examples/tutdown.js"></script>
+  <script>
+  $(function() {
+    $('.more-details').click(function() {
+      $this = $(this);
+      if ($this.hasClass('collapsed')) {
+        $this.removeClass('collapsed');
+        $this.addClass('uncollapsed');
+      } else {
+        $this.removeClass('uncollapsed');
+        $this.addClass('collapsed');
+      }
+    });
+  });
+  </script>
+  <!--
+  <script type="text/javascript">
+    (function() {
+      var b = document.createElement("script"); b.type = "text/javascript"; b.async = true;
+      b.src = "https://barc.com/js/libs/barc/barc.js";
+      var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(b, s);
+    })();
+  </script>
+  -->
+  <script type="text/javascript">
+    $('#sidebar a').each(function() {
+      var
+        $a = $(this),
+        href = window.location.href;
+      if (href.indexOf && href.indexOf($a.attr('href')) > -1 && href.indexOf('#') === -1) // hacky to grab only example links
+        $a.closest('li').addClass('active');
+    });
+  </script>
+</body>
+</html>
+

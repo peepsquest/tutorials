@@ -30,8 +30,9 @@ var terrain = [
   [D, D, G, G, W],
   [D, G, G, W, W],
   [D, G, W, W, W],
-  [D, G, W, W, W],
+  [D, G, W, W, W]
 ];
+
 
 // Tiles with height can exceed these dimensions.
 var tileHeight = 50;
@@ -126,14 +127,14 @@ function Coordinates() {
 }
 
 var avatar;
-var coords = Coordinates();
+var coordinates = Coordinates();
 
 
 function stageAvatar(x, y) {
   avatar = PIXI.Sprite.fromImage('img/redOrb.png');
   avatar.dd = new PIXI.Point(x, y);
 
-  var pt = coords.ddToAvatar(x, y);
+  var pt = coordinates.ddToAvatar(x, y);
 
   avatar.position.x = pt.x;
   avatar.position.y = pt.y;
@@ -145,9 +146,9 @@ function stageAvatar(x, y) {
 
 function moveAvatar(byX, byY) {
   // ensures avatar stays within bounds
-  coords.ddOffset(avatar.dd, byX, byY);
+  coordinates.ddOffset(avatar.dd, byX, byY);
 
-  var p = coords.ddToAvatar(avatar.dd.x, avatar.dd.y);
+  var p = coordinates.ddToAvatar(avatar.dd.x, avatar.dd.y);
   avatar.position.x = p.x;
   avatar.position.y = p.y;
 }

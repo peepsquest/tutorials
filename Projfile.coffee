@@ -1,23 +1,19 @@
 fs = require('fs')
 async = require('async')
 
-exports.server =
-  dirname: 'docs/'
-
-
 exports.project = (pm) ->
-  {$, Utils} = pm
-  f = pm.filters(require('pm-spritesheet'))
+  {$, Utils, f} = pm
+
+  pm.filters require('pm-spritesheet')
+  pm.filters require('pm-tutdown')
+
   $.registerExecutable 'git'
+  $.registerExecutable 'grunt'
 
   changeToDocs = f.tap (asset) ->
     asset.filename = asset.filename.replace(/^src/, 'docs')
 
-  changeExtname = (extname) ->
-    return f.tap (asset) ->
-      asset.filename = Utils.changeExtname(asset.filename, extname)
-
-  all: ['clean', 'docs', 'stylesheets', 'staticFiles', 'spritesheet']
+  all: ['clean', 'scripts', 'stylesheets', 'staticFiles', 'spritesheet', 'docs']
 
   _toc:
     files: 'src/toc.md'
@@ -48,6 +44,14 @@ exports.project = (pm) ->
       f.writeFile
     ]
 
+  scripts:
+    files: 'src/examples/**/*.coffee'
+    dev: [
+      f.coffee sourceMap: true
+      changeToDocs
+      f.writeFile
+    ]
+
   stylesheets:
     desc: 'Builds less files'
     files: ['src/css/*.less']
@@ -63,23 +67,29 @@ exports.project = (pm) ->
     dev: ->
       $.xcopy 'src/examples/', 'docs/examples'
       $.xcopy 'src/img/', 'docs/img'
-      # needed since we only copy docs/* to gh-pages
-      #$.cp 'dist/backbone.giraffe*js', 'docs'
 
   clean: ->
     $.rm '-rf', 'docs'
     $.mkdir '-p', 'docs'
 
+  grapefruit:
+    desc: 'Builds and updates grapefruit script'
+    dev: (done) ->
+      this.timeout = 10000
+      $.inside '~/peepsquest/grapefruit', (popcb) ->
+        cb = popcb(done)
+        $.git 'pull origin master', ->
+          $.grunt 'build --force', ->
+            $.cp '-f', 'build/gf.js',  __dirname + "/src/examples/js/vendor/gf.js"
+            cb()
 
-  dependencies:
+  pixi:
     desc: 'Fetches Pixi edge scripts'
     dev: (done) ->
       files =
         'https://raw.github.com/GoodBoyDigital/pixi.js/dev/bin/pixi.dev.js': 'src/examples/js/vendor/pixi.dev.js'
-        'https://raw.github.com/jeremyckahn/keydrown/master/dist/keydrown.js': 'src/examples/js/vendor/keydrown.js'
+        'https://raw.github.com/bestiejs/lodash/v1.3.1/dist/lodash.min.js': 'src/examples/js/vendor/lodash.min.js'
       $.wget(files).then done
-
-
 
 
   "gh-pages":
@@ -126,4 +136,3 @@ exports.project = (pm) ->
     dev: [
       f.spritesheet filename: 'src/examples/img/roadTiles.png', root: 'src/examples/vendor/roadTiles/png/'
     ]
-

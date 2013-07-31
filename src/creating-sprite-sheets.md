@@ -15,14 +15,14 @@ The `pm-spritesheet` filter generates sprite sheets and a JSON meta file compati
 
 In this tutorial four images
 
-![](examples/img/tp/eggHead.png)
-![](examples/img/tp/flowerTop.png)
-![](examples/img/tp/helmlok.png)
-![](examples/img/tp/skully.png)
+![eggHead](examples/img/tp/eggHead.png)
+![flowerTop](examples/img/tp/flowerTop.png)
+![helmLok](examples/img/tp/helmlok.png)
+![skully](examples/img/tp/skully.png)
 
 are combined into a single sprite sheet. These images are from pixi.js' `Example 2`.
 
-![](examples/img/tp/spritesheet.png)
+![spritesheet](examples/img/tp/spritesheet.png)
 
 
 ### Installing Projmate
@@ -93,6 +93,6 @@ To run the `spritesheet` task from the terminal
 The generated sprite sheet and JSON meta file is supported by pixi.js. We'll
 cover this in a future example.
 
-The only caveat is `Projmate` is not well documented as a small team can only do so much. Look at this
+`Projmate` is not well documented as a small team can only do so much. Look at this
 project's `Projfile.coffee` which has the `spritesheet` task for this tutorial.
 

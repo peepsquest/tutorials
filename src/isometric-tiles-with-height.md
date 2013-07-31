@@ -86,7 +86,7 @@ function isoTile(filename) {
 }
 ```
 
-![](examples/img/spritesheet-floating-water.png)
+![water floating](examples/img/spritesheet-floating-water.png)
 
 The water and dirt appear to float at top of the grassline. The fix
 is to draw tiles from the bottom left. Fortunately,

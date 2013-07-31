@@ -3,17 +3,33 @@
 <head>
     <title>sandbox - pixi.js</title>
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-        }
+      html {
+          height: 100%;
+          width: 100%;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      #diagnostics {
+        background-color: #aaF;
+        padding: 3px;
+      }
+      #game {
+          height: 600px;
+          width: 800px;
+      }
     </style>
 </head>
 <body>
-
-  <!-- foo -->
-    <script src="js/vendor/pixi.dev.js"></script>
-    <script src="js/vendor/keydrown.js"></script>
-    <script src="pixi-sandbox.js"></script>
+  <!--<div id='diagnostics'>... fps</div>-->
+  <div id='game'></div>
+  <!--<script src="js/vendor/pixi.dev.js"></script>-->
+  <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+  <script src="js/vendor/lodash.min.js"></script>
+  <script src="js/vendor/gf.js"></script>
+  <script src="js/vendor/keydrown.js"></script>
+  <script src="sandbox.js"></script>
 </body>
 </html>

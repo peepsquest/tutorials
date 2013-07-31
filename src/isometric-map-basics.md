@@ -2,7 +2,8 @@
 
 :::BEGIN Example
 
-This example draws an isometric map using a tile created from Pixi.js primitives. Inspired by [Juwal Bose's Isometric Worlds](http://gamedev.tutsplus.com/tutorials/implementation/creating-isometric-worlds-a-primer-for-game-developers/).
+This example draws an isometric map using a tile created from Pixi.js primitives. Inspired by
+[Juwal Bose's Isometric Worlds](http://gamedev.tutsplus.com/tutorials/implementation/creating-isometric-worlds-a-primer-for-game-developers/).
 
 {{{EXAMPLE style='height: 310px;'}}}
 
@@ -114,7 +115,7 @@ function animate() {
 requestAnimFrame(animate);
 ```
 
-:::> support/common.md
+:::< support/common.md --raw
 
 
 :::END

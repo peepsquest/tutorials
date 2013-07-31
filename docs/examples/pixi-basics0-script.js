@@ -22,10 +22,10 @@ leaf.position.y = HEIGHT / 2;
 // place it on the stage for rendering
 stage.addChild(leaf);
 
-function animate() {
+function gameLoop() {
+  requestAnimFrame(gameLoop);
   leaf.rotation -= 0.02;
   renderer.render(stage);
-  requestAnimFrame(animate);
 }
 
-requestAnimFrame(animate);
+requestAnimFrame(gameLoop);
