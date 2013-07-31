@@ -22313,7 +22313,12 @@ gf.input.Keyboard = function(view) {
      */
     this._clearSq = null;
 
-    console.log('setting up keydown', document.addEventListener);
+
+
+    function onKeyDn() {
+      console.log("in closure");
+    }
+
     document.addEventListener('keydown', this.onKeyDown.bind(this), false);
     document.addEventListener('keyup', this.onKeyUp.bind(this), false);
 };
@@ -22328,7 +22333,6 @@ gf.inherits(gf.input.Keyboard, gf.input.Input, {
      * @private
      */
     onKeyDown: function(e, override) {
-      console.log('key downnnnnnnnnn');
         //if(e.target === this.view.parentElement)
             return this.modifyKey(e, override || e.keyCode || e.which, true);
     },

@@ -1,12 +1,17 @@
 (function() {
-  var Avatar, Data, Game, mapDown, mapMove, mapUp,
+  var Avatar, Game, assets, mapDown, mapMove, mapUp,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  Data = {
-    resources: ['img/isometric_grass_and_water.json', 'img/redOrb.png'],
-    worlds: ['img/isometric_grass_and_water.json']
-  };
+  assets = [
+    {
+      name: 'world',
+      src: 'img/isometric_grass_and_water.json'
+    }, {
+      name: 'avatar',
+      src: 'img/redOrb.png'
+    }
+  ];
 
   Game = (function(_super) {
     __extends(Game, _super);
@@ -26,25 +31,22 @@
         _this.onGameReady();
         return _this.render();
       });
-      return this.loader.load(Data.resources);
+      return this.loader.load(this.options.assets);
     };
 
     Game.prototype.onGameReady = function() {
-      var hero, state, world, _i, _len, _ref;
-      _ref = Data.worlds;
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        world = _ref[_i];
-        state = new gf.GameState(world);
-        this.addState(state);
-        state.loadWorld(world);
-        state.world.interactive = true;
-        state.world.mousedown = mapDown;
-        state.world.mouseup = mapUp;
-        state.world.mousemove = mapMove;
-      }
-      this.enableState(Data.worlds[0]);
+      var avatar, hero, state, world, _ref;
+      _ref = this.options.assets, world = _ref.world, avatar = _ref.avatar;
+      state = new gf.GameState('world');
+      this.addState(state);
+      state.loadWorld('world');
+      state.world.interactive = true;
+      state.world.mousedown = mapDown;
+      state.world.mouseup = mapUp;
+      state.world.mousemove = mapMove;
+      this.enableState('world');
       hero = new Avatar({
-        resourceUrl: 'img/redOrb.png',
+        assetId: 'avatar',
         state: state
       });
       return state.addChild(hero);
@@ -56,6 +58,7 @@
 
   mapDown = function(e) {
     var pos;
+    window.focus();
     pos = e.getLocalPosition(this.parent);
     return this.drag = pos;
   };
@@ -79,10 +82,9 @@
     __extends(Avatar, _super);
 
     function Avatar(options) {
-      var resourceUrl, state, t;
-      state = options.state, resourceUrl = options.resourceUrl;
-      t = PIXI.Texture.fromImage(resourceUrl);
-      Avatar.__super__.constructor.call(this, t);
+      var assetId, state;
+      state = options.state, assetId = options.assetId;
+      Avatar.__super__.constructor.call(this, gf.assetCache[assetId]);
       this.setupKeyboardHandlers(state);
     }
 
@@ -97,22 +99,26 @@
       onKeyboardDown = function(e) {
         var position;
         position = that.position;
-        return position.y += 2;
+        position.y += 5;
+        return e.originalEvent.preventDefault();
       };
       onKeyboardRight = function(e) {
         var position;
         position = that.position;
-        return position.x += 2;
+        position.x += 5;
+        return e.originalEvent.preventDefault();
       };
       onKeyboardLeft = function(e) {
         var position;
         position = that.position;
-        return position.x -= 2;
+        position.x -= 5;
+        return e.originalEvent.preventDefault();
       };
       onKeyboardUp = function(e) {
         var position;
         position = that.position;
-        return position.y -= 2;
+        position.y -= 5;
+        return e.originalEvent.preventDefault();
       };
       state.input.keyboard.on(gf.input.KEY.DOWN, onKeyboardDown);
       state.input.keyboard.on(gf.input.KEY.UP, onKeyboardUp);
@@ -130,7 +136,8 @@
     game = new Game('game', {
       width: $game.width() - 3,
       height: $game.height() - 3,
-      background: 0xEEFFFF
+      background: 0xEEFFFF,
+      assets: assets
     });
     return game.start();
   });
