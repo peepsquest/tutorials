@@ -42,6 +42,12 @@ more importantly the active state. Inside the `GameState` is the game loop.
 
 :::< examples/grapefruit-basics.coffee --block game-ready
 
+## Panning the World
+
+Here we take advantage of the `gf.TiledMap` object to do panning. __Grapefruit__ does all the work for us.
+
+:::< examples/grapefruit-basics.coffee --block panning
+
 
 ## Add an Avatar
 

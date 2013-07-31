@@ -49,7 +49,7 @@ class Game extends gf.Game
 
 #}}}
 
-#{{{ Content map-functions
+#{{{ Content panning
 # context for these are TiledMap, which means Function.bind is being used
 mapDown = (e) ->
   pos = e.getLocalPosition(@parent)
