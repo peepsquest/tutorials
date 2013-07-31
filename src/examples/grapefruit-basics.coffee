@@ -37,7 +37,7 @@ class Game extends gf.Game
     state.world.mousemove = mapMove
 
     @enableState 'world'
-    hero = new Avatar({assetId: 'avatar', state})
+    hero = new Avatar({assetId: 'avatar', game: @})
     state.addChild hero
 #}}}
 
@@ -65,40 +65,43 @@ mapMove = (e) ->
 class Avatar extends gf.Sprite
 
   constructor: (options) ->
-    {state, assetId} = options
+    {game, assetId} = options
     super gf.assetCache[assetId]
-    @setupKeyboardHandlers state
+    @setupKeyboardHandlers game
 
   ###
   * Sets up keyboard handlers using closures instead of bind.
   ###
-  setupKeyboardHandlers: (state) ->
+  setupKeyboardHandlers: (game) ->
     that = @
+
+    preventDefault = (e) ->
+      e.input.preventDefault e.originalEvent
 
     onKeyboardDown = (e) ->
       {position} = that
       position.y += 5
-      e.originalEvent.preventDefault()
+      preventDefault e
 
     onKeyboardRight = (e) ->
       {position} = that
       position.x += 5
-      e.originalEvent.preventDefault()
+      preventDefault e
 
     onKeyboardLeft = (e) ->
       {position} = that
       position.x -= 5
-      e.originalEvent.preventDefault()
+      preventDefault e
 
     onKeyboardUp = (e) ->
       {position} = that
       position.y -= 5
-      e.originalEvent.preventDefault()
+      preventDefault e
 
-    state.input.keyboard.on gf.input.KEY.DOWN, onKeyboardDown
-    state.input.keyboard.on gf.input.KEY.UP, onKeyboardUp
-    state.input.keyboard.on gf.input.KEY.LEFT, onKeyboardLeft
-    state.input.keyboard.on gf.input.KEY.RIGHT, onKeyboardRight
+    game.input.keyboard.on gf.input.KEY.DOWN, onKeyboardDown
+    game.input.keyboard.on gf.input.KEY.UP, onKeyboardUp
+    game.input.keyboard.on gf.input.KEY.LEFT, onKeyboardLeft
+    game.input.keyboard.on gf.input.KEY.RIGHT, onKeyboardRight
 #}}}
 
 

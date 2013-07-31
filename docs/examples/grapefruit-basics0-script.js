@@ -46,7 +46,7 @@
       this.enableState('world');
       hero = new Avatar({
         assetId: 'avatar',
-        state: state
+        game: this
       });
       return state.addChild(hero);
     };
@@ -80,48 +80,51 @@
     __extends(Avatar, _super);
 
     function Avatar(options) {
-      var assetId, state;
-      state = options.state, assetId = options.assetId;
+      var assetId, game;
+      game = options.game, assetId = options.assetId;
       Avatar.__super__.constructor.call(this, gf.assetCache[assetId]);
-      this.setupKeyboardHandlers(state);
+      this.setupKeyboardHandlers(game);
     }
 
     /*
-    * Sets up keyboard handlers using closure instead of bind.
+    * Sets up keyboard handlers using closures instead of bind.
     */
 
 
-    Avatar.prototype.setupKeyboardHandlers = function(state) {
-      var onKeyboardDown, onKeyboardLeft, onKeyboardRight, onKeyboardUp, that;
+    Avatar.prototype.setupKeyboardHandlers = function(game) {
+      var onKeyboardDown, onKeyboardLeft, onKeyboardRight, onKeyboardUp, preventDefault, that;
       that = this;
+      preventDefault = function(e) {
+        return e.input.preventDefault(e.originalEvent);
+      };
       onKeyboardDown = function(e) {
         var position;
         position = that.position;
         position.y += 5;
-        return e.originalEvent.preventDefault();
+        return preventDefault(e);
       };
       onKeyboardRight = function(e) {
         var position;
         position = that.position;
         position.x += 5;
-        return e.originalEvent.preventDefault();
+        return preventDefault(e);
       };
       onKeyboardLeft = function(e) {
         var position;
         position = that.position;
         position.x -= 5;
-        return e.originalEvent.preventDefault();
+        return preventDefault(e);
       };
       onKeyboardUp = function(e) {
         var position;
         position = that.position;
         position.y -= 5;
-        return e.originalEvent.preventDefault();
+        return preventDefault(e);
       };
-      state.input.keyboard.on(gf.input.KEY.DOWN, onKeyboardDown);
-      state.input.keyboard.on(gf.input.KEY.UP, onKeyboardUp);
-      state.input.keyboard.on(gf.input.KEY.LEFT, onKeyboardLeft);
-      return state.input.keyboard.on(gf.input.KEY.RIGHT, onKeyboardRight);
+      game.input.keyboard.on(gf.input.KEY.DOWN, onKeyboardDown);
+      game.input.keyboard.on(gf.input.KEY.UP, onKeyboardUp);
+      game.input.keyboard.on(gf.input.KEY.LEFT, onKeyboardLeft);
+      return game.input.keyboard.on(gf.input.KEY.RIGHT, onKeyboardRight);
     };
 
     return Avatar;

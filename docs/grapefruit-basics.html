@@ -146,7 +146,7 @@ the world (still learning <strong>grapefruit</strong>).</p>
       <span class="keyword">this</span>.enableState(<span class="string">'world'</span>);
       hero = <span class="keyword">new</span> Avatar({
         assetId: <span class="string">'avatar'</span>,
-        state: state
+        game: <span class="keyword">this</span>
       });
       <span class="keyword">return</span> state.addChild(hero);
     };
@@ -180,48 +180,51 @@ the world (still learning <strong>grapefruit</strong>).</p>
     __extends(Avatar, _super);
 
     <span class="function"><span class="keyword">function</span> <span class="title">Avatar</span><span class="params">(options)</span> {</span>
-      <span class="keyword">var</span> assetId, state;
-      state = options.state, assetId = options.assetId;
+      <span class="keyword">var</span> assetId, game;
+      game = options.game, assetId = options.assetId;
       Avatar.__super__.constructor.call(<span class="keyword">this</span>, gf.assetCache[assetId]);
-      <span class="keyword">this</span>.setupKeyboardHandlers(state);
+      <span class="keyword">this</span>.setupKeyboardHandlers(game);
     }
 
     <span class="comment">/*
-     * Sets up keyboard handlers using closure instead of bind.
+     * Sets up keyboard handlers using closures instead of bind.
      */</span>
 
 
-    Avatar.prototype.setupKeyboardHandlers = <span class="function"><span class="keyword">function</span><span class="params">(state)</span> {</span>
-      <span class="keyword">var</span> onKeyboardDown, onKeyboardLeft, onKeyboardRight, onKeyboardUp, that;
+    Avatar.prototype.setupKeyboardHandlers = <span class="function"><span class="keyword">function</span><span class="params">(game)</span> {</span>
+      <span class="keyword">var</span> onKeyboardDown, onKeyboardLeft, onKeyboardRight, onKeyboardUp, preventDefault, that;
       that = <span class="keyword">this</span>;
+      preventDefault = <span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span>
+        <span class="keyword">return</span> e.input.preventDefault(e.originalEvent);
+      };
       onKeyboardDown = <span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span>
         <span class="keyword">var</span> position;
         position = that.position;
         position.y += <span class="number">5</span>;
-        <span class="keyword">return</span> e.originalEvent.preventDefault();
+        <span class="keyword">return</span> preventDefault(e);
       };
       onKeyboardRight = <span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span>
         <span class="keyword">var</span> position;
         position = that.position;
         position.x += <span class="number">5</span>;
-        <span class="keyword">return</span> e.originalEvent.preventDefault();
+        <span class="keyword">return</span> preventDefault(e);
       };
       onKeyboardLeft = <span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span>
         <span class="keyword">var</span> position;
         position = that.position;
         position.x -= <span class="number">5</span>;
-        <span class="keyword">return</span> e.originalEvent.preventDefault();
+        <span class="keyword">return</span> preventDefault(e);
       };
       onKeyboardUp = <span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span>
         <span class="keyword">var</span> position;
         position = that.position;
         position.y -= <span class="number">5</span>;
-        <span class="keyword">return</span> e.originalEvent.preventDefault();
+        <span class="keyword">return</span> preventDefault(e);
       };
-      state.input.keyboard.on(gf.input.KEY.DOWN, onKeyboardDown);
-      state.input.keyboard.on(gf.input.KEY.UP, onKeyboardUp);
-      state.input.keyboard.on(gf.input.KEY.LEFT, onKeyboardLeft);
-      <span class="keyword">return</span> state.input.keyboard.on(gf.input.KEY.RIGHT, onKeyboardRight);
+      game.input.keyboard.on(gf.input.KEY.DOWN, onKeyboardDown);
+      game.input.keyboard.on(gf.input.KEY.UP, onKeyboardUp);
+      game.input.keyboard.on(gf.input.KEY.LEFT, onKeyboardLeft);
+      <span class="keyword">return</span> game.input.keyboard.on(gf.input.KEY.RIGHT, onKeyboardRight);
     };
 
     <span class="keyword">return</span> Avatar;
@@ -305,14 +308,12 @@ assets = [
     state.world.mousemove = mapMove
 
     <span class="property">@enableState</span> <span class="string">'world'</span>
-    hero = <span class="keyword">new</span> Avatar({<span class="attribute">assetId</span>: <span class="string">'avatar'</span>, state})
+    hero = <span class="keyword">new</span> Avatar({<span class="attribute">assetId</span>: <span class="string">'avatar'</span>, <span class="attribute">game</span>: @})
     state.addChild hero
 
 
 <span class="comment"># context for these are TiledMap, which means Function.bind is being used</span>
 <span class="function"><span class="title">mapDown</span> = <span class="params">(e)</span> -&gt;</span>
-  <span class="comment"># needed to capture events in iframe of this example (not needed otherwise)</span>
-  <span class="comment"># window.focus()</span>
   pos = e.getLocalPosition(<span class="property">@parent</span>)
   <span class="property">@drag</span> = pos
 
@@ -331,45 +332,47 @@ assets = [
 <span class="class"><span class="keyword">class</span> <span class="title">Avatar</span> <span class="keyword">extends</span> <span class="title">gf</span>.<span class="title">Sprite</span></span>
 
   <span class="attribute">constructor</span>: <span class="function"><span class="params">(options)</span> -&gt;</span>
-    {state, assetId} = options
+    {game, assetId} = options
     <span class="keyword">super</span> gf.assetCache[assetId]
-    <span class="property">@setupKeyboardHandlers</span> state
+    <span class="property">@setupKeyboardHandlers</span> game
 
   <span class="comment">###
-  * Sets up keyboard handlers using closure instead of bind.
+  * Sets up keyboard handlers using closures instead of bind.
   ###</span>
-  <span class="attribute">setupKeyboardHandlers</span>: <span class="function"><span class="params">(state)</span> -&gt;</span>
+  <span class="attribute">setupKeyboardHandlers</span>: <span class="function"><span class="params">(game)</span> -&gt;</span>
     that = @
+
+    <span class="function"><span class="title">preventDefault</span> = <span class="params">(e)</span> -&gt;</span>
+      e.input.preventDefault e.originalEvent
 
     <span class="function"><span class="title">onKeyboardDown</span> = <span class="params">(e)</span> -&gt;</span>
       {position} = that
       position.y += <span class="number">5</span>
-      e.originalEvent.preventDefault()
+      preventDefault e
 
     <span class="function"><span class="title">onKeyboardRight</span> = <span class="params">(e)</span> -&gt;</span>
       {position} = that
       position.x += <span class="number">5</span>
-      e.originalEvent.preventDefault()
+      preventDefault e
 
     <span class="function"><span class="title">onKeyboardLeft</span> = <span class="params">(e)</span> -&gt;</span>
       {position} = that
       position.x -= <span class="number">5</span>
-      e.originalEvent.preventDefault()
+      preventDefault e
 
     <span class="function"><span class="title">onKeyboardUp</span> = <span class="params">(e)</span> -&gt;</span>
       {position} = that
       position.y -= <span class="number">5</span>
-      e.originalEvent.preventDefault()
+      preventDefault e
 
-    state.input.keyboard.<span class="literal">on</span> gf.input.KEY.DOWN, onKeyboardDown
-    state.input.keyboard.<span class="literal">on</span> gf.input.KEY.UP, onKeyboardUp
-    state.input.keyboard.<span class="literal">on</span> gf.input.KEY.LEFT, onKeyboardLeft
-    state.input.keyboard.<span class="literal">on</span> gf.input.KEY.RIGHT, onKeyboardRight
+    game.input.keyboard.<span class="literal">on</span> gf.input.KEY.DOWN, onKeyboardDown
+    game.input.keyboard.<span class="literal">on</span> gf.input.KEY.UP, onKeyboardUp
+    game.input.keyboard.<span class="literal">on</span> gf.input.KEY.LEFT, onKeyboardLeft
+    game.input.keyboard.<span class="literal">on</span> gf.input.KEY.RIGHT, onKeyboardRight
 
 
 $<span class="function"> -&gt;</span>
   $game = $(<span class="string">'#game'</span>)
-
   game = <span class="keyword">new</span> Game <span class="string">'game'</span>,
     <span class="attribute">width</span>: $game.width() - <span class="number">3</span>
     <span class="attribute">height</span>: $game.height() - <span class="number">3</span>
@@ -420,14 +423,12 @@ makes everything run.</p>
     state.world.mousemove = mapMove
 
     <span class="property">@enableState</span> <span class="string">'world'</span>
-    hero = <span class="keyword">new</span> Avatar({<span class="attribute">assetId</span>: <span class="string">'avatar'</span>, state})
+    hero = <span class="keyword">new</span> Avatar({<span class="attribute">assetId</span>: <span class="string">'avatar'</span>, <span class="attribute">game</span>: @})
     state.addChild hero</code></pre>
 <h2 id='h-panning-the-world'>Panning the World</h2>
 <p>Here we take advantage of the <code>gf.TiledMap</code> object to do panning. <strong>Grapefruit</strong> does all the work for us.</p>
 <pre><code class="coffee"><span class="comment"># context for these are TiledMap, which means Function.bind is being used</span>
 <span class="function"><span class="title">mapDown</span> = <span class="params">(e)</span> -&gt;</span>
-  <span class="comment"># needed to capture events in iframe of this example (not needed otherwise)</span>
-  <span class="comment"># window.focus()</span>
   pos = e.getLocalPosition(<span class="property">@parent</span>)
   <span class="property">@drag</span> = pos
 
@@ -447,47 +448,49 @@ I use a class to encapsulate the keyboard binding. (Not sure if this is the best
 <pre><code class="coffee"><span class="class"><span class="keyword">class</span> <span class="title">Avatar</span> <span class="keyword">extends</span> <span class="title">gf</span>.<span class="title">Sprite</span></span>
 
   <span class="attribute">constructor</span>: <span class="function"><span class="params">(options)</span> -&gt;</span>
-    {state, assetId} = options
+    {game, assetId} = options
     <span class="keyword">super</span> gf.assetCache[assetId]
-    <span class="property">@setupKeyboardHandlers</span> state
+    <span class="property">@setupKeyboardHandlers</span> game
 
   <span class="comment">###
-  * Sets up keyboard handlers using closure instead of bind.
+  * Sets up keyboard handlers using closures instead of bind.
   ###</span>
-  <span class="attribute">setupKeyboardHandlers</span>: <span class="function"><span class="params">(state)</span> -&gt;</span>
+  <span class="attribute">setupKeyboardHandlers</span>: <span class="function"><span class="params">(game)</span> -&gt;</span>
     that = @
+
+    <span class="function"><span class="title">preventDefault</span> = <span class="params">(e)</span> -&gt;</span>
+      e.input.preventDefault e.originalEvent
 
     <span class="function"><span class="title">onKeyboardDown</span> = <span class="params">(e)</span> -&gt;</span>
       {position} = that
       position.y += <span class="number">5</span>
-      e.originalEvent.preventDefault()
+      preventDefault e
 
     <span class="function"><span class="title">onKeyboardRight</span> = <span class="params">(e)</span> -&gt;</span>
       {position} = that
       position.x += <span class="number">5</span>
-      e.originalEvent.preventDefault()
+      preventDefault e
 
     <span class="function"><span class="title">onKeyboardLeft</span> = <span class="params">(e)</span> -&gt;</span>
       {position} = that
       position.x -= <span class="number">5</span>
-      e.originalEvent.preventDefault()
+      preventDefault e
 
     <span class="function"><span class="title">onKeyboardUp</span> = <span class="params">(e)</span> -&gt;</span>
       {position} = that
       position.y -= <span class="number">5</span>
-      e.originalEvent.preventDefault()
+      preventDefault e
 
-    state.input.keyboard.<span class="literal">on</span> gf.input.KEY.DOWN, onKeyboardDown
-    state.input.keyboard.<span class="literal">on</span> gf.input.KEY.UP, onKeyboardUp
-    state.input.keyboard.<span class="literal">on</span> gf.input.KEY.LEFT, onKeyboardLeft
-    state.input.keyboard.<span class="literal">on</span> gf.input.KEY.RIGHT, onKeyboardRight</code></pre>
+    game.input.keyboard.<span class="literal">on</span> gf.input.KEY.DOWN, onKeyboardDown
+    game.input.keyboard.<span class="literal">on</span> gf.input.KEY.UP, onKeyboardUp
+    game.input.keyboard.<span class="literal">on</span> gf.input.KEY.LEFT, onKeyboardLeft
+    game.input.keyboard.<span class="literal">on</span> gf.input.KEY.RIGHT, onKeyboardRight</code></pre>
 <h2 id='h-starting-the-game'>Starting the Game</h2>
 <p>The game is attached to a <code>div</code>.</p>
 <pre><code class="html"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">'game'</span>&gt;</span><span class="comment">&lt;!-- game goes here --&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></pre>
 <p>Calculate the width of the div, which is set by CSS, and pass the <code>div</code> info to the game and start it.</p>
 <pre><code class="coffee">$<span class="function"> -&gt;</span>
   $game = $(<span class="string">'#game'</span>)
-
   game = <span class="keyword">new</span> Game <span class="string">'game'</span>,
     <span class="attribute">width</span>: $game.width() - <span class="number">3</span>
     <span class="attribute">height</span>: $game.height() - <span class="number">3</span>
