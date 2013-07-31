@@ -98,27 +98,19 @@
         return e.input.preventDefault(e.originalEvent);
       };
       onKeyboardDown = function(e) {
-        var position;
-        position = that.position;
-        position.y += 5;
+        that.position.y += 5;
         return preventDefault(e);
       };
       onKeyboardRight = function(e) {
-        var position;
-        position = that.position;
-        position.x += 5;
+        that.position.x += 5;
         return preventDefault(e);
       };
       onKeyboardLeft = function(e) {
-        var position;
-        position = that.position;
-        position.x -= 5;
+        that.position.x -= 5;
         return preventDefault(e);
       };
       onKeyboardUp = function(e) {
-        var position;
-        position = that.position;
-        position.y -= 5;
+        that.position.y -= 5;
         return preventDefault(e);
       };
       game.input.keyboard.on(gf.input.KEY.DOWN, onKeyboardDown);

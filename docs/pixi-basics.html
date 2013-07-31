@@ -162,8 +162,9 @@ same function, each time rotating the leaf by a fraction of a radiant.
 In this example, we use a negative value to animate the leaf in a
 counter-clockwise direction.</p>
 <p>Most browsers limit the frame per second (fps) to 60. In other words each run of
-the game loop is a frame and in most browsers a trivial game will run no more than 60 times in a second.
-If the game loop is computationally expensive the fps will drop accordingly.</p>
+the game loop is a frame and in most browsers a trivial game&#39;s stage be updated
+no more than 60 times in a second. If the game loop is computationally expensive
+the fps will drop accordingly.</p>
 <pre><code class="js"><span class="function"><span class="keyword">function</span> <span class="title">gameLoop</span><span class="params">()</span> {</span>
   requestAnimFrame(gameLoop);
   leaf.rotation -= <span class="number">0.02</span>;

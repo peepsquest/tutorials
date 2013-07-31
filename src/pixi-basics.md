@@ -54,8 +54,9 @@ In this example, we use a negative value to animate the leaf in a
 counter-clockwise direction.
 
 Most browsers limit the frame per second (fps) to 60. In other words each run of
-the game loop is a frame and in most browsers a trivial game will run no more than 60 times in a second.
-If the game loop is computationally expensive the fps will drop accordingly.
+the game loop is a frame and in most browsers a trivial game's stage be updated
+no more than 60 times in a second. If the game loop is computationally expensive
+the fps will drop accordingly.
 
 ```js
 function gameLoop() {
@@ -67,6 +68,6 @@ function gameLoop() {
 requestAnimFrame(gameLoop);
 ```
 
-:::> support/common.md
+:::< support/common.md --raw
 
 :::END

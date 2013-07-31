@@ -48,13 +48,11 @@
           <img id="logo" src="img/peepsquest.png" />
         </a>
         <h1 id='h-grapefruitjs-basics-in-coffeescript'>Grapefruit.js Basics in CoffeeScript</h1>
-<div class='section-example'><p>In this example we&#39;ll cover the basics of using the <a href="https://github.com/grapefruitjs/grapefruit">grapefruitjs</a>
+<div class='section-example'><p>In this example we&#39;ll cover the basics of using the <a href="https://github.com/grapefruitjs/grapefruit">Grapefruit</a>
 game engine built on <strong>pixi.js</strong>.</p>
 <div class='note'><em>GrapefruitJs</em> is in its infancy and should not be used yet per its author,
-<a href="https://github.com/englercj">Chad Engler</a>.
-The author is an active contributor to <strong>Pixi.js</strong>. This is more of a learning
-excercise for me to see how experienced game developers setup a game.
-
+<a href="https://github.com/englercj">Chad Engler</a>. The author is an active contributor to <strong>pixi.js</strong>.
+This is more of a learning excercise to see how experienced game developers setup a game.
 </div>
 
 <p>Pan by dragging with the mouse or move the orb around with the arrow keys. The orb is not constrained with
@@ -198,27 +196,19 @@ the world (still learning <strong>grapefruit</strong>).</p>
         <span class="keyword">return</span> e.input.preventDefault(e.originalEvent);
       };
       onKeyboardDown = <span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span>
-        <span class="keyword">var</span> position;
-        position = that.position;
-        position.y += <span class="number">5</span>;
+        that.position.y += <span class="number">5</span>;
         <span class="keyword">return</span> preventDefault(e);
       };
       onKeyboardRight = <span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span>
-        <span class="keyword">var</span> position;
-        position = that.position;
-        position.x += <span class="number">5</span>;
+        that.position.x += <span class="number">5</span>;
         <span class="keyword">return</span> preventDefault(e);
       };
       onKeyboardLeft = <span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span>
-        <span class="keyword">var</span> position;
-        position = that.position;
-        position.x -= <span class="number">5</span>;
+        that.position.x -= <span class="number">5</span>;
         <span class="keyword">return</span> preventDefault(e);
       };
       onKeyboardUp = <span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span>
-        <span class="keyword">var</span> position;
-        position = that.position;
-        position.y -= <span class="number">5</span>;
+        that.position.y -= <span class="number">5</span>;
         <span class="keyword">return</span> preventDefault(e);
       };
       game.input.keyboard.on(gf.input.KEY.DOWN, onKeyboardDown);
@@ -346,23 +336,19 @@ assets = [
       e.input.preventDefault e.originalEvent
 
     <span class="function"><span class="title">onKeyboardDown</span> = <span class="params">(e)</span> -&gt;</span>
-      {position} = that
-      position.y += <span class="number">5</span>
+      that.position.y += <span class="number">5</span>
       preventDefault e
 
     <span class="function"><span class="title">onKeyboardRight</span> = <span class="params">(e)</span> -&gt;</span>
-      {position} = that
-      position.x += <span class="number">5</span>
+      that.position.x += <span class="number">5</span>
       preventDefault e
 
     <span class="function"><span class="title">onKeyboardLeft</span> = <span class="params">(e)</span> -&gt;</span>
-      {position} = that
-      position.x -= <span class="number">5</span>
+      that.position.x -= <span class="number">5</span>
       preventDefault e
 
     <span class="function"><span class="title">onKeyboardUp</span> = <span class="params">(e)</span> -&gt;</span>
-      {position} = that
-      position.y -= <span class="number">5</span>
+      that.position.y -= <span class="number">5</span>
       preventDefault e
 
     game.input.keyboard.<span class="literal">on</span> gf.input.KEY.DOWN, onKeyboardDown
@@ -381,19 +367,19 @@ $<span class="function"> -&gt;</span>
   game.start()
 </code></pre>
 </div>
-</div><h2 id='h-defining-assets'>Defining Assets</h2>
-<p><code>gf.AssetLoader</code> loads assets using an array of URLs or objects.
-I opt for objects to show <code>gf.assetCache</code> is in use later when the orb is loaded. <strong>grapefruit.js</strong> supports
-the popular <a href="http://www.mapeditor.org/">Tiled Map Editor</a> TMX (JSON) format as well as the Texture Packer
+</div><h2 id='h-loading-assets'>Loading Assets</h2>
+<p><code>gf.AssetLoader</code> loads assets given an array of URLs or objects.
+I opt for objects to show <code>gf.assetCache</code> is in use later when the orb is loaded. <strong>Grapefruit</strong> supports
+the popular <a href="http://www.mapeditor.org/">Tiled Map Editor</a> TMX (JSON) format as well as Texture Packer
 format supported by <strong>pixi.js</strong>.</p>
-<p>(Is a world analogous to a scene?)</p>
 <pre><code class="coffee">assets = [
   {<span class="attribute">name</span>: <span class="string">'world'</span>, <span class="attribute">src</span>: <span class="string">'img/isometric_grass_and_water.json'</span>}
   {<span class="attribute">name</span>: <span class="string">'avatar'</span>, <span class="attribute">src</span>: <span class="string">'img/redOrb.png'</span>}
 ]</code></pre>
 <h2 id='h-configure-the-game'>Configure the Game</h2>
 <p>The main thing to do is to configure an instance of <code>gf.Game</code> and attach it to
-an HTMLElement container of fixed width and size.</p>
+an HTMLElement container of fixed width and size. Hidden within <code>Game</code> is the <code>_tick</code> game loop
+which makes everything run.</p>
 <pre><code class="coffee"><span class="class"><span class="keyword">class</span> <span class="title">Game</span> <span class="keyword">extends</span> <span class="title">gf</span>.<span class="title">Game</span></span>
 
   <span class="attribute">constructor</span>: <span class="function"><span class="params">(containerId, <span class="property">@options</span>)</span> -&gt;</span>
@@ -401,7 +387,7 @@ an HTMLElement container of fixed width and size.</p>
       <span class="attribute">gravity</span>: <span class="number">0</span>
       <span class="attribute">friction</span>: <span class="number">0</span>
     <span class="keyword">super</span></code></pre>
-<p>The <code>start</code> method loads <code>Data.resources</code> and when completed <code>onGameReady</code> is invoked.</p>
+<p>The <code>start</code> method loads the <code>assets</code> and when completed <code>onGameReady</code> is invoked.</p>
 <pre><code class="coffee">  <span class="attribute">start</span>:<span class="function"> -&gt;</span>
     <span class="property">@loader</span>.<span class="literal">on</span> <span class="string">'complete'</span>,<span class="function"> =&gt;</span>
       <span class="property">@onGameReady</span>()
@@ -410,8 +396,7 @@ an HTMLElement container of fixed width and size.</p>
     <span class="property">@loader</span>.load <span class="property">@options</span>.assets</code></pre>
 <h2 id='h-loading-a-world'>Loading a World</h2>
 <p>AFAICT a world is just a display container. The important data structure is the <code>GameState</code> and
-more importantly the active game state. Hidden within <code>GameState</code> is the game loop <code>_tick</code> which
-makes everything run.</p>
+more importantly the active game state.</p>
 <pre><code class="coffee">  <span class="attribute">onGameReady</span>:<span class="function"> -&gt;</span>
     state = <span class="keyword">new</span> gf.GameState(<span class="string">'world'</span>)
     <span class="property">@addState</span> state
@@ -426,7 +411,7 @@ makes everything run.</p>
     hero = <span class="keyword">new</span> Avatar({<span class="attribute">assetId</span>: <span class="string">'avatar'</span>, <span class="attribute">game</span>: @})
     state.addChild hero</code></pre>
 <h2 id='h-panning-the-world'>Panning the World</h2>
-<p>Here we take advantage of the <code>gf.TiledMap</code> object to do panning. <strong>Grapefruit</strong> does all the work for us.</p>
+<p>Here we take advantage of the <code>gf.TiledMap</code> object to do panning. <strong>Grapefruit</strong> does all the work.</p>
 <pre><code class="coffee"><span class="comment"># context for these are TiledMap, which means Function.bind is being used</span>
 <span class="function"><span class="title">mapDown</span> = <span class="params">(e)</span> -&gt;</span>
   pos = e.getLocalPosition(<span class="property">@parent</span>)
@@ -443,8 +428,9 @@ makes everything run.</p>
     <span class="property">@pan</span> dx, dy
     <span class="property">@drag</span> = pos</code></pre>
 <h2 id='h-add-an-avatar'>Add an Avatar</h2>
-<p>The avatar is a <code>gf.Sprite</code> and loads a <code>gf.Texture</code> from the asset cache populate the the <code>load</code> above.
-I use a class to encapsulate the keyboard binding. (Not sure if this is the best way to handle keyboard event).</p>
+<p>The avatar is a <code>gf.Sprite</code> and loads a <code>gf.Texture</code> from the asset cache populate by <code>load</code> above.
+I use a class to encapsulate keyboard bindings. Keyboard events are global within a game
+state and another display object could be listening for the save events.</p>
 <pre><code class="coffee"><span class="class"><span class="keyword">class</span> <span class="title">Avatar</span> <span class="keyword">extends</span> <span class="title">gf</span>.<span class="title">Sprite</span></span>
 
   <span class="attribute">constructor</span>: <span class="function"><span class="params">(options)</span> -&gt;</span>
@@ -462,23 +448,19 @@ I use a class to encapsulate the keyboard binding. (Not sure if this is the best
       e.input.preventDefault e.originalEvent
 
     <span class="function"><span class="title">onKeyboardDown</span> = <span class="params">(e)</span> -&gt;</span>
-      {position} = that
-      position.y += <span class="number">5</span>
+      that.position.y += <span class="number">5</span>
       preventDefault e
 
     <span class="function"><span class="title">onKeyboardRight</span> = <span class="params">(e)</span> -&gt;</span>
-      {position} = that
-      position.x += <span class="number">5</span>
+      that.position.x += <span class="number">5</span>
       preventDefault e
 
     <span class="function"><span class="title">onKeyboardLeft</span> = <span class="params">(e)</span> -&gt;</span>
-      {position} = that
-      position.x -= <span class="number">5</span>
+      that.position.x -= <span class="number">5</span>
       preventDefault e
 
     <span class="function"><span class="title">onKeyboardUp</span> = <span class="params">(e)</span> -&gt;</span>
-      {position} = that
-      position.y -= <span class="number">5</span>
+      that.position.y -= <span class="number">5</span>
       preventDefault e
 
     game.input.keyboard.<span class="literal">on</span> gf.input.KEY.DOWN, onKeyboardDown
@@ -486,7 +468,7 @@ I use a class to encapsulate the keyboard binding. (Not sure if this is the best
     game.input.keyboard.<span class="literal">on</span> gf.input.KEY.LEFT, onKeyboardLeft
     game.input.keyboard.<span class="literal">on</span> gf.input.KEY.RIGHT, onKeyboardRight</code></pre>
 <h2 id='h-starting-the-game'>Starting the Game</h2>
-<p>The game is attached to a <code>div</code>.</p>
+<p>I&#39;m attaching the game into this <code>div</code>.</p>
 <pre><code class="html"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">'game'</span>&gt;</span><span class="comment">&lt;!-- game goes here --&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></pre>
 <p>Calculate the width of the div, which is set by CSS, and pass the <code>div</code> info to the game and start it.</p>
 <pre><code class="coffee">$<span class="function"> -&gt;</span>

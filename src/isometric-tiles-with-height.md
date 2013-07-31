@@ -153,6 +153,6 @@ function start() {
 }
 ```
 
-:::> support/common.md
+:::< support/common.md --raw
 
 :::END

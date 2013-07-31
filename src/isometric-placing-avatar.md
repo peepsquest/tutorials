@@ -290,6 +290,6 @@ function start() {
 <script src='js/vendor/keydrown.js'></script>
 ```
 
-:::> support/common.md
+:::< support/common.md --raw
 
 :::END
