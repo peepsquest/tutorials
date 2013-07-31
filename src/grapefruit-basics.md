@@ -12,15 +12,17 @@ excercise for me to see how experienced game developers setup a game.
 
 </div>
 
-Pan by dragging with the mouse or move the orb around with the arrow keys (issue with iframe).
+Pan by dragging with the mouse or move the orb around with the arrow keys. The orb is not constrained with
+the world (still learning __grapefruit__).
 
 {{{EXAMPLE style='height: 600px;'}}}
 
-## Defining resources
+## Defining Assets
 
-Resources are fetched using an array of URLs as in `pixi.js`. Let's define a `Data` object to
-to contain a list of resources to be fetched from the server. We need to track which resources are
-[Tiled Map Editor](http://www.mapeditor.org/) JSON. __grapefruit.js__ creates a world from the JSON.
+`gf.AssetLoader` loads assets using an array of URLs or objects.
+I opt for objects to show `gf.assetCache` is in use later when the orb is loaded. __grapefruit.js__ supports
+the popular[Tiled Map Editor](http://www.mapeditor.org/) TMX (JSON) format as well as the Texture Packer
+format supported by __pixi.js__.
 
 (Is a world analogous to a scene?)
 
@@ -28,7 +30,7 @@ to contain a list of resources to be fetched from the server. We need to track w
 
 ## Configure the Game
 
-The main thing to do is define an instance of `gf.Game` and configure it so it attaches to
+The main thing to do is to configure an instance of `gf.Game` and attach it to
 an HTMLElement container of fixed width and size.
 
 :::< examples/grapefruit-basics.coffee --block game-class
@@ -40,7 +42,8 @@ The `start` method loads `Data.resources` and when completed `onGameReady` is in
 ## Loading a World
 
 AFAICT a world is just a display container. The important data structure is the `GameState` and
-more importantly the active game state. Inside the `GameState` is the game loop.
+more importantly the active game state. Hidden within `GameState` is the game loop `_tick` which
+makes everything run.
 
 :::< examples/grapefruit-basics.coffee --block game-ready
 
@@ -53,8 +56,8 @@ Here we take advantage of the `gf.TiledMap` object to do panning. __Grapefruit__
 
 ## Add an Avatar
 
-The avatar is just another `Sprite`. I used a class again to encapsulate the keyboard binding. (Not sure if this
-is the best way to handle keyboard events and it seems to have problem inside an iframe).
+The avatar is a `gf.Sprite` and loads a `gf.Texture` from the asset cache populate the the `load` above.
+I use a class to encapsulate the keyboard binding. (Not sure if this is the best way to handle keyboard event).
 
 :::< examples/grapefruit-basics.coffee --block avatar
 

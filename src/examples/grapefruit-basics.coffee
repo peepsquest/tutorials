@@ -1,12 +1,8 @@
 #{{{ Content resources
-Data =
-  resources: [
-    'img/isometric_grass_and_water.json'
-    'img/redOrb.png'
-  ]
-  worlds: [
-    'img/isometric_grass_and_water.json'
-  ]
+assets = [
+  {name: 'world', src: 'img/isometric_grass_and_water.json'}
+  {name: 'avatar', src: 'img/redOrb.png'}
+]
 #}}}
 
 
@@ -26,32 +22,33 @@ class Game extends gf.Game
       @onGameReady()
       @render()
 
-    @loader.load Data.resources
+    @loader.load @options.assets
 #}}}
 
 #{{{ Content game-ready
   onGameReady: ->
-    for world in Data.worlds
-      state = new gf.GameState(world)
+    {world, avatar} = @options.assets
 
-      @addState state
-      state.loadWorld world
+    state = new gf.GameState('world')
+    @addState state
+    state.loadWorld 'world'
 
-      state.world.interactive = true
-      state.world.mousedown = mapDown
-      state.world.mouseup = mapUp
-      state.world.mousemove = mapMove
+    state.world.interactive = true
+    state.world.mousedown = mapDown
+    state.world.mouseup = mapUp
+    state.world.mousemove = mapMove
 
-    @enableState Data.worlds[0]
-    hero = new Avatar({resourceUrl: 'img/redOrb.png', state})
+    @enableState 'world'
+    hero = new Avatar({assetId: 'avatar', state})
     state.addChild hero
-
-
 #}}}
+
 
 #{{{ Content panning
 # context for these are TiledMap, which means Function.bind is being used
 mapDown = (e) ->
+  # needed to capture events in iframe of this example (not needed otherwise)
+  window.focus()
   pos = e.getLocalPosition(@parent)
   @drag = pos
 
@@ -61,8 +58,8 @@ mapUp = (e) ->
 mapMove = (e) ->
   if @drag
     pos = e.getLocalPosition(@parent)
-    dx = (pos.x - @drag.x)
-    dy = (pos.y - @drag.y)
+    dx = pos.x - @drag.x
+    dy = pos.y - @drag.y
     @pan dx, dy
     @drag = pos
 #}}}
@@ -72,9 +69,8 @@ mapMove = (e) ->
 class Avatar extends gf.Sprite
 
   constructor: (options) ->
-    {state, resourceUrl} = options
-    t = PIXI.Texture.fromImage(resourceUrl)
-    super t
+    {state, assetId} = options
+    super gf.assetCache[assetId]
     @setupKeyboardHandlers state
 
   ###
@@ -85,20 +81,23 @@ class Avatar extends gf.Sprite
 
     onKeyboardDown = (e) ->
       {position} = that
-      position.y += 2
-      #e.originalEvent.preventDefault()
+      position.y += 5
+      e.originalEvent.preventDefault()
 
     onKeyboardRight = (e) ->
       {position} = that
-      position.x += 2
+      position.x += 5
+      e.originalEvent.preventDefault()
 
     onKeyboardLeft = (e) ->
       {position} = that
-      position.x -= 2
+      position.x -= 5
+      e.originalEvent.preventDefault()
 
     onKeyboardUp = (e) ->
       {position} = that
-      position.y -= 2
+      position.y -= 5
+      e.originalEvent.preventDefault()
 
     state.input.keyboard.on gf.input.KEY.DOWN, onKeyboardDown
     state.input.keyboard.on gf.input.KEY.UP, onKeyboardUp
@@ -108,9 +107,6 @@ class Avatar extends gf.Sprite
 
 
 #{{{ Content start-game
-
-# addEventListener is not ready until document is ready
-
 $ ->
   $game = $('#game')
 
@@ -118,5 +114,6 @@ $ ->
     width: $game.width() - 3
     height: $game.height() - 3
     background: 0xEEFFFF
+    assets: assets
   game.start()
 #}}}
