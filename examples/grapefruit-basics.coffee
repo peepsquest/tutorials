@@ -117,6 +117,6 @@ $ ->
   game = new Game 'game',
     width: $game.width() - 3
     height: $game.height() - 3
-    background: 0x808080
+    background: 0xEEFFFF
   game.start()
 #}}}

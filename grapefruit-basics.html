@@ -50,12 +50,14 @@
         <h1 id='h-grapefruitjs-basics-in-coffeescript'>Grapefruit.js Basics in CoffeeScript</h1>
 <div class='section-example'><p>In this example we&#39;ll cover the basics of using the <a href="https://github.com/grapefruitjs/grapefruit">grapefruitjs</a>
 game engine built on <strong>pixi.js</strong>.</p>
-<div class='note'><em>GrapefruitJs</em> is in its infancy and should not used per its author,
-<a href="https://github.com/englercj">Chad Engler</a>. This is a learning
-process for me to see how experienced game developers setup a game. The author is an active
-contributor to <strong>Pixi.js</strong></div>
+<div class='note'><em>GrapefruitJs</em> is in its infancy and should not be used yet per its author,
+<a href="https://github.com/englercj">Chad Engler</a>.
+The author is an active contributor to <strong>Pixi.js</strong>. This is more of a learning
+excercise for me to see how experienced game developers setup a game.
 
-<p>Pan by dragging with the mouse or move the orb around with the arrow keys.</p>
+</div>
+
+<p>Pan by dragging with the mouse or move the orb around with the arrow keys (issue with iframe).</p>
 <div id="grapefruit-basics0_tabs" class="tabs">
   <ul>
     <li class="active">
@@ -229,7 +231,7 @@ contributor to <strong>Pixi.js</strong></div>
     game = <span class="keyword">new</span> Game(<span class="string">'game'</span>, {
       width: $game.width() - <span class="number">3</span>,
       height: $game.height() - <span class="number">3</span>,
-      background: <span class="number">0x808080</span>
+      background: <span class="number">0xEEFFFF</span>
     });
     <span class="keyword">return</span> game.start();
   });
@@ -373,7 +375,7 @@ $<span class="function"> -&gt;</span>
   game = <span class="keyword">new</span> Game <span class="string">'game'</span>,
     <span class="attribute">width</span>: $game.width() - <span class="number">3</span>
     <span class="attribute">height</span>: $game.height() - <span class="number">3</span>
-    <span class="attribute">background</span>: <span class="number">0x808080</span>
+    <span class="attribute">background</span>: <span class="number">0xEEFFFF</span>
   game.start()
 </code></pre>
 </div>
@@ -409,7 +411,7 @@ an HTMLElement container of fixed width and size.</p>
     <span class="property">@loader</span>.load Data.resources</code></pre>
 <h2 id='h-loading-a-world'>Loading a World</h2>
 <p>AFAICT a world is just a display container. The important data structure is the <code>GameState</code> and
-more importantly the active state. Inside the <code>GameState</code> is the game loop.</p>
+more importantly the active game state. Inside the <code>GameState</code> is the game loop.</p>
 <pre><code class="coffee">  <span class="attribute">onGameReady</span>:<span class="function"> -&gt;</span>
     <span class="keyword">for</span> world <span class="keyword">in</span> Data.worlds
       state = <span class="keyword">new</span> gf.GameState(world)
@@ -492,7 +494,7 @@ $<span class="function"> -&gt;</span>
   game = <span class="keyword">new</span> Game <span class="string">'game'</span>,
     <span class="attribute">width</span>: $game.width() - <span class="number">3</span>
     <span class="attribute">height</span>: $game.height() - <span class="number">3</span>
-    <span class="attribute">background</span>: <span class="number">0x808080</span>
+    <span class="attribute">background</span>: <span class="number">0xEEFFFF</span>
   game.start()</code></pre>
 </div>
       </article>
