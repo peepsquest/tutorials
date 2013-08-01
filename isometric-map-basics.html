@@ -126,7 +126,6 @@ stage.addChild(graphics);
 <span class="keyword">var</span> empty = <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>};
 <span class="keyword">var</span> tileMethods = [grass, dirt, water, empty];
 
-
 <span class="function"><span class="keyword">function</span> <span class="title">drawMap</span><span class="params">(terrain, xOffset)</span> {</span>
   <span class="keyword">var</span> tileType, x, y, isoX, isoY, idx;
 
@@ -231,8 +230,7 @@ coordinates occurs when placing or hit testing on the stage.</p>
 <h2 id='h-rendering-the-isometric-map'>Rendering the Isometric Map</h2>
 <p>This algorithm draws the map with the x-axis increasing
 in southeast direction and the y-axis increasing in a southwest direction.</p>
-<pre><code class="js">
-<span class="function"><span class="keyword">function</span> <span class="title">drawMap</span><span class="params">(terrain, xOffset)</span> {</span>
+<pre><code class="js"><span class="function"><span class="keyword">function</span> <span class="title">drawMap</span><span class="params">(terrain, xOffset)</span> {</span>
     <span class="keyword">var</span> tileType, x, y, isoX, isoY, idx;
 
     <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, iL = terrain.length; i &lt; iL; i++) {
