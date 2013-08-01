@@ -44,7 +44,6 @@ var water = isoTile(0x85b9bb, 0x476263, tileWidth, tileHeight);
 var empty = function(){};
 var tileMethods = [grass, dirt, water, empty];
 
-
 function drawMap(terrain, xOffset) {
     var tileType, x, y, isoX, isoY, idx;
 

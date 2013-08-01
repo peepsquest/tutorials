@@ -81,7 +81,6 @@ This algorithm draws the map with the x-axis increasing
 in southeast direction and the y-axis increasing in a southwest direction.
 
 ```js
-
 function drawMap(terrain, xOffset) {
     var tileType, x, y, isoX, isoY, idx;
 
