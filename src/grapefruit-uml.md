@@ -18,7 +18,7 @@ InputManger | Exposes events and callbacks for input devices: gamepad, keyboard 
 PhysicsSystem | Mixes in physics traits into `Sprite` objects.
 Sprite | Visual entity whose appearance is provided from a `Texture`.
 TileLayer | Is the terrain made of orthogonal or isometric tiles.
-TiledMap | Compares of one or more `Layer` objects.
+TiledMap | Comprised of one or more `Layer` objects.
 TiledObjectGroup | A `Layer` comprised of one or more `Sprite` entities like players, enemies, neutrals...
 
 ```uml
