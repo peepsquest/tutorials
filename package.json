@@ -22,7 +22,7 @@
     "async": "~0.2.9"
   },
   "dependencies": {
-    "pm-spritesheet": "0.0.1",
-    "pm-tutdown": "0.0.1"
+    "pm-spritesheet": "~0.0.1",
+    "pm-tutdown": "~0.0.1"
   }
 }

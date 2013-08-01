@@ -10,8 +10,8 @@ game engine built on __pixi.js__.
 This is more of a learning excercise to see how experienced game developers setup a game.
 </div>
 
-Pan by dragging with the mouse or move the orb around with the arrow keys. The orb is not constrained with
-the world (still learning __grapefruitjs__).
+Pan by dragging with the mouse or move the orb around with the arrow keys. The orb is not constrained to
+the world yet (still learning __grapefruitjs__).
 
 {{{EXAMPLE style='height: 600px;'}}}
 
@@ -49,6 +49,8 @@ more importantly the active game state.
 
 ## Panning the World
 
+The world starts with (0,0) in the upper left. Let's start with it centered.
+
 Here we take advantage of the `gf.TiledMap` object to do panning. __Grapefruitjs__ does all the work.
 
 :::< examples/grapefruit-basics.coffee --block panning
@@ -73,16 +75,15 @@ The game needs a `div` to attach to.
 
 Calculate the width of the div, which is set by CSS, and pass the `div` info to the game and start it.
 
-:::< examples/grapefruit-basics.coffee --block start-game
-
-:::@ --hide
-
 ```css
 #game {
   height: 590px;
 }
 ```
 
+:::< examples/grapefruit-basics.coffee --block start-game
+
+:::# Injects common scripts to be loaded
 :::< support/common.md --raw
 
 :::# Loads the complete Coffee script for user to view

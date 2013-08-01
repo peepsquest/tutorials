@@ -35,8 +35,11 @@ class Game extends gf.Game
     state.world.mousedown = mapDown
     state.world.mouseup = mapUp
     state.world.mousemove = mapMove
-
     @enableState 'world'
+
+    # start with the world centered and slightly down
+    @world.pan @camera.size.x / 2, 100
+
     hero = new Avatar({assetId: 'avatar', game: @})
     state.addChild hero
 #}}}
@@ -109,5 +112,7 @@ $ ->
     height: $game.height() - 3
     background: 0xEEFFFF
     assets: assets
+  window.dbgGame = game
   game.start()
+
 #}}}

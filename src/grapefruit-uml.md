@@ -3,22 +3,29 @@
 
 ## High Level Class Diagram
 
-These are the key classes in understanding __grapefruitjs__.
+These are the key classes in understanding __grapefruitjs__. _Only selected classes and notable
+properties are diagrammed._
 
-A `Game` has many `GameState`s but, a game can only be in one of those states, stored in the `activeState`.
-Interaction is evented through `InputManager`. The `Camera` provides visual effects and the
-viewport into the world. The `AudioManager` provides auditory effects. The `PhysicsSystem`
-mixes in physics traits into sprites. The world is a `TiledMap` comprised of one or more layers.
-A `TiledObjectGroup` layer reprepsents entities like players, creeps and neutrals. A `TileLayer` is
-the terrain made of orthogonal or isometric tiles.
-
+Class | Description
+------|------------
+assetCache | Contains assets loaded by `AssetLoader`.
+AssetLoader | Loads external assets by delegating to `Loader` concrete classes based on type.
+AudioManager | Provides auditory effects.
+Camera | Provides visual effects and is the viewport into the world.
+Game | Controls the entire instance of the game. A game has many `GameState` states but, a game can only be in one of those states, stored in `activeState`. _This object shadows active `GameState` notable attributes._
+GameState | Game can be in many states.
+InputManger | Exposes events and callbacks for input devices: gamepad, keyboard and mouse.
+PhysicsSystem | Mixes in physics traits into `Sprite` objects.
+Sprite | Visual entity whose appearance is provided from a `Texture`.
+TileLayer | Is the terrain made of orthogonal or isometric tiles.
+TiledMap | Compares of one or more `Layer` objects.
+TiledObjectGroup | A type of `Layer` representing entites like players, enemie, neutrals...
 
 ```uml
 class "gf.assetCache" << (S, #FF7700) >>
 
 class "gf.Game" {
     - _tick()
-    - update()
 
     +loadWorld()
     +GameState activeState
