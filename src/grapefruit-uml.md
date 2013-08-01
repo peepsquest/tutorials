@@ -19,7 +19,7 @@ PhysicsSystem | Mixes in physics traits into `Sprite` objects.
 Sprite | Visual entity whose appearance is provided from a `Texture`.
 TileLayer | Is the terrain made of orthogonal or isometric tiles.
 TiledMap | Compares of one or more `Layer` objects.
-TiledObjectGroup | A type of `Layer` representing entites like players, enemie, neutrals...
+TiledObjectGroup | A `Layer` comprised of one or more `Sprite` entities like players, enemies, neutrals...
 
 ```uml
 class "gf.assetCache" << (S, #FF7700) >>
@@ -72,15 +72,15 @@ class "gf.Sprite" {
     +setVelocity(x, y)
 }
 
-"gf.TiledMap" o-- "gf.Layer"
+"gf.TiledMap" *-- "gf.Layer"
 
 "gf.Layer" <|-- "gf.TiledLayer"
 "gf.Layer" <|-- "gf.TiledObjectGroup"
 
-"gf.Layer" o- "gf.Sprite"
+"gf.Layer" *- "gf.Sprite"
 
-"gf.assetCache" - "gf.AssetLoader"
-"gf.AssetLoader" -- "gf.Loader"
+"gf.AssetLoader" - "gf.assetCache" : updates
+"gf.AssetLoader" -- "gf.Loader"  : uses
 
 "gf.GameState" o-- "gf.AudioManager"
 "gf.GameState" o-- "gf.PhysicsSystem"
@@ -88,7 +88,7 @@ class "gf.Sprite" {
 "gf.GameState" o-- "gf.Camera"
 "gf.GameState" o-- "gf.TiledMap"
 
-"gf.Game" o-- "gf.GameState"
+"gf.Game" *-- "gf.GameState" : manages
 "gf.Game" o-- "gf.AssetLoader"
 
 "gf.Loader" <|-- "gf.AudioLoader"

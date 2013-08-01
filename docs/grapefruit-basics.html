@@ -51,9 +51,10 @@
         <h1 id='h-grapefruitjs-basics'>Grapefruitjs Basics</h1>
 <div class='section-example'><p>In this CoffeeScript example we&#39;ll cover the basics of using the <a href="https://github.com/grapefruitjs/grapefruit">Grapefruitjs</a>
 game engine built on <strong>pixi.js</strong>.</p>
-<div class='note'><em>GrapefruitJs</em> is in its infancy and should not be used yet per its author,
-<a href="https://github.com/englercj">Chad Engler</a>. The author is an active contributor to <strong>pixi.js</strong>.
-This is more of a learning excercise to see how experienced game developers setup a game.
+<div class='note'><em>Grapefruitjs</em> is in its infancy and should not be used yet per its author,
+<a href="https://github.com/englercj">Chad Engler</a>. The API is in flux. The author is an active contributor to <strong>pixi.js</strong>.
+This is more an excercise to learn the design patterns an experienced game developer uses in creating
+a game.
 </div>
 
 <p>Pan by dragging with the mouse or move the orb around with the arrow keys. The orb is not constrained to
@@ -377,7 +378,7 @@ $<span class="function"> -&gt;</span>
 </div>
 </div><h2 id='h-loading-assets'>Loading Assets</h2>
 <p><code>gf.AssetLoader</code> loads assets given an array of URLs or objects.
-I opt for objects to show <code>gf.assetCache</code> is in use later when the orb is loaded. <strong>Grapefruitjs</strong> supports
+I opt for objects to show <code>gf.assetCache</code> which is used later when loading the orb. <strong>Grapefruitjs</strong> supports
 the popular <a href="http://www.mapeditor.org/">Tiled Map Editor</a> TMX (JSON) format as well as Texture Packer
 format supported by <strong>pixi.js</strong>.</p>
 <pre><code class="coffee">assets = [

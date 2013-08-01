@@ -5,9 +5,10 @@
 In this CoffeeScript example we'll cover the basics of using the [Grapefruitjs](https://github.com/grapefruitjs/grapefruit)
 game engine built on __pixi.js__.
 
-<div class='note'><em>GrapefruitJs</em> is in its infancy and should not be used yet per its author,
-[Chad Engler](https://github.com/englercj). The author is an active contributor to __pixi.js__.
-This is more of a learning excercise to see how experienced game developers setup a game.
+<div class='note'><em>Grapefruitjs</em> is in its infancy and should not be used yet per its author,
+[Chad Engler](https://github.com/englercj). The API is in flux. The author is an active contributor to __pixi.js__.
+This is more an excercise to learn the design patterns an experienced game developer uses in creating
+a game.
 </div>
 
 Pan by dragging with the mouse or move the orb around with the arrow keys. The orb is not constrained to
@@ -19,7 +20,7 @@ the world yet (still learning __grapefruitjs__).
 ## Loading Assets
 
 `gf.AssetLoader` loads assets given an array of URLs or objects.
-I opt for objects to show `gf.assetCache` is in use later when the orb is loaded. __Grapefruitjs__ supports
+I opt for objects to show `gf.assetCache` which is used later when loading the orb. __Grapefruitjs__ supports
 the popular [Tiled Map Editor](http://www.mapeditor.org/) TMX (JSON) format as well as Texture Packer
 format supported by __pixi.js__.
 
