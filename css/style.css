@@ -376,12 +376,12 @@ code {
   font-size: 0.9em;
   color: #222;
   padding: 0 0.2em;
-  background-color: #fafafc;
-  border: solid 1px #ececf0;
+  font-weight: bold;
 }
 pre code {
   display: block;
   padding: 0.5em;
+  font-weight: normal;
   background-color: #fafafc;
   border: solid 1px #ececf0;
 }
@@ -427,7 +427,7 @@ pre .erlang_repl .function_or_atom,
 pre .asciidoc .header,
 pre .markdown .header,
 pre .coffeescript .attribute {
-  color: #cc5f00;
+  color: #4C9900;
 }
 pre .comment,
 pre .annotation,
@@ -452,7 +452,7 @@ pre .asciidoc .bullet,
 pre .markdown .bullet,
 pre .asciidoc .link_url,
 pre .markdown .link_url {
-  color: #b40038;
+  color: #99004c;
 }
 pre .label,
 pre .javadoc,
@@ -550,19 +550,19 @@ pre .xml .cdata {
   background-color: #ffffff;
   border-bottom: none;
   outline: none;
-  color: #26719a;
+  color: #00aab8;
 }
 .tabs ul li a:hover {
-  color: #262626;
+  color: #00aab8;
 }
 .tabs ul li.active a {
   border-bottom: 1px solid #fff;
-  color: #1a1a1a;
+  color: #00aab8;
   padding-bottom: 11px;
   font-weight: bold;
 }
 .tabs ul li.active a:hover {
-  color: #262626;
+  color: #00aab8;
   font-weight: bold;
 }
 .tabs ul li a.icon {
@@ -655,7 +655,7 @@ Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiac
   text-shadow: none;
 }
 .light-text {
-  color: #777777;
+  color: #888888;
 }
 * {
   box-sizing: border-box;
@@ -680,11 +680,11 @@ body {
   width: 250px;
   height: 100%;
   overflow: auto;
-  color: #777777;
+  color: #888888;
   border-right: solid 1px #eee;
 }
 #sidebar a {
-  color: #777777;
+  color: #888888;
 }
 #sidebar .active {
   font-weight: bold;
@@ -699,13 +699,7 @@ body {
 }
 #sidebar h3 {
   font-size: 14px;
-  color: #777777;
-}
-#sidebar a {
-  text-decoration: none;
-}
-#sidebar a:hover {
-  text-decoration: underline;
+  color: #888888;
 }
 #sidebar ul {
   margin-top: 2px;
@@ -745,17 +739,20 @@ strong {
   color: #444444;
 }
 a {
-  color: #26719a;
-  text-decoration: underline;
+  color: #00aab8;
+  text-decoration: none;
 }
 a strong {
-  color: #26719a;
+  color: #00aab8;
+}
+a:hover {
+  text-decoration: underline;
 }
 .caption {
   margin-left: 14px;
   /* font-size: 12px; */
 
-  color: #777777;
+  color: #888888;
   font-family: consolas, menlo, "ubuntu mono", monospace;
   font-weight: normal;
   font-size: 14px;

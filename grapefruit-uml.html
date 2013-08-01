@@ -1,0 +1,194 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>PeepsQuest Dev</title>
+    <!-- Stylesheets -->
+    <link rel='stylesheet' type='text/css' href='css/style.css' />
+
+    <!-- Scripts -->
+    <!--[if lt IE 9]><script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body>
+
+  <div id="page-wrapper">
+
+    <div class="row">
+
+      <!-- Sidebar -->
+      <section id="sidebar" class="col sidebar">
+        <h2><a href="index.html#">PeepsQuest Dev</a></h2>
+        <ul>
+          <li><a href="https://github.com/peepsquest/tutorials">Github</a></li>
+        </ul>
+        
+        
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>PeepsQuest Dev</title>
+    <!-- Stylesheets -->
+    <link rel='stylesheet' type='text/css' href='css/style.css' />
+
+    <!-- Scripts -->
+    <!--[if lt IE 9]><script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body>
+
+  <div id="page-wrapper">
+
+    <div class="row">
+
+      <!-- Sidebar -->
+      <section id="sidebar" class="col sidebar">
+        <h2><a href="index.html#">PeepsQuest Dev</a></h2>
+        <ul>
+          <li><a href="https://github.com/peepsquest/tutorials">Github</a></li>
+        </ul>
+        
+        <h2 id='h-tutorialsindexhtml'><a href="index.html">Tutorials</a></h2>
+<h3 id='h-general'>General</h3>
+<ul>
+<li><a href="creating-sprite-sheets.html">Creating Sprite Sheets</a></li>
+</ul>
+<h3 id='h-pixijs'>Pixi.js</h3>
+<ul>
+<li><a href="pixi-basics.html">Basics</a></li>
+<li><a href="isometric-map-basics.html">Isometric - Map Basics</a></li>
+<li><a href="isometric-tiles-with-height.html">Isometric - Tiles w/ Height</a></li>
+<li><a href="isometric-placing-avatar.html">Isometric - Avatar</a></li>
+</ul>
+<h3 id='h-grapefruitjs'>Grapefruitjs</h3>
+<ul>
+<li><a href="grapefruit-uml.html">UML Diagrams</a></li>
+<li><a href="grapefruit-basics.html">Basics</a></li>
+</ul>
+
+      </section>
+
+      <!-- Main Body -->
+      <article id="content" class="col content">
+        <a href='index.html'>
+          <img id="logo" src="img/peepsquest.png" />
+        </a>
+        <h2 id='h-tutorialsindexhtml'><a href="index.html">Tutorials</a></h2>
+<h3 id='h-general'>General</h3>
+<ul>
+<li><a href="creating-sprite-sheets.html">Creating Sprite Sheets</a></li>
+</ul>
+<h3 id='h-pixijs'>Pixi.js</h3>
+<ul>
+<li><a href="pixi-basics.html">Basics</a></li>
+<li><a href="isometric-map-basics.html">Isometric - Map Basics</a></li>
+<li><a href="isometric-tiles-with-height.html">Isometric - Tiles w/ Height</a></li>
+<li><a href="isometric-placing-avatar.html">Isometric - Avatar</a></li>
+</ul>
+<h3 id='h-grapefruitjs'>Grapefruitjs</h3>
+<ul>
+<li><a href="grapefruit-uml.html">UML Diagrams</a></li>
+<li><a href="grapefruit-basics.html">Basics</a></li>
+</ul>
+
+      </article>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <script src="examples/tutdown.js"></script>
+  <script>
+  $(function() {
+    $('.more-details').click(function() {
+      $this = $(this);
+      if ($this.hasClass('collapsed')) {
+        $this.removeClass('collapsed');
+        $this.addClass('uncollapsed');
+      } else {
+        $this.removeClass('uncollapsed');
+        $this.addClass('collapsed');
+      }
+    });
+  });
+  </script>
+  <!--
+  <script type="text/javascript">
+    (function() {
+      var b = document.createElement("script"); b.type = "text/javascript"; b.async = true;
+      b.src = "https://barc.com/js/libs/barc/barc.js";
+      var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(b, s);
+    })();
+  </script>
+  -->
+  <script type="text/javascript">
+    $('#sidebar a').each(function() {
+      var
+        $a = $(this),
+        href = window.location.href;
+      if (href.indexOf && href.indexOf($a.attr('href')) > -1 && href.indexOf('#') === -1) // hacky to grab only example links
+        $a.closest('li').addClass('active');
+    });
+  </script>
+</body>
+</html>
+
+
+      </section>
+
+      <!-- Main Body -->
+      <article id="content" class="col content">
+        <a href='index.html'>
+          <img id="logo" src="img/peepsquest.png" />
+        </a>
+        <h1 id='h-grapefruitjs-uml-diagrams'>Grapefruitjs UML Diagrams</h1>
+<h2 id='h-high-level-class-diagram'>High Level Class Diagram</h2>
+<p>These are the key classes in understanding <strong>grapefruitjs</strong>.</p>
+<p>A <code>Game</code> has many <code>GameState</code>s but, a game can only be in one of those states, stored in the <code>activeState</code>.
+Interaction is evented through <code>InputManager</code>. The <code>Camera</code> provides visual effects and the
+viewport into the world. The <code>AudioManager</code> provides auditory effects. The <code>PhysicsSystem</code>
+mixes in physics traits into sprites. The world is a <code>TiledMap</code> comprised of one or more layers.
+A <code>TiledObjectGroup</code> layer reprepsents entities like players, creeps and neutrals. A <code>TileLayer</code> is
+the terrain made of orthogonal or isometric tiles.</p>
+<pre><code class="uml"><?xml version="1.0" encoding="UTF-8" standalone="yes"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="845pt" style="width:890px;height:845px;" version="1.1" viewBox="0 0 890 845" width="890pt"><defs><filter height="300%" id="f1" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4" dy="4" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><polygon fill="#FFFFFF" filter="url(#f1)" points="22,24,44,24,51,46.2969,883,46.2969,883,838,22,838,22,24" style="stroke: #000000; stroke-width: 2.0;"/><line style="stroke: #000000; stroke-width: 2.0;" x1="22" x2="51" y1="46.2969" y2="46.2969"/><text fill="#000000" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="16" x="25" y="41">gf</text><rect fill="#FEFECE" filter="url(#f1)" height="48" style="stroke: #A80036; stroke-width: 1.5;" width="106" x="271" y="290"/><ellipse cx="286" cy="306" fill="#FF7700" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M285.4844,306.5625 Q283.625,305.8594 282.9766,305.0859 Q282.3281,304.3125 282.3281,303 Q282.3281,301.3125 283.4063,300.3438 Q284.4844,299.375 286.3594,299.375 Q287.2188,299.375 288.0703,299.5703 Q288.9219,299.7656 289.7656,300.1563 L289.7656,302.5469 Q288.9844,301.9844 288.1641,301.6953 Q287.3438,301.4063 286.5469,301.4063 Q285.6719,301.4063 285.1953,301.7656 Q284.7188,302.125 284.7188,302.7813 Q284.7188,303.2969 285.0625,303.6328 Q285.4063,303.9688 286.5,304.375 L287.5625,304.7813 Q289.0469,305.3281 289.7578,306.2344 Q290.4688,307.1406 290.4688,308.5156 Q290.4688,310.3906 289.3594,311.3125 Q288.25,312.2344 286,312.2344 Q285.0781,312.2344 284.1563,312.0156 Q283.2344,311.7969 282.375,311.375 L282.375,308.8438 Q283.3438,309.5313 284.2656,309.875 Q285.1875,310.2188 286.0781,310.2188 Q286.9844,310.2188 287.4844,309.8047 Q287.9844,309.3906 287.9844,308.6563 Q287.9844,308.0938 287.6484,307.6797 Q287.3125,307.2656 286.6875,307.0156 L285.4844,306.5625 Z "/><text fill="#000000" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="74" x="300" y="311.0156">assetCache</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="272" x2="376" y1="322" y2="322"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="272" x2="376" y1="330" y2="330"/><rect fill="#FEFECE" filter="url(#f1)" height="137.6328" style="stroke: #A80036; stroke-width: 1.5;" width="157" x="186" y="60"/><ellipse cx="242.25" cy="76" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M245.2188,81.6406 Q244.6406,81.9375 244,82.0859 Q243.3594,82.2344 242.6563,82.2344 Q240.1563,82.2344 238.8359,80.5859 Q237.5156,78.9375 237.5156,75.8125 Q237.5156,72.6875 238.8359,71.0313 Q240.1563,69.375 242.6563,69.375 Q243.3594,69.375 244.0078,69.5313 Q244.6563,69.6875 245.2188,69.9844 L245.2188,72.7031 Q244.5938,72.125 244,71.8516 Q243.4063,71.5781 242.7813,71.5781 Q241.4375,71.5781 240.75,72.6484 Q240.0625,73.7188 240.0625,75.8125 Q240.0625,77.9063 240.75,78.9766 Q241.4375,80.0469 242.7813,80.0469 Q243.4063,80.0469 244,79.7734 Q244.5938,79.5 245.2188,78.9219 L245.2188,81.6406 Z "/><text fill="#000000" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="36" x="262.75" y="81.0156">Game</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="187" x2="342" y1="92" y2="92"/><ellipse cx="197" cy="103.9023" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="131" x="206" y="107">GameState activeState</text><ellipse cx="197" cy="116.707" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="111" x="206" y="119.8047">AssetLoader loader</text><ellipse cx="197" cy="129.5117" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="119" x="206" y="132.6094">SpritePool spritePool</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="187" x2="342" y1="138.4141" y2="138.4141"/><rect fill="#F24D5C" height="6" style="stroke: #C82930; stroke-width: 1.0;" width="6" x="194" y="147.3164"/><text fill="#000000" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="33" x="206" y="153.4141">_tick()</text><rect fill="#F24D5C" height="6" style="stroke: #C82930; stroke-width: 1.0;" width="6" x="194" y="160.1211"/><text fill="#000000" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="47" x="206" y="166.2188">update()</text><text fill="#000000" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="0" x="210" y="179.0234"/><ellipse cx="197" cy="188.7305" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="63" x="206" y="191.8281">loadWorld()</text><rect fill="#FEFECE" filter="url(#f1)" height="112.0234" style="stroke: #A80036; stroke-width: 1.5;" width="159" x="425" y="258"/><ellipse cx="465.65" cy="274" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M468.6188,279.6406 Q468.0406,279.9375 467.4,280.0859 Q466.7594,280.2344 466.0563,280.2344 Q463.5563,280.2344 462.2359,278.5859 Q460.9156,276.9375 460.9156,273.8125 Q460.9156,270.6875 462.2359,269.0313 Q463.5563,267.375 466.0563,267.375 Q466.7594,267.375 467.4078,267.5313 Q468.0563,267.6875 468.6188,267.9844 L468.6188,270.7031 Q467.9938,270.125 467.4,269.8516 Q466.8063,269.5781 466.1813,269.5781 Q464.8375,269.5781 464.15,270.6484 Q463.4625,271.7188 463.4625,273.8125 Q463.4625,275.9063 464.15,276.9766 Q464.8375,278.0469 466.1813,278.0469 Q466.8063,278.0469 467.4,277.7734 Q467.9938,277.5 468.6188,276.9219 L468.6188,279.6406 Z "/><text fill="#000000" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="70" x="485.35" y="279.0156">GameState</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="426" x2="583" y1="290" y2="290"/><ellipse cx="436" cy="301.9023" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="115" x="445" y="305">AudioManager audio</text><ellipse cx="436" cy="314.707" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="133" x="445" y="317.8047">PhysicsSystem physics</text><ellipse cx="436" cy="327.5117" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="109" x="445" y="330.6094">InputManager input</text><ellipse cx="436" cy="340.3164" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="92" x="445" y="343.4141">Camera camera</text><ellipse cx="436" cy="353.1211" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="85" x="445" y="356.2188">TiledMap world</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="426" x2="583" y1="362.0234" y2="362.0234"/><rect fill="#FEFECE" filter="url(#f1)" height="73.6094" style="stroke: #A80036; stroke-width: 1.5;" width="138" x="729" y="449"/><ellipse cx="752.55" cy="465" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M755.5188,470.6406 Q754.9406,470.9375 754.3,471.0859 Q753.6594,471.2344 752.9563,471.2344 Q750.4563,471.2344 749.1359,469.5859 Q747.8156,467.9375 747.8156,464.8125 Q747.8156,461.6875 749.1359,460.0313 Q750.4563,458.375 752.9563,458.375 Q753.6594,458.375 754.3078,458.5313 Q754.9563,458.6875 755.5188,458.9844 L755.5188,461.7031 Q754.8938,461.125 754.3,460.8516 Q753.7063,460.5781 753.0813,460.5781 Q751.7375,460.5781 751.05,461.6484 Q750.3625,462.7188 750.3625,464.8125 Q750.3625,466.9063 751.05,467.9766 Q751.7375,469.0469 753.0813,469.0469 Q753.7063,469.0469 754.3,468.7734 Q754.8938,468.5 755.5188,467.9219 L755.5188,470.6406 Z "/><text fill="#000000" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="87" x="768.45" y="470.0156">InputManager</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="730" x2="866" y1="481" y2="481"/><ellipse cx="740" cy="492.9023" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="109" x="749" y="496">Keyboard keyboard</text><ellipse cx="740" cy="505.707" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="112" x="749" y="508.8047">Gamepad gamepad</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="730" x2="866" y1="514.6094" y2="514.6094"/><rect fill="#FEFECE" filter="url(#f1)" height="60.8047" style="stroke: #A80036; stroke-width: 1.5;" width="121" x="90" y="283.5"/><ellipse cx="109.95" cy="299.5" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M112.9188,305.1406 Q112.3406,305.4375 111.7,305.5859 Q111.0594,305.7344 110.3563,305.7344 Q107.8563,305.7344 106.5359,304.0859 Q105.2156,302.4375 105.2156,299.3125 Q105.2156,296.1875 106.5359,294.5313 Q107.8563,292.875 110.3563,292.875 Q111.0594,292.875 111.7078,293.0313 Q112.3563,293.1875 112.9188,293.4844 L112.9188,296.2031 Q112.2938,295.625 111.7,295.3516 Q111.1063,295.0781 110.4813,295.0781 Q109.1375,295.0781 108.45,296.1484 Q107.7625,297.2188 107.7625,299.3125 Q107.7625,301.4063 108.45,302.4766 Q109.1375,303.5469 110.4813,303.5469 Q111.1063,303.5469 111.7,303.2734 Q112.2938,303 112.9188,302.4219 L112.9188,305.1406 Z "/><text fill="#000000" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="78" x="125.05" y="304.5156">AssetLoader</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="91" x2="210" y1="315.5" y2="315.5"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="91" x2="210" y1="323.5" y2="323.5"/><ellipse cx="101" cy="335.4023" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="95" x="110" y="338.5">load(assetUrls[])</text><rect fill="#FEFECE" filter="url(#f1)" height="112.0234" style="stroke: #A80036; stroke-width: 1.5;" width="118" x="147" y="430"/><ellipse cx="175.95" cy="446" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M178.9188,451.6406 Q178.3406,451.9375 177.7,452.0859 Q177.0594,452.2344 176.3563,452.2344 Q173.8563,452.2344 172.5359,450.5859 Q171.2156,448.9375 171.2156,445.8125 Q171.2156,442.6875 172.5359,441.0313 Q173.8563,439.375 176.3563,439.375 Q177.0594,439.375 177.7078,439.5313 Q178.3563,439.6875 178.9188,439.9844 L178.9188,442.7031 Q178.2938,442.125 177.7,441.8516 Q177.1063,441.5781 176.4813,441.5781 Q175.1375,441.5781 174.45,442.6484 Q173.7625,443.7188 173.7625,445.8125 Q173.7625,447.9063 174.45,448.9766 Q175.1375,450.0469 176.4813,450.0469 Q177.1063,450.0469 177.7,449.7734 Q178.2938,449.5 178.9188,448.9219 L178.9188,451.6406 Z "/><text fill="#000000" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="55" x="193.05" y="451.0156">TiledMap</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="148" x2="264" y1="462" y2="462"/><ellipse cx="158" cy="473.9023" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="78" x="167" y="477">Layer layers[]</text><ellipse cx="158" cy="486.707" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="92" x="167" y="489.8047">Tileset tilesets[]</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="148" x2="264" y1="495.6094" y2="495.6094"/><ellipse cx="158" cy="507.5117" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="60" x="167" y="510.6094">findLayer()</text><ellipse cx="158" cy="520.3164" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="29" x="167" y="523.4141">pan()</text><ellipse cx="158" cy="533.1211" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="88" x="167" y="536.2188">spawnObjects()</text><rect fill="#FEFECE" filter="url(#f1)" height="73.6094" style="stroke: #A80036; stroke-width: 1.5;" width="139" x="362" y="748"/><ellipse cx="377" cy="764" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M379.9688,769.6406 Q379.3906,769.9375 378.75,770.0859 Q378.1094,770.2344 377.4063,770.2344 Q374.9063,770.2344 373.5859,768.5859 Q372.2656,766.9375 372.2656,763.8125 Q372.2656,760.6875 373.5859,759.0313 Q374.9063,757.375 377.4063,757.375 Q378.1094,757.375 378.7578,757.5313 Q379.4063,757.6875 379.9688,757.9844 L379.9688,760.7031 Q379.3438,760.125 378.75,759.8516 Q378.1563,759.5781 377.5313,759.5781 Q376.1875,759.5781 375.5,760.6484 Q374.8125,761.7188 374.8125,763.8125 Q374.8125,765.9063 375.5,766.9766 Q376.1875,768.0469 377.5313,768.0469 Q378.1563,768.0469 378.75,767.7734 Q379.3438,767.5 379.9688,766.9219 L379.9688,769.6406 Z "/><text fill="#000000" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="107" x="391" y="769.0156">TiledObjectGroup</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="363" x2="500" y1="780" y2="780"/><ellipse cx="373" cy="791.9023" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="87" x="382" y="795">Sprite objects[]</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="363" x2="500" y1="800.8047" y2="800.8047"/><ellipse cx="373" cy="812.707" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="45" x="382" y="815.8047">spawn()</text><rect fill="#FEFECE" filter="url(#f1)" height="86.4141" style="stroke: #A80036; stroke-width: 1.5;" width="117" x="662" y="602"/><ellipse cx="698.6" cy="618" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M701.5688,623.6406 Q700.9906,623.9375 700.35,624.0859 Q699.7094,624.2344 699.0063,624.2344 Q696.5063,624.2344 695.1859,622.5859 Q693.8656,620.9375 693.8656,617.8125 Q693.8656,614.6875 695.1859,613.0313 Q696.5063,611.375 699.0063,611.375 Q699.7094,611.375 700.3578,611.5313 Q701.0063,611.6875 701.5688,611.9844 L701.5688,614.7031 Q700.9438,614.125 700.35,613.8516 Q699.7563,613.5781 699.1313,613.5781 Q697.7875,613.5781 697.1,614.6484 Q696.4125,615.7188 696.4125,617.8125 Q696.4125,619.9063 697.1,620.9766 Q697.7875,622.0469 699.1313,622.0469 Q699.7563,622.0469 700.35,621.7734 Q700.9438,621.5 701.5688,620.9219 L701.5688,623.6406 Z "/><text fill="#000000" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="37" x="717.4" y="623.0156">Sprite</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="663" x2="778" y1="634" y2="634"/><ellipse cx="673" cy="645.9023" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="45" x="682" y="649">position</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="663" x2="778" y1="654.8047" y2="654.8047"/><ellipse cx="673" cy="666.707" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="91" x="682" y="669.8047">setPosition(x, y)</text><ellipse cx="673" cy="679.5117" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="89" x="682" y="682.6094">setVelocity(x, y)</text><rect fill="#FEFECE" filter="url(#f1)" height="48" style="stroke: #A80036; stroke-width: 1.5;" width="65" x="475" y="621"/><ellipse cx="490" cy="637" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M492.9688,642.6406 Q492.3906,642.9375 491.75,643.0859 Q491.1094,643.2344 490.4063,643.2344 Q487.9063,643.2344 486.5859,641.5859 Q485.2656,639.9375 485.2656,636.8125 Q485.2656,633.6875 486.5859,632.0313 Q487.9063,630.375 490.4063,630.375 Q491.1094,630.375 491.7578,630.5313 Q492.4063,630.6875 492.9688,630.9844 L492.9688,633.7031 Q492.3438,633.125 491.75,632.8516 Q491.1563,632.5781 490.5313,632.5781 Q489.1875,632.5781 488.5,633.6484 Q487.8125,634.7188 487.8125,636.8125 Q487.8125,638.9063 488.5,639.9766 Q489.1875,641.0469 490.5313,641.0469 Q491.1563,641.0469 491.75,640.7734 Q492.3438,640.5 492.9688,639.9219 L492.9688,642.6406 Z "/><text fill="#000000" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="33" x="504" y="642.0156">Layer</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="476" x2="539" y1="653" y2="653"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="476" x2="539" y1="661" y2="661"/><rect fill="#FEFECE" filter="url(#f1)" height="48" style="stroke: #A80036; stroke-width: 1.5;" width="94" x="535" y="761"/><ellipse cx="550" cy="777" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M552.9688,782.6406 Q552.3906,782.9375 551.75,783.0859 Q551.1094,783.2344 550.4063,783.2344 Q547.9063,783.2344 546.5859,781.5859 Q545.2656,779.9375 545.2656,776.8125 Q545.2656,773.6875 546.5859,772.0313 Q547.9063,770.375 550.4063,770.375 Q551.1094,770.375 551.7578,770.5313 Q552.4063,770.6875 552.9688,770.9844 L552.9688,773.7031 Q552.3438,773.125 551.75,772.8516 Q551.1563,772.5781 550.5313,772.5781 Q549.1875,772.5781 548.5,773.6484 Q547.8125,774.7188 547.8125,776.8125 Q547.8125,778.9063 548.5,779.9766 Q549.1875,781.0469 550.5313,781.0469 Q551.1563,781.0469 551.75,780.7734 Q552.3438,780.5 552.9688,779.9219 L552.9688,782.6406 Z "/><text fill="#000000" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="62" x="564" y="782.0156">TiledLayer</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="536" x2="628" y1="793" y2="793"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="536" x2="628" y1="801" y2="801"/><rect fill="#FEFECE" filter="url(#f1)" height="48" style="stroke: #A80036; stroke-width: 1.5;" width="75" x="38" y="462"/><ellipse cx="53" cy="478" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M55.9688,483.6406 Q55.3906,483.9375 54.75,484.0859 Q54.1094,484.2344 53.4063,484.2344 Q50.9063,484.2344 49.5859,482.5859 Q48.2656,480.9375 48.2656,477.8125 Q48.2656,474.6875 49.5859,473.0313 Q50.9063,471.375 53.4063,471.375 Q54.1094,471.375 54.7578,471.5313 Q55.4063,471.6875 55.9688,471.9844 L55.9688,474.7031 Q55.3438,474.125 54.75,473.8516 Q54.1563,473.5781 53.5313,473.5781 Q52.1875,473.5781 51.5,474.6484 Q50.8125,475.7188 50.8125,477.8125 Q50.8125,479.9063 51.5,480.9766 Q52.1875,482.0469 53.5313,482.0469 Q54.1563,482.0469 54.75,481.7734 Q55.3438,481.5 55.9688,480.9219 L55.9688,483.6406 Z "/><text fill="#000000" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="43" x="67" y="483.0156">Loader</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="39" x2="112" y1="494" y2="494"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="39" x2="112" y1="502" y2="502"/><rect fill="#FEFECE" filter="url(#f1)" height="48" style="stroke: #A80036; stroke-width: 1.5;" width="122" x="300" y="462"/><ellipse cx="315" cy="478" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M317.9688,483.6406 Q317.3906,483.9375 316.75,484.0859 Q316.1094,484.2344 315.4063,484.2344 Q312.9063,484.2344 311.5859,482.5859 Q310.2656,480.9375 310.2656,477.8125 Q310.2656,474.6875 311.5859,473.0313 Q312.9063,471.375 315.4063,471.375 Q316.1094,471.375 316.7578,471.5313 Q317.4063,471.6875 317.9688,471.9844 L317.9688,474.7031 Q317.3438,474.125 316.75,473.8516 Q316.1563,473.5781 315.5313,473.5781 Q314.1875,473.5781 313.5,474.6484 Q312.8125,475.7188 312.8125,477.8125 Q312.8125,479.9063 313.5,480.9766 Q314.1875,482.0469 315.5313,482.0469 Q316.1563,482.0469 316.75,481.7734 Q317.3438,481.5 317.9688,480.9219 L317.9688,483.6406 Z "/><text fill="#000000" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="90" x="329" y="483.0156">AudioManager</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="301" x2="421" y1="494" y2="494"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="301" x2="421" y1="502" y2="502"/><rect fill="#FEFECE" filter="url(#f1)" height="48" style="stroke: #A80036; stroke-width: 1.5;" width="123" x="457" y="462"/><ellipse cx="472" cy="478" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M474.9688,483.6406 Q474.3906,483.9375 473.75,484.0859 Q473.1094,484.2344 472.4063,484.2344 Q469.9063,484.2344 468.5859,482.5859 Q467.2656,480.9375 467.2656,477.8125 Q467.2656,474.6875 468.5859,473.0313 Q469.9063,471.375 472.4063,471.375 Q473.1094,471.375 473.7578,471.5313 Q474.4063,471.6875 474.9688,471.9844 L474.9688,474.7031 Q474.3438,474.125 473.75,473.8516 Q473.1563,473.5781 472.5313,473.5781 Q471.1875,473.5781 470.5,474.6484 Q469.8125,475.7188 469.8125,477.8125 Q469.8125,479.9063 470.5,480.9766 Q471.1875,482.0469 472.5313,482.0469 Q473.1563,482.0469 473.75,481.7734 Q474.3438,481.5 474.9688,480.9219 L474.9688,483.6406 Z "/><text fill="#000000" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="91" x="486" y="483.0156">PhysicsSystem</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="458" x2="579" y1="494" y2="494"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="458" x2="579" y1="502" y2="502"/><rect fill="#FEFECE" filter="url(#f1)" height="48" style="stroke: #A80036; stroke-width: 1.5;" width="80" x="614" y="462"/><ellipse cx="629" cy="478" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M631.9688,483.6406 Q631.3906,483.9375 630.75,484.0859 Q630.1094,484.2344 629.4063,484.2344 Q626.9063,484.2344 625.5859,482.5859 Q624.2656,480.9375 624.2656,477.8125 Q624.2656,474.6875 625.5859,473.0313 Q626.9063,471.375 629.4063,471.375 Q630.1094,471.375 630.7578,471.5313 Q631.4063,471.6875 631.9688,471.9844 L631.9688,474.7031 Q631.3438,474.125 630.75,473.8516 Q630.1563,473.5781 629.5313,473.5781 Q628.1875,473.5781 627.5,474.6484 Q626.8125,475.7188 626.8125,477.8125 Q626.8125,479.9063 627.5,480.9766 Q628.1875,482.0469 629.5313,482.0469 Q630.1563,482.0469 630.75,481.7734 Q631.3438,481.5 631.9688,480.9219 L631.9688,483.6406 Z "/><text fill="#000000" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="48" x="643" y="483.0156">Camera</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="615" x2="693" y1="494" y2="494"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="615" x2="693" y1="502" y2="502"/><rect fill="#FEFECE" filter="url(#f1)" height="48" style="stroke: #A80036; stroke-width: 1.5;" width="110" x="195" y="621"/><ellipse cx="210" cy="637" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M212.9688,642.6406 Q212.3906,642.9375 211.75,643.0859 Q211.1094,643.2344 210.4063,643.2344 Q207.9063,643.2344 206.5859,641.5859 Q205.2656,639.9375 205.2656,636.8125 Q205.2656,633.6875 206.5859,632.0313 Q207.9063,630.375 210.4063,630.375 Q211.1094,630.375 211.7578,630.5313 Q212.4063,630.6875 212.9688,630.9844 L212.9688,633.7031 Q212.3438,633.125 211.75,632.8516 Q211.1563,632.5781 210.5313,632.5781 Q209.1875,632.5781 208.5,633.6484 Q207.8125,634.7188 207.8125,636.8125 Q207.8125,638.9063 208.5,639.9766 Q209.1875,641.0469 210.5313,641.0469 Q211.1563,641.0469 211.75,640.7734 Q212.3438,640.5 212.9688,639.9219 L212.9688,642.6406 Z "/><text fill="#000000" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="78" x="224" y="642.0156">AudioLoader</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="196" x2="304" y1="653" y2="653"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="196" x2="304" y1="661" y2="661"/><rect fill="#FEFECE" filter="url(#f1)" height="48" style="stroke: #A80036; stroke-width: 1.5;" width="101" x="340" y="621"/><ellipse cx="355" cy="637" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M357.9688,642.6406 Q357.3906,642.9375 356.75,643.0859 Q356.1094,643.2344 355.4063,643.2344 Q352.9063,643.2344 351.5859,641.5859 Q350.2656,639.9375 350.2656,636.8125 Q350.2656,633.6875 351.5859,632.0313 Q352.9063,630.375 355.4063,630.375 Q356.1094,630.375 356.7578,630.5313 Q357.4063,630.6875 357.9688,630.9844 L357.9688,633.7031 Q357.3438,633.125 356.75,632.8516 Q356.1563,632.5781 355.5313,632.5781 Q354.1875,632.5781 353.5,633.6484 Q352.8125,634.7188 352.8125,636.8125 Q352.8125,638.9063 353.5,639.9766 Q354.1875,641.0469 355.5313,641.0469 Q356.1563,641.0469 356.75,640.7734 Q357.3438,640.5 357.9688,639.9219 L357.9688,642.6406 Z "/><text fill="#000000" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="69" x="369" y="642.0156">JsonLoader</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="341" x2="440" y1="653" y2="653"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="341" x2="440" y1="661" y2="661"/><rect fill="#FEFECE" filter="url(#f1)" height="48" style="stroke: #A80036; stroke-width: 1.5;" width="122" x="38" y="621"/><ellipse cx="53" cy="637" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M55.9688,642.6406 Q55.3906,642.9375 54.75,643.0859 Q54.1094,643.2344 53.4063,643.2344 Q50.9063,643.2344 49.5859,641.5859 Q48.2656,639.9375 48.2656,636.8125 Q48.2656,633.6875 49.5859,632.0313 Q50.9063,630.375 53.4063,630.375 Q54.1094,630.375 54.7578,630.5313 Q55.4063,630.6875 55.9688,630.9844 L55.9688,633.7031 Q55.3438,633.125 54.75,632.8516 Q54.1563,632.5781 53.5313,632.5781 Q52.1875,632.5781 51.5,633.6484 Q50.8125,634.7188 50.8125,636.8125 Q50.8125,638.9063 51.5,639.9766 Q52.1875,641.0469 53.5313,641.0469 Q54.1563,641.0469 54.75,640.7734 Q55.3438,640.5 55.9688,639.9219 L55.9688,642.6406 Z "/><text fill="#000000" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="90" x="67" y="642.0156">TextureLoader</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="39" x2="159" y1="653" y2="653"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="39" x2="159" y1="661" y2="661"/><path d="M276.417,538.963 C278.279,540.014 280.141,541.028 282,542 C355.235,580.294 386.463,560.62 458,602 C466.915,607.157 475.684,614.081 483.284,620.864 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="265.036,532.113,268.1139,538.6342,275.3173,538.3013,272.2394,531.78,265.036,532.113" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M529.491,686.984 C542.404,711.087 558.16,740.498 569.024,760.7787 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="523.167,690.002,519.893,669.067,535.508,683.391,523.167,690.002" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M484.363,686.699 C473.824,706.114 461.388,729.021 451.174,747.837 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="478.241,683.304,493.935,669.067,490.545,689.984,478.241,683.304" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M552.448,645 C588.859,645 625.27,645 661.681,645 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="539.033,645,545.033,649,551.033,645,545.033,641,539.033,645" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M270.634,314 C250.473,314 230.313,314 210.152,314 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M136.592,344.75 C121.971,378.28 98.8777,431.241 85.5117,461.893 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M448.577,380.663 C424.873,409.173 398.684,440.674 381.176,461.733 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="457.176,370.319,450.2642,372.3751,449.5038,379.546,456.4155,377.4899,457.176,370.319" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M509.64,383.297 C511.903,411.098 514.363,441.321 516.025,461.733 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="508.584,370.319,505.0845,376.624,509.5585,382.2794,513.058,375.9743,508.584,370.319" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M594.943,362.956 C631.627,383.159 674.147,407.157 712,430 C721.915,435.984 732.34,442.539 742.376,448.99 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="583.251,356.536,586.5848,362.9302,593.7694,362.3121,590.4356,355.9179,583.251,356.536" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M561.809,380.288 C586.759,408.897 614.391,440.582 632.837,461.733 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="553.116,370.319,554.045,377.47,561.0033,379.3628,560.0743,372.2118,553.116,370.319" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M413.167,360.629 C357.542,389.33 294.655,422.097 282,430 C276.44,433.473 270.761,437.227 265.138,441.091 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="424.905,354.577,417.7391,353.7713,414.2392,360.0761,421.4051,360.8818,424.905,354.577" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M352.784,197.438 C378.581,217.323 406.445,238.802 431.143,257.839 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="342.253,189.32,344.5627,196.1512,351.7567,196.6466,349.4471,189.8154,342.253,189.32" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M214.524,209.289 C198.354,235.53 181.362,263.106 168.876,283.368 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="221.388,198.15,214.8349,201.1595,215.0925,208.366,221.6456,205.3565,221.388,198.15" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M111.473,524.825 C117.244,530.675 123.217,536.565 129,542 C158.953,570.151 195.029,600.425 219.953,620.814 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="106.22,529.462,97.3562,510.216,116.288,519.734,106.22,529.462" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M107.326,524.813 C113.988,531.202 121.329,537.27 129,542 C205.463,589.142 240.449,564.338 322,602 C333.413,607.271 345.206,614.15 355.7,620.856 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="102.2267,529.609,93.5752,510.266,112.401,519.992,102.2267,529.609" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M81.6736,530.213 C86.0999,559.537 91.7391,596.897 95.36,620.885 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="74.7086,530.969,78.6451,510.149,88.5518,528.88,74.7086,530.969" style="stroke: #A80036; stroke-width: 1.0;"/></g></svg></code></pre>
+
+      </article>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <script src="examples/tutdown.js"></script>
+  <script>
+  $(function() {
+    $('.more-details').click(function() {
+      $this = $(this);
+      if ($this.hasClass('collapsed')) {
+        $this.removeClass('collapsed');
+        $this.addClass('uncollapsed');
+      } else {
+        $this.removeClass('uncollapsed');
+        $this.addClass('collapsed');
+      }
+    });
+  });
+  </script>
+  <!--
+  <script type="text/javascript">
+    (function() {
+      var b = document.createElement("script"); b.type = "text/javascript"; b.async = true;
+      b.src = "https://barc.com/js/libs/barc/barc.js";
+      var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(b, s);
+    })();
+  </script>
+  -->
+  <script type="text/javascript">
+    $('#sidebar a').each(function() {
+      var
+        $a = $(this),
+        href = window.location.href;
+      if (href.indexOf && href.indexOf($a.attr('href')) > -1 && href.indexOf('#') === -1) // hacky to grab only example links
+        $a.closest('li').addClass('active');
+    });
+  </script>
+</body>
+</html>
+

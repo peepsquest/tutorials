@@ -17346,7 +17346,7 @@ gf.plugin = {
      * a position of 11, it would snap to 20; a position of 18 would also snap to 20
      *
      * @method snapCeil
-     * @param num {Number} The number to snap
+     * @param n {Number} The number to snap
      * @param gap {Number} The gap size of the grid (the tile size)
      * @param offset {Number} The starting offset of a grid slice (aka tile)
      * @return {Number} The snapped value
@@ -17421,8 +17421,8 @@ gf.plugin = {
      * Returns a random int between min and max.
      *
      * @method randomInt
-     * @param min {Number} The minimun number that the result can be
-     * @param max {Number} The maximun number that the result can be
+     * @param min {Number} The minimum number that the result can be
+     * @param max {Number} The maximum number that the result can be
      * @return {Number}
      */
     randomInt: function(min, max) {
@@ -17462,6 +17462,36 @@ gf.plugin = {
             return null;
 
         return array[start + Math.floor(Math.random() * len)];
+    },
+    /**
+     * Converts screen pixel coordinates to isometric coorindates.
+     *
+     * @param x {Number}
+     * @param y
+     */
+    pxToIso: function(x, y) {
+        return {
+            x: x - y,
+            y: (x + y) / 2
+        };
+    },
+    pointToIso: function(pt) {
+        var x = pt.x;
+        var y = pt.y;
+        pt.x = x - y;
+        pt.y = (x + y) / 2;
+    },
+    /**
+     *
+     * @param x
+     * @param y
+     * @returns {{x: number, y: number}}
+     */
+    isoToPx: function(x, y) {
+        return {
+            x: (2 * y + x) / 2,
+            y: (2 * y - x) / 2
+        };
     }
  };
 /**
@@ -18683,29 +18713,24 @@ gf.PhysicsSystem.COLLISION_TYPE = {
      *
      * @method showPhysics
      */
-    this.showPhysics = function(size, color, alpha) {
+    this.showPhysics = function(style) {
         this._showHit = true;
         if(!this._phys || !this._phys.body || !this._phys.shape)
             return;
 
-        if(size === undefined)
-            size = 1;
-
-        if(color === undefined)
-            color = 0xFF00FF;
-
-        if(alpha === undefined)
-            alpha = 1;
-
+        //no graphics object created yet
         if(!this._hit) {
             this._hit = new PIXI.Graphics();
-            this._hit.style = {
-                size: size,
-                color: color,
-                alpha: alpha
-            };
 
             this.parent.addChild(this._hit);
+        }
+
+        //pass a new style, or haven't defined one yet
+        if(style || !this._hit.style) {
+            style = this._setStyleDefaults(style);
+            style.sensor = this._setStyleDefaults(style.sensor);
+
+            this._hit.style = style;
         }
 
         var p = this._phys.body.p,
@@ -18730,8 +18755,22 @@ gf.PhysicsSystem.COLLISION_TYPE = {
         }
     };
 
+    this._setStyleDefaults = function(style) {
+        style = style || {};
+        style.size = style.size || 1;
+        style.color = style.color || 0xff00ff;
+        style.alpha = style.alpha || 1;
+
+        return style;
+    };
+
     this._drawPhysicsShape = function(shape, g, p) {
-        g.lineStyle(g.style.size, g.style.color, g.style.alpha);
+        var style = g.style;
+
+        if(shape.sensor)
+            style = style.sensor;
+
+        g.lineStyle(style.size, style.color, style.alpha);
 
         //circle
         if(shape.type === 'circle') {
@@ -18765,8 +18804,9 @@ gf.PhysicsSystem.COLLISION_TYPE = {
      */
     this.hidePhysics = function() {
         this._showHit = false;
-        if(this._hit)
+        if(this._hit) {
             this._hit.visible = false;
+        }
     };
 };
 //you can only have 1 audio context on a page, so we store one for use in each manager
@@ -22184,20 +22224,26 @@ gf.input.Input = function(view) {
 
 gf.inherits(gf.input.Input, Object, {
     /**
-     * Prevents the default action of an event, and prevents it from bubbling up
-     * the DOM.
+     * Prevents the default action of an event
      *
      * @method preventDefault
      * @param event {DOMEvent} The event to prevent default actions for
      */
     preventDefault: function(e) {
-        if(e.stopPropagation) e.stopPropagation();
-        else e.cancelBubble = true;
-
         if(e.preventDefault) e.preventDefault();
         else e.returnValue = false;
 
         return false;
+    },
+    /**
+     * Prevents an event from bubbling up the DOM.
+     *
+     * @method stopPropogation
+     * @param event {DOMEvent} The event to prevent bubbling for
+     */
+    stopPropogation: function(e) {
+        if(e.stopPropagation) e.stopPropagation();
+        else e.cancelBubble = true;
     }
 });
 

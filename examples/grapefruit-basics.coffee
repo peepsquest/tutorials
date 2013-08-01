@@ -1,4 +1,4 @@
-#{{{ Content resources
+#{{{ Content assets
 assets = [
   {name: 'world', src: 'img/isometric_grass_and_water.json'}
   {name: 'avatar', src: 'img/redOrb.png'}
@@ -79,23 +79,19 @@ class Avatar extends gf.Sprite
       e.input.preventDefault e.originalEvent
 
     onKeyboardDown = (e) ->
-      {position} = that
-      position.y += 5
+      that.position.y += 5
       preventDefault e
 
     onKeyboardRight = (e) ->
-      {position} = that
-      position.x += 5
+      that.position.x += 5
       preventDefault e
 
     onKeyboardLeft = (e) ->
-      {position} = that
-      position.x -= 5
+      that.position.x -= 5
       preventDefault e
 
     onKeyboardUp = (e) ->
-      {position} = that
-      position.y -= 5
+      that.position.y -= 5
       preventDefault e
 
     game.input.keyboard.on gf.input.KEY.DOWN, onKeyboardDown
