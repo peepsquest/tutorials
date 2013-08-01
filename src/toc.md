@@ -11,8 +11,9 @@
 - [Isometric - Tiles w/ Height](isometric-tiles-with-height.html)
 - [Isometric - Avatar](isometric-placing-avatar.html)
 
-### Grapefruit.js
+### Grapefruitjs
 
+- [UML Diagrams](grapefruit-uml.html)
 - [Basics](grapefruit-basics.html)
 
 

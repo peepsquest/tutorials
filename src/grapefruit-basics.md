@@ -1,8 +1,8 @@
-# Grapefruit.js Basics in CoffeeScript
+# Grapefruitjs Basics
 
 :::BEGIN Example
 
-In this example we'll cover the basics of using the [Grapefruit](https://github.com/grapefruitjs/grapefruit)
+In this CoffeeScript example we'll cover the basics of using the [Grapefruitjs](https://github.com/grapefruitjs/grapefruit)
 game engine built on __pixi.js__.
 
 <div class='note'><em>GrapefruitJs</em> is in its infancy and should not be used yet per its author,
@@ -11,7 +11,7 @@ This is more of a learning excercise to see how experienced game developers setu
 </div>
 
 Pan by dragging with the mouse or move the orb around with the arrow keys. The orb is not constrained with
-the world (still learning __grapefruit__).
+the world (still learning __grapefruitjs__).
 
 {{{EXAMPLE style='height: 600px;'}}}
 
@@ -19,7 +19,7 @@ the world (still learning __grapefruit__).
 ## Loading Assets
 
 `gf.AssetLoader` loads assets given an array of URLs or objects.
-I opt for objects to show `gf.assetCache` is in use later when the orb is loaded. __Grapefruit__ supports
+I opt for objects to show `gf.assetCache` is in use later when the orb is loaded. __Grapefruitjs__ supports
 the popular [Tiled Map Editor](http://www.mapeditor.org/) TMX (JSON) format as well as Texture Packer
 format supported by __pixi.js__.
 
@@ -49,7 +49,7 @@ more importantly the active game state.
 
 ## Panning the World
 
-Here we take advantage of the `gf.TiledMap` object to do panning. __Grapefruit__ does all the work.
+Here we take advantage of the `gf.TiledMap` object to do panning. __Grapefruitjs__ does all the work.
 
 :::< examples/grapefruit-basics.coffee --block panning
 
@@ -65,7 +65,7 @@ state and another display object could be listening for the save events.
 
 ## Start the Game
 
-I'm attaching the game into this `div`.
+The game needs a `div` to attach to.
 
 ```html
 <div id='game'><!-- game goes here --></div>

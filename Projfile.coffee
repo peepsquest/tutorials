@@ -1,6 +1,8 @@
 fs = require('fs')
 async = require('async')
 
+{readFileSync} = fs
+
 exports.project = (pm) ->
   {$, Utils, f} = pm
 
@@ -31,11 +33,11 @@ exports.project = (pm) ->
     dev: [
       f.tutdown
         templates:
-          example: fs.readFileSync('src/support/_example.mustache', 'utf8')
-          uml: fs.readFileSync('src/support/_uml.mustache', 'utf8')
+          example: readFileSync('src/support/_example.mustache', 'utf8')
+          uml: readFileSync('src/support/_uml.mustache', 'utf8')
         assetsDirname: 'docs/examples'
       f.tap (asset) ->
-        asset.nav = fs.readFileSync('docs/toc.html')
+        asset.nav = readFileSync('docs/toc.html')
         asset.filename = asset.filename.replace(/^src/, 'docs')
       f.template
         delimiters: 'mustache'
@@ -72,16 +74,27 @@ exports.project = (pm) ->
     $.rm '-rf', 'docs'
     $.mkdir '-p', 'docs'
 
-  grapefruit:
+  # grapefruit:
+  #   desc: 'Builds and updates grapefruit script'
+  #   dev: (done) ->
+  #     this.timeout = 10000
+  #     $.inside '~/peepsquest/grapefruit', (popcb) ->
+  #       cb = popcb(done)
+  #       $.git 'pull origin master', ->
+  #         $.grunt 'build --force', ->
+  #           $.cp '-f', 'build/gf.js',  __dirname + "/src/examples/js/vendor/gf.js"
+  #           cb()
+
+  grapefruitSource:
     desc: 'Builds and updates grapefruit script'
+    watch: '../grapefruit/src/**/*.js'
     dev: (done) ->
       this.timeout = 10000
       $.inside '~/peepsquest/grapefruit', (popcb) ->
         cb = popcb(done)
-        $.git 'pull origin master', ->
-          $.grunt 'build --force', ->
-            $.cp '-f', 'build/gf.js',  __dirname + "/src/examples/js/vendor/gf.js"
-            cb()
+        $.grunt 'build --force', ->
+          $.cp '-f', 'build/gf.js',  __dirname + "/src/examples/js/vendor/gf.js"
+          cb()
 
   pixi:
     desc: 'Fetches Pixi edge scripts'

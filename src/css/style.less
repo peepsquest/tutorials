@@ -69,16 +69,11 @@ body {
     //color: @mediumTextColor;
     color: @lightTextColor;
   }
-  a {
-    text-decoration: none;
-    &:hover {
-      text-decoration: underline;
-    }
-  }
   ul {
     margin-top: 2px;
   }
 }
+
 
 #content {
   max-width: 800px;
@@ -120,10 +115,14 @@ strong {
 
 a {
   color: @linkColor;
-  text-decoration: underline;
+  text-decoration: none;
 
   strong {
     color: @linkColor;
+  }
+
+  &:hover {
+    text-decoration: underline;
   }
 }
 

@@ -9,13 +9,15 @@ code {
   font-size: 0.9em;
   color: #222;
   padding: 0 0.2em;
-  background-color: @codeBackgroundColor;
-  border: solid 1px @codeBorderColor;
+  //background-color: @codeBackgroundColor;
+  //border: solid 1px @codeBorderColor;
+  font-weight: bold;
 }
 
 pre code {
   display: block;
   padding: 0.5em;
+  font-weight:normal;
   background-color: @codeBackgroundColor;
   border: solid 1px @codeBorderColor;
 }
@@ -65,7 +67,7 @@ pre .erlang_repl .function_or_atom,
 pre .asciidoc .header,
 pre .markdown .header,
 pre .coffeescript .attribute {
-  color: #cc5f00;
+  color: #4C9900;
 }
 
 pre .comment,
@@ -92,7 +94,7 @@ pre .asciidoc .bullet,
 pre .markdown .bullet,
 pre .asciidoc .link_url,
 pre .markdown .link_url {
-  color: #b40038;
+  color: #99004c;
 }
 
 pre .label,

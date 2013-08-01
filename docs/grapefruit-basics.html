@@ -35,8 +35,9 @@
 <li><a href="isometric-tiles-with-height.html">Isometric - Tiles w/ Height</a></li>
 <li><a href="isometric-placing-avatar.html">Isometric - Avatar</a></li>
 </ul>
-<h3 id='h-grapefruitjs'>Grapefruit.js</h3>
+<h3 id='h-grapefruitjs'>Grapefruitjs</h3>
 <ul>
+<li><a href="grapefruit-uml.html">UML Diagrams</a></li>
 <li><a href="grapefruit-basics.html">Basics</a></li>
 </ul>
 
@@ -47,8 +48,8 @@
         <a href='index.html'>
           <img id="logo" src="img/peepsquest.png" />
         </a>
-        <h1 id='h-grapefruitjs-basics-in-coffeescript'>Grapefruit.js Basics in CoffeeScript</h1>
-<div class='section-example'><p>In this example we&#39;ll cover the basics of using the <a href="https://github.com/grapefruitjs/grapefruit">Grapefruit</a>
+        <h1 id='h-grapefruitjs-basics'>Grapefruitjs Basics</h1>
+<div class='section-example'><p>In this CoffeeScript example we&#39;ll cover the basics of using the <a href="https://github.com/grapefruitjs/grapefruit">Grapefruitjs</a>
 game engine built on <strong>pixi.js</strong>.</p>
 <div class='note'><em>GrapefruitJs</em> is in its infancy and should not be used yet per its author,
 <a href="https://github.com/englercj">Chad Engler</a>. The author is an active contributor to <strong>pixi.js</strong>.
@@ -56,7 +57,7 @@ This is more of a learning excercise to see how experienced game developers setu
 </div>
 
 <p>Pan by dragging with the mouse or move the orb around with the arrow keys. The orb is not constrained with
-the world (still learning <strong>grapefruit</strong>).</p>
+the world (still learning <strong>grapefruitjs</strong>).</p>
 <div id="grapefruit-basics0_tabs" class="tabs">
   <ul>
     <li class="active">
@@ -369,7 +370,7 @@ $<span class="function"> -&gt;</span>
 </div>
 </div><h2 id='h-loading-assets'>Loading Assets</h2>
 <p><code>gf.AssetLoader</code> loads assets given an array of URLs or objects.
-I opt for objects to show <code>gf.assetCache</code> is in use later when the orb is loaded. <strong>Grapefruit</strong> supports
+I opt for objects to show <code>gf.assetCache</code> is in use later when the orb is loaded. <strong>Grapefruitjs</strong> supports
 the popular <a href="http://www.mapeditor.org/">Tiled Map Editor</a> TMX (JSON) format as well as Texture Packer
 format supported by <strong>pixi.js</strong>.</p>
 <pre><code class="coffee">assets = [
@@ -411,7 +412,7 @@ more importantly the active game state.</p>
     hero = <span class="keyword">new</span> Avatar({<span class="attribute">assetId</span>: <span class="string">'avatar'</span>, <span class="attribute">game</span>: @})
     state.addChild hero</code></pre>
 <h2 id='h-panning-the-world'>Panning the World</h2>
-<p>Here we take advantage of the <code>gf.TiledMap</code> object to do panning. <strong>Grapefruit</strong> does all the work.</p>
+<p>Here we take advantage of the <code>gf.TiledMap</code> object to do panning. <strong>Grapefruitjs</strong> does all the work.</p>
 <pre><code class="coffee"><span class="comment"># context for these are TiledMap, which means Function.bind is being used</span>
 <span class="function"><span class="title">mapDown</span> = <span class="params">(e)</span> -&gt;</span>
   pos = e.getLocalPosition(<span class="property">@parent</span>)
@@ -467,8 +468,8 @@ state and another display object could be listening for the save events.</p>
     game.input.keyboard.<span class="literal">on</span> gf.input.KEY.UP, onKeyboardUp
     game.input.keyboard.<span class="literal">on</span> gf.input.KEY.LEFT, onKeyboardLeft
     game.input.keyboard.<span class="literal">on</span> gf.input.KEY.RIGHT, onKeyboardRight</code></pre>
-<h2 id='h-starting-the-game'>Starting the Game</h2>
-<p>I&#39;m attaching the game into this <code>div</code>.</p>
+<h2 id='h-start-the-game'>Start the Game</h2>
+<p>The game needs a <code>div</code> to attach to.</p>
 <pre><code class="html"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">'game'</span>&gt;</span><span class="comment">&lt;!-- game goes here --&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></pre>
 <p>Calculate the width of the div, which is set by CSS, and pass the <code>div</code> info to the game and start it.</p>
 <pre><code class="coffee">$<span class="function"> -&gt;</span>
