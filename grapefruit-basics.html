@@ -56,8 +56,8 @@ game engine built on <strong>pixi.js</strong>.</p>
 This is more of a learning excercise to see how experienced game developers setup a game.
 </div>
 
-<p>Pan by dragging with the mouse or move the orb around with the arrow keys. The orb is not constrained with
-the world (still learning <strong>grapefruitjs</strong>).</p>
+<p>Pan by dragging with the mouse or move the orb around with the arrow keys. The orb is not constrained to
+the world yet (still learning <strong>grapefruitjs</strong>).</p>
 <div id="grapefruit-basics0_tabs" class="tabs">
   <ul>
     <li class="active">
@@ -143,6 +143,7 @@ the world (still learning <strong>grapefruitjs</strong>).</p>
       state.world.mouseup = mapUp;
       state.world.mousemove = mapMove;
       <span class="keyword">this</span>.enableState(<span class="string">'world'</span>);
+      <span class="keyword">this</span>.world.pan(<span class="keyword">this</span>.camera.size.x / <span class="number">2</span>, <span class="number">100</span>);
       hero = <span class="keyword">new</span> Avatar({
         assetId: <span class="string">'avatar'</span>,
         game: <span class="keyword">this</span>
@@ -231,6 +232,7 @@ the world (still learning <strong>grapefruitjs</strong>).</p>
       background: <span class="number">0xEEFFFF</span>,
       assets: assets
     });
+    window.dbgGame = game;
     <span class="keyword">return</span> game.start();
   });
 
@@ -297,8 +299,11 @@ assets = [
     state.world.mousedown = mapDown
     state.world.mouseup = mapUp
     state.world.mousemove = mapMove
-
     <span class="property">@enableState</span> <span class="string">'world'</span>
+
+    <span class="comment"># start with the world centered and slightly down</span>
+    <span class="property">@world</span>.pan <span class="property">@camera</span>.size.x / <span class="number">2</span>, <span class="number">100</span>
+
     hero = <span class="keyword">new</span> Avatar({<span class="attribute">assetId</span>: <span class="string">'avatar'</span>, <span class="attribute">game</span>: @})
     state.addChild hero
 
@@ -365,7 +370,9 @@ $<span class="function"> -&gt;</span>
     <span class="attribute">height</span>: $game.height() - <span class="number">3</span>
     <span class="attribute">background</span>: <span class="number">0xEEFFFF</span>
     <span class="attribute">assets</span>: assets
+  window.dbgGame = game
   game.start()
+
 </code></pre>
 </div>
 </div><h2 id='h-loading-assets'>Loading Assets</h2>
@@ -407,11 +414,15 @@ more importantly the active game state.</p>
     state.world.mousedown = mapDown
     state.world.mouseup = mapUp
     state.world.mousemove = mapMove
-
     <span class="property">@enableState</span> <span class="string">'world'</span>
+
+    <span class="comment"># start with the world centered and slightly down</span>
+    <span class="property">@world</span>.pan <span class="property">@camera</span>.size.x / <span class="number">2</span>, <span class="number">100</span>
+
     hero = <span class="keyword">new</span> Avatar({<span class="attribute">assetId</span>: <span class="string">'avatar'</span>, <span class="attribute">game</span>: @})
     state.addChild hero</code></pre>
 <h2 id='h-panning-the-world'>Panning the World</h2>
+<p>The world starts with (0,0) in the upper left. Let&#39;s start with it centered.</p>
 <p>Here we take advantage of the <code>gf.TiledMap</code> object to do panning. <strong>Grapefruitjs</strong> does all the work.</p>
 <pre><code class="coffee"><span class="comment"># context for these are TiledMap, which means Function.bind is being used</span>
 <span class="function"><span class="title">mapDown</span> = <span class="params">(e)</span> -&gt;</span>
@@ -472,6 +483,9 @@ state and another display object could be listening for the save events.</p>
 <p>The game needs a <code>div</code> to attach to.</p>
 <pre><code class="html"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">'game'</span>&gt;</span><span class="comment">&lt;!-- game goes here --&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></pre>
 <p>Calculate the width of the div, which is set by CSS, and pass the <code>div</code> info to the game and start it.</p>
+<pre><code class="css"><span class="id">#game</span> <span class="rules">{
+  <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">590</span>px</span></span>;
+<span class="rule">}</span></span></code></pre>
 <pre><code class="coffee">$<span class="function"> -&gt;</span>
   $game = $(<span class="string">'#game'</span>)
   game = <span class="keyword">new</span> Game <span class="string">'game'</span>,
@@ -479,6 +493,7 @@ state and another display object could be listening for the save events.</p>
     <span class="attribute">height</span>: $game.height() - <span class="number">3</span>
     <span class="attribute">background</span>: <span class="number">0xEEFFFF</span>
     <span class="attribute">assets</span>: assets
+  window.dbgGame = game
   game.start()</code></pre>
 </div>
       </article>

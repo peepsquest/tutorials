@@ -44,6 +44,7 @@
       state.world.mouseup = mapUp;
       state.world.mousemove = mapMove;
       this.enableState('world');
+      this.world.pan(this.camera.size.x / 2, 100);
       hero = new Avatar({
         assetId: 'avatar',
         game: this
@@ -132,6 +133,7 @@
       background: 0xEEFFFF,
       assets: assets
     });
+    window.dbgGame = game;
     return game.start();
   });
 
