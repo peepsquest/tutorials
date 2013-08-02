@@ -2,42 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef95ca51-4f3c-48b5-b77d-9540e4ac39ac" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/creating-sprite-sheets.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/examples/grapefruit-basics0-markup.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/examples/grapefruit-basics0-style.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/examples/grapefruit-basics0.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/examples/isometric-map-basics0-markup.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/examples/isometric-map-basics0-script.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/examples/isometric-map-basics0-style.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/examples/isometric-map-basics0.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/examples/isometric-placing-avatar0-markup.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/examples/isometric-placing-avatar0-script.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/examples/isometric-placing-avatar0-style.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/examples/isometric-placing-avatar0.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/examples/isometric-tiles-with-height0-markup.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/examples/isometric-tiles-with-height0-script.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/examples/isometric-tiles-with-height0-style.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/examples/isometric-tiles-with-height0.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/examples/pixi-basics0-markup.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/examples/pixi-basics0-script.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/examples/pixi-basics0-style.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/examples/pixi-basics0.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/grapefruit-basics.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/grapefruit-uml.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/isometric-map-basics.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/isometric-placing-avatar.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/isometric-tiles-with-height.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/pixi-basics.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/examples/img/tp/spritesheet.png" afterPath="$PROJECT_DIR$/docs/examples/img/tp/spritesheet.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/examples/grapefruit-basics.js" afterPath="$PROJECT_DIR$/docs/examples/grapefruit-basics.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/examples/grapefruit-basics.js" afterPath="$PROJECT_DIR$/src/examples/grapefruit-basics.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/grapefruit-basics.md" afterPath="$PROJECT_DIR$/src/grapefruit-basics.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/jsLinters/jshint.xml" afterPath="$PROJECT_DIR$/.idea/jsLinters/jshint.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/toc.html" afterPath="$PROJECT_DIR$/docs/toc.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/examples/tutdown.css" afterPath="$PROJECT_DIR$/docs/examples/tutdown.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/examples/tutdown.js" afterPath="$PROJECT_DIR$/docs/examples/tutdown.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="tutorials.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -140,7 +106,7 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="43" selection-start="1132" selection-end="1132" vertical-scroll-proportion="0.50459653" vertical-offset="0" max-vertical-offset="1900">
+            <state line="84" column="0" selection-start="2560" selection-end="2560" vertical-scroll-proportion="0.68947905" vertical-offset="921" max-vertical-offset="1900">
               <folding />
             </state>
           </provider>
@@ -665,7 +631,7 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="43" selection-start="1132" selection-end="1132" vertical-scroll-proportion="0.50459653" vertical-offset="0" max-vertical-offset="1900">
+        <state line="84" column="0" selection-start="2560" selection-end="2560" vertical-scroll-proportion="0.68947905" vertical-offset="921" max-vertical-offset="1900">
           <folding />
         </state>
       </provider>
