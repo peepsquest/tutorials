@@ -1,18 +1,6 @@
-/**
- * @license
- * GrapeFruit Game Engine - v0.0.2
- * Copyright (c) 2012, Chad Engler
- * https://github.com/englercj/grapefruit
- *
- * Compiled: 2013-07-31
- *
- * GrapeFruit Game Engine is licensed under the MIT License.
- * http://www.opensource.org/licenses/mit-license.php
- */
 (function(window, undefined) {
     document = window.document;
-
-(function(o){"function"==typeof define?define(o):"function"==typeof YUI?YUI.add("es5",o):o()})(function(){function o(){}function v(a){a=+a;a!==a?a=0:0!==a&&(a!==1/0&&a!==-(1/0))&&(a=(0<a||-1)*Math.floor(Math.abs(a)));return a}function s(a){var b=typeof a;return null===a||"undefined"===b||"boolean"===b||"number"===b||"string"===b}Function.prototype.bind||(Function.prototype.bind=function(a){var b=this;if("function"!=typeof b)throw new TypeError("Function.prototype.bind called on incompatible "+b);
+;(function(o){"function"==typeof define?define(o):"function"==typeof YUI?YUI.add("es5",o):o()})(function(){function o(){}function v(a){a=+a;a!==a?a=0:0!==a&&(a!==1/0&&a!==-(1/0))&&(a=(0<a||-1)*Math.floor(Math.abs(a)));return a}function s(a){var b=typeof a;return null===a||"undefined"===b||"boolean"===b||"number"===b||"string"===b}Function.prototype.bind||(Function.prototype.bind=function(a){var b=this;if("function"!=typeof b)throw new TypeError("Function.prototype.bind called on incompatible "+b);
 var d=q.call(arguments,1),c=function(){if(this instanceof c){var e=b.apply(this,d.concat(q.call(arguments)));return Object(e)===e?e:this}return b.apply(a,d.concat(q.call(arguments)))};b.prototype&&(o.prototype=b.prototype,c.prototype=new o,o.prototype=null);return c});var k=Function.prototype.call,p=Object.prototype,q=Array.prototype.slice,h=k.bind(p.toString),t=k.bind(p.hasOwnProperty);t(p,"__defineGetter__")&&(k.bind(p.__defineGetter__),k.bind(p.__defineSetter__),k.bind(p.__lookupGetter__),k.bind(p.__lookupSetter__));
 if(2!=[1,2].splice(0).length){var y=Array.prototype.splice;Array.prototype.splice=function(a,b){return arguments.length?y.apply(this,[a===void 0?0:a,b===void 0?this.length-a:b].concat(q.call(arguments,2))):[]}}if(1!=[].unshift(0)){var z=Array.prototype.unshift;Array.prototype.unshift=function(){z.apply(this,arguments);return this.length}}Array.isArray||(Array.isArray=function(a){return h(a)=="[object Array]"});var k=Object("a"),l="a"!=k[0]||!(0 in k);Array.prototype.forEach||(Array.prototype.forEach=
 function(a,b){var d=n(this),c=l&&h(this)=="[object String]"?this.split(""):d,e=-1,f=c.length>>>0;if(h(a)!="[object Function]")throw new TypeError;for(;++e<f;)e in c&&a.call(b,c[e],e,d)});Array.prototype.map||(Array.prototype.map=function(a,b){var d=n(this),c=l&&h(this)=="[object String]"?this.split(""):d,e=c.length>>>0,f=Array(e);if(h(a)!="[object Function]")throw new TypeError(a+" is not a function");for(var g=0;g<e;g++)g in c&&(f[g]=a.call(b,c[g],g,d));return f});Array.prototype.filter||(Array.prototype.filter=
@@ -29,16 +17,14 @@ if(typeof b!="function")throw new TypeError("toISOString property is not callabl
 0),j=Number(b[7]||0),m=!b[4]||b[8]?0:Number(new g(1970,0)),k=b[9]==="-"?1:-1,l=Number(b[10]||0),b=Number(b[11]||0);if(f<(h>0||i>0||j>0?24:25)&&h<60&&i<60&&j<1E3&&c>-1&&c<12&&l<24&&b<60&&e>-1&&e<u(d,c+1)-u(d,c)){d=((u(d,c)+e)*24+f+l*k)*60;d=((d+h+b*k)*60+i)*1E3+j+m;if(-864E13<=d&&d<=864E13)return d}return NaN}return g.parse.apply(this,arguments)};Date=m;Date.now||(Date.now=function(){return(new Date).getTime()});if("0".split(void 0,0).length){var D=String.prototype.split;String.prototype.split=function(a,
 b){return a===void 0&&b===0?[]:D.apply(this,arguments)}}if("".substr&&"b"!=="0b".substr(-1)){var E=String.prototype.substr;String.prototype.substr=function(a,b){return E.call(this,a<0?(a=this.length+a)<0?0:a:a,b)}}j="\t\n\x0B\f\r \u00a0\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000\u2028\u2029\ufeff";if(!String.prototype.trim||j.trim()){j="["+j+"]";var F=RegExp("^"+j+j+"*"),G=RegExp(j+j+"*$");String.prototype.trim=function(){if(this===void 0||this===
 null)throw new TypeError("can't convert "+this+" to object");return String(this).replace(F,"").replace(G,"")}}var n=function(a){if(a==null)throw new TypeError("can't convert "+a+" to object");return Object(a)}});
-
-(function(f){"function"==typeof define?define(f):"function"==typeof YUI?YUI.add("es5-sham",f):f()})(function(){function f(a){try{return Object.defineProperty(a,"sentinel",{}),"sentinel"in a}catch(c){}}var b=Function.prototype.call,g=Object.prototype,h=b.bind(g.hasOwnProperty),p,q,k,l,i;if(i=h(g,"__defineGetter__"))p=b.bind(g.__defineGetter__),q=b.bind(g.__defineSetter__),k=b.bind(g.__lookupGetter__),l=b.bind(g.__lookupSetter__);Object.getPrototypeOf||(Object.getPrototypeOf=function(a){return a.__proto__||
+;(function(f){"function"==typeof define?define(f):"function"==typeof YUI?YUI.add("es5-sham",f):f()})(function(){function f(a){try{return Object.defineProperty(a,"sentinel",{}),"sentinel"in a}catch(c){}}var b=Function.prototype.call,g=Object.prototype,h=b.bind(g.hasOwnProperty),p,q,k,l,i;if(i=h(g,"__defineGetter__"))p=b.bind(g.__defineGetter__),q=b.bind(g.__defineSetter__),k=b.bind(g.__lookupGetter__),l=b.bind(g.__lookupSetter__);Object.getPrototypeOf||(Object.getPrototypeOf=function(a){return a.__proto__||
 (a.constructor?a.constructor.prototype:g)});Object.getOwnPropertyDescriptor||(Object.getOwnPropertyDescriptor=function(a,c){if(typeof a!="object"&&typeof a!="function"||a===null)throw new TypeError("Object.getOwnPropertyDescriptor called on a non-object: "+a);if(h(a,c)){var d={enumerable:true,configurable:true};if(i){var b=a.__proto__;a.__proto__=g;var e=k(a,c),f=l(a,c);a.__proto__=b;if(e||f){if(e)d.get=e;if(f)d.set=f;return d}}d.value=a[c];return d}});Object.getOwnPropertyNames||(Object.getOwnPropertyNames=
 function(a){return Object.keys(a)});if(!Object.create){var m;if(null===Object.prototype.__proto__||"undefined"==typeof document)m=function(){return{__proto__:null}};else{var r=function(){},b=document.createElement("iframe"),j=document.body||document.documentElement;b.style.display="none";j.appendChild(b);b.src="javascript:";var e=b.contentWindow.Object.prototype;j.removeChild(b);b=null;delete e.constructor;delete e.hasOwnProperty;delete e.propertyIsEnumerable;delete e.isPrototypeOf;delete e.toLocaleString;
 delete e.toString;delete e.valueOf;e.__proto__=null;r.prototype=e;m=function(){return new r}}Object.create=function(a,c){function d(){}var b;if(a===null)b=m();else{if(typeof a!=="object"&&typeof a!=="function")throw new TypeError("Object prototype may only be an Object or null");d.prototype=a;b=new d;b.__proto__=a}c!==void 0&&Object.defineProperties(b,c);return b}}if(Object.defineProperty&&(b=f({}),j="undefined"==typeof document||f(document.createElement("div")),!b||!j))var n=Object.defineProperty,
 o=Object.defineProperties;if(!Object.defineProperty||n)Object.defineProperty=function(a,c,d){if(typeof a!="object"&&typeof a!="function"||a===null)throw new TypeError("Object.defineProperty called on non-object: "+a);if(typeof d!="object"&&typeof d!="function"||d===null)throw new TypeError("Property description must be an object: "+d);if(n)try{return n.call(Object,a,c,d)}catch(b){}if(h(d,"value"))if(i&&(k(a,c)||l(a,c))){var e=a.__proto__;a.__proto__=g;delete a[c];a[c]=d.value;a.__proto__=e}else a[c]=
 d.value;else{if(!i)throw new TypeError("getters & setters can not be defined on this javascript engine");h(d,"get")&&p(a,c,d.get);h(d,"set")&&q(a,c,d.set)}return a};if(!Object.defineProperties||o)Object.defineProperties=function(a,c){if(o)try{return o.call(Object,a,c)}catch(d){}for(var b in c)h(c,b)&&b!="__proto__"&&Object.defineProperty(a,b,c[b]);return a};Object.seal||(Object.seal=function(a){return a});Object.freeze||(Object.freeze=function(a){return a});try{Object.freeze(function(){})}catch(t){var s=
 Object.freeze;Object.freeze=function(a){return typeof a=="function"?a:s(a)}}Object.preventExtensions||(Object.preventExtensions=function(a){return a});Object.isSealed||(Object.isSealed=function(){return false});Object.isFrozen||(Object.isFrozen=function(){return false});Object.isExtensible||(Object.isExtensible=function(a){if(Object(a)!==a)throw new TypeError;for(var c="";h(a,c);)c=c+"?";a[c]=true;var b=h(a,c);delete a[c];return b})});
-
-/**
+;/**
  * @license
  * Pixi.JS - v1.3.0
  * Copyright (c) 2012, Mat Groves
@@ -10475,8 +10461,7 @@ PIXI.SpineLoader.prototype.onLoaded = function () {
   }
 
 
-}).call(this);
-(function(){
+}).call(this);;(function(){
 /* Copyright (c) 2007 Scott Lembcke
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -16671,9 +16656,7 @@ SimpleMotor.prototype.getImpulse = function()
 };
 
 })();
-
-!function(e){if(typeof module==="object"&&module.exports===e)e=module.exports=O;e.SEMVER_SPEC_VERSION="2.0.0";var r=e.re=[];var t=e.src=[];var n=0;var i=n++;t[i]="0|[1-9]\\d*";var s=n++;t[s]="[0-9]+";var o=n++;t[o]="\\d*[a-zA-Z-][a-zA-Z0-9-]*";var a=n++;t[a]="("+t[i]+")\\."+"("+t[i]+")\\."+"("+t[i]+")";var u=n++;t[u]="("+t[s]+")\\."+"("+t[s]+")\\."+"("+t[s]+")";var f=n++;t[f]="(?:"+t[i]+"|"+t[o]+")";var c=n++;t[c]="(?:"+t[s]+"|"+t[o]+")";var l=n++;t[l]="(?:-("+t[f]+"(?:\\."+t[f]+")*))";var p=n++;t[p]="(?:-?("+t[c]+"(?:\\."+t[c]+")*))";var h=n++;t[h]="[0-9A-Za-z-]+";var v=n++;t[v]="(?:\\+("+t[h]+"(?:\\."+t[h]+")*))";var m=n++;var g="v?"+t[a]+t[l]+"?"+t[v]+"?";t[m]="^"+g+"$";var d="[v=\\s]*"+t[u]+t[p]+"?"+t[v]+"?";var w=n++;t[w]="^"+d+"$";var y=n++;t[y]="((?:<|>)?=?)";var $=n++;t[$]=t[s]+"|x|X|\\*";var j=n++;t[j]=t[i]+"|x|X|\\*";var b=n++;t[b]="[v=\\s]*("+t[j]+")"+"(?:\\.("+t[j]+")"+"(?:\\.("+t[j]+")"+"(?:("+t[l]+")"+")?)?)?";var S=n++;t[S]="[v=\\s]*("+t[$]+")"+"(?:\\.("+t[$]+")"+"(?:\\.("+t[$]+")"+"(?:("+t[p]+")"+")?)?)?";var E=n++;t[E]="^"+t[y]+"\\s*"+t[b]+"$";var k=n++;t[k]="^"+t[y]+"\\s*"+t[S]+"$";var x=n++;t[x]="(?:~>?)";var R=n++;t[R]=t[x]+"s+";var V="$1";var I=n++;t[I]="^"+t[x]+t[b]+"$";var C=n++;t[C]="^"+t[x]+t[S]+"$";var A=n++;t[A]="^"+t[y]+"\\s*("+d+")$|^$";var T=n++;t[T]="^"+t[y]+"\\s*("+g+")$|^$";var z=n++;t[z]=t[y]+"\\s*("+d+"|"+t[b]+")";r[z]=new RegExp(t[z],"g");var M="$1$2 ";var P=n++;t[P]="^\\s*("+t[b]+")"+"\\s+-\\s+"+"("+t[b]+")"+"\\s*$";var Z=n++;t[Z]="^\\s*("+t[S]+")"+"\\s+-\\s+"+"("+t[S]+")"+"\\s*$";var q=n++;t[q]="(<|>)?=?\\s*\\*";for(var L=0;L<n;L++){if(!r[L])r[L]=new RegExp(t[L])}e.parse=X;function X(e,t){var n=t?r[w]:r[m];return n.test(e)?new O(e,t):null}e.valid=_;function _(e,r){var t=X(e,r);return t?t.version:null}e.clean=N;function N(e,r){var t=X(e,r);return t?t.version:null}e.SemVer=O;function O(e,t){if(e instanceof O){if(e.loose===t)return e;else e=e.version}if(!(this instanceof O))return new O(e,t);this.loose=t;var n=e.trim().match(t?r[w]:r[m]);if(!n)throw new TypeError("Invalid Version: "+e);this.raw=e;this.major=+n[1];this.minor=+n[2];this.patch=+n[3];if(!n[4])this.prerelease=[];else this.prerelease=n[4].split(".").map(function(e){return/^[0-9]+$/.test(e)?+e:e});this.build=n[5]?n[5].split("."):[];this.format()}O.prototype.format=function(){this.version=this.major+"."+this.minor+"."+this.patch;if(this.prerelease.length)this.version+="-"+this.prerelease.join(".");return this.version};O.prototype.inspect=function(){return'<SemVer "'+this+'">'};O.prototype.toString=function(){return this.version};O.prototype.compare=function(e){if(!(e instanceof O))e=new O(e,this.loose);return this.compareMain(e)||this.comparePre(e)};O.prototype.compareMain=function(e){if(!(e instanceof O))e=new O(e,this.loose);return F(this.major,e.major)||F(this.minor,e.minor)||F(this.patch,e.patch)};O.prototype.comparePre=function(e){if(!(e instanceof O))e=new O(e,this.loose);if(this.prerelease.length&&!e.prerelease.length)return-1;else if(!this.prerelease.length&&e.prerelease.length)return 1;else if(!this.prerelease.lenth&&!e.prerelease.length)return 0;var r=0;do{var t=this.prerelease[r];var n=e.prerelease[r];if(t===undefined&&n===undefined)return 0;else if(n===undefined)return 1;else if(t===undefined)return-1;else if(t===n)continue;else return F(t,n)}while(++r)};O.prototype.inc=function(e){switch(e){case"major":this.major++;this.minor=-1;case"minor":this.minor++;this.patch=-1;case"patch":this.patch++;this.prerelease=[];break;case"prerelease":if(this.prerelease.length===0)this.prerelease=[0];else{var r=this.prerelease.length;while(--r>=0){if(typeof this.prerelease[r]==="number"){this.prerelease[r]++;r=-2}}if(r===-1)this.prerelease.push(0)}break;default:throw new Error("invalid increment argument: "+e)}this.format();return this};e.inc=B;function B(e,r,t){try{return new O(e,t).inc(r).version}catch(n){return null}}e.compareIdentifiers=F;var D=/^[0-9]+$/;function F(e,r){var t=D.test(e);var n=D.test(r);if(t&&n){e=+e;r=+r}return t&&!n?-1:n&&!t?1:e<r?-1:e>r?1:0}e.rcompareIdentifiers=G;function G(e,r){return F(r,e)}e.compare=H;function H(e,r,t){return new O(e,t).compare(r)}e.compareLoose=J;function J(e,r){return H(e,r,true)}e.rcompare=K;function K(e,r,t){return H(r,e,t)}e.sort=Q;function Q(r,t){return r.sort(function(r,n){return e.compare(r,n,t)})}e.rsort=U;function U(r,t){return r.sort(function(r,n){return e.rcompare(r,n,t)})}e.gt=W;function W(e,r,t){return H(e,r,t)>0}e.lt=Y;function Y(e,r,t){return H(e,r,t)<0}e.eq=er;function er(e,r,t){return H(e,r,t)===0}e.neq=rr;function rr(e,r,t){return H(e,r,t)!==0}e.gte=tr;function tr(e,r,t){return H(e,r,t)>=0}e.lte=nr;function nr(e,r,t){return H(e,r,t)<=0}e.cmp=ir;function ir(e,r,t,n){var i;switch(r){case"===":i=e===t;break;case"!==":i=e!==t;break;case"":case"=":case"==":i=er(e,t,n);break;case"!=":i=rr(e,t,n);break;case">":i=W(e,t,n);break;case">=":i=tr(e,t,n);break;case"<":i=Y(e,t,n);break;case"<=":i=nr(e,t,n);break;default:throw new TypeError("Invalid operator: "+r)}return i}e.Comparator=sr;function sr(e,r){if(e instanceof sr){if(e.loose===r)return e;else e=e.value}if(!(this instanceof sr))return new sr(e,r);this.loose=r;this.parse(e);if(this.semver===or)this.value="";else this.value=this.operator+this.semver.version}var or={};sr.prototype.parse=function(e){var t=this.loose?r[A]:r[T];var n=e.match(t);if(!n)throw new TypeError("Invalid comparator: "+e);this.operator=n[1];if(!n[2])this.semver=or;else{this.semver=new O(n[2],this.loose);if(this.operator==="<"&&!this.semver.prerelease.length){this.semver.prerelease=["0"];this.semver.format()}}};sr.prototype.inspect=function(){return'<SemVer Comparator "'+this+'">'};sr.prototype.toString=function(){return this.value};sr.prototype.test=function(e){return this.semver===or?true:ir(e,this.operator,this.semver,this.loose)};e.Range=ar;function ar(e,r){if(e instanceof ar&&e.loose===r)return e;if(!(this instanceof ar))return new ar(e,r);this.loose=r;this.raw=e;this.set=e.split(/\s*\|\|\s*/).map(function(e){return this.parseRange(e.trim())},this).filter(function(e){return e.length});if(!this.set.length){throw new TypeError("Invalid SemVer Range: "+e)}this.format()}ar.prototype.inspect=function(){return'<SemVer Range "'+this.range+'">'};ar.prototype.format=function(){this.range=this.set.map(function(e){return e.join(" ").trim()}).join("||").trim();return this.range};ar.prototype.toString=function(){return this.range};ar.prototype.parseRange=function(e){var t=this.loose;e=e.trim();var n=t?r[Z]:r[P];e=e.replace(n,gr);e=e.replace(r[z],M);e=e.replace(r[R],V);e=e.split(/\s+/).join(" ");var i=t?r[A]:r[T];var s=e.split(" ").map(function(e){return fr(e,t)}).join(" ").split(/\s+/);if(this.loose){s=s.filter(function(e){return!!e.match(i)})}s=s.map(function(e){return new sr(e,t)});return s};e.toComparators=ur;function ur(e,r){return new ar(e,r).set.map(function(e){return e.map(function(e){return e.value}).join(" ").trim().split(" ")})}function fr(e,r){e=lr(e,r);e=hr(e,r);e=mr(e,r);return e}function cr(e){return!e||e.toLowerCase()==="x"||e==="*"}function lr(e,r){return e.trim().split(/\s+/).map(function(e){return pr(e,r)}).join(" ")}function pr(e,t){var n=t?r[C]:r[I];return e.replace(n,function(e,r,t,n,i){var s;if(cr(r))s="";else if(cr(t))s=">="+r+".0.0-0 <"+(+r+1)+".0.0-0";else if(cr(n))s=">="+r+"."+t+".0-0 <"+r+"."+(+t+1)+".0-0";else if(i){if(i.charAt(0)!=="-")i="-"+i;s=">="+r+"."+t+"."+n+i+" <"+r+"."+(+t+1)+".0-0"}else s=">="+r+"."+t+"."+n+"-0"+" <"+r+"."+(+t+1)+".0-0";return s})}function hr(e,r){return e.split(/\s+/).map(function(e){return vr(e,r)}).join(" ")}function vr(e,t){e=e.trim();var n=t?r[k]:r[E];return e.replace(n,function(e,r,t,n,i,s){var o=cr(t);var a=o||cr(n);var u=a||cr(i);var f=u;if(r==="="&&f)r="";if(r&&f){if(o)t=0;if(a)n=0;if(u)i=0;if(r===">"){r=">=";if(o){}else if(a){t=+t+1;n=0;i=0}else if(u){n=+n+1;i=0}}e=r+t+"."+n+"."+i+"-0"}else if(o){e="*"}else if(a){e=">="+t+".0.0-0 <"+(+t+1)+".0.0-0"}else if(u){e=">="+t+"."+n+".0-0 <"+t+"."+(+n+1)+".0-0"}return e})}function mr(e,t){return e.trim().replace(r[q],"")}function gr(e,r,t,n,i,s,o,a,u,f,c,l,p){if(cr(t))r="";else if(cr(n))r=">="+t+".0.0-0";else if(cr(i))r=">="+t+"."+n+".0-0";else r=">="+r;if(cr(u))a="";else if(cr(f))a="<"+(+u+1)+".0.0-0";else if(cr(c))a="<"+u+"."+(+f+1)+".0-0";else if(l)a="<="+u+"."+f+"."+c+"-"+l;else a="<="+a;return(r+" "+a).trim()}ar.prototype.test=function(e){if(!e)return false;for(var r=0;r<this.set.length;r++){if(dr(this.set[r],e))return true}return false};function dr(e,r){for(var t=0;t<e.length;t++){if(!e[t].test(r))return false}return true}e.satisfies=wr;function wr(e,r,t){try{r=new ar(r,t)}catch(n){return false}return r.test(e)}e.maxSatisfying=yr;function yr(e,r,t){return e.filter(function(e){return wr(e,r,t)}).sort(H)[0]||null}e.validRange=$r;function $r(e,r){try{return new ar(e,r).range||"*"}catch(t){return null}}if(typeof define==="function"&&define.amd)define(e)}(typeof exports==="object"?exports:typeof define==="function"&&define.amd?{}:semver={});
-/**
+;!function(e){if(typeof module==="object"&&module.exports===e)e=module.exports=O;e.SEMVER_SPEC_VERSION="2.0.0";var r=e.re=[];var t=e.src=[];var n=0;var i=n++;t[i]="0|[1-9]\\d*";var s=n++;t[s]="[0-9]+";var o=n++;t[o]="\\d*[a-zA-Z-][a-zA-Z0-9-]*";var a=n++;t[a]="("+t[i]+")\\."+"("+t[i]+")\\."+"("+t[i]+")";var u=n++;t[u]="("+t[s]+")\\."+"("+t[s]+")\\."+"("+t[s]+")";var f=n++;t[f]="(?:"+t[i]+"|"+t[o]+")";var c=n++;t[c]="(?:"+t[s]+"|"+t[o]+")";var l=n++;t[l]="(?:-("+t[f]+"(?:\\."+t[f]+")*))";var p=n++;t[p]="(?:-?("+t[c]+"(?:\\."+t[c]+")*))";var h=n++;t[h]="[0-9A-Za-z-]+";var v=n++;t[v]="(?:\\+("+t[h]+"(?:\\."+t[h]+")*))";var m=n++;var g="v?"+t[a]+t[l]+"?"+t[v]+"?";t[m]="^"+g+"$";var d="[v=\\s]*"+t[u]+t[p]+"?"+t[v]+"?";var w=n++;t[w]="^"+d+"$";var y=n++;t[y]="((?:<|>)?=?)";var $=n++;t[$]=t[s]+"|x|X|\\*";var j=n++;t[j]=t[i]+"|x|X|\\*";var b=n++;t[b]="[v=\\s]*("+t[j]+")"+"(?:\\.("+t[j]+")"+"(?:\\.("+t[j]+")"+"(?:("+t[l]+")"+")?)?)?";var S=n++;t[S]="[v=\\s]*("+t[$]+")"+"(?:\\.("+t[$]+")"+"(?:\\.("+t[$]+")"+"(?:("+t[p]+")"+")?)?)?";var E=n++;t[E]="^"+t[y]+"\\s*"+t[b]+"$";var k=n++;t[k]="^"+t[y]+"\\s*"+t[S]+"$";var x=n++;t[x]="(?:~>?)";var R=n++;t[R]=t[x]+"s+";var V="$1";var I=n++;t[I]="^"+t[x]+t[b]+"$";var C=n++;t[C]="^"+t[x]+t[S]+"$";var A=n++;t[A]="^"+t[y]+"\\s*("+d+")$|^$";var T=n++;t[T]="^"+t[y]+"\\s*("+g+")$|^$";var z=n++;t[z]=t[y]+"\\s*("+d+"|"+t[b]+")";r[z]=new RegExp(t[z],"g");var M="$1$2 ";var P=n++;t[P]="^\\s*("+t[b]+")"+"\\s+-\\s+"+"("+t[b]+")"+"\\s*$";var Z=n++;t[Z]="^\\s*("+t[S]+")"+"\\s+-\\s+"+"("+t[S]+")"+"\\s*$";var q=n++;t[q]="(<|>)?=?\\s*\\*";for(var L=0;L<n;L++){if(!r[L])r[L]=new RegExp(t[L])}e.parse=X;function X(e,t){var n=t?r[w]:r[m];return n.test(e)?new O(e,t):null}e.valid=_;function _(e,r){var t=X(e,r);return t?t.version:null}e.clean=N;function N(e,r){var t=X(e,r);return t?t.version:null}e.SemVer=O;function O(e,t){if(e instanceof O){if(e.loose===t)return e;else e=e.version}if(!(this instanceof O))return new O(e,t);this.loose=t;var n=e.trim().match(t?r[w]:r[m]);if(!n)throw new TypeError("Invalid Version: "+e);this.raw=e;this.major=+n[1];this.minor=+n[2];this.patch=+n[3];if(!n[4])this.prerelease=[];else this.prerelease=n[4].split(".").map(function(e){return/^[0-9]+$/.test(e)?+e:e});this.build=n[5]?n[5].split("."):[];this.format()}O.prototype.format=function(){this.version=this.major+"."+this.minor+"."+this.patch;if(this.prerelease.length)this.version+="-"+this.prerelease.join(".");return this.version};O.prototype.inspect=function(){return'<SemVer "'+this+'">'};O.prototype.toString=function(){return this.version};O.prototype.compare=function(e){if(!(e instanceof O))e=new O(e,this.loose);return this.compareMain(e)||this.comparePre(e)};O.prototype.compareMain=function(e){if(!(e instanceof O))e=new O(e,this.loose);return F(this.major,e.major)||F(this.minor,e.minor)||F(this.patch,e.patch)};O.prototype.comparePre=function(e){if(!(e instanceof O))e=new O(e,this.loose);if(this.prerelease.length&&!e.prerelease.length)return-1;else if(!this.prerelease.length&&e.prerelease.length)return 1;else if(!this.prerelease.lenth&&!e.prerelease.length)return 0;var r=0;do{var t=this.prerelease[r];var n=e.prerelease[r];if(t===undefined&&n===undefined)return 0;else if(n===undefined)return 1;else if(t===undefined)return-1;else if(t===n)continue;else return F(t,n)}while(++r)};O.prototype.inc=function(e){switch(e){case"major":this.major++;this.minor=-1;case"minor":this.minor++;this.patch=-1;case"patch":this.patch++;this.prerelease=[];break;case"prerelease":if(this.prerelease.length===0)this.prerelease=[0];else{var r=this.prerelease.length;while(--r>=0){if(typeof this.prerelease[r]==="number"){this.prerelease[r]++;r=-2}}if(r===-1)this.prerelease.push(0)}break;default:throw new Error("invalid increment argument: "+e)}this.format();return this};e.inc=B;function B(e,r,t){try{return new O(e,t).inc(r).version}catch(n){return null}}e.compareIdentifiers=F;var D=/^[0-9]+$/;function F(e,r){var t=D.test(e);var n=D.test(r);if(t&&n){e=+e;r=+r}return t&&!n?-1:n&&!t?1:e<r?-1:e>r?1:0}e.rcompareIdentifiers=G;function G(e,r){return F(r,e)}e.compare=H;function H(e,r,t){return new O(e,t).compare(r)}e.compareLoose=J;function J(e,r){return H(e,r,true)}e.rcompare=K;function K(e,r,t){return H(r,e,t)}e.sort=Q;function Q(r,t){return r.sort(function(r,n){return e.compare(r,n,t)})}e.rsort=U;function U(r,t){return r.sort(function(r,n){return e.rcompare(r,n,t)})}e.gt=W;function W(e,r,t){return H(e,r,t)>0}e.lt=Y;function Y(e,r,t){return H(e,r,t)<0}e.eq=er;function er(e,r,t){return H(e,r,t)===0}e.neq=rr;function rr(e,r,t){return H(e,r,t)!==0}e.gte=tr;function tr(e,r,t){return H(e,r,t)>=0}e.lte=nr;function nr(e,r,t){return H(e,r,t)<=0}e.cmp=ir;function ir(e,r,t,n){var i;switch(r){case"===":i=e===t;break;case"!==":i=e!==t;break;case"":case"=":case"==":i=er(e,t,n);break;case"!=":i=rr(e,t,n);break;case">":i=W(e,t,n);break;case">=":i=tr(e,t,n);break;case"<":i=Y(e,t,n);break;case"<=":i=nr(e,t,n);break;default:throw new TypeError("Invalid operator: "+r)}return i}e.Comparator=sr;function sr(e,r){if(e instanceof sr){if(e.loose===r)return e;else e=e.value}if(!(this instanceof sr))return new sr(e,r);this.loose=r;this.parse(e);if(this.semver===or)this.value="";else this.value=this.operator+this.semver.version}var or={};sr.prototype.parse=function(e){var t=this.loose?r[A]:r[T];var n=e.match(t);if(!n)throw new TypeError("Invalid comparator: "+e);this.operator=n[1];if(!n[2])this.semver=or;else{this.semver=new O(n[2],this.loose);if(this.operator==="<"&&!this.semver.prerelease.length){this.semver.prerelease=["0"];this.semver.format()}}};sr.prototype.inspect=function(){return'<SemVer Comparator "'+this+'">'};sr.prototype.toString=function(){return this.value};sr.prototype.test=function(e){return this.semver===or?true:ir(e,this.operator,this.semver,this.loose)};e.Range=ar;function ar(e,r){if(e instanceof ar&&e.loose===r)return e;if(!(this instanceof ar))return new ar(e,r);this.loose=r;this.raw=e;this.set=e.split(/\s*\|\|\s*/).map(function(e){return this.parseRange(e.trim())},this).filter(function(e){return e.length});if(!this.set.length){throw new TypeError("Invalid SemVer Range: "+e)}this.format()}ar.prototype.inspect=function(){return'<SemVer Range "'+this.range+'">'};ar.prototype.format=function(){this.range=this.set.map(function(e){return e.join(" ").trim()}).join("||").trim();return this.range};ar.prototype.toString=function(){return this.range};ar.prototype.parseRange=function(e){var t=this.loose;e=e.trim();var n=t?r[Z]:r[P];e=e.replace(n,gr);e=e.replace(r[z],M);e=e.replace(r[R],V);e=e.split(/\s+/).join(" ");var i=t?r[A]:r[T];var s=e.split(" ").map(function(e){return fr(e,t)}).join(" ").split(/\s+/);if(this.loose){s=s.filter(function(e){return!!e.match(i)})}s=s.map(function(e){return new sr(e,t)});return s};e.toComparators=ur;function ur(e,r){return new ar(e,r).set.map(function(e){return e.map(function(e){return e.value}).join(" ").trim().split(" ")})}function fr(e,r){e=lr(e,r);e=hr(e,r);e=mr(e,r);return e}function cr(e){return!e||e.toLowerCase()==="x"||e==="*"}function lr(e,r){return e.trim().split(/\s+/).map(function(e){return pr(e,r)}).join(" ")}function pr(e,t){var n=t?r[C]:r[I];return e.replace(n,function(e,r,t,n,i){var s;if(cr(r))s="";else if(cr(t))s=">="+r+".0.0-0 <"+(+r+1)+".0.0-0";else if(cr(n))s=">="+r+"."+t+".0-0 <"+r+"."+(+t+1)+".0-0";else if(i){if(i.charAt(0)!=="-")i="-"+i;s=">="+r+"."+t+"."+n+i+" <"+r+"."+(+t+1)+".0-0"}else s=">="+r+"."+t+"."+n+"-0"+" <"+r+"."+(+t+1)+".0-0";return s})}function hr(e,r){return e.split(/\s+/).map(function(e){return vr(e,r)}).join(" ")}function vr(e,t){e=e.trim();var n=t?r[k]:r[E];return e.replace(n,function(e,r,t,n,i,s){var o=cr(t);var a=o||cr(n);var u=a||cr(i);var f=u;if(r==="="&&f)r="";if(r&&f){if(o)t=0;if(a)n=0;if(u)i=0;if(r===">"){r=">=";if(o){}else if(a){t=+t+1;n=0;i=0}else if(u){n=+n+1;i=0}}e=r+t+"."+n+"."+i+"-0"}else if(o){e="*"}else if(a){e=">="+t+".0.0-0 <"+(+t+1)+".0.0-0"}else if(u){e=">="+t+"."+n+".0-0 <"+t+"."+(+n+1)+".0-0"}return e})}function mr(e,t){return e.trim().replace(r[q],"")}function gr(e,r,t,n,i,s,o,a,u,f,c,l,p){if(cr(t))r="";else if(cr(n))r=">="+t+".0.0-0";else if(cr(i))r=">="+t+"."+n+".0-0";else r=">="+r;if(cr(u))a="";else if(cr(f))a="<"+(+u+1)+".0.0-0";else if(cr(c))a="<"+u+"."+(+f+1)+".0-0";else if(l)a="<="+u+"."+f+"."+c+"-"+l;else a="<="+a;return(r+" "+a).trim()}ar.prototype.test=function(e){if(!e)return false;for(var r=0;r<this.set.length;r++){if(dr(this.set[r],e))return true}return false};function dr(e,r){for(var t=0;t<e.length;t++){if(!e[t].test(r))return false}return true}e.satisfies=wr;function wr(e,r,t){try{r=new ar(r,t)}catch(n){return false}return r.test(e)}e.maxSatisfying=yr;function yr(e,r,t){return e.filter(function(e){return wr(e,r,t)}).sort(H)[0]||null}e.validRange=$r;function $r(e,r){try{return new ar(e,r).range||"*"}catch(t){return null}}if(typeof define==="function"&&define.amd)define(e)}(typeof exports==="object"?exports:typeof define==="function"&&define.amd?{}:semver={});;/**
 * @license GrapeFruit Game Engine
 * Copyright (c) 2012, Chad Engler
 *
@@ -16763,7 +16746,7 @@ gf.Texture = PIXI.Texture;
  * @property version
  * @type String
  */
-gf.version = '0.0.2';
+gf.version = '@@VERSION';
 
 /**
  * The cached assets loaded by any loader
@@ -16907,8 +16890,7 @@ gf.inherits = function(child, parent, proto) {
     //create the prototype
     child.prototype = Object.create(parent.prototype, desc);
 };
-
-//Great ideas taken from: https://github.com/obiot/melonJS/blob/master/src/plugin/plugin.js
+;//Great ideas taken from: https://github.com/obiot/melonJS/blob/master/src/plugin/plugin.js
 /**
  * Namespace for all plugins, it also provides methods for patching
  * core functions, and registering plugins.
@@ -16986,8 +16968,7 @@ gf.plugin = {
         gf[name] = plugin;
     }
 };
-
-/**
+;/**
  * The grapefruit utility object, used for misc functions used throughout the code base
  *
  * @class utils
@@ -17258,8 +17239,7 @@ gf.plugin = {
         return obj;
     }
 };
-
-/**
+;/**
  * The grapefruit math library, used to abstract commonly used math operations
  *
  * @class math
@@ -17346,7 +17326,7 @@ gf.plugin = {
      * a position of 11, it would snap to 20; a position of 18 would also snap to 20
      *
      * @method snapCeil
-     * @param n {Number} The number to snap
+     * @param num {Number} The number to snap
      * @param gap {Number} The gap size of the grid (the tile size)
      * @param offset {Number} The starting offset of a grid slice (aka tile)
      * @return {Number} The snapped value
@@ -17421,8 +17401,8 @@ gf.plugin = {
      * Returns a random int between min and max.
      *
      * @method randomInt
-     * @param min {Number} The minimum number that the result can be
-     * @param max {Number} The maximum number that the result can be
+     * @param min {Number} The minimun number that the result can be
+     * @param max {Number} The maximun number that the result can be
      * @return {Number}
      */
     randomInt: function(min, max) {
@@ -17462,39 +17442,8 @@ gf.plugin = {
             return null;
 
         return array[start + Math.floor(Math.random() * len)];
-    },
-    /**
-     * Converts screen pixel coordinates to isometric coorindates.
-     *
-     * @param x {Number}
-     * @param y
-     */
-    pxToIso: function(x, y) {
-        return {
-            x: x - y,
-            y: (x + y) / 2
-        };
-    },
-    pointToIso: function(pt) {
-        var x = pt.x;
-        var y = pt.y;
-        pt.x = x - y;
-        pt.y = (x + y) / 2;
-    },
-    /**
-     *
-     * @param x
-     * @param y
-     * @returns {{x: number, y: number}}
-     */
-    isoToPx: function(x, y) {
-        return {
-            x: (2 * y + x) / 2,
-            y: (2 * y - x) / 2
-        };
     }
- };
-/**
+ };;/**
  * High performance clock, from mrdoob's Three.js:
  * <a target="_blank" href="https://github.com/mrdoob/three.js/blob/master/src/core/Clock.js">/src/core/Clock.js</a>
  *
@@ -17587,8 +17536,7 @@ gf.inherits(gf.Clock, Object, {
         return diff;
     }
 });
-
-/**
+;/**
  * A 2d Vector implementation stolen directly from mrdoob's THREE.js
  * thanks mrdoob: https://github.com/mrdoob/three.js/blob/master/src/math/Vector2.js
  *
@@ -17995,8 +17943,7 @@ gf.inherits(gf.Vector, Object, {
         return new gf.Vector(this.x, this.y);
     }
 });
-
-/**
+;/**
  * Event emitter mixin. This will add emitter properties to an object so that
  * it can emit events, and have others listen for them. Based on
  * <a target="_blank" href="https://github.com/joyent/node/blob/master/lib/events.js">node.js event emitter</a>
@@ -18172,8 +18119,7 @@ gf.EventEmitter = function() {
 
         return this;
     };
-};
-gf.PhysicsSystem = function(options) {
+};;gf.PhysicsSystem = function(options) {
     options = options || {};
 
     this.space = new cp.Space();
@@ -18529,8 +18475,7 @@ gf.inherits(gf.PhysicsSystem, Object, {
 gf.PhysicsSystem.COLLISION_TYPE = {
     SPRITE: 0,
     TILE: 1
-};
-/**
+};;/**
  * Physics mixin. This will add physics capabilities to the class it mixes into.
  *
  * @class PhysicsTarget
@@ -18664,6 +18609,23 @@ gf.PhysicsSystem.COLLISION_TYPE = {
      * @param y {Number}
      */
     this.setPosition = function(x, y) {
+        var isox, isoy, map, tileSize;
+
+        if(this.isometric) {
+            if (!this.location) {
+              this.location = new gf.Point(x, y);
+            } else {
+              this.location.x = x;
+              this.location.y = y;
+            }
+            map = this.parent.parent;
+            tileSize = map.tileSize;
+            isox = x - y;
+            isoy = (x + y) / 2;
+            x = isox + tileSize.x * this.anchor.x;
+            y = isoy;
+        }
+
         this.position.x = x;
         this.position.y = y;
 
@@ -18809,7 +18771,7 @@ gf.PhysicsSystem.COLLISION_TYPE = {
         }
     };
 };
-//you can only have 1 audio context on a page, so we store one for use in each manager
+;//you can only have 1 audio context on a page, so we store one for use in each manager
 gf.__AudioCtx = window.AudioContext || window.webkitAudioContext || window.mozAudioContext;
 gf.__audioctx = gf.support.webAudio ? new gf.__AudioCtx() : null;
 
@@ -19049,8 +19011,7 @@ gf.inherits(gf.AudioManager, Object, {
         settings.src = src;
         return this.sounds[name] = gf.assetCache[src] = new gf.AudioPlayer(this, settings);
     }
-});
-/**
+});;/**
  * Grapefruit Audio API, provides an easy interface to use HTML5 Audio
  * The GF Audio API was based on
  * <a target="_blank" href="https://github.com/goldfire/howler.js">Howler.js</a>
@@ -19967,8 +19928,7 @@ if(gf.support.webAudio) {
             node.bufferSource.loopEnd = loop[1] + loop[2];
         }
     };
-}
-/**
+};/**
  * The base display object, that anything being put on the screen inherits from
  *
  * @class DisplayObjectContainer
@@ -20214,8 +20174,7 @@ gf.inherits(gf.DisplayObjectContainer, PIXI.DisplayObjectContainer, {
  *
  * @event touchendoutside
  * @param interactionData {InteractionData}
- */
-/**
+ */;/**
  * The base Sprite class. This class is the base for all images on the screen
  *
  * @class Sprite
@@ -20367,8 +20326,7 @@ gf.Sprite.TYPE = {
  *
  * @event touchendoutside
  * @param interactionData {InteractionData}
- */
-/**
+ */;/**
  * The base AnimatedSprite class
  *
  * @class AnimatedSprite
@@ -20569,18 +20527,15 @@ gf.inherits(gf.AnimatedSprite, gf.Sprite, {
             }
         }
     }
-});
-/**
+});;/**
  * A basic Camera object that provides some effects. It also will contain the HUD and GUI
  * to ensure they are using "screen-coords".
- *
- * TODO: Currently fade/flash don't show the colors. How should I actually show them, a gf.Sprite?
  *
  * @class Camera
  * @extends gf.DisplayObjectContainer
  * @namespace gf
  * @constructor
- * @param game {Game} The game this camera belongs to
+ * @param game {gf.Game} The game this camera belongs to
  * @param settings {Object} Any settings you want to override the default properties with
  */
 gf.Camera = function(game, settings) {
@@ -20588,7 +20543,7 @@ gf.Camera = function(game, settings) {
      * The bounds of that the camera can move to
      *
      * @property bounds
-     * @type Rectangle
+     * @type gf.Rectangle
      * @readOnly
      * @private
      */
@@ -20599,7 +20554,7 @@ gf.Camera = function(game, settings) {
      * before the camera moves to track it.
      *
      * @property _deadzone
-     * @type Rectangle
+     * @type gf.Rectangle
      * @readOnly
      * @private
      */
@@ -20609,7 +20564,7 @@ gf.Camera = function(game, settings) {
      * The target that the camera will follow
      *
      * @property _target
-     * @type Sprite
+     * @type gf.Sprite
      * @readOnly
      * @private
      */
@@ -20619,7 +20574,7 @@ gf.Camera = function(game, settings) {
      * The size of the camera
      *
      * @property size
-     * @type Vector
+     * @type gf.Vector
      * @readOnly
      */
     this.size = new gf.Vector(0, 0);
@@ -20628,7 +20583,7 @@ gf.Camera = function(game, settings) {
      * Half of the size of the camera
      *
      * @property hSize
-     * @type Vector
+     * @type gf.Vector
      * @readOnly
      */
     this.hSize = new gf.Vector(0, 0);
@@ -20637,38 +20592,51 @@ gf.Camera = function(game, settings) {
      * The game this camera views
      *
      * @property game
-     * @type Game
+     * @type gf.Game
      * @readOnly
      */
     this.game = game;
 
     /**
-     * The _fx namespace has all the instance variables for all the fx
+     * The fxpools for doing camera effects
      *
-     * @property _fx
+     * @property fxpools
      * @type Object
      * @private
      * @readOnly
      */
-    this._fx = {
-        flash: {
-            alpha: 0,
-            complete: null
-        },
-        fade: {
-            alpha: 0,
-            complete: null
-        },
-        shake: {
-            intensity: 0,
-            duration: 0,
-            direction: gf.Camera.SHAKE.BOTH,
-            offset: new gf.Point(0, 0),
-            complete: null
-        }
+    this.fxpools = {
+        flash: new gf.ObjectPool(gf.Camera.fx.Flash, this),
+        fade: new gf.ObjectPool(gf.Camera.fx.Fade, this),
+        shake: new gf.ObjectPool(gf.Camera.fx.Shake, this),
+        scanlines: new gf.ObjectPool(gf.Camera.fx.Scanlines, this),
+        close: new gf.ObjectPool(gf.Camera.fx.Close, this)
     };
 
     gf.DisplayObjectContainer.call(this, settings);
+
+    /*
+     * Dynamic addition of fx shortcuts
+    var self = this;
+    Object.keys(this.fxpools).forEach(function(key) {
+        self[key] = function() {
+            var e = self.fxpools[key].create(),
+                args = Array.prototype.slice.call(arguments),
+                cb = args.pop();
+
+            if(typeof cb !== 'function')
+                args.push(cb);
+
+            args.push(function() {
+                self.fxpools[key].free(e);
+                if(typeof cb === 'function')
+                    cb();
+            });
+
+            return e.start.apply(e, args);
+        };
+    });
+    */
 };
 
 gf.inherits(gf.Camera, gf.DisplayObjectContainer, {
@@ -20676,178 +20644,93 @@ gf.inherits(gf.Camera, gf.DisplayObjectContainer, {
      * Makes the camera flash with a certain color
      *
      * @method flash
-     * @param color {Number} The color to flash the screen with
-     * @param duration {Number} The time in milliseconds to fade away
-     * @param callback {Function} The callback to call when the flash has completed
-     * @return {Camera} Returns iteself for chainability
+     * @param [color=0xffffff] {Number} The color to flash the screen with
+     * @param [duration=1000] {Number} The time in milliseconds to fade away
+     * @param [callback] {Function} The callback to call when the flash has completed
+     * @return {gf.Camera.fx.Flash} Returns the effect object
      */
     flash: function(color, duration, cb) {
-        if(this._fx.flash.alpha > 0) return this;
+        var flash = this.fxpools.flash.create(),
+            self = this;
 
-        if(typeof duration === 'function') {
-            cb = duration;
-            duration = 1;
-        }
-
-        if(typeof color === 'function') {
-            cb = color;
-            duration = 1;
-            color = 0xFFFFFF;
-        }
-
-        duration = duration || 1;
-        if(duration < 0) duration = 1;
-
-        if(color === undefined)
-            color = 0xFFFFFF;
-
-        /*var red = color >> 16 & 0xFF,
-            green = color >> 8 & 0xFF,
-            blue = color & 0xFF;*/
-
-        this._fx.flash.color = color;
-        this._fx.flash.duration = duration;
-        this._fx.flash.alpha = 1;
-        this._fx.flash.complete = cb;
-
-        return this;
-    },
-    /**
-     * Stops a running flash, instantly hiding it
-     *
-     * @method stopFlash
-     * @return {Camera} Returns iteself for chainability
-     */
-    stopFlash: function() {
-        this._fx.flash.alpha = 0;
-
-        return this;
+        return flash.start(color, duration, function() {
+            self.fxpools.flash.free(flash);
+            if(typeof cb === 'function')
+                cb();
+        });
     },
     /**
      * Makes the camera fade into a color
      *
      * @method fade
-     * @param color {Number} The color to fade into
-     * @param duration {Number} The time in milliseconds to take to fade in
-     * @param callback {Function} The callback to call when the fade has completed
-     * @return {Camera} Returns iteself for chainability
+     * @param [color=0xffffff] {Number} The color to fade into
+     * @param [duration=1000] {Number} The time in milliseconds to take to fade in
+     * @param [callback] {Function} The callback to call when the fade has completed
+     * @return {gf.Camera.fx.Fade} Returns the effect object
      */
     fade: function(color, duration, cb) {
-        if(this._fx.fade.alpha > 0) return this;
+        var fade = this.fxpools.fade.create(),
+            self = this;
 
-        if(typeof duration === 'function') {
-            cb = duration;
-            duration = 1;
-        }
-
-        if(typeof color === 'function') {
-            cb = color;
-            duration = 1;
-            color = 0xFFFFFF;
-        }
-
-        duration = duration || 1;
-        if(duration < 0) duration = 1;
-
-        if(color === undefined)
-            color = 0xFFFFFF;
-
-        /*var red = color >> 16 & 0xFF,
-            green = color >> 8 & 0xFF,
-            blue = color & 0xFF;*/
-
-        this._fx.fade.color = color;
-        this._fx.fade.duration = duration;
-        this._fx.fade.alpha = 0.01;
-        this._fx.fade.complete = cb;
-
-        return this;
-    },
-    /**
-     * Stops a running fade, instantly hiding it
-     *
-     * @method stopFade
-     * @return {Camera} Returns iteself for chainability
-     */
-    stopFade: function() {
-        this._fx.fade.alpha = 0;
-
-        return this;
+        return fade.start(color, duration, function() {
+            self.fxpools.fade.free(fade);
+            if(typeof cb === 'function')
+                cb();
+        });
     },
     /**
      * Shakes the camera around a bit, to show it who is boss.
      *
      * @method shake
-     * @param intensity {Number} How hard to shake around
-     * @param duration {Number} The time in milliseconds to shake for
-     * @param direction {Camera.SHAKE} The axes to shake the camera in default is gf.Camera.SHAKE.BOTH
-     * @param callback {Function} The callback to call when the shaking has stopped
-     * @return {Camera} Returns iteself for chainability
+     * @param [intensity=0.01] {Number} How hard to shake around
+     * @param [duration=1000] {Number} The time in milliseconds to shake for
+     * @param [direction=gf.Camera.DIRECTION.BOTH] {gf.Camera.DIRECTION} The axes to shake the camera in default is gf.Camera.SHAKE.BOTH
+     * @param [callback] {Function} The callback to call when the shaking has stopped
+     * @return {gf.Camera.fx.Shake} Returns the effect object
      */
     shake: function(intensity, duration, direction, cb) {
-        //already shaking (call stop first)
-        if(this._fx.shake.offset.x !== 0 || this._fx.shake.offset.y !== 0)
-            return this;
+        var shake = this.fxpools.shake.create(),
+            self = this;
 
-        if(typeof direction === 'function') {
-            cb = direction;
-            direction = gf.Camera.SHAKE.BOTH;
-        }
-
-        if(typeof duration === 'function') {
-            cb = duration;
-            direction = gf.Camera.SHAKE.BOTH;
-            duration = null;
-        }
-
-        if(typeof intensity === 'function') {
-            cb = intensity;
-            direction = gf.Camera.SHAKE.BOTH;
-            duration = null;
-            intensity = null;
-        }
-
-        intensity = intensity || 0.01;
-        duration = duration || 1000;
-        direction = direction || gf.Camera.SHAKE.BOTH;
-
-        //setup a shake effect
-        this._fx.shake.intensity = intensity;
-        this._fx.shake.duration = duration;
-        this._fx.shake.direction = direction;
-        this._fx.shake.offset.x = 0;
-        this._fx.shake.offset.y = 0;
-        this._fx.shake.complete = cb;
-
-        return this;
+        return shake.start(intensity, duration, direction, function() {
+            self.fxpools.shake.free(shake);
+            if(typeof cb === 'function')
+                cb();
+        });
     },
     /**
-     * Stops a running shake effect
+     * Adds a mask that will hide the world via a close-in transition.
      *
-     * @method stopShake
-     * @return {Camera} Returns iteself for chainability
+     * @method scanlines
+     * @param [shape='circle'] {String} The shape of the transition, either 'circle' or 'rectangle'
+     * @param [duration=1000] {Number} The time in milliseconds it takes to close the transition
+     * @return {gf.Camera.fx.Close} Returns the effect object
      */
-    stopShake: function() {
-        if(this._fx.shake.duration !== 0) {
-            this._fx.shake.duration = 0;
-            this._fx.shake.offset.x = 0;
-            this._fx.shake.offset.y = 0;
-        }
+    close: function(shape, duration, cb) {
+        var close = this.fxpools.close.create(),
+            self = this;
 
-        return this;
+        return close.start(shape, duration, function() {
+            self.fxpools.close.free(close);
+            if(typeof cb === 'function')
+                cb();
+        });
     },
     /**
-     * Stops all currently running effects (flash, fade, shake)
+     * Shows scanlines accross the screen, retro arcade style
      *
-     * @method stopAll
-     * @return {Camera} Returns iteself for chainability
+     * @method scanlines
+     * @param [color=0x000000] {Number} The hex color the lines should be
+     * @param [direction=gf.Camera.DIRECTION.HORIZONTAL] {gf.Camera.DIRECTION} The axes to shake the camera in default is gf.Camera.SHAKE.BOTH
+     * @param [spacing=4] {Number} The spacing between each line
+     * @param [thickness=1] {Number} The thickness of each line
+     * @param [alpha=0.3] {Number} The alpha of each line
+     * @return {gf.Camera.fx.Scanlines} Returns the effect object
      */
-    stopAll: function() {
-        this.stopFlash();
-        this.stopFade();
-        this.stopShake();
+    scanlines: function(color, direction, spacing, thickness, alpha) {
+        var scanlines = this.fxpools.scanlines.create();
 
-        return this;
+        return scanlines.start(color, direction, spacing, thickness, alpha);
     },
     /**
      * Follows an sprite with the camera, ensuring they are always center view. You can
@@ -20855,9 +20738,9 @@ gf.inherits(gf.Camera, gf.DisplayObjectContainer, {
      * to move with them.
      *
      * @method follow
-     * @param sprite {Sprite} The sprite to follow
-     * @param style {Camera.FOLLOW} The style of following, defaults to gf.Camera.FOLLOW.LOCKON
-     * @return {Camera} Returns iteself for chainability
+     * @param sprite {gf.Sprite} The sprite to follow
+     * @param [style=gf.Camera.FOLLOW.LOCKON] {gf.Camera.FOLLOW} The style of following
+     * @return {gf.Camera} Returns iteself for chainability
      */
     follow: function(spr, style) {
         if(!(spr instanceof gf.Sprite))
@@ -20909,7 +20792,7 @@ gf.inherits(gf.Camera, gf.DisplayObjectContainer, {
      * Stops following any sprites
      *
      * @method unfollow
-     * @return {Camera} Returns iteself for chainability
+     * @return {gf.Camera} Returns iteself for chainability
      */
     unfollow: function() {
         this._target = null;
@@ -20919,8 +20802,8 @@ gf.inherits(gf.Camera, gf.DisplayObjectContainer, {
      * Focuses the camera on a sprite.
      *
      * @method focusSprite
-     * @param sprite {Sprite} The sprite to focus on
-     * @return {Camera} Returns iteself for chainability
+     * @param sprite {gf.Sprite} The sprite to focus on
+     * @return {gf.Camera} Returns iteself for chainability
      */
     focusSprite: function(spr) {
         return this.focus(
@@ -20933,9 +20816,9 @@ gf.inherits(gf.Camera, gf.DisplayObjectContainer, {
      * not go outside the bounds set with setBounds()
      *
      * @method focus
-     * @param x {Number|Point} The x coord to focus on, if a Point is passed the y param is ignored
+     * @param x {Number|gf.Point} The x coord to focus on, if a Point is passed the y param is ignored
      * @param y {Number} The y coord to focus on
-     * @return {Camera} Returns iteself for chainability
+     * @return {gf.Camera} Returns iteself for chainability
      */
     focus: function(x, y) {
         y = x instanceof gf.Point ? x.y : (y || 0);
@@ -20956,9 +20839,9 @@ gf.inherits(gf.Camera, gf.DisplayObjectContainer, {
      * not go outside the bounds set with setBounds()
      *
      * @method pan
-     * @param x {Number|Point} The x amount to pan, if a Point is passed the y param is ignored
+     * @param x {Number|gf.Point} The x amount to pan, if a Point is passed the y param is ignored
      * @param y {Number} The y ammount to pan
-     * @return {Camera} Returns iteself for chainability
+     * @return {gf.Camera} Returns iteself for chainability
      */
     pan: function(dx, dy) {
         dy = dx instanceof gf.Point ? dx.y : (dy || 0);
@@ -21007,7 +20890,7 @@ gf.inherits(gf.Camera, gf.DisplayObjectContainer, {
      * @private
      * @param w {Number} The new width
      * @param h {Number} The new height
-     * @return {Camera} Returns iteself for chainability
+     * @return {gf.Camera} Returns iteself for chainability
      */
     resize: function(w, h) {
         this.size.set(w, h);
@@ -21023,8 +20906,8 @@ gf.inherits(gf.Camera, gf.DisplayObjectContainer, {
      * min and max, and is set for you.
      *
      * @method constrain
-     * @param shape {Rectangle|Polygon|Circle|Ellipse} The shape to constrain the camera into
-     * @return {Camera} Returns iteself for chainability
+     * @param shape {gf.Rectangle|gf.Polygon|gf.Circle|gf.Ellipse} The shape to constrain the camera into
+     * @return {gf.Camera} Returns iteself for chainability
      */
     constrain: function(shape, scaled) {
         this._bounds = shape;
@@ -21053,13 +20936,15 @@ gf.inherits(gf.Camera, gf.DisplayObjectContainer, {
     },
     unconstrain: function() {
         this._bounds = null;
+
+        return this;
     },
     /**
      * Called internally every frame. Updates all effects and the follow
      *
      * @method update
      * @param dt {Number} The delta time (in seconds) since the last update
-     * @return {Camera} Returns iteself for chainability
+     * @return {gf.gf.Camera} Returns iteself for chainability
      * @private
      */
     update: function(dt) {
@@ -21101,59 +20986,11 @@ gf.inherits(gf.Camera, gf.DisplayObjectContainer, {
             }
         }
 
-        //update flash effect
-        if(this._fx.flash.alpha > 0) {
-            this._fx.flash.alpha -= (dt * 1000) / this._fx.flash.duration;
-
-            if(this._fx.flash.alpha <= 0) {
-                this._fx.flash.alpha = 0;
-
-                if(this._fx.flash.complete)
-                    this._fx.flash.complete();
-            }
-        }
-
-        //update fade effect
-        if(this._fx.fade.alpha > 0) {
-            this._fx.fade.alpha += (dt * 1000) / this._fx.fade.duration;
-
-            if(this._fx.fade.alpha >= 1) {
-                this._fx.fade.alpha = 1;
-
-                if(this._fx.fade.complete) {
-                    this._fx.fade.complete();
-                }
-            }
-        }
-
-        //update shake effect
-        if(this._fx.shake.duration > 0) {
-            this._fx.shake.duration -= (dt * 1000);
-
-            //pan back to the original position
-            this._fx.shake.offset.x = -this._fx.shake.offset.x;
-            this._fx.shake.offset.y = -this._fx.shake.offset.y;
-            this.pan(this._fx.shake.offset);
-
-            if(this._fx.shake.duration <= 0) {
-                this._fx.shake.duration = 0;
-                this._fx.shake.offset.x = 0;
-                this._fx.shake.offset.y = 0;
-
-                if(this._fx.shake.complete) {
-                    this._fx.shake.complete();
-                }
-            }
-            else {
-                //pan to a random offset
-                if((this._fx.shake.direction === gf.Camera.SHAKE.BOTH) || (this._fx.shake.direction === gf.Camera.SHAKE.HORIZONTAL))
-                    this._fx.shake.offset.x = Math.round(Math.random() * this._fx.shake.intensity * this.size.x * 2 - this._fx.shake.intensity * this.size.x);
-
-                if ((this._fx.shake.direction === gf.Camera.SHAKE.BOTH) || (this._fx.shake.direction === gf.Camera.SHAKE.VERTICAL))
-                    this._fx.shake.offset.y = Math.round(Math.random() * this._fx.shake.intensity * this.size.y * 2 - this._fx.shake.intensity * this.size.y);
-
-                this.pan(this._fx.shake.offset);
-            }
+        //update effects
+        for(var i = 0, il = this.children.length; i < il; ++i) {
+            var c = this.children[i];
+            if(c.update)
+                c.update(dt);
         }
 
         return this;
@@ -21172,7 +21009,349 @@ gf.Camera.FOLLOW = {
     TOPDOWN: 1,
     TOPDOWN_TIGHT: 2,
     LOCKON: 3
+};;gf.Camera.fx = {
+    /**
+     * Camera directions, used for certain effects (like shake and scanlines)
+     *
+     * @property DIRECTION
+     * @type Object
+     * @static
+     */
+    DIRECTION: {
+        BOTH: 0,
+        HORIZONTAL: 1,
+        VERTICAL: 2
+    }
 };
+
+gf.Camera.fx.Effect = function() {
+    gf.DisplayObjectContainer.call(this);
+
+    this.addChild(this.gfx = new PIXI.Graphics());
+    this.gfx.visible = false;
+};
+
+gf.inherits(gf.Camera.fx.Effect, gf.DisplayObjectContainer, {
+    start: function() {
+        return this;
+    },
+    stop: function() {
+        return this;
+    },
+    update: function() {
+        return this;
+    },
+    _complete: function() {
+        if(typeof this.cb === 'function')
+            this.cb();
+    }
+});;gf.Camera.fx.Close = function() {
+    gf.Camera.fx.Effect.call(this);
+};
+
+gf.inherits(gf.Camera.fx.Close, gf.Camera.fx.Effect, {
+    start: function(shape, duration, cb) {
+        gf.Camera.fx.Effect.prototype.start.call(this);
+
+        if(typeof duration === 'function') {
+            cb = duration;
+            duration = null;
+        }
+
+        if(typeof shape === 'function') {
+            cb = shape;
+            duration = null;
+            shape = null;
+        }
+
+        this.shape = shape || 'circle';
+        this.duration = duration && duration > 0 ? duration : 1000;
+        this.cb = cb;
+
+        if(shape === 'circle') {
+            this.cx = this.parent.size.x / 2;
+            this.cy = this.parent.size.y / 2;
+            this.radius = this.maxRadius = Math.max(this.parent.size.x / 2, this.parent.size.y / 2);
+        } else {
+            this.x = 0;
+            this.y = 0;
+            this.w = this.mx = this.parent.size.x;
+            this.h = this.my = this.parent.size.y;
+        }
+
+        this.gfx.visible = true;
+        this.parent.game.world.mask = this.gfx;
+
+        return this;
+    },
+    stop: function() {
+        gf.Camera.fx.Effect.prototype.stop.call(this);
+
+        this.radius = this.sx = this.sy = 0;
+        this.gfx.visible = false;
+
+        if(this.parent.game.world.mask === this.gfx)
+            this.parent.game.world.mask = null;
+
+        return this;
+    },
+    update: function(dt) {
+        if(!this.gfx.visible)
+            return;
+
+        var part = (dt * 1000) / this.duration;
+
+        this.gfx.clear();
+        this.gfx.beginFill(0xff00ff);
+
+        switch(this.shape) {
+            case 'circle':
+                this.radius -= (part * this.maxRadius);
+
+                if(this.radius <= 0) {
+                    this.stop();
+                    this._complete();
+                } else {
+                    this.gfx.drawCircle(this.cx, this.cy, this.radius);
+                }
+                break;
+
+            case 'rect':
+            case 'rectangle':
+                this.x += (part * this.mx) / 2;
+                this.y += (part * this.my) / 2;
+                this.w -= (part * this.mx);
+                this.h -= (part * this.my);
+
+                if(this.x >= (this.mx / 2)) {
+                    this.stop();
+                    this._complete();
+                } else {
+                    this.gfx.drawRect(this.x, this.y, this.w, this.h);
+                }
+                break;
+        }
+
+        return this;
+    }
+});;gf.Camera.fx.Fade = function() {
+    gf.Camera.fx.Effect.call(this);
+};
+
+gf.inherits(gf.Camera.fx.Fade, gf.Camera.fx.Effect, {
+    start: function(color, duration, cb) {
+        gf.Camera.fx.Effect.prototype.start.call(this);
+
+        if(typeof duration === 'function') {
+            cb = duration;
+            duration = null;
+        }
+
+        if(typeof color === 'function') {
+            cb = color;
+            duration = null;
+            color = null;
+        }
+
+        color = typeof color === 'number' ? color : 0xFFFFFF;
+        this.duration = duration && duration > 0 ? duration : 1000;
+        this.cb = cb;
+
+        this.gfx.visible = true;
+        this.gfx.alpha = 0;
+        this.gfx.clear();
+        this.gfx.beginFill(color);
+        this.gfx.drawRect(0, 0, this.parent.size.x, this.parent.size.y);
+
+        return this;
+    },
+    stop: function() {
+        gf.Camera.fx.Effect.prototype.stop.call(this);
+
+        this.gfx.alpha = 1;
+        this.gfx.visible = false;
+
+        return this;
+    },
+    update: function(dt) {
+        if(this.gfx.alpha < 1) {
+            this.gfx.alpha += (dt * 1000) / this.duration;
+
+            if(this.gfx.alpha >= 1) {
+                this.stop();
+                this._complete();
+            }
+        }
+
+        return this;
+    }
+});;gf.Camera.fx.Flash = function() {
+    gf.Camera.fx.Effect.call(this);
+};
+
+gf.inherits(gf.Camera.fx.Flash, gf.Camera.fx.Effect, {
+    start: function(color, duration, cb) {
+        gf.Camera.fx.Effect.prototype.start.call(this);
+
+        if(typeof duration === 'function') {
+            cb = duration;
+            duration = null;
+        }
+
+        if(typeof color === 'function') {
+            cb = color;
+            duration = null;
+            color = null;
+        }
+
+        color = typeof color === 'number' ? color : 0xFFFFFF;
+        this.duration = duration && duration > 0 ? duration : 1000;
+        this.cb = cb;
+
+        this.gfx.visible = true;
+        this.gfx.alpha = 1;
+        this.gfx.clear();
+        this.gfx.beginFill(color);
+        this.gfx.drawRect(0, 0, this.parent.size.x, this.parent.size.y);
+
+        return this;
+    },
+    stop: function() {
+        gf.Camera.fx.Effect.prototype.stop.call(this);
+
+        this.gfx.alpha = 0;
+        this.gfx.visible = false;
+
+        return this;
+    },
+    update: function(dt) {
+        if(this.gfx.alpha > 0) {
+            this.gfx.alpha -= (dt * 1000) / this.duration;
+
+            if(this.gfx.alpha <= 0) {
+                this.stop();
+                this._complete();
+            }
+        }
+
+        return this;
+    }
+});;gf.Camera.fx.Scanlines = function() {
+    gf.Camera.fx.Effect.call(this);
+};
+
+gf.inherits(gf.Camera.fx.Scanlines, gf.Camera.fx.Effect, {
+    start: function(color, direction, spacing, thickness, alpha) {
+        gf.Camera.fx.Effect.prototype.start.call(this);
+
+        color = color || 0x000000;
+        direction = direction || gf.Camera.fx.DIRECTION.HORIZONTAL;
+        spacing = spacing || 4;
+        thickness = thickness || 1;
+        alpha = alpha || 0.3;
+
+        var sx = this.parent.size.x,
+            sy = this.parent.size.y;
+
+        this.gfx.clear();
+        this.gfx.visible = true;
+        this.gfx.beginFill(color, alpha);
+
+        //draw the lines
+        if((direction === gf.Camera.fx.DIRECTION.BOTH) || (direction === gf.Camera.fx.DIRECTION.VERTICAL)) {
+            for(var x = 0; x < sx; x += spacing) {
+                this.gfx.drawRect(x, 0, thickness, sy);
+            }
+        }
+
+        if((direction === gf.Camera.fx.DIRECTION.BOTH) || (direction === gf.Camera.fx.DIRECTION.HORIZONTAL)) {
+            for(var y = 0; y < sy; y += spacing) {
+                this.gfx.drawRect(0, y, sx, thickness);
+            }
+        }
+        this.gfx.endFill();
+
+        return this;
+    },
+    stop: function() {
+        gf.Camera.fx.Effect.prototype.stop.call(this);
+
+        this.gfx.visible = false;
+
+        return this;
+    }
+});
+;gf.Camera.fx.Shake = function() {
+    gf.Camera.fx.Effect.call(this);
+    this.offset = new gf.Vector();
+};
+
+gf.inherits(gf.Camera.fx.Shake, gf.Camera.fx.Effect, {
+    start: function(intensity, duration, direction, cb) {
+        gf.Camera.fx.Effect.prototype.start.call(this);
+
+        if(typeof direction === 'function') {
+            cb = direction;
+            direction = null;
+        }
+
+        if(typeof duration === 'function') {
+            cb = duration;
+            direction = null;
+            duration = null;
+        }
+
+        if(typeof intensity === 'function') {
+            cb = intensity;
+            direction = null;
+            duration = null;
+            intensity = null;
+        }
+
+        this.intensity = intensity || 0.01;
+        this.duration = duration || 1000;
+        this.direction = direction || gf.Camera.fx.DIRECTION.BOTH;
+        this.offset.x = this.offset.y = 0;
+        this.cb = cb;
+
+        return this;
+    },
+    stop: function() {
+        gf.Camera.fx.Effect.prototype.stop.call(this);
+
+        this.duration = this.offset.x = this.offset.y = 0;
+
+        return this;
+    },
+    update: function(dt) {
+        //update shake effect
+        if(this.duration > 0) {
+            this.duration -= (dt * 1000);
+
+            //pan back to the original position
+            this.offset.x = -this.offset.x;
+            this.offset.y = -this.offset.y;
+            this.parent.pan(this.offset.x, this.offset.y);
+
+            //check if we are complete
+            if(this.duration <= 0) {
+                this.stop();
+                this._complete();
+            }
+            //otherwise do the shake
+            else {
+                //pan to a random offset
+                if((this.direction === gf.Camera.fx.DIRECTION.BOTH) || (this.direction === gf.Camera.fx.DIRECTION.HORIZONTAL))
+                    this.offset.x = gf.math.round(Math.random() * this.intensity * this.parent.size.x * 2 - this.intensity * this.parent.size.x);
+
+                if ((this.direction === gf.Camera.fx.DIRECTION.BOTH) || (this.direction === gf.Camera.fx.DIRECTION.VERTICAL))
+                    this.offset.y = gf.math.round(Math.random() * this.intensity * this.parent.size.y * 2 - this.intensity * this.parent.size.y);
+
+                this.parent.pan(this.offset.x, this.offset.y);
+            }
+        }
+    }
+});
 
 /**
  * Camera shake directions (used for camera.shake())
@@ -21181,12 +21360,11 @@ gf.Camera.FOLLOW = {
  * @type Object
  * @static
  */
-gf.Camera.SHAKE = {
+gf.Camera.fx.SHAKE = {
     BOTH: 0,
     HORIZONTAL: 1,
     VERTICAL: 2
-};
-/**
+};;/**
  * A texture font makes it easy to use a texture for writing generic text. Basically
  * this holds an array of textures each one representing a character, that all share
  * the same base texture (image). It is the same way a spritesheet works except you
@@ -21419,8 +21597,7 @@ gf.inherits(gf.TextureFont, gf.DisplayObjectContainer, {
             y += h * this.lineHeight;
         }
     }
-});
-/**
+});;/**
  * Main game object, controls the entire instance of the game
  *
  * @class Game
@@ -21826,7 +22003,8 @@ gf.inherits(gf.Game, Object, {
      * @private
      */
     _tick: function() {
-        this.emit('beforetick');
+        this.timings.tickStart = this.timings._timer.now();
+
         //start render loop
         window.requestAnimFrame(this._tick.bind(this));
 
@@ -21839,11 +22017,11 @@ gf.inherits(gf.Game, Object, {
         this.timings.renderStart = this.timings._timer.now();
         this.renderer.render(this.stage);
         this.timings.renderEnd = this.timings._timer.now();
-        this.emit('aftertick');
+
+        this.timings.tickEnd =  this.timings._timer.now();
     }
 });
-
-/**
+;/**
  * GameStates are different , controls the entire instance of the game
  *
  * @class GameState
@@ -22003,11 +22181,6 @@ gf.inherits(gf.GameState, gf.DisplayObjectContainer, {
 
         this.camera.constrain(new gf.Rectangle(0, 0, this.world.realSize.x, this.world.realSize.y), true);
 
-        /* TODO: Autoplay music
-        if(this.world.properties.music) {
-            this.audio.play(this.world.properties.music, { loop: this.world.properties.music_loop === 'true' });
-        }*/
-
         return this;
     },
     /**
@@ -22048,8 +22221,7 @@ gf.inherits(gf.GameState, gf.DisplayObjectContainer, {
         this.physics.update(dt);
         this.game.timings.physicsEnd = this.game.timings._timer.now();
     }
-});
-/**
+});;/**
  * The base Gui that holds GuiItems to be added to the Camera
  *
  * @class Gui
@@ -22071,8 +22243,7 @@ gf.Gui = function(name) {
 };
 
 gf.inherits(gf.Gui, gf.DisplayObjectContainer);
-
-/**
+;/**
  * The base GuiItem that represents an element of a gui on the screen.
  *
  * @class GuiItem
@@ -22138,8 +22309,7 @@ gf.inherits(gf.GuiItem, gf.Sprite, {
         this.dragging = pos;
     }
 });
-
-/**
+;/**
  * Manages all input handlers in a unified way
  *
  * @class InputManager
@@ -22186,8 +22356,7 @@ gf.inherits(gf.InputManager, Object, {
     update: function(dt) {
         this.gamepad.update(dt);
     }
-});
-/**
+});;/**
  * input object
  */
 gf.input = {};
@@ -22246,8 +22415,7 @@ gf.inherits(gf.input.Input, Object, {
         else e.cancelBubble = true;
     }
 });
-
-/**
+;/**
  * Bindable keycodes
  *
  * @property KEY
@@ -22448,8 +22616,7 @@ gf.inherits(gf.input.Keyboard, gf.input.Input, {
     _clearSequence: function() {
         this.sequence.length = 0;
     }
-});
-/**
+});;/**
  * Controls input from gamepads
  *
  * @class Gamepad
@@ -22626,8 +22793,7 @@ gf.inherits(gf.input.Gamepad, gf.input.Input, {
         //poll for the status of our gamepads
         this.pollStatus();
     }
-});
-/**
+});;/**
  * Bindable Gamepad Buttons
  *
  * @property GP_BUTTON
@@ -22723,8 +22889,7 @@ gf.inherits(gf.input.GamepadButtons, gf.input.Input, {
             }
         }
     }
-});
-/**
+});;/**
  * Bindable Gamepad Axes
  *
  * @property GP_AXIS
@@ -22809,8 +22974,7 @@ gf.inherits(gf.input.GamepadSticks, gf.input.Input, {
             this.emit(a, status);
         }
     }
-});
-/**
+});;/**
  * The Base loader class that all other loaders inherit from
  *
  * @class Loader
@@ -22893,8 +23057,7 @@ gf.inherits(gf.Loader, Object, {
         }, 0);
     }
 });
-
-/**
+;/**
  * The AssetLoader loads and parses different game assets, such as sounds, textures,
  * TMX World JSON file (exported from the <a target="_blank" href="http://mapeditor.org">Tiled Editor</a>),
  * and Spritesheet JSON files (published from <a target="_blank" href="http://www.codeandweb.com/texturepacker">Texture Packer</a>).
@@ -23065,8 +23228,7 @@ gf.inherits(gf.AssetLoader, Object, {
         }
     }
 });
-
-/**
+;/**
  * Loads an audio clip
  *
  * @class AudioLoader
@@ -23110,8 +23272,7 @@ gf.inherits(gf.AudioLoader, gf.Loader, {
             });
         }
     }
-});
-/**
+});;/**
  * Loads json data
  *
  * @class JsonLoader
@@ -23176,8 +23337,7 @@ gf.inherits(gf.JsonLoader, gf.Loader, {
             }
         });
     }
-});
-/**
+});;/**
  * Loads a texture image
  *
  * @class TextureLoader
@@ -23217,8 +23377,7 @@ gf.inherits(gf.TextureLoader, gf.Loader, {
             this.done(texture);
         }
     }
-});
-gf.SpriteSheetLoader = function(name, baseUrl, data) {
+});;gf.SpriteSheetLoader = function(name, baseUrl, data) {
     gf.Loader.call(this, name, baseUrl);
 
     this.type = 'spritesheet';
@@ -23266,8 +23425,7 @@ gf.inherits(gf.SpriteSheetLoader, gf.Loader, {
 
         txLoader.load();
     }
-});
-gf.WorldLoader = function(name, baseUrl, data) {
+});;gf.WorldLoader = function(name, baseUrl, data) {
     gf.Loader.call(this, name, baseUrl);
 
     this.type = 'world';
@@ -23338,8 +23496,7 @@ gf.inherits(gf.WorldLoader, gf.Loader, {
         else
             gf.Loader.prototype.done.call(this, this.data);
     }
-});
-/**
+});;/**
  * Base Map implementation, provides common functions for all Map types
  *
  * @class Map
@@ -23400,8 +23557,7 @@ gf.inherits(gf.Map, gf.DisplayObjectContainer, {
                 return o;
         }
     }
-});
-/**
+});;/**
  * Base Tile implementation, a tile is a single tile in a tilemap layer
  *
  * @class Tile
@@ -23456,8 +23612,7 @@ gf.Tile.TYPE = {
     LADDER: 'ladder',
     WATER: 'water',
     DEEP_WATER: 'deep_water'
-};
-/**
+};;/**
  * Base Layer implementation, provides common functions for all Layer types
  *
  * @class Layer
@@ -23500,8 +23655,7 @@ gf.inherits(gf.Layer, gf.DisplayObjectContainer, {
      */
     pan: function() {
     }
-});
-/**
+});;/**
  * ImageLayer is a layer represented by a single image
  *
  * @class ImageLayer
@@ -23521,8 +23675,7 @@ gf.ImageLayer = function(layer) {
     gf.Layer.call(this, layer);
 };
 
-gf.inherits(gf.ImageLayer, gf.Layer);
-/**
+gf.inherits(gf.ImageLayer, gf.Layer);;/**
  * Tiled map, expects a Tiled TMX file loaded by the gf.loader as the argument.
  * The loader knows to load all textures and other resources when loading a world TMX
  * file, and this expets that to already be done.
@@ -23719,8 +23872,7 @@ gf.inherits(gf.TiledMap, gf.Map, {
         });
     }
 });
-
-/**
+;/**
  * The TiledLayer is the visual tiled layer that actually displays on the screen
  *
  * This class will be created by the TiledMap, there shouldn't be a reason to
@@ -23766,6 +23918,9 @@ gf.TiledLayer = function(layer) {
     this.alpha = layer.opacity;
     this.visible = layer.visible;
 
+    this.prerender = this.properties.prerender;
+    this.sprite = null; //the pre-rendered layer sprite
+
     this._tilePool = [];
     this._buffered = { left: false, right: false, top: false, bottom: false };
     this._panDelta = new gf.Vector();
@@ -23781,6 +23936,13 @@ gf.inherits(gf.TiledLayer, gf.Layer, {
      * @param height {Number} The number of tiles in the Y direction to render
      */
     resize: function(width, height) {
+        if(this.prerender) {
+            if(!this.sprite)
+                this._prerender();
+
+            return;
+        }
+
         //clear all the visual tiles
         this.clearTiles();
 
@@ -23805,6 +23967,57 @@ gf.inherits(gf.TiledLayer, gf.Layer, {
         if(this.hasPhysics) {
             this.parent.parent.physics.invalidCollisions();
         }
+    },
+    //render the map onto a canvas once to use as a prerendered texture
+    _prerender: function() {
+        if(!this.visible)
+            return;
+
+        var canvas = this.canvas = document.createElement('canvas'),
+            world = this.parent,
+            sx = world.size.x,
+            sy = world.size.y,
+            tsx = world.tileSize.x,
+            tsy = world.tileSize.y;
+
+        canvas.width = sx * tsx;
+        canvas.height = sy * tsy;
+        this.ctx = canvas.getContext('2d');
+
+        //draw all the tiles to the canvas
+        for(var x = 0; x < sx; ++x) {
+            for(var y = 0; y < sy; ++y) {
+                var id = (x + (y * sx)),
+                    tid = this.tileIds[id],
+                    set = world.getTileset(tid),
+                    tx;
+
+                if(set) {
+                    tx = set.getTileTexture(tid);
+                    this._prerenderTile(tx, x * tsx, y * tsy);
+                }
+            }
+        }
+
+        //use the canvas as a texture for a sprite to display
+        this.sprite = new gf.Sprite(gf.Texture.fromCanvas(canvas));
+
+        this.addChild(this.sprite);
+    },
+    _prerenderTile: function(tx, x, y) {
+        var frame = tx.frame;
+
+        this.ctx.drawImage(
+            tx.baseTexture.source,
+            frame.x,
+            frame.y,
+            frame.width,
+            frame.height,
+            x,
+            y,
+            frame.width,
+            frame.height
+        );
     },
     _renderOrthoTiles: function(sx, sy, sw, sh) {
         //convert to tile coords
@@ -24087,6 +24300,9 @@ gf.inherits(gf.TiledLayer, gf.Layer, {
      * @return {Layer} Returns itself for chainability
      */
     pan: function(dx, dy) {
+        if(this.prerender)
+            return;
+
         //isometric pan (just re render everything)
         if(this.parent.orientation === 'isometric')
             return this.resize(this._rendered.width, this._rendered.height);
@@ -24202,8 +24418,7 @@ gf.inherits(gf.TiledLayer, gf.Layer, {
         this._rendered.bottom = this._rendered.y + this._rendered.height - 1;
     }
 });
-
-/**
+;/**
  * This object represents a tileset used by a TiledMap.
  * There can be multiple Tilesets in a map
  *
@@ -24405,8 +24620,7 @@ gf.inherits(gf.TiledTileset, gf.Texture, {
         return this.textures[tileId];
     }
 });
-
-/**
+;/**
  * Tiled object group is a special layer that contains entities
  * TODO: This is all trash
  *
@@ -24465,6 +24679,7 @@ gf.inherits(gf.TiledObjectGroup, gf.Layer, {
                 props = gf.utils.parseTiledProperties(o.properties) || {},
                 set,
                 interactive,
+                isometric = (this.parent.orientation === 'isometric'),
                 obj;
 
             props.tileprops = {};
@@ -24519,7 +24734,7 @@ gf.inherits(gf.TiledObjectGroup, gf.Layer, {
                 obj.sensor = true;
 
                 //these are treated as sensor bodies, so always enable physics
-                obj.setPosition(o.x, o.y);
+                //obj.setPosition(o.x, o.y);
                 obj.enablePhysics(game.physics);
                 if(this.parent._showPhysics)
                     obj.showPhysics();
@@ -24540,11 +24755,11 @@ gf.inherits(gf.TiledObjectGroup, gf.Layer, {
                 obj.inertia = props.inertia || props.tileprops.inertia;
                 obj.friction = props.friction || props.tileprops.friction;
                 obj.sensor = props.sensor || props.tileprops.sensor;
-                obj.setPosition(o.x, o.y);
+                //obj.setPosition(o.x, o.y);
 
                 var a = props.anchor || props.tileprops.anchor;
                 obj.anchor.y = a ? a[1] : 1;
-                obj.anchor.x = a ? a[0] : (this.parent.orientation === 'isometric' ? 0.5 : 0);
+                obj.anchor.x = a ? a[0] : (isometric ? 0.5 : 0);
 
                 if(props.mass || props.tileprops.mass) {
                     obj.enablePhysics(game.physics);
@@ -24558,17 +24773,21 @@ gf.inherits(gf.TiledObjectGroup, gf.Layer, {
                     obj.setRotation(o.rotation);
             }
 
+            obj.isometric = isometric;
+            this.addChild(obj);
+            obj.setPosition(o.x, o.y);
+
             //visible was recently added to Tiled, default old versions to true
             obj.visible = o.visible !== undefined ? !!o.visible : true;
 
-            if(this.parent.orientation === 'isometric') {
-                var toTileX = o.x / this.parent.tileSize.x,
-                    toTileY = o.y / this.parent.tileSize.y;
+            // if(this.parent.orientation === 'isometric') {
+            //     var toTileX = o.x / this.parent.tileSize.x,
+            //         toTileY = o.y / this.parent.tileSize.y;
 
-                //This cannot be the simplest form of this...
-                o.x = (toTileX * this.parent.tileSize.x) - ((toTileY - 1) * (this.parent.tileSize.x / 2));
-                o.y = (toTileY * this.parent.tileSize.y / 2) + (toTileX * this.parent.tileSize.y);
-            }
+            //     //This cannot be the simplest form of this...
+            //     o.x = (toTileX * this.parent.tileSize.x) - ((toTileY - 1) * (this.parent.tileSize.x / 2));
+            //     o.y = (toTileY * this.parent.tileSize.y / 2) + (toTileX * this.parent.tileSize.y);
+            // }
 
             interactive = this._getInteractive(set, props);
 
@@ -24593,7 +24812,6 @@ gf.inherits(gf.TiledObjectGroup, gf.Layer, {
                 if(k !== 'tileprops')
                     obj.properties[k] = props[k];
 
-            this.addChild(obj);
         }
 
         return this;
@@ -24651,8 +24869,7 @@ gf.inherits(gf.TiledObjectGroup, gf.Layer, {
         return this;
     }
 });
-
-/**
+;/**
  * Holds a pool of different Objects to help reduce the number times
  * an object is created and destroyed.
  *
@@ -24705,8 +24922,7 @@ gf.inherits(gf.ObjectPool, Object, {
         F.prototype = ctor.prototype;
         return new F();
     }
-});
-/**
+});;/**
  * Holds a pool of different Sprites that can be created, makes it very
  * easy to quickly create different registered entities
  *
@@ -24763,6 +24979,5 @@ gf.inherits(gf.SpritePool, Object, {
         return;
     }
 });
-
-
+;
 })(window);

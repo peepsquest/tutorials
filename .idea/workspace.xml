@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef95ca51-4f3c-48b5-b77d-9540e4ac39ac" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/grapefruit-uml.md" afterPath="$PROJECT_DIR$/src/grapefruit-uml.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/isometric-map-basics.md" afterPath="$PROJECT_DIR$/src/isometric-map-basics.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/examples/pixi-sandbox.js" afterPath="$PROJECT_DIR$/src/examples/pixi-sandbox.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="tutorials.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,10 +26,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="highlight.less" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="highlight.less" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/css/_tutdown/highlight.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="136" column="16" selection-start="2376" selection-end="2376" vertical-scroll-proportion="0.06007067" vertical-offset="2533" max-vertical-offset="3382">
+            <state line="138" column="0" selection-start="2390" selection-end="2390" vertical-scroll-proportion="-8.88" vertical-offset="2400" max-vertical-offset="3382">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pixi-sandbox.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/examples/pixi-sandbox.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="191" column="0" selection-start="4234" selection-end="4234" vertical-scroll-proportion="0.9433962" vertical-offset="2679" max-vertical-offset="3800">
               <folding />
             </state>
           </provider>
@@ -38,7 +47,7 @@
       <file leaf-file-name="reset.less" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/css/reset.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="1007">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1007">
               <folding />
             </state>
           </provider>
@@ -55,13 +64,13 @@
       </file>
       <file leaf-file-name="toc.md" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/toc.md">
-          <provider editor-type-id="MarkdownPreviewEditor">
-            <state />
-          </provider>
           <provider selected="true" editor-type-id="text-editor">
             <state line="19" column="0" selection-start="408" selection-end="408" vertical-scroll-proportion="0.0" vertical-offset="342" max-vertical-offset="475">
               <folding />
             </state>
+          </provider>
+          <provider editor-type-id="MarkdownPreviewEditor">
+            <state />
           </provider>
         </entry>
       </file>
@@ -84,7 +93,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="code.jquery.com/jquery-1.10.2.js" />
         <option value="$PROJECT_DIR$/src/examples/js/vendor/gf.js" />
         <option value="$PROJECT_DIR$/src/isometric-tiles-with-height.md" />
         <option value="$PROJECT_DIR$/src/isometric-placing-avatar.md" />
@@ -93,21 +101,22 @@
         <option value="$PROJECT_DIR$/src/support/_uml.mustache" />
         <option value="$PROJECT_DIR$/src/grapefruit-classes.md" />
         <option value="$PROJECT_DIR$/src/css/_site/variables.less" />
-        <option value="$PROJECT_DIR$/src/css/_tutdown/highlight.less" />
         <option value="$PROJECT_DIR$/src/css/_tutdown/variables.less" />
         <option value="$PROJECT_DIR$/src/toc.md" />
         <option value="$PROJECT_DIR$/src/examples/grapefruit-basics.coffee" />
         <option value="$PROJECT_DIR$/src/css/style.less" />
         <option value="$PROJECT_DIR$/src/grapefruit-basics.md" />
         <option value="$PROJECT_DIR$/src/grapefruit-uml.md" />
+        <option value="$PROJECT_DIR$/src/css/_tutdown/highlight.less" />
+        <option value="$PROJECT_DIR$/src/examples/pixi-sandbox.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="624" />
-    <option name="y" value="145" />
-    <option name="width" value="1437" />
-    <option name="height" value="1180" />
+    <option name="x" value="31" />
+    <option name="y" value="7" />
+    <option name="width" value="1962" />
+    <option name="height" value="1332" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -151,6 +160,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -309,14 +319,13 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="preferences.pluginManager" />
+    <property name="options.lastSelected" value="preferences.keymap" />
     <property name="recentsLimit" value="5" />
     <property name="JavaScriptLanguageLevel" value="ES5" />
     <property name="FullScreen" value="false" />
@@ -383,23 +392,23 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="624" y="145" width="1437" height="1180" extended-state="0" />
+    <frame x="31" y="7" width="1962" height="1332" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32887492" sideWeight="0.87788385" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295583" sideWeight="0.8344247" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2722266" sideWeight="0.87788385" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="PlantUML" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32974744" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23935455" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17685118" sideWeight="0.5722161" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18058455" sideWeight="0.5722161" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39911798" sideWeight="0.7709069" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22614841" sideWeight="0.42668137" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1292189" sideWeight="0.8231488" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12867956" sideWeight="0.81941545" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295583" sideWeight="0.8344247" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2722266" sideWeight="0.87788385" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.6700337" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -490,11 +499,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/css/_site/index.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="850" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/css/_site/reset.less">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="988" />
@@ -520,75 +524,59 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/toc.md">
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="0" selection-start="408" selection-end="408" vertical-scroll-proportion="0.0" vertical-offset="342" max-vertical-offset="475">
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/css/_site/mixins.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="0" selection-start="0" selection-end="1355" vertical-scroll-proportion="0.5147783" vertical-offset="0" max-vertical-offset="1045">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/grapefruit-uml.md">
       <provider editor-type-id="MarkdownPreviewEditor">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/css/_site/mixins.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="3" selection-start="2458" selection-end="2458" vertical-scroll-proportion="0.8637993" vertical-offset="1082" max-vertical-offset="1919">
-          <folding />
-        </state>
+        <state line="22" column="0" selection-start="0" selection-end="1355" vertical-scroll-proportion="0.5147783" vertical-offset="0" max-vertical-offset="1045" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/grapefruit-uml.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="95" column="3" selection-start="2458" selection-end="2458" vertical-scroll-proportion="0.8637993" vertical-offset="1082" max-vertical-offset="1919" />
+      </provider>
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/examples/js/vendor/gf.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20789" column="24" selection-start="573774" selection-end="573774" vertical-scroll-proportion="0.24738675" vertical-offset="394778" max-vertical-offset="470687">
-          <folding />
-        </state>
+        <state line="20789" column="24" selection-start="573774" selection-end="573774" vertical-scroll-proportion="0.24738675" vertical-offset="394778" max-vertical-offset="470687" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Projfile.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="23" selection-start="600" selection-end="600" vertical-scroll-proportion="0.022067364" vertical-offset="494" max-vertical-offset="2983">
-          <folding />
-        </state>
+        <state line="27" column="23" selection-start="600" selection-end="600" vertical-scroll-proportion="0.022067364" vertical-offset="494" max-vertical-offset="2983" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/grapefruit-basics.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="73" column="14" selection-start="2438" selection-end="2438" vertical-scroll-proportion="1.062425" vertical-offset="502" max-vertical-offset="1938" />
+      </provider>
       <provider editor-type-id="MarkdownPreviewEditor">
         <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="14" selection-start="2438" selection-end="2438" vertical-scroll-proportion="1.062425" vertical-offset="502" max-vertical-offset="1938">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/examples/grapefruit-basics.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="16" selection-start="1036" selection-end="1038" vertical-scroll-proportion="0.02173913" vertical-offset="912" max-vertical-offset="2356">
-          <folding />
-        </state>
+        <state line="49" column="16" selection-start="1036" selection-end="1038" vertical-scroll-proportion="0.02173913" vertical-offset="912" max-vertical-offset="2356" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/css/style.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="222" column="5" selection-start="3039" selection-end="3039" vertical-scroll-proportion="0.1943463" vertical-offset="4053" max-vertical-offset="4902">
-          <folding />
-        </state>
+        <state line="222" column="5" selection-start="3039" selection-end="3039" vertical-scroll-proportion="0.1943463" vertical-offset="4053" max-vertical-offset="4902" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/css/_tutdown/grid.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="0" selection-start="370" selection-end="370" vertical-scroll-proportion="0.6042403" vertical-offset="0" max-vertical-offset="849">
-          <folding />
-        </state>
+        <state line="27" column="0" selection-start="370" selection-end="370" vertical-scroll-proportion="0.6042403" vertical-offset="0" max-vertical-offset="849" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/css/reset.less">
@@ -600,7 +588,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/css/_tutdown/highlight.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="136" column="16" selection-start="2376" selection-end="2376" vertical-scroll-proportion="0.06007067" vertical-offset="2533" max-vertical-offset="3382">
+        <state line="138" column="0" selection-start="2390" selection-end="2390" vertical-scroll-proportion="-8.88" vertical-offset="2400" max-vertical-offset="3382">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/examples/pixi-sandbox.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="191" column="0" selection-start="4234" selection-end="4234" vertical-scroll-proportion="0.9433962" vertical-offset="2679" max-vertical-offset="3800">
           <folding />
         </state>
       </provider>

@@ -11,8 +11,6 @@ Debug =
     console.log "window.#{name}", o
 
 
-
-
 # http://mazebert.com/2013/04/18/isometric-depth-sorting/
 
 STAGE_WIDTH = 700

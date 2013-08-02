@@ -48,13 +48,24 @@ more importantly the active game state.
 :::< examples/grapefruit-basics.coffee --block game-ready
 
 
-## Panning the World
+## Interacting with the World
 
-The world starts with (0,0) in the upper left. Let's start with it centered.
+Interacting with objects is through events, although it's a little bit
+inconsistent. Mouse events are by assigning functions and keyboard and
+object events are through pub-sub.
 
-Here we take advantage of the `gf.TiledMap` object to do panning. __Grapefruitjs__ does all the work.
+On mouse drag we'll pan the world.
 
-:::< examples/grapefruit-basics.coffee --block panning
+:::< examples/grapefruit-basics.coffee --block pan-world
+
+On mouse click make an object active.
+
+:::< examples/grapefruit-basics.coffee --block activate-object
+
+On keyboard move the active object.
+
+
+:::< examples/grapefruit-basics.coffee --block move-object
 
 
 ## Add an Avatar
@@ -87,10 +98,13 @@ Calculate the width of the div, which is set by CSS, and pass the `div` info to 
 :::# Injects common scripts to be loaded
 :::< support/common.md --raw
 
+:::@ --hide
+
+```html
+<script src='grapefruit-basics.js'></script>
+```
+
 :::# Loads the complete Coffee script for user to view
 :::< examples/grapefruit-basics.coffee --as-tab scripts.coffee --clean
-
-:::# The compiled JS runs the example
-:::< ../docs/examples/grapefruit-basics.js --hide
 
 :::END

@@ -6,6 +6,10 @@ assets = [
 #}}}
 
 
+class TmxObject extends gf.Sprite
+
+
+
 #{{{ Content game-class
 class Game extends gf.Game
 
@@ -29,24 +33,29 @@ class Game extends gf.Game
   onGameReady: ->
     state = new gf.GameState('world')
     @addState state
-    state.loadWorld 'world'
+    world = state.loadWorld('world')
 
     state.world.interactive = true
     state.world.mousedown = mapDown
     state.world.mouseup = mapUp
     state.world.mousemove = mapMove
+    state.world.on 'object.mousedown', objDown
+    state.input.keyboard.on gf.input.KEY.DOWN, onKeyboardDown
+    state.input.keyboard.on gf.input.KEY.UP, onKeyboardUp
+    state.input.keyboard.on gf.input.KEY.LEFT, onKeyboardLeft
+    state.input.keyboard.on gf.input.KEY.RIGHT, onKeyboardRight
+
     @enableState 'world'
 
-    # start with the world centered and slightly down
-    @world.pan @camera.size.x / 2, 100
+    layer = @world.findLayer('beings')
+    layer.spawn()
 
-    hero = new Avatar({assetId: 'avatar', game: @})
-    state.addChild hero
+    # start with the world centered and slightly down
+    # @world.pan @camera.size.x / 2, 100
 #}}}
 
 
-#{{{ Content panning
-# context for these are TiledMap, which means Function.bind is being used
+#{{{ Content pan-world
 mapDown = (e) ->
   pos = e.getLocalPosition(@parent)
   @drag = pos
@@ -61,6 +70,51 @@ mapMove = (e) ->
     dy = pos.y - @drag.y
     @pan dx, dy
     @drag = pos
+#}}}
+
+#{{{ Content activate-object
+activeObject = null
+DISTANCE = 4
+
+preventDefault = (e) ->
+  e.input.preventDefault e.originalEvent
+
+moveActive = (dx, dy, e) ->
+  return unless activeObject?.location
+  {x, y} = activeObject.location
+  activeObject.setPosition x + dx, y + dy
+  preventDefault e
+
+objDown = (e) ->
+  activeObject.alpha = 1 if activeObject
+  activeObject = e.object
+  activeObject.alpha = 0.5
+#}}}
+
+#{{{ Content move-object
+onKeyboardDown = (e) ->
+  if e.originalEvent.shiftKey
+    moveActive 0, DISTANCE, e
+  else
+    moveActive DISTANCE, DISTANCE, e
+
+onKeyboardRight = (e) ->
+  if e.originalEvent.shiftKey
+    moveActive DISTANCE, 0, e
+  else
+    moveActive DISTANCE, -DISTANCE, e
+
+onKeyboardLeft = (e) ->
+  if e.originalEvent.shiftKey
+    moveActive -DISTANCE, 0, e
+  else
+    moveActive -DISTANCE, DISTANCE, e
+
+onKeyboardUp = (e) ->
+  if e.originalEvent.shiftKey
+    moveActive 0, -DISTANCE, e
+  else
+    moveActive -DISTANCE, -DISTANCE, e
 #}}}
 
 
@@ -78,8 +132,6 @@ class Avatar extends gf.Sprite
   setupKeyboardHandlers: (game) ->
     that = @
 
-    preventDefault = (e) ->
-      e.input.preventDefault e.originalEvent
 
     onKeyboardDown = (e) ->
       that.position.y += 5

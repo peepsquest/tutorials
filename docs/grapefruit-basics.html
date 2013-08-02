@@ -74,10 +74,6 @@ the world yet (still learning <strong>grapefruitjs</strong>).</p>
     style.css
   </a>
 </li><li>
-  <a href="#grapefruit-basics0scriptjs-tab" rel="grapefruit-basics0scriptjs-tab">
-    script.js
-  </a>
-</li><li>
   <a href="#grapefruit-basics0scriptscoffee-tab" rel="grapefruit-basics0scriptscoffee-tab">
     scripts.coffee
   </a>
@@ -87,162 +83,6 @@ the world yet (still learning <strong>grapefruitjs</strong>).</p>
 <div id="grapefruit-basics0_tabs_content" class="tabs_content">
   <div id="grapefruit-basics0result-tab" class="tab_content">
   <iframe id="grapefruit-basics0" src="examples/grapefruit-basics0.html" class="result"  style='height: 600px;'></iframe>
-</div><div id="grapefruit-basics0scriptjs-tab" class="tab_content">
-  <pre><code class="language-js">(<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
-  <span class="keyword">var</span> Avatar, Game, assets, mapDown, mapMove, mapUp,
-    __hasProp = {}.hasOwnProperty,
-    __extends = <span class="function"><span class="keyword">function</span><span class="params">(child, parent)</span> {</span>
-      <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> parent) {
-        <span class="keyword">if</span> (__hasProp.call(parent, key)) child[key] = parent[key];
-      }
-
-      <span class="function"><span class="keyword">function</span> <span class="title">ctor</span><span class="params">()</span> {</span>
-        <span class="keyword">this</span>.constructor = child;
-      }
-      ctor.prototype = parent.prototype;
-      child.prototype = <span class="keyword">new</span> ctor();
-      child.__super__ = parent.prototype;
-      <span class="keyword">return</span> child;
-    };
-
-  assets = [{
-    name: <span class="string">'world'</span>,
-    src: <span class="string">'img/isometric_grass_and_water.json'</span>
-  }, {
-    name: <span class="string">'avatar'</span>,
-    src: <span class="string">'img/redOrb.png'</span>
-  }];
-
-  Game = (<span class="function"><span class="keyword">function</span><span class="params">(_super)</span> {</span>
-    __extends(Game, _super);
-
-    <span class="function"><span class="keyword">function</span> <span class="title">Game</span><span class="params">(containerId, options)</span> {</span>
-      <span class="keyword">this</span>.options = options;
-      _.defaults(<span class="keyword">this</span>.options, {
-        gravity: <span class="number">0</span>,
-        friction: <span class="number">0</span>
-      });
-      Game.__super__.constructor.apply(<span class="keyword">this</span>, arguments);
-    }
-
-    Game.prototype.start = <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
-      <span class="keyword">var</span> _<span class="keyword">this</span> = <span class="keyword">this</span>;
-      <span class="keyword">this</span>.loader.on(<span class="string">'complete'</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
-        _<span class="keyword">this</span>.onGameReady();
-        <span class="keyword">return</span> _<span class="keyword">this</span>.render();
-      });
-      <span class="keyword">return</span> <span class="keyword">this</span>.loader.load(<span class="keyword">this</span>.options.assets);
-    };
-
-    Game.prototype.onGameReady = <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
-      <span class="keyword">var</span> hero, state;
-      state = <span class="keyword">new</span> gf.GameState(<span class="string">'world'</span>);
-      <span class="keyword">this</span>.addState(state);
-      state.loadWorld(<span class="string">'world'</span>);
-      state.world.interactive = <span class="literal">true</span>;
-      state.world.mousedown = mapDown;
-      state.world.mouseup = mapUp;
-      state.world.mousemove = mapMove;
-      <span class="keyword">this</span>.enableState(<span class="string">'world'</span>);
-      <span class="keyword">this</span>.world.pan(<span class="keyword">this</span>.camera.size.x / <span class="number">2</span>, <span class="number">100</span>);
-      hero = <span class="keyword">new</span> Avatar({
-        assetId: <span class="string">'avatar'</span>,
-        game: <span class="keyword">this</span>
-      });
-      <span class="keyword">return</span> state.addChild(hero);
-    };
-
-    <span class="keyword">return</span> Game;
-
-  })(gf.Game);
-
-  mapDown = <span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span>
-    <span class="keyword">var</span> pos;
-    pos = e.getLocalPosition(<span class="keyword">this</span>.parent);
-    <span class="keyword">return</span> <span class="keyword">this</span>.drag = pos;
-  };
-
-  mapUp = <span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span>
-    <span class="keyword">return</span> <span class="keyword">this</span>.drag = <span class="literal">null</span>;
-  };
-
-  mapMove = <span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span>
-    <span class="keyword">var</span> dx, dy, pos;
-    <span class="keyword">if</span> (<span class="keyword">this</span>.drag) {
-      pos = e.getLocalPosition(<span class="keyword">this</span>.parent);
-      dx = pos.x - <span class="keyword">this</span>.drag.x;
-      dy = pos.y - <span class="keyword">this</span>.drag.y;
-      <span class="keyword">this</span>.pan(dx, dy);
-      <span class="keyword">return</span> <span class="keyword">this</span>.drag = pos;
-    }
-  };
-
-  Avatar = (<span class="function"><span class="keyword">function</span><span class="params">(_super)</span> {</span>
-    __extends(Avatar, _super);
-
-    <span class="function"><span class="keyword">function</span> <span class="title">Avatar</span><span class="params">(options)</span> {</span>
-      <span class="keyword">var</span> assetId, game;
-      game = options.game, assetId = options.assetId;
-      Avatar.__super__.constructor.call(<span class="keyword">this</span>, gf.assetCache[assetId]);
-      <span class="keyword">this</span>.setupKeyboardHandlers(game);
-    }
-
-    <span class="comment">/*
-     * Sets up keyboard handlers using closures instead of bind.
-     */</span>
-
-
-    Avatar.prototype.setupKeyboardHandlers = <span class="function"><span class="keyword">function</span><span class="params">(game)</span> {</span>
-      <span class="keyword">var</span> onKeyboardDown, onKeyboardLeft, onKeyboardRight, onKeyboardUp, preventDefault, that;
-      that = <span class="keyword">this</span>;
-      preventDefault = <span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span>
-        <span class="keyword">return</span> e.input.preventDefault(e.originalEvent);
-      };
-      onKeyboardDown = <span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span>
-        that.position.y += <span class="number">5</span>;
-        <span class="keyword">return</span> preventDefault(e);
-      };
-      onKeyboardRight = <span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span>
-        that.position.x += <span class="number">5</span>;
-        <span class="keyword">return</span> preventDefault(e);
-      };
-      onKeyboardLeft = <span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span>
-        that.position.x -= <span class="number">5</span>;
-        <span class="keyword">return</span> preventDefault(e);
-      };
-      onKeyboardUp = <span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span>
-        that.position.y -= <span class="number">5</span>;
-        <span class="keyword">return</span> preventDefault(e);
-      };
-      game.input.keyboard.on(gf.input.KEY.DOWN, onKeyboardDown);
-      game.input.keyboard.on(gf.input.KEY.UP, onKeyboardUp);
-      game.input.keyboard.on(gf.input.KEY.LEFT, onKeyboardLeft);
-      <span class="keyword">return</span> game.input.keyboard.on(gf.input.KEY.RIGHT, onKeyboardRight);
-    };
-
-    <span class="keyword">return</span> Avatar;
-
-  })(gf.Sprite);
-
-  $(<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
-    <span class="keyword">var</span> $game, game;
-    $game = $(<span class="string">'#game'</span>);
-    game = <span class="keyword">new</span> Game(<span class="string">'game'</span>, {
-      width: $game.width() - <span class="number">3</span>,
-      height: $game.height() - <span class="number">3</span>,
-      background: <span class="number">0xEEFFFF</span>,
-      assets: assets
-    });
-    window.dbgGame = game;
-    <span class="keyword">return</span> game.start();
-  });
-
-}).call(<span class="keyword">this</span>);
-
-
-<span class="comment">/*
-//@ sourceMappingURL=grapefruit-basics.map
-*/</span></code></pre>
 </div><div id="grapefruit-basics0markuphtml-tab" class="tab_content">
   <pre><code class="language-html"><span class="doctype">&lt;!DOCTYPE html&gt;</span>
 <span class="tag">&lt;<span class="title">html</span>&gt;</span>
@@ -256,7 +96,9 @@ the world yet (still learning <strong>grapefruitjs</strong>).</p>
 <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-1.10.2.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
 <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"</span>&gt;</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
 <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"js/vendor/gf.js"</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">'text/javascript'</span> <span class="attribute">src</span>=<span class="value">'grapefruit-basics0-script.js'</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">'grapefruit-basics.js'</span>&gt;</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+    
   <span class="tag">&lt;/<span class="title">body</span>&gt;</span>
 <span class="tag">&lt;/<span class="title">html</span>&gt;</span>
 </code></pre>
@@ -274,6 +116,10 @@ assets = [
   {<span class="attribute">name</span>: <span class="string">'world'</span>, <span class="attribute">src</span>: <span class="string">'img/isometric_grass_and_water.json'</span>}
   {<span class="attribute">name</span>: <span class="string">'avatar'</span>, <span class="attribute">src</span>: <span class="string">'img/redOrb.png'</span>}
 ]
+
+
+<span class="class"><span class="keyword">class</span> <span class="title">TmxObject</span> <span class="keyword">extends</span> <span class="title">gf</span>.<span class="title">Sprite</span></span>
+
 
 
 <span class="class"><span class="keyword">class</span> <span class="title">Game</span> <span class="keyword">extends</span> <span class="title">gf</span>.<span class="title">Game</span></span>
@@ -294,22 +140,26 @@ assets = [
   <span class="attribute">onGameReady</span>:<span class="function"> -&gt;</span>
     state = <span class="keyword">new</span> gf.GameState(<span class="string">'world'</span>)
     <span class="property">@addState</span> state
-    state.loadWorld <span class="string">'world'</span>
-
+    world = state.loadWorld(<span class="string">'world'</span>)
     state.world.interactive = <span class="literal">true</span>
     state.world.mousedown = mapDown
     state.world.mouseup = mapUp
     state.world.mousemove = mapMove
+    state.world.<span class="literal">on</span> <span class="string">'object.mousedown'</span>, objDown
+    state.input.keyboard.<span class="literal">on</span> gf.input.KEY.DOWN, onKeyboardDown
+    state.input.keyboard.<span class="literal">on</span> gf.input.KEY.UP, onKeyboardUp
+    state.input.keyboard.<span class="literal">on</span> gf.input.KEY.LEFT, onKeyboardLeft
+    state.input.keyboard.<span class="literal">on</span> gf.input.KEY.RIGHT, onKeyboardRight
+
     <span class="property">@enableState</span> <span class="string">'world'</span>
 
+    layer = <span class="property">@world</span>.findLayer(<span class="string">'beings'</span>)
+    layer.spawn()
+
     <span class="comment"># start with the world centered and slightly down</span>
-    <span class="property">@world</span>.pan <span class="property">@camera</span>.size.x / <span class="number">2</span>, <span class="number">100</span>
-
-    hero = <span class="keyword">new</span> Avatar({<span class="attribute">assetId</span>: <span class="string">'avatar'</span>, <span class="attribute">game</span>: @})
-    state.addChild hero
+    <span class="comment"># @world.pan @camera.size.x / 2, 100</span>
 
 
-<span class="comment"># context for these are TiledMap, which means Function.bind is being used</span>
 <span class="function"><span class="title">mapDown</span> = <span class="params">(e)</span> -&gt;</span>
   pos = e.getLocalPosition(<span class="property">@parent</span>)
   <span class="property">@drag</span> = pos
@@ -325,6 +175,47 @@ assets = [
     <span class="property">@pan</span> dx, dy
     <span class="property">@drag</span> = pos
 
+activeObject = <span class="literal">null</span>
+DISTANCE = <span class="number">4</span>
+
+<span class="function"><span class="title">preventDefault</span> = <span class="params">(e)</span> -&gt;</span>
+  e.input.preventDefault e.originalEvent
+
+<span class="function"><span class="title">moveActive</span> = <span class="params">(dx, dy, e)</span> -&gt;</span>
+  <span class="keyword">return</span> <span class="keyword">unless</span> activeObject?.location
+  {x, y} = activeObject.location
+  activeObject.setPosition x + dx, y + dy
+  preventDefault e
+
+<span class="function"><span class="title">objDown</span> = <span class="params">(e)</span> -&gt;</span>
+  activeObject.alpha = <span class="number">1</span> <span class="keyword">if</span> activeObject
+  activeObject = e.object
+  activeObject.alpha = <span class="number">0.5</span>
+
+<span class="function"><span class="title">onKeyboardDown</span> = <span class="params">(e)</span> -&gt;</span>
+  <span class="keyword">if</span> e.originalEvent.shiftKey
+    moveActive <span class="number">0</span>, DISTANCE, e
+  <span class="keyword">else</span>
+    moveActive DISTANCE, DISTANCE, e
+
+<span class="function"><span class="title">onKeyboardRight</span> = <span class="params">(e)</span> -&gt;</span>
+  <span class="keyword">if</span> e.originalEvent.shiftKey
+    moveActive DISTANCE, <span class="number">0</span>, e
+  <span class="keyword">else</span>
+    moveActive DISTANCE, -DISTANCE, e
+
+<span class="function"><span class="title">onKeyboardLeft</span> = <span class="params">(e)</span> -&gt;</span>
+  <span class="keyword">if</span> e.originalEvent.shiftKey
+    moveActive -DISTANCE, <span class="number">0</span>, e
+  <span class="keyword">else</span>
+    moveActive -DISTANCE, DISTANCE, e
+
+<span class="function"><span class="title">onKeyboardUp</span> = <span class="params">(e)</span> -&gt;</span>
+  <span class="keyword">if</span> e.originalEvent.shiftKey
+    moveActive <span class="number">0</span>, -DISTANCE, e
+  <span class="keyword">else</span>
+    moveActive -DISTANCE, -DISTANCE, e
+
 
 <span class="class"><span class="keyword">class</span> <span class="title">Avatar</span> <span class="keyword">extends</span> <span class="title">gf</span>.<span class="title">Sprite</span></span>
 
@@ -339,8 +230,6 @@ assets = [
   <span class="attribute">setupKeyboardHandlers</span>: <span class="function"><span class="params">(game)</span> -&gt;</span>
     that = @
 
-    <span class="function"><span class="title">preventDefault</span> = <span class="params">(e)</span> -&gt;</span>
-      e.input.preventDefault e.originalEvent
 
     <span class="function"><span class="title">onKeyboardDown</span> = <span class="params">(e)</span> -&gt;</span>
       that.position.y += <span class="number">5</span>
@@ -409,24 +298,30 @@ more importantly the active game state.</p>
 <pre><code class="coffee">  <span class="attribute">onGameReady</span>:<span class="function"> -&gt;</span>
     state = <span class="keyword">new</span> gf.GameState(<span class="string">'world'</span>)
     <span class="property">@addState</span> state
-    state.loadWorld <span class="string">'world'</span>
-
+    world = state.loadWorld(<span class="string">'world'</span>)
     state.world.interactive = <span class="literal">true</span>
     state.world.mousedown = mapDown
     state.world.mouseup = mapUp
     state.world.mousemove = mapMove
+    state.world.<span class="literal">on</span> <span class="string">'object.mousedown'</span>, objDown
+    state.input.keyboard.<span class="literal">on</span> gf.input.KEY.DOWN, onKeyboardDown
+    state.input.keyboard.<span class="literal">on</span> gf.input.KEY.UP, onKeyboardUp
+    state.input.keyboard.<span class="literal">on</span> gf.input.KEY.LEFT, onKeyboardLeft
+    state.input.keyboard.<span class="literal">on</span> gf.input.KEY.RIGHT, onKeyboardRight
+
     <span class="property">@enableState</span> <span class="string">'world'</span>
 
-    <span class="comment"># start with the world centered and slightly down</span>
-    <span class="property">@world</span>.pan <span class="property">@camera</span>.size.x / <span class="number">2</span>, <span class="number">100</span>
+    layer = <span class="property">@world</span>.findLayer(<span class="string">'beings'</span>)
+    layer.spawn()
 
-    hero = <span class="keyword">new</span> Avatar({<span class="attribute">assetId</span>: <span class="string">'avatar'</span>, <span class="attribute">game</span>: @})
-    state.addChild hero</code></pre>
-<h2 id='h-panning-the-world'>Panning the World</h2>
-<p>The world starts with (0,0) in the upper left. Let&#39;s start with it centered.</p>
-<p>Here we take advantage of the <code>gf.TiledMap</code> object to do panning. <strong>Grapefruitjs</strong> does all the work.</p>
-<pre><code class="coffee"><span class="comment"># context for these are TiledMap, which means Function.bind is being used</span>
-<span class="function"><span class="title">mapDown</span> = <span class="params">(e)</span> -&gt;</span>
+    <span class="comment"># start with the world centered and slightly down</span>
+    <span class="comment"># @world.pan @camera.size.x / 2, 100</span></code></pre>
+<h2 id='h-interacting-with-the-world'>Interacting with the World</h2>
+<p>Interacting with objects is through events, although it&#39;s a little bit
+inconsistent. Mouse events are by assigning functions and keyboard and
+object events are through pub-sub.</p>
+<p>On mouse drag we&#39;ll pan the world.</p>
+<pre><code class="coffee"><span class="function"><span class="title">mapDown</span> = <span class="params">(e)</span> -&gt;</span>
   pos = e.getLocalPosition(<span class="property">@parent</span>)
   <span class="property">@drag</span> = pos
 
@@ -440,6 +335,47 @@ more importantly the active game state.</p>
     dy = pos.y - <span class="property">@drag</span>.y
     <span class="property">@pan</span> dx, dy
     <span class="property">@drag</span> = pos</code></pre>
+<p>On mouse click make an object active.</p>
+<pre><code class="coffee">activeObject = <span class="literal">null</span>
+DISTANCE = <span class="number">4</span>
+
+<span class="function"><span class="title">preventDefault</span> = <span class="params">(e)</span> -&gt;</span>
+  e.input.preventDefault e.originalEvent
+
+<span class="function"><span class="title">moveActive</span> = <span class="params">(dx, dy, e)</span> -&gt;</span>
+  <span class="keyword">return</span> <span class="keyword">unless</span> activeObject?.location
+  {x, y} = activeObject.location
+  activeObject.setPosition x + dx, y + dy
+  preventDefault e
+
+<span class="function"><span class="title">objDown</span> = <span class="params">(e)</span> -&gt;</span>
+  activeObject.alpha = <span class="number">1</span> <span class="keyword">if</span> activeObject
+  activeObject = e.object
+  activeObject.alpha = <span class="number">0.5</span></code></pre>
+<p>On keyboard move the active object.</p>
+<pre><code class="coffee"><span class="function"><span class="title">onKeyboardDown</span> = <span class="params">(e)</span> -&gt;</span>
+  <span class="keyword">if</span> e.originalEvent.shiftKey
+    moveActive <span class="number">0</span>, DISTANCE, e
+  <span class="keyword">else</span>
+    moveActive DISTANCE, DISTANCE, e
+
+<span class="function"><span class="title">onKeyboardRight</span> = <span class="params">(e)</span> -&gt;</span>
+  <span class="keyword">if</span> e.originalEvent.shiftKey
+    moveActive DISTANCE, <span class="number">0</span>, e
+  <span class="keyword">else</span>
+    moveActive DISTANCE, -DISTANCE, e
+
+<span class="function"><span class="title">onKeyboardLeft</span> = <span class="params">(e)</span> -&gt;</span>
+  <span class="keyword">if</span> e.originalEvent.shiftKey
+    moveActive -DISTANCE, <span class="number">0</span>, e
+  <span class="keyword">else</span>
+    moveActive -DISTANCE, DISTANCE, e
+
+<span class="function"><span class="title">onKeyboardUp</span> = <span class="params">(e)</span> -&gt;</span>
+  <span class="keyword">if</span> e.originalEvent.shiftKey
+    moveActive <span class="number">0</span>, -DISTANCE, e
+  <span class="keyword">else</span>
+    moveActive -DISTANCE, -DISTANCE, e</code></pre>
 <h2 id='h-add-an-avatar'>Add an Avatar</h2>
 <p>The avatar is a <code>gf.Sprite</code> and loads a <code>gf.Texture</code> from the asset cache populate by <code>load</code> above.
 I use a class to encapsulate keyboard bindings. Keyboard events are global within a game
@@ -457,8 +393,6 @@ state and another display object could be listening for the save events.</p>
   <span class="attribute">setupKeyboardHandlers</span>: <span class="function"><span class="params">(game)</span> -&gt;</span>
     that = @
 
-    <span class="function"><span class="title">preventDefault</span> = <span class="params">(e)</span> -&gt;</span>
-      e.input.preventDefault e.originalEvent
 
     <span class="function"><span class="title">onKeyboardDown</span> = <span class="params">(e)</span> -&gt;</span>
       that.position.y += <span class="number">5</span>

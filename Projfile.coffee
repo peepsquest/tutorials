@@ -1,5 +1,6 @@
 fs = require('fs')
 async = require('async')
+Path = require('path')
 
 {readFileSync} = fs
 
@@ -15,7 +16,7 @@ exports.project = (pm) ->
   changeToDocs = f.tap (asset) ->
     asset.filename = asset.filename.replace(/^src/, 'docs')
 
-  all: ['clean', 'scripts', 'stylesheets', 'staticFiles', 'spritesheet', 'docs']
+  all: ['clean', 'grapefruit', 'scripts', 'stylesheets', 'staticFiles', 'spritesheet', 'docs']
 
   _toc:
     files: 'src/toc.md'
@@ -85,16 +86,26 @@ exports.project = (pm) ->
   #           $.cp '-f', 'build/gf.js',  __dirname + "/src/examples/js/vendor/gf.js"
   #           cb()
 
-  grapefruitSource:
-    desc: 'Builds and updates grapefruit script'
-    watch: '../grapefruit/src/**/*.js'
+  # grapefruitSource:
+  #   desc: 'Builds and updates grapefruit script'
+  #   watch: '../grapefruit/src/**/*.js'
+  #   dev: (done) ->
+  #     this.timeout = 10000
+  #     $.inside '~/peepsquest/grapefruit', (popcb) ->
+  #       cb = popcb(done)
+  #       $.grunt 'build --force', ->
+  #         $.cp '-f', 'build/gf.js',  __dirname + "/src/examples/js/vendor/gf.js"
+  #         cb()
+
+  grapefruit:
+    watch: Path.resolve(__dirname + '/../grapefruit/src') + '/**/*.js'
     dev: (done) ->
-      this.timeout = 10000
       $.inside '~/peepsquest/grapefruit', (popcb) ->
         cb = popcb(done)
-        $.grunt 'build --force', ->
+        $.pm "run build", ->
           $.cp '-f', 'build/gf.js',  __dirname + "/src/examples/js/vendor/gf.js"
           cb()
+
 
   pixi:
     desc: 'Fetches Pixi edge scripts'

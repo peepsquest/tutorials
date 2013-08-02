@@ -10,11 +10,148 @@
          "width":25,
          "x":0,
          "y":0
+        }, 
+        {
+         "height":25,
+         "name":"beings",
+         "objects":[
+                {
+                 "gid":25,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":211,
+                 "y":185
+                }, 
+                {
+                 "gid":25,
+                 "height":0,
+                 "name":"mario",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":308,
+                 "y":180
+                }, 
+                {
+                 "gid":25,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":417,
+                 "y":529
+                }, 
+                {
+                 "gid":25,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":483,
+                 "y":434
+                }, 
+                {
+                 "gid":25,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":678,
+                 "y":419
+                }, 
+                {
+                 "gid":25,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":329,
+                 "y":330
+                }, 
+                {
+                 "gid":26,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":431,
+                 "y":163
+                }, 
+                {
+                 "gid":26,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":212,
+                 "y":272
+                }, 
+                {
+                 "gid":26,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":277,
+                 "y":631
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "width":25,
+         "x":0,
+         "y":0
         }],
  "orientation":"isometric",
  "properties":
     {
-        "interactive":"true"
+     "interactive":"true"
     },
  "tileheight":32,
  "tilesets":[
@@ -37,6 +174,36 @@
              "y":16
             },
          "tilewidth":64
+        }, 
+        {
+         "firstgid":25,
+         "image":"redOrb.png",
+         "imageheight":36,
+         "imagewidth":32,
+         "margin":0,
+         "name":"Objects",
+         "properties":
+            {
+
+            },
+         "spacing":0,
+         "tileheight":32,
+         "tilewidth":32
+        }, 
+        {
+         "firstgid":26,
+         "image":"leaf.png",
+         "imageheight":100,
+         "imagewidth":95,
+         "margin":0,
+         "name":"leaf",
+         "properties":
+            {
+
+            },
+         "spacing":0,
+         "tileheight":100,
+         "tilewidth":95
         }],
  "tilewidth":64,
  "version":1,
