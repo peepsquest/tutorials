@@ -2,7 +2,7 @@
 
 :::BEGIN Example
 
-In this CoffeeScript example we'll cover the basics of using the [Grapefruitjs](https://github.com/grapefruitjs/grapefruit)
+In this I'll cover the basics of using the [Grapefruitjs](https://github.com/grapefruitjs/grapefruit)
 game engine built on __pixi.js__.
 
 <div class='note'><em>Grapefruitjs</em> is in its infancy and should not be used yet per its author,
@@ -11,8 +11,8 @@ This is more an excercise to learn the design patterns an experienced game devel
 a game.
 </div>
 
-Pan by dragging with the mouse or move the orb around with the arrow keys. The orb is not constrained to
-the world yet (still learning __grapefruitjs__).
+Pan by dragging the map with the mouse or move the orsb/leaves around by first clicking on one then using arrow
+keys. None of the objects are constrained to the world yet (still learning __grapefruitjs__).
 
 {{{EXAMPLE style='height: 600px;'}}}
 
@@ -24,7 +24,7 @@ I opt for objects to show `gf.assetCache` which is used later when loading the o
 the popular [Tiled Map Editor](http://www.mapeditor.org/) TMX (JSON) format as well as Texture Packer
 format supported by __pixi.js__.
 
-:::< examples/grapefruit-basics.coffee --block assets
+:::< examples/grapefruit-basics.js --block assets --no-capture
 
 
 ## Configure the Game
@@ -33,11 +33,11 @@ The main thing to do is to configure an instance of `gf.Game` and attach it to
 an HTMLElement container of fixed width and size. Hidden within `Game` is the `_tick` game loop
 which makes everything run.
 
-:::< examples/grapefruit-basics.coffee --block game-class
+:::< examples/grapefruit-basics.js --block game-class --no-capture
 
 The `start` method loads the `assets` and when completed `onGameReady` is invoked.
 
-:::< examples/grapefruit-basics.coffee --block game-start
+:::< examples/grapefruit-basics.js --block game-start --no-capture
 
 
 ## Loading a World
@@ -45,7 +45,7 @@ The `start` method loads the `assets` and when completed `onGameReady` is invoke
 AFAICT a world is just a display container. The important data structure is the `GameState` and
 more importantly the active game state.
 
-:::< examples/grapefruit-basics.coffee --block game-ready
+:::< examples/grapefruit-basics.js --block game-ready --no-capture
 
 
 ## Interacting with the World
@@ -56,25 +56,15 @@ object events are through pub-sub.
 
 On mouse drag we'll pan the world.
 
-:::< examples/grapefruit-basics.coffee --block pan-world
+:::< examples/grapefruit-basics.js --block pan-world --no-capture
 
 On mouse click make an object active.
 
-:::< examples/grapefruit-basics.coffee --block activate-object
+:::< examples/grapefruit-basics.js --block activate-object --no-capture
 
 On keyboard move the active object.
 
-
-:::< examples/grapefruit-basics.coffee --block move-object
-
-
-## Add an Avatar
-
-The avatar is a `gf.Sprite` and loads a `gf.Texture` from the asset cache populate by `load` above.
-I use a class to encapsulate keyboard bindings. Keyboard events are global within a game
-state and another display object could be listening for the save events.
-
-:::< examples/grapefruit-basics.coffee --block avatar
+:::< examples/grapefruit-basics.js --block move-object --no-capture
 
 
 ## Start the Game
@@ -93,10 +83,11 @@ Calculate the width of the div, which is set by CSS, and pass the `div` info to 
 }
 ```
 
-:::< examples/grapefruit-basics.coffee --block start-game
+:::< examples/grapefruit-basics.js --block start-game --no-capture
 
 :::# Injects common scripts to be loaded
 :::< support/common.md --raw
+
 
 :::@ --hide
 
@@ -104,7 +95,6 @@ Calculate the width of the div, which is set by CSS, and pass the `div` info to 
 <script src='grapefruit-basics.js'></script>
 ```
 
-:::# Loads the complete Coffee script for user to view
-:::< examples/grapefruit-basics.coffee --as-tab scripts.coffee --clean
+:::< examples/grapefruit-basics.js --as-tab script.js --clean --no-capture
 
 :::END

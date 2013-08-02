@@ -374,9 +374,8 @@ Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiac
 code {
   font-family: consolas, menlo, "ubuntu mono", monospace;
   font-size: 0.9em;
-  color: #222;
+  color: #000;
   padding: 0 0.2em;
-  font-weight: bold;
 }
 pre code {
   display: block;
@@ -427,7 +426,7 @@ pre .erlang_repl .function_or_atom,
 pre .asciidoc .header,
 pre .markdown .header,
 pre .coffeescript .attribute {
-  color: #4C9900;
+  color: #D40;
 }
 pre .comment,
 pre .annotation,
