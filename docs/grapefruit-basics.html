@@ -74,8 +74,8 @@ keys. None of the objects are constrained to the world yet (still learning <stro
     style.css
   </a>
 </li><li>
-  <a href="#grapefruit-basics0scriptjs-tab" rel="grapefruit-basics0scriptjs-tab">
-    script.js
+  <a href="#grapefruit-basics0grapefruit-basicsjs-tab" rel="grapefruit-basics0grapefruit-basicsjs-tab">
+    grapefruit-basics.js
   </a>
 </li>
   </ul>
@@ -110,10 +110,11 @@ keys. None of the objects are constrained to the world yet (still learning <stro
   <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">0</span></span></span>;
   <span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">0</span></span></span>;
 <span class="rule">}</span></span></code></pre>
-</div><div id="grapefruit-basics0scriptjs-tab" class="tab_content">
+</div><div id="grapefruit-basics0grapefruit-basicsjs-tab" class="tab_content">
   <pre><code class="language-js"><span class="comment">/* globals $,_,window,gf */</span>
 <span class="string">"use strict"</span>;
 
+<span class="keyword">var</span> game;
 <span class="keyword">var</span> assets = [{
   name: <span class="string">'world'</span>,
   src: <span class="string">'img/isometric_grass_and_water.json'</span>
@@ -168,8 +169,7 @@ gf.inherits(Game, gf.Game, {
 
 
 <span class="function"><span class="keyword">function</span> <span class="title">mapDown</span><span class="params">(e)</span> {</span>
-  <span class="keyword">var</span> pos = e.getLocalPosition(<span class="keyword">this</span>.parent);
-  <span class="keyword">this</span>.drag = pos;
+  <span class="keyword">this</span>.drag = e.getLocalPosition(<span class="keyword">this</span>.parent);
 }
 
 <span class="function"><span class="keyword">function</span> <span class="title">mapUp</span><span class="params">(e)</span> {</span>
@@ -181,7 +181,6 @@ gf.inherits(Game, gf.Game, {
     <span class="keyword">var</span> pos = e.getLocalPosition(<span class="keyword">this</span>.parent);
     <span class="keyword">var</span> dx = pos.x - <span class="keyword">this</span>.drag.x;
     <span class="keyword">var</span> dy = pos.y - <span class="keyword">this</span>.drag.y;
-
     <span class="keyword">this</span>.pan(dx, dy);
     <span class="keyword">this</span>.drag = pos;
   }
@@ -196,9 +195,11 @@ gf.inherits(Game, gf.Game, {
 }
 
 <span class="function"><span class="keyword">function</span> <span class="title">moveActive</span><span class="params">(dx, dy, e)</span> {</span>
-  <span class="keyword">if</span> (!activeObject &amp;&amp; !activeObject.location) <span class="keyword">return</span>;
+  <span class="keyword">if</span> (!activeObject &amp;&amp; !activeObject.location)
+    <span class="keyword">return</span>;
   <span class="keyword">var</span> location = activeObject.location;
   activeObject.setPosition(location.x + dx, location.y + dy);
+  game.camera.follow(activeObject);
   preventDefault(e);
 }
 
@@ -207,6 +208,7 @@ gf.inherits(Game, gf.Game, {
     activeObject.alpha = <span class="number">1</span>;
   activeObject = e.object;
   activeObject.alpha = <span class="number">0.5</span>;
+  game.camera.follow(activeObject, gf.Camera.FOLLOW.LOCKON);
 }
 
 <span class="function"><span class="keyword">function</span> <span class="title">onKeyboardDown</span><span class="params">(e)</span> {</span>
@@ -232,7 +234,7 @@ gf.inherits(Game, gf.Game, {
 
 $(<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
   <span class="keyword">var</span> $game = $(<span class="string">'#game'</span>);
-  <span class="keyword">var</span> game = <span class="keyword">new</span> Game(<span class="string">'game'</span>, {
+  game = <span class="keyword">new</span> Game(<span class="string">'game'</span>, {
     width: $game.width() - <span class="number">3</span>,
     height: $game.height() - <span class="number">3</span>,
     background: <span class="number">0xEEFFFF</span>,
@@ -247,7 +249,8 @@ $(<span class="function"><span class="keyword">function</span><span class="param
 I opt for objects to show <code>gf.assetCache</code> which is used later when loading the orb. <strong>Grapefruitjs</strong> supports
 the popular <a href="http://www.mapeditor.org/">Tiled Map Editor</a> TMX (JSON) format as well as Texture Packer
 format supported by <strong>pixi.js</strong>.</p>
-<pre><code class="js"><span class="keyword">var</span> assets = [
+<pre><code class="js"><span class="keyword">var</span> game;
+<span class="keyword">var</span> assets = [
     {name: <span class="string">'world'</span>, src: <span class="string">'img/isometric_grass_and_water.json'</span>},
     {name: <span class="string">'avatar'</span>, src: <span class="string">'img/redOrb.png'</span>}
 ];</code></pre>
@@ -305,8 +308,7 @@ inconsistent. Mouse events are by assigning functions and keyboard and
 object events are through pub-sub.</p>
 <p>On mouse drag we&#39;ll pan the world.</p>
 <pre><code class="js"><span class="function"><span class="keyword">function</span> <span class="title">mapDown</span><span class="params">(e)</span> {</span>
-    <span class="keyword">var</span> pos = e.getLocalPosition(<span class="keyword">this</span>.parent);
-    <span class="keyword">this</span>.drag = pos;
+    <span class="keyword">this</span>.drag = e.getLocalPosition(<span class="keyword">this</span>.parent);
 }
 
 <span class="function"><span class="keyword">function</span> <span class="title">mapUp</span><span class="params">(e)</span> {</span>
@@ -318,7 +320,6 @@ object events are through pub-sub.</p>
         <span class="keyword">var</span> pos = e.getLocalPosition(<span class="keyword">this</span>.parent);
         <span class="keyword">var</span> dx = pos.x - <span class="keyword">this</span>.drag.x;
         <span class="keyword">var</span> dy = pos.y - <span class="keyword">this</span>.drag.y;
-
         <span class="keyword">this</span>.pan(dx, dy);
         <span class="keyword">this</span>.drag = pos;
     }
@@ -332,9 +333,11 @@ object events are through pub-sub.</p>
 }
 
 <span class="function"><span class="keyword">function</span> <span class="title">moveActive</span><span class="params">(dx, dy, e)</span> {</span>
-    <span class="keyword">if</span> (!activeObject &amp;&amp; !activeObject.location) <span class="keyword">return</span>;
+    <span class="keyword">if</span> (!activeObject &amp;&amp; !activeObject.location)
+        <span class="keyword">return</span>;
     <span class="keyword">var</span> location = activeObject.location;
     activeObject.setPosition(location.x + dx, location.y + dy);
+    game.camera.follow(activeObject);
     preventDefault(e);
 }
 
@@ -343,6 +346,7 @@ object events are through pub-sub.</p>
         activeObject.alpha = <span class="number">1</span>;
     activeObject = e.object;
     activeObject.alpha = <span class="number">0.5</span>;
+    game.camera.follow(activeObject, gf.Camera.FOLLOW.LOCKON);
 }</code></pre>
 <p>On keyboard move the active object.</p>
 <pre><code class="js"><span class="function"><span class="keyword">function</span> <span class="title">onKeyboardDown</span><span class="params">(e)</span> {</span>
@@ -373,7 +377,7 @@ object events are through pub-sub.</p>
 <span class="rule">}</span></span></code></pre>
 <pre><code class="js">$(<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
     <span class="keyword">var</span> $game = $(<span class="string">'#game'</span>);
-    <span class="keyword">var</span> game = <span class="keyword">new</span> Game(<span class="string">'game'</span>, {
+    game = <span class="keyword">new</span> Game(<span class="string">'game'</span>, {
         width: $game.width() - <span class="number">3</span>,
         height: $game.height() - <span class="number">3</span>,
         background: <span class="number">0xEEFFFF</span>,

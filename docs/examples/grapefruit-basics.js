@@ -2,6 +2,7 @@
 "use strict";
 
 //{{{ Content assets
+var game;
 var assets = [
     {name: 'world', src: 'img/isometric_grass_and_water.json'},
     {name: 'avatar', src: 'img/redOrb.png'}
@@ -61,8 +62,7 @@ gf.inherits(Game, gf.Game, {
 
 //{{{ Content pan-world
 function mapDown(e) {
-    var pos = e.getLocalPosition(this.parent);
-    this.drag = pos;
+    this.drag = e.getLocalPosition(this.parent);
 }
 
 function mapUp(e) {
@@ -90,9 +90,11 @@ function preventDefault(e) {
 }
 
 function moveActive(dx, dy, e) {
-    if (!activeObject && !activeObject.location) return;
+    if (!activeObject && !activeObject.location)
+        return;
     var location = activeObject.location;
     activeObject.setPosition(location.x + dx, location.y + dy);
+    game.camera.follow(activeObject);
     preventDefault(e);
 }
 
@@ -101,6 +103,7 @@ function objDown(e) {
         activeObject.alpha = 1;
     activeObject = e.object;
     activeObject.alpha = 0.5;
+    game.camera.follow(activeObject, gf.Camera.FOLLOW.LOCKON);
 }
 //}}}
 
@@ -130,7 +133,7 @@ function onKeyboardUp(e) {
 //{{{ Content start-game
 $(function() {
     var $game = $('#game');
-    var game = new Game('game', {
+    game = new Game('game', {
         width: $game.width() - 3,
         height: $game.height() - 3,
         background: 0xEEFFFF,

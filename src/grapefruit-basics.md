@@ -24,7 +24,7 @@ I opt for objects to show `gf.assetCache` which is used later when loading the o
 the popular [Tiled Map Editor](http://www.mapeditor.org/) TMX (JSON) format as well as Texture Packer
 format supported by __pixi.js__.
 
-:::< examples/grapefruit-basics.js --block assets --no-capture
+:::< examples/grapefruit-basics.js --no-capture --block assets
 
 
 ## Configure the Game
@@ -33,11 +33,11 @@ The main thing to do is to configure an instance of `gf.Game` and attach it to
 an HTMLElement container of fixed width and size. Hidden within `Game` is the `_tick` game loop
 which makes everything run.
 
-:::< examples/grapefruit-basics.js --block game-class --no-capture
+:::< examples/grapefruit-basics.js --no-capture --block game-class
 
 The `start` method loads the `assets` and when completed `onGameReady` is invoked.
 
-:::< examples/grapefruit-basics.js --block game-start --no-capture
+:::< examples/grapefruit-basics.js --no-capture --block game-start
 
 
 ## Loading a World
@@ -45,7 +45,7 @@ The `start` method loads the `assets` and when completed `onGameReady` is invoke
 AFAICT a world is just a display container. The important data structure is the `GameState` and
 more importantly the active game state.
 
-:::< examples/grapefruit-basics.js --block game-ready --no-capture
+:::< examples/grapefruit-basics.js --no-capture --block game-ready
 
 
 ## Interacting with the World
@@ -56,15 +56,15 @@ object events are through pub-sub.
 
 On mouse drag we'll pan the world.
 
-:::< examples/grapefruit-basics.js --block pan-world --no-capture
+:::< examples/grapefruit-basics.js --no-capture --block pan-world
 
 On mouse click make an object active.
 
-:::< examples/grapefruit-basics.js --block activate-object --no-capture
+:::< examples/grapefruit-basics.js --no-capture --block activate-object
 
 On keyboard move the active object.
 
-:::< examples/grapefruit-basics.js --block move-object --no-capture
+:::< examples/grapefruit-basics.js --no-capture --block move-object
 
 
 ## Start the Game
@@ -83,18 +83,12 @@ Calculate the width of the div, which is set by CSS, and pass the `div` info to 
 }
 ```
 
-:::< examples/grapefruit-basics.js --block start-game --no-capture
+:::< examples/grapefruit-basics.js --no-capture --block start-game
 
 :::# Injects common scripts to be loaded
 :::< support/common.md --raw
 
-
-:::@ --hide
-
-```html
-<script src='grapefruit-basics.js'></script>
-```
-
-:::< examples/grapefruit-basics.js --as-tab script.js --clean --no-capture
+:::# Add the script as an asset, which adds a tab and adds <script> tag to head
+:::< examples/grapefruit-basics.js --as-asset grapefruit-basics.js
 
 :::END
