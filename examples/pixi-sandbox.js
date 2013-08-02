@@ -170,6 +170,7 @@ function moveRight(e) {
   e.shiftKey ? moveAvatar(2, 0) : moveAvatar(2, -2);
 }
 
+
 // game loop optimized keyboard handling
 kd.UP.down(moveUp);
 kd.DOWN.down(moveDown);

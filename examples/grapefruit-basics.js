@@ -1,5 +1,5 @@
 (function() {
-  var Avatar, Game, assets, mapDown, mapMove, mapUp,
+  var Avatar, DISTANCE, Game, TmxObject, activeObject, assets, mapDown, mapMove, mapUp, moveActive, objDown, onKeyboardDown, onKeyboardLeft, onKeyboardRight, onKeyboardUp, preventDefault, _ref,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
@@ -12,6 +12,18 @@
       src: 'img/redOrb.png'
     }
   ];
+
+  TmxObject = (function(_super) {
+    __extends(TmxObject, _super);
+
+    function TmxObject() {
+      _ref = TmxObject.__super__.constructor.apply(this, arguments);
+      return _ref;
+    }
+
+    return TmxObject;
+
+  })(gf.Sprite);
 
   Game = (function(_super) {
     __extends(Game, _super);
@@ -35,21 +47,22 @@
     };
 
     Game.prototype.onGameReady = function() {
-      var hero, state;
+      var layer, state, world;
       state = new gf.GameState('world');
       this.addState(state);
-      state.loadWorld('world');
+      world = state.loadWorld('world');
       state.world.interactive = true;
       state.world.mousedown = mapDown;
       state.world.mouseup = mapUp;
       state.world.mousemove = mapMove;
+      state.world.on('object.mousedown', objDown);
+      state.input.keyboard.on(gf.input.KEY.DOWN, onKeyboardDown);
+      state.input.keyboard.on(gf.input.KEY.UP, onKeyboardUp);
+      state.input.keyboard.on(gf.input.KEY.LEFT, onKeyboardLeft);
+      state.input.keyboard.on(gf.input.KEY.RIGHT, onKeyboardRight);
       this.enableState('world');
-      this.world.pan(this.camera.size.x / 2, 100);
-      hero = new Avatar({
-        assetId: 'avatar',
-        game: this
-      });
-      return state.addChild(hero);
+      layer = this.world.findLayer('beings');
+      return layer.spawn();
     };
 
     return Game;
@@ -77,6 +90,64 @@
     }
   };
 
+  activeObject = null;
+
+  DISTANCE = 4;
+
+  preventDefault = function(e) {
+    return e.input.preventDefault(e.originalEvent);
+  };
+
+  moveActive = function(dx, dy, e) {
+    var x, y, _ref1;
+    if (!(activeObject != null ? activeObject.location : void 0)) {
+      return;
+    }
+    _ref1 = activeObject.location, x = _ref1.x, y = _ref1.y;
+    activeObject.setPosition(x + dx, y + dy);
+    return preventDefault(e);
+  };
+
+  objDown = function(e) {
+    if (activeObject) {
+      activeObject.alpha = 1;
+    }
+    activeObject = e.object;
+    return activeObject.alpha = 0.5;
+  };
+
+  onKeyboardDown = function(e) {
+    if (e.originalEvent.shiftKey) {
+      return moveActive(0, DISTANCE, e);
+    } else {
+      return moveActive(DISTANCE, DISTANCE, e);
+    }
+  };
+
+  onKeyboardRight = function(e) {
+    if (e.originalEvent.shiftKey) {
+      return moveActive(DISTANCE, 0, e);
+    } else {
+      return moveActive(DISTANCE, -DISTANCE, e);
+    }
+  };
+
+  onKeyboardLeft = function(e) {
+    if (e.originalEvent.shiftKey) {
+      return moveActive(-DISTANCE, 0, e);
+    } else {
+      return moveActive(-DISTANCE, DISTANCE, e);
+    }
+  };
+
+  onKeyboardUp = function(e) {
+    if (e.originalEvent.shiftKey) {
+      return moveActive(0, -DISTANCE, e);
+    } else {
+      return moveActive(-DISTANCE, -DISTANCE, e);
+    }
+  };
+
   Avatar = (function(_super) {
     __extends(Avatar, _super);
 
@@ -93,11 +164,8 @@
 
 
     Avatar.prototype.setupKeyboardHandlers = function(game) {
-      var onKeyboardDown, onKeyboardLeft, onKeyboardRight, onKeyboardUp, preventDefault, that;
+      var that;
       that = this;
-      preventDefault = function(e) {
-        return e.input.preventDefault(e.originalEvent);
-      };
       onKeyboardDown = function(e) {
         that.position.y += 5;
         return preventDefault(e);
